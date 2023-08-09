@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { identity } from 'ramda';
 import type { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { useDomId } from '../hooks';
 
@@ -15,10 +14,10 @@ type BooleanControlWithTypeProps = BooleanControlProps & {
 };
 
 export const BooleanControl: FC<BooleanControlWithTypeProps> = (
-  { checked = false, onChange = identity, className, children, type, inline = false },
+  { checked = false, onChange, className, children, type, inline = false },
 ) => {
   const id = useDomId();
-  const onChecked = (e: ChangeEvent<HTMLInputElement>) => onChange(e.target.checked, e);
+  const onChecked = (e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.checked, e);
   const typeClasses = {
     'form-switch': type === 'switch',
     'form-checkbox': type === 'checkbox',

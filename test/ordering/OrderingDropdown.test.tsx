@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-import { values } from 'ramda';
 import type { OrderDir, OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -28,7 +27,7 @@ describe('<OrderingDropdown />', () => {
 
     const dropdownItems = screen.getAllByRole('menuitem');
 
-    expect(dropdownItems).toHaveLength(values(items).length);
+    expect(dropdownItems).toHaveLength(Object.values(items).length);
     expect(dropdownItems[0]).toHaveTextContent('Foo');
     expect(dropdownItems[1]).toHaveTextContent('Bar');
     expect(dropdownItems[2]).toHaveTextContent('Hello World');

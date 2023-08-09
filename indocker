@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker compose run shlink_frontend_kit /bin/sh -c "cd /shlink-frontend-kit && $*"
