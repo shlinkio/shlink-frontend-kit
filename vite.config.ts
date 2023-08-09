@@ -10,8 +10,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      fileName: 'index',
-      formats: ['es', 'cjs']
+      name: 'shlink-frontend-kit',
+      fileName: 'index'
     },
     rollupOptions: {
       external: [...Object.keys(pack.peerDependencies ?? {}), 'react/jsx-runtime'],
