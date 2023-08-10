@@ -19,7 +19,7 @@
     "build": "vite build",
     "test": "vitest run",
     "test:ci": "npm run test -- --coverage",
-    "lint": "eslint --ext ts,tsx ./src ./test vite.config.ts",
+    "lint": "eslint --ext ts,tsx ./src ./test",
     "lint:fix": "npm run lint -- --fix",
     "types": "tsc"
   },

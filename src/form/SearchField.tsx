@@ -46,7 +46,9 @@ export const SearchField = ({ onChange, className, large = true, noBorder = fals
         onChange={(e) => searchTermChanged(e.target.value)}
       />
       <FontAwesomeIcon icon={searchIcon} className="search-field__icon" />
-      <div
+      <button
+        aria-label="Clear search"
+        type="button"
         className="close search-field__close btn-close"
         hidden={searchTerm === ''}
         id="search-field__close"

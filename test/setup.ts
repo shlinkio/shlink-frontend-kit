@@ -1,7 +1,7 @@
-import { afterEach, expect } from 'vitest';
-import { cleanup } from '@testing-library/react';
 import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers';
 import matchers from '@testing-library/jest-dom/matchers';
+import { cleanup } from '@testing-library/react';
+import { afterEach, expect } from 'vitest';
 
 // Workaround for TypeScript error: https://github.com/testing-library/jest-dom/issues/439#issuecomment-1536524120
 declare module 'vitest' {
