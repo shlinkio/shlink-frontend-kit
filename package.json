@@ -12,8 +12,7 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.umd.cjs"
-    },
-    "./base": "./dist/base.scss"
+    }
   },
   "files": ["dist"],
   "scripts": {
