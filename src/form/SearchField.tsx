@@ -6,6 +6,10 @@ import './SearchField.scss';
 
 const DEFAULT_SEARCH_INTERVAL = 500;
 let timer: NodeJS.Timeout | null;
+const resetTimer = () => {
+  timer && clearTimeout(timer);
+  timer = null;
+};
 
 type SearchFieldProps = {
   onChange: (value: string) => void;
@@ -15,13 +19,11 @@ type SearchFieldProps = {
   initialValue?: string;
 };
 
-export const SearchField = ({ onChange, className, large = true, noBorder = false, initialValue = '' }: SearchFieldProps) => {
+export const SearchField = (
+  { onChange, className, large = true, noBorder = false, initialValue = '' }: SearchFieldProps,
+) => {
   const [searchTerm, setSearchTerm] = useState(initialValue);
 
-  const resetTimer = () => {
-    timer && clearTimeout(timer);
-    timer = null;
-  };
   const searchTermChanged = (newSearchTerm: string, timeout = DEFAULT_SEARCH_INTERVAL) => {
     setSearchTerm(newSearchTerm);
 

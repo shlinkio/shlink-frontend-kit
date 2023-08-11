@@ -1,3 +1,5 @@
+import { useCallback, useState } from 'react';
+
 export type OrderDir = 'ASC' | 'DESC' | undefined;
 
 export type Order<Fields> = {
@@ -38,4 +40,11 @@ export const orderToString = <T>(order: Order<T>): string | undefined => (
 export const stringToOrder = <T>(order: string): Order<T> => {
   const [field, dir] = order.split('-') as [T | undefined, OrderDir | undefined];
   return { field, dir };
+};
+
+export const useOrder = <T>(initialOrder: Order<T>): [Order<T>, (orderField?: T, orderDir?: OrderDir) => void] => {
+  const [order, setOrder] = useState<Order<T>>(initialOrder);
+  const onChange = useCallback((field?: T, dir?: OrderDir) => setOrder({ field, dir }), []);
+
+  return [order, onChange];
 };

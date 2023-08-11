@@ -7,6 +7,7 @@ import pack from './package.json';
 // eslint-disable-next-line no-restricted-exports
 export default defineConfig({
   plugins: [react(), dts({ rollupTypes: true })],
+
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -17,12 +18,10 @@ export default defineConfig({
       external: [...Object.keys(pack.peerDependencies ?? {}), 'react/jsx-runtime'],
       output: {
         assetFileNames: "index.[ext]",
-        globals: {
-          'react/jsx-runtime': 'jsxRuntime',
-        },
       },
     },
   },
+
   test: {
     environment: 'jsdom',
     globals: true,
