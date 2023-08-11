@@ -5,6 +5,7 @@ import { ResultPage } from './block/ResultPage';
 import { SimpleCardPage } from './block/SimpleCardPage';
 import { BooleanControlsPage } from './form/BooleanControlsPage';
 import { SearchFieldPage } from './form/SearchFieldPage';
+import { OrderingDropdownPage } from './ordering/OrderingDropdownPage';
 
 export const App: FC = () => (
   <BrowserRouter>
@@ -14,15 +15,19 @@ export const App: FC = () => (
         <li><Link to="/block/message">Message</Link></li>
         <li><Link to="/block/result">Result</Link></li>
         <li><Link to="/block/simple-card">SimpleCard</Link></li>
-        <li><Link to="/block/boolean-controls">BooleanControl</Link></li>
-        <li><Link to="/block/search-field">SearchField</Link></li>
+        <li><Link to="/form/boolean-controls">BooleanControl</Link></li>
+        <li><Link to="/form/search-field">SearchField</Link></li>
+        <li><Link to="/ordering/ordering-dropdown">OrderingDropdown</Link></li>
       </ul>
       <Routes>
+        <Route path="/" element={<h2 className="text-center">Select component</h2>} />
         <Route path="/block/message" element={<MessagePage />} />
         <Route path="/block/result" element={<ResultPage />} />
         <Route path="/block/simple-card" element={<SimpleCardPage />} />
-        <Route path="/block/boolean-controls" element={<BooleanControlsPage />} />
-        <Route path="/block/search-field" element={<SearchFieldPage />} />
+        <Route path="/form/boolean-controls" element={<BooleanControlsPage />} />
+        <Route path="/form/search-field" element={<SearchFieldPage />} />
+        <Route path="/ordering/ordering-dropdown" element={<OrderingDropdownPage />} />
+        <Route path="*" element={<h2 className="text-center">Not found</h2>} />
       </Routes>
     </div>
   </BrowserRouter>
