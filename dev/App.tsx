@@ -5,6 +5,7 @@ import { ResultPage } from './block/ResultPage';
 import { SimpleCardPage } from './block/SimpleCardPage';
 import { BooleanControlsPage } from './form/BooleanControlsPage';
 import { SearchFieldPage } from './form/SearchFieldPage';
+import { DropdownsPage } from './navigation/DropdownsPage';
 import { OrderingDropdownPage } from './ordering/OrderingDropdownPage';
 
 export const App: FC = () => (
@@ -17,6 +18,7 @@ export const App: FC = () => (
         <li><Link to="/block/simple-card">SimpleCard</Link></li>
         <li><Link to="/form/boolean-controls">BooleanControl</Link></li>
         <li><Link to="/form/search-field">SearchField</Link></li>
+        <li><Link to="/navigation/dropdowns">Dropdowns</Link></li>
         <li><Link to="/ordering/ordering-dropdown">OrderingDropdown</Link></li>
       </ul>
       <Routes>
@@ -26,6 +28,7 @@ export const App: FC = () => (
         <Route path="/block/simple-card" element={<SimpleCardPage />} />
         <Route path="/form/boolean-controls" element={<BooleanControlsPage />} />
         <Route path="/form/search-field" element={<SearchFieldPage />} />
+        <Route path="/navigation/dropdowns" element={<DropdownsPage />} />
         <Route path="/ordering/ordering-dropdown" element={<OrderingDropdownPage />} />
         <Route path="*" element={<h2 className="text-center">Not found</h2>} />
       </Routes>
