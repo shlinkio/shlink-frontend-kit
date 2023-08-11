@@ -9,12 +9,12 @@ type NavPillsProps = PropsWithChildren<{
   className?: string;
 }>;
 
-type NavPillProps = PropsWithChildren<{
+type NavPillItemProps = PropsWithChildren<{
   to: string;
   replace?: boolean;
 }>;
 
-export const NavPillItem: FC<NavPillProps> = ({ children, ...rest }) => (
+export const NavPillItem: FC<NavPillItemProps> = ({ children, ...rest }) => (
   <NavLink className="nav-pills__nav-link" tag={RouterNavLink} {...rest}>
     {children}
   </NavLink>

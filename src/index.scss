@@ -3,6 +3,19 @@
 
 /* stylelint-disable no-descending-specificity */
 
+:root {
+  scroll-behavior: auto;
+  color-scheme: var(--color-scheme);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--secondary-color);
+  color: var(--text-color);
+}
+
 a,
 .btn-link {
   text-decoration: none;
@@ -32,7 +45,7 @@ a:not(.nav-link):not(.navbar-brand):not(.page-link):not(.highlight-card):not(.bt
   background-color: var(--primary-color-alfa);
 }
 
-.card {
+.card.card {
   box-shadow: 0 .125rem .25rem rgb(0 0 0 / .075);
   background-color: var(--primary-color);
   border-color: var(--border-color);
@@ -49,20 +62,20 @@ a:not(.nav-link):not(.navbar-brand):not(.page-link):not(.highlight-card):not(.bt
   background-color: var(--primary-color);
 }
 
-.modal-header,
-.modal-footer,
-.card-header,
-.card-footer,
-.table thead th,
-.table th,
-.table td,
-.page-link,
-.page-link:hover,
-.page-item.disabled .page-link,
-.dropdown-divider,
-.dropdown-menu,
-.list-group-item,
-.modal-content,
+.modal-header.modal-header,
+.modal-footer.modal-footer,
+.card-header.card-header,
+.card-footer.card-footer,
+.table.table thead th,
+.table.table th,
+.table.table td,
+.page-link.page-link,
+.page-link.page-link:hover,
+.page-item.page-item.disabled .page-link.page-link,
+.dropdown-divider.dropdown-divider,
+.dropdown-menu.dropdown-menu,
+.list-group-item.list-group-item,
+.modal-content.modal-content,
 hr {
   border-color: var(--border-color);
 }
@@ -162,8 +175,8 @@ hr {
   background-color: var(--secondary-color);
 }
 
-.form-control,
-.form-control:focus {
+.form-control.form-control,
+.form-control.form-control:focus {
   background-color: var(--primary-color);
   border-color: var(--input-border-color);
   color: var(--input-text-color);
