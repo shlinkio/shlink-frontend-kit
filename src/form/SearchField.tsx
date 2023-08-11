@@ -17,10 +17,11 @@ type SearchFieldProps = {
   large?: boolean;
   noBorder?: boolean;
   initialValue?: string;
+  setTimeout_?: typeof setTimeout,
 };
 
 export const SearchField = (
-  { onChange, className, large = true, noBorder = false, initialValue = '' }: SearchFieldProps,
+  { onChange, className, large = true, noBorder = false, initialValue = '', setTimeout_ = setTimeout }: SearchFieldProps,
 ) => {
   const [searchTerm, setSearchTerm] = useState(initialValue);
 
@@ -29,7 +30,7 @@ export const SearchField = (
 
     resetTimer();
 
-    timer = setTimeout(() => {
+    timer = setTimeout_(() => {
       onChange(newSearchTerm);
       resetTimer();
     }, timeout);
