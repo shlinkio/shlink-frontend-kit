@@ -12,12 +12,12 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'shlink-frontend-kit',
-      fileName: 'index'
+      fileName: 'index',
     },
     rollupOptions: {
       external: [...Object.keys(pack.peerDependencies ?? {}), 'react/jsx-runtime'],
       output: {
-        assetFileNames: "index.[ext]",
+        assetFileNames: 'index.[ext]',
       },
     },
   },
