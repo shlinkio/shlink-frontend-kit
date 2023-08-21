@@ -182,6 +182,10 @@ hr {
   color: var(--input-text-color);
 }
 
+.input-group-text.input-group-text {
+  border-color: var(--input-border-color);
+}
+
 .form-control.disabled,
 .form-control:disabled {
   background-color: var(--input-disabled-color);
