@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.2.1] - 2023-09-02
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Wrap callbacks returned by `useToggle` in `useCallback`, to avoid unnecessary re-renders.
+
+
 ## [0.2.0] - 2023-08-11
 ### Added
 * [#5](https://github.com/shlinkio/shlink-frontend-kit/issues/5) Add dev sandbox where components can be tested.

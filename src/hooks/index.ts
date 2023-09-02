@@ -1,11 +1,15 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 type ToggleResult = [boolean, () => void, () => void, () => void];
 
 export const useToggle = (initialValue = false): ToggleResult => {
-  const [flag, setFlag] = useState<boolean>(initialValue);
-  return [flag, () => setFlag(!flag), () => setFlag(true), () => setFlag(false)];
+  const [flag, setFlag] = useState(initialValue);
+  const toggleFlag = useCallback(() => setFlag((prev) => !prev), []);
+  const setToTrue = useCallback(() => setFlag(true), []);
+  const setToFalse = useCallback(() => setFlag(false), []);
+
+  return [flag, toggleFlag, setToTrue, setToFalse];
 };
 
 export const useDomId = (): string => {
