@@ -2,12 +2,15 @@ import { screen } from '@testing-library/react';
 import type { PropsWithChildren } from 'react';
 import type { DropdownBtnProps } from '../../src';
 import { DropdownBtn } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<DropdownBtn />', () => {
   const setUp = (props: PropsWithChildren<DropdownBtnProps>) => renderWithEvents(
     <DropdownBtn children="foo" {...props} />,
   );
+
+  it('passes a11y checks', () => checkAccessibility(setUp({ text: 'Menu' })));
 
   it.each([['foo'], ['bar'], ['baz']])('displays provided text in button', (text) => {
     setUp({ text });

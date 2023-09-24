@@ -1,4 +1,4 @@
-import { parseQuery, stringifyQuery } from '../../src/utils';
+import { parseQuery, stringifyQuery } from '../../src';
 
 describe('query', () => {
   describe('parseQuery', () => {

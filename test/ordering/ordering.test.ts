@@ -1,4 +1,3 @@
-import type { OrderDir } from '../../src';
 import { determineOrderDir, orderToString, stringToOrder } from '../../src';
 
 describe('ordering', () => {
@@ -28,8 +27,8 @@ describe('ordering', () => {
     it.each([
       [{}, undefined],
       [{ field: 'foo' }, undefined],
-      [{ field: 'foo', dir: 'ASC' as OrderDir }, 'foo-ASC'],
-      [{ field: 'bar', dir: 'DESC' as OrderDir }, 'bar-DESC'],
+      [{ field: 'foo', dir: 'ASC' as const }, 'foo-ASC'],
+      [{ field: 'bar', dir: 'DESC' as const }, 'bar-DESC'],
     ])('casts the order to string', (order, expectedResult) => {
       expect(orderToString(order)).toEqual(expectedResult);
     });

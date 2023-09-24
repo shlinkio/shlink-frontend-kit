@@ -2,9 +2,20 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { NavPillItem, NavPills } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<NavPills />', () => {
   let originalError: typeof console.error;
+
+  const setUp = (fill?: boolean) => render(
+    <MemoryRouter>
+      <NavPills fill={fill}>
+        <NavPillItem to="1">1</NavPillItem>
+        <NavPillItem to="2">2</NavPillItem>
+        <NavPillItem to="3">3</NavPillItem>
+      </NavPills>
+    </MemoryRouter>,
+  );
 
   beforeEach(() => {
     originalError = console.error;
@@ -13,6 +24,8 @@ describe('<NavPills />', () => {
   afterEach(() => {
     console.error = originalError;
   });
+
+  it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it.each([
     ['Foo'],
@@ -30,17 +43,9 @@ describe('<NavPills />', () => {
     [true],
     [false],
   ])('renders provided items', (fill) => {
-    const { container } = render(
-      <MemoryRouter>
-        <NavPills fill={fill}>
-          <NavPillItem to="1">1</NavPillItem>
-          <NavPillItem to="2">2</NavPillItem>
-          <NavPillItem to="3">3</NavPillItem>
-        </NavPills>
-      </MemoryRouter>,
-    );
-
+    const { container } = setUp(fill);
     const links = screen.getAllByRole('link');
+
     expect(links).toHaveLength(3);
     links.forEach((link, index) => {
       expect(link).toHaveTextContent(`${index + 1}`);

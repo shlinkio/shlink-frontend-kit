@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import type { SimpleCardProps } from '../../src';
 import { SimpleCard } from '../../src';
-
-const setUp = ({ children, ...rest }: SimpleCardProps = {}) => render(<SimpleCard {...rest}>{children}</SimpleCard>);
+import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<SimpleCard />', () => {
+  const setUp = ({ children, ...rest }: SimpleCardProps = {}) => render(<SimpleCard {...rest}>{children}</SimpleCard>);
+
+  it('passes a11y checks', () => checkAccessibility(setUp({ children: 'Foo', title: 'Bar' })));
+
   it('does not render title if not provided', () => {
     setUp();
     expect(screen.queryByRole('heading')).not.toBeInTheDocument();

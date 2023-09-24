@@ -1,14 +1,21 @@
 import { render, screen } from '@testing-library/react';
-import type { ResultProps, ResultType } from '../../src';
+import type { ResultProps } from '../../src';
 import { Result } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<Result />', () => {
   const setUp = (props: ResultProps) => render(<Result {...props} />);
 
   it.each([
-    ['success' as ResultType, 'bg-main text-white'],
-    ['error' as ResultType, 'bg-danger text-white'],
-    ['warning' as ResultType, 'bg-warning'],
+    ['success' as const],
+    ['error' as const],
+    ['warning' as const],
+  ])('passes a11y checks', (type) => checkAccessibility(setUp({ children: 'The result', type })));
+
+  it.each([
+    ['success' as const, 'bg-main text-white'],
+    ['error' as const, 'bg-danger text-white'],
+    ['warning' as const, 'bg-warning'],
   ])('renders expected classes based on type', (type, expectedClasses) => {
     setUp({ type });
     expect(screen.getByRole('document')).toHaveClass(expectedClasses);

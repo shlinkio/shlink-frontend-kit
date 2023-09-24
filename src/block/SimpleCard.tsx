@@ -9,7 +9,7 @@ export type SimpleCardProps = Omit<CardProps, 'title'> & {
 
 export const SimpleCard = ({ title, children, bodyClassName, ...rest }: SimpleCardProps) => (
   <Card {...rest}>
-    {title && <CardHeader role="heading">{title}</CardHeader>}
+    {title && <CardHeader role="heading" aria-level={4}>{title}</CardHeader>}
     <CardBody className={bodyClassName}>{children}</CardBody>
   </Card>
 );

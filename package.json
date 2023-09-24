@@ -57,6 +57,7 @@
     "@types/uuid": "^9.0.4",
     "@vitejs/plugin-react": "^4.0.4",
     "@vitest/coverage-v8": "^0.34.5",
+    "axe-core": "^4.8.2",
     "bootstrap": "5.2.3",
     "eslint": "^8.50.0",
     "jsdom": "^22.1.0",
@@ -66,7 +67,8 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.4",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.5",
+    "vitest-canvas-mock": "^0.3.3"
   },
   "browserslist": [
     ">0.2%",
