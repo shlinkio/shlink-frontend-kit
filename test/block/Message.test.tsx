@@ -2,9 +2,15 @@ import { render, screen } from '@testing-library/react';
 import type { PropsWithChildren } from 'react';
 import type { MessageProps } from '../../src';
 import { Message } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<Message />', () => {
   const setUp = (props: PropsWithChildren<MessageProps> = {}) => render(<Message {...props} />);
+
+  it.each([
+    [{ loading: true }],
+    [{ children: 'Something is wrong' }],
+  ])('passes a11y checks', (props: MessageProps) => checkAccessibility(setUp(props)));
 
   it.each([
     [true, 'col-md-12'],
@@ -33,11 +39,11 @@ describe('<Message />', () => {
   });
 
   it.each([
-    ['error', 'border-danger', 'text-danger'],
-    ['default', '', 'text-muted'],
+    ['error' as const, 'border-danger', 'text-danger'],
+    ['default' as const, '', 'text-muted'],
     [undefined, '', 'text-muted'],
   ])('renders proper classes based on message type', (type, expectedCardClass, expectedH3Class) => {
-    const { container } = setUp({ type: type as 'default' | 'error' | undefined });
+    const { container } = setUp({ type });
 
     expect(container.querySelector('.card-body')).toHaveAttribute('class', expect.stringContaining(expectedCardClass));
     expect(screen.getByRole('heading')).toHaveClass(`text-center mb-0 ${expectedH3Class}`);

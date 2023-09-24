@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import type { OrderDir, OrderingDropdownProps } from '../../src';
+import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -87,16 +87,16 @@ describe('<OrderingDropdown />', () => {
     [{ isButton: false }, /Order by$/],
     [{ isButton: true }, 'Order by...'],
     [
-      { isButton: true, order: { field: 'foo', dir: 'ASC' as OrderDir } },
+      { isButton: true, order: { field: 'foo', dir: 'ASC' as const } },
       'Order by: Foo - ASC',
     ],
     [
-      { isButton: true, order: { field: 'baz', dir: 'DESC' as OrderDir } },
+      { isButton: true, order: { field: 'baz', dir: 'DESC' as const } },
       'Order by: Hello World - DESC',
     ],
     [{ isButton: true, order: { field: 'baz' } }, 'Order by: Hello World - DESC'],
     [
-      { isButton: true, order: { field: 'baz', dir: 'DESC' as OrderDir }, prefixed: false },
+      { isButton: true, order: { field: 'baz', dir: 'DESC' as const }, prefixed: false },
       /^Hello World - DESC/,
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {

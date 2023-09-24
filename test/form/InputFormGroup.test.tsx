@@ -1,5 +1,4 @@
 import { fireEvent, screen } from '@testing-library/react';
-import type { InputType } from 'reactstrap/types/lib/Input';
 import type { InputFormGroupProps } from '../../src';
 import { InputFormGroup } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -17,9 +16,9 @@ describe('<InputFormGroup />', () => {
 
   it.each([
     [undefined, 'text'],
-    ['text' as InputType, 'text'],
-    ['email' as InputType, 'email'],
-    ['date' as InputType, 'date'],
+    ['text' as const, 'text'],
+    ['email' as const, 'email'],
+    ['date' as const, 'date'],
   ])('renders input with correct type', (type, expectedType) => {
     setUp({ type, children: 'The label' });
     expect(screen.getByLabelText('The label:')).toHaveAttribute('type', expectedType);
