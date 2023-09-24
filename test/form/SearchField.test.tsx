@@ -1,6 +1,7 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import type { ComponentProps } from 'react';
 import { SearchField } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 type SearchFieldProps = ComponentProps<typeof SearchField>;
@@ -10,6 +11,8 @@ describe('<SearchField />', () => {
   const setUp = (props: Omit<SearchFieldProps, 'onChange'> = {}) => renderWithEvents(
     <SearchField onChange={onChange} {...props} />,
   );
+
+  it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it('displays clear button when value is not empty', () => {
     setUp({ initialValue: 'Foo' });

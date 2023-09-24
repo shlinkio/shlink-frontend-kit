@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import { fromPartial } from '@total-typescript/shoehorn';
 import type { DropdownBtnMenuProps } from '../../src';
 import { RowDropdownBtn } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<RowDropdownBtn />', () => {
@@ -10,6 +11,8 @@ describe('<RowDropdownBtn />', () => {
       the children
     </RowDropdownBtn>,
   );
+
+  it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it('renders expected components', () => {
     setUp();

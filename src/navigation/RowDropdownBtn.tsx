@@ -5,11 +5,15 @@ import { DropdownBtn } from './DropdownBtn';
 
 export type DropdownBtnMenuProps = PropsWithChildren<{
   minWidth?: number;
+
+  /** Accessible label for screen readers. Defaults to "Options" */
+  label?: string;
 }>;
 
-export const RowDropdownBtn: FC<DropdownBtnMenuProps> = ({ children, minWidth }) => (
+export const RowDropdownBtn: FC<DropdownBtnMenuProps> = ({ children, minWidth, label = 'Options' }) => (
   <DropdownBtn
     text={<FontAwesomeIcon className="px-1" icon={menuIcon} />}
+    aria-label={label}
     size="sm"
     minWidth={minWidth}
     end

@@ -26,6 +26,7 @@ export const DropdownBtn: FC<DropdownBtnProps> = ({
   minWidth,
   inline,
   size,
+  ...rest
 }) => {
   const [isOpen, toggle] = useToggle();
   const toggleClasses = classNames('dropdown-btn__toggle', className, {
@@ -36,7 +37,7 @@ export const DropdownBtn: FC<DropdownBtnProps> = ({
 
   return (
     <Dropdown isOpen={isOpen} toggle={toggle} disabled={disabled} className={dropdownClassName}>
-      <DropdownToggle size={size} caret={!noCaret} className={toggleClasses} color="primary">
+      <DropdownToggle size={size} caret={!noCaret} className={toggleClasses} color="primary" {...rest}>
         {text}
       </DropdownToggle>
       <DropdownMenu className="w-100" end={end} style={menuStyle}>{children}</DropdownMenu>

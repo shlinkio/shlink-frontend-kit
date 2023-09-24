@@ -1,6 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import type { InputFormGroupProps } from '../../src';
 import { InputFormGroup } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<InputFormGroup />', () => {
@@ -8,6 +9,8 @@ describe('<InputFormGroup />', () => {
   const setUp = (props: Partial<Omit<InputFormGroupProps, 'onChange' | 'placeholder'>> = {}) => renderWithEvents(
     <InputFormGroup value="foo" {...props} onChange={onChange} placeholder="The input" />,
   );
+
+  it('passes a11y checks', () => checkAccessibility(setUp({ children: 'The label' })));
 
   it('renders input with placeholder', () => {
     setUp();

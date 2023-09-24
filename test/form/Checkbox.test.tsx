@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { Checkbox } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<Checkbox />', () => {
+  it('passes a11y checks', () => checkAccessibility(render(<Checkbox>Hi!</Checkbox>)));
+
   it.each([['foo'], ['bar'], ['baz']])('includes extra class names when provided', (className) => {
     const { container } = render(<Checkbox className={className} />);
     expect(container.firstChild).toHaveAttribute('class', `form-check form-checkbox ${className}`);

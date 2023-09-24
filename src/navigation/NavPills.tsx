@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import { Children, isValidElement } from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { Card, Nav, NavLink } from 'reactstrap';
+import { Card, Nav, NavItem, NavLink } from 'reactstrap';
 import './NavPills.scss';
 
 type NavPillsProps = PropsWithChildren<{
@@ -15,9 +15,11 @@ type NavPillItemProps = PropsWithChildren<{
 }>;
 
 export const NavPillItem: FC<NavPillItemProps> = ({ children, ...rest }) => (
-  <NavLink className="nav-pills__nav-link" tag={RouterNavLink} {...rest}>
-    {children}
-  </NavLink>
+  <NavItem>
+    <NavLink className="nav-pills__nav-link" tag={RouterNavLink} {...rest}>
+      {children}
+    </NavLink>
+  </NavItem>
 );
 
 export const NavPills: FC<NavPillsProps> = ({ children, fill = false, className = '' }) => (

@@ -19,7 +19,7 @@ export const InputFormGroup: FC<InputFormGroupProps> = (
   const id = useDomId();
 
   return (
-    <LabeledFormGroup label={<>{children}:</>} className={className ?? ''} labelClassName={labelClassName} id={id}>
+    <LabeledFormGroup label={<>{children}:</>} className={className} labelClassName={labelClassName} id={id}>
       <input
         id={id}
         className="form-control"
