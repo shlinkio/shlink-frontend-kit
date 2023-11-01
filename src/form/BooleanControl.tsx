@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import type { ChangeEvent, FC, PropsWithChildren } from 'react';
 import { useDomId } from '../hooks';
 
@@ -25,7 +25,7 @@ export const BooleanControl: FC<BooleanControlWithTypeProps> = (
   const style = inline ? { display: 'inline-block' } : {};
 
   return (
-    <span className={classNames('form-check', typeClasses, className)} style={style}>
+    <span className={clsx('form-check', typeClasses, className)} style={style}>
       <input type="checkbox" className="form-check-input" id={id} checked={checked} onChange={onChecked} />
       <label className="form-check-label" htmlFor={id}>{children}</label>
     </span>

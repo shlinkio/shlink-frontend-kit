@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import type { DropdownToggleProps } from 'reactstrap/types/lib/DropdownToggle';
@@ -29,7 +29,7 @@ export const DropdownBtn: FC<DropdownBtnProps> = ({
   ...rest
 }) => {
   const [isOpen, toggle] = useToggle();
-  const toggleClasses = classNames('dropdown-btn__toggle', className, {
+  const toggleClasses = clsx('dropdown-btn__toggle', className, {
     'btn-block': !inline,
     'dropdown-btn__toggle--with-caret': !noCaret,
   });

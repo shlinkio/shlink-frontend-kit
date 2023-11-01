@@ -1,6 +1,6 @@
 import { faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { useState } from 'react';
 import './SearchField.scss';
 
@@ -37,10 +37,10 @@ export const SearchField = (
   };
 
   return (
-    <div className={classNames('search-field', className)}>
+    <div className={clsx('search-field', className)}>
       <input
         type="text"
-        className={classNames('form-control search-field__input', {
+        className={clsx('form-control search-field__input', {
           'form-control-lg': large,
           'search-field__input--no-border': noBorder,
         })}

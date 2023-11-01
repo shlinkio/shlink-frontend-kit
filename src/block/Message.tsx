@@ -1,6 +1,6 @@
 import { faCircleNotch as preloader } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { Card, Row } from 'reactstrap';
 
@@ -33,16 +33,16 @@ export type MessageProps = PropsWithChildren<{
 export const Message: FC<MessageProps> = (
   { className, children, loading = false, type = 'default', fullWidth = false },
 ) => {
-  const classes = classNames({
+  const classes = clsx({
     'col-md-12': fullWidth,
     'col-md-10 offset-md-1': !fullWidth,
   });
 
   return (
-    <Row className={classNames('g-0', className)}>
+    <Row className={clsx('g-0', className)}>
       <div className={classes}>
         <Card className={getClassForType(type)} body>
-          <h3 className={classNames('text-center mb-0', getTextClassForType(type))}>
+          <h3 className={clsx('text-center mb-0', getTextClassForType(type))}>
             {loading && <FontAwesomeIcon icon={preloader} spin />}
             {loading && <span className="ms-2">{children ?? 'Loading...'}</span>}
             {!loading && children}

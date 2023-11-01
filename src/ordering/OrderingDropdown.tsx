@@ -1,6 +1,6 @@
 import { faSortAmountDown as sortDescIcon, faSortAmountUp as sortAscIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import type { Order, OrderDir } from './ordering';
 import { determineOrderDir } from './ordering';
@@ -28,7 +28,7 @@ export function OrderingDropdown<T extends string = string>(
       <DropdownToggle
         caret
         color={isButton ? 'primary' : 'link'}
-        className={classNames({
+        className={clsx({
           'dropdown-btn__toggle btn-block pe-4 overflow-hidden': isButton,
           'btn-sm p-0': !isButton,
         })}
@@ -39,7 +39,7 @@ export function OrderingDropdown<T extends string = string>(
       </DropdownToggle>
       <DropdownMenu
         end={right}
-        className={classNames('w-100', { 'ordering-dropdown__menu--link': !isButton })}
+        className={clsx('w-100', { 'ordering-dropdown__menu--link': !isButton })}
       >
         {Object.entries(items).map(([fieldKey, fieldValue]) => (
           <DropdownItem key={fieldKey} active={order.field === fieldKey} onClick={handleItemClick(fieldKey as T)}>
