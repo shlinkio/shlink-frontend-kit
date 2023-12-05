@@ -1,4 +1,3 @@
-import 'vitest-canvas-mock';
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
 import axe from 'axe-core';
@@ -19,3 +18,5 @@ afterEach(() => {
   vi.clearAllMocks();
   cleanup();
 });
+
+HTMLCanvasElement.prototype.getContext = (() => {}) as any;
