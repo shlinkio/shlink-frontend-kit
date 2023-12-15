@@ -15,3 +15,7 @@ export type Theme = 'dark' | 'light';
 export const changeThemeInMarkup = (theme: Theme) => document.querySelector('html')?.setAttribute('data-theme', theme);
 
 export const isDarkThemeEnabled = (): boolean => document.querySelector('html')?.getAttribute('data-theme') === 'dark';
+
+export const getSystemPreferredTheme = (_matchMedia = window.matchMedia.bind(window)): Theme => (
+  _matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+);

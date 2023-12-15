@@ -1,5 +1,7 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import { parseQuery } from '../utils';
 
 type ToggleResult = [boolean, () => void, () => void, () => void];
 
@@ -44,3 +46,8 @@ export const useDomId = (): string => {
 };
 
 export const useElementRef = <T>() => useRef<T | null>(null);
+
+export const useParsedQuery = <T>(): T => {
+  const { search } = useLocation();
+  return useMemo(() => parseQuery<T>(search), [search]);
+};
