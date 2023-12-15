@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [0.4.1] - 2023-12-15
 ### Added
 * Add `useParsedQuery` hook
+* Add `getSystemPreferredTheme` helper function
 
 ### Changed
 * Replace `classnames` package with `clsx`
