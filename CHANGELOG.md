@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.4.2] - 2024-01-20
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Fix specificity for CSS selector to set color on active outline primary buttons
+
+
 ## [0.4.1] - 2023-12-15
 ### Added
 * Add `useParsedQuery` hook

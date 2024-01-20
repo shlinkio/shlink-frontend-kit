@@ -122,8 +122,8 @@ hr {
 .btn-primary:active,
 .btn-primary.active,
 .btn-outline-primary:hover,
-.btn-outline-primary:active,
-.btn-outline-primary.active, {
+.btn-outline-primary:active.btn-outline-primary:active,
+.btn-outline-primary.active.btn-outline-primary.active, {
   color: #ffffff;
 }
 
