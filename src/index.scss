@@ -207,8 +207,21 @@ hr {
   background-color: var(--input-color);
 }
 
+$input-types: "text", "date", "datetime-local", "password", "number", "email", "search", "url";
+
+@each $type in $input-types {
+  .card input[type="#{$type}"]:not(:disabled),
+  .dropdown input[type="#{$type}"]:not(:disabled) {
+    background-color: var(--input-color) !important;
+  }
+}
+
 .input-group-text.input-group-text {
   border-color: var(--input-border-color);
+}
+
+.dropdown label {
+  color: var(--text-color) !important;
 }
 
 .table-active,
