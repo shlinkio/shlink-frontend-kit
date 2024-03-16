@@ -259,3 +259,10 @@ $input-types: "text", "date", "datetime-local", "password", "number", "email", "
     display: block;
   }
 }
+
+.btn-sm-block {
+  @media (max-width: $smMax) {
+    width: 100%;
+    display: block;
+  }
+}

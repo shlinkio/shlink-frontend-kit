@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 ### Added
 * Add theme overwrite styles for `.form-select`.
+* Add `.btn-sm-block` utility class to make a button be displayed as block in small resolutions.
 * Bring some styles from shlink-web-component.
 
 ### Changed
