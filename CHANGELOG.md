@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Bring some styles from shlink-web-component.
 
 ### Changed
-* *Nothing*
+* Update dependencies
 
 ### Deprecated
 * *Nothing*
