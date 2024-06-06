@@ -1,5 +1,3 @@
-version: '3'
-
 services:
     shlink_frontend_kit:
         user: 1000:1000
