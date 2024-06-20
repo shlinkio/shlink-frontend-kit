@@ -1,7 +1,7 @@
 services:
     shlink_frontend_kit:
         container_name: shlink_frontend_kit
-        image: node:20.11-alpine
+        image: node:22.3-alpine
         volumes:
             - ./:/shlink-frontend-kit
         ports:
