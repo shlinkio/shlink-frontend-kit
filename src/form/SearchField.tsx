@@ -7,7 +7,9 @@ import './SearchField.scss';
 const DEFAULT_SEARCH_INTERVAL = 500;
 let timer: NodeJS.Timeout | null;
 const resetTimer = () => {
-  timer && clearTimeout(timer);
+  if (timer !== null) {
+    clearTimeout(timer);
+  }
   timer = null;
 };
 
