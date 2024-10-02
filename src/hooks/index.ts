@@ -1,6 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useId, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 import { parseQueryString } from '../utils';
 
 type ToggleResult = [boolean, () => void, () => void, () => void];
@@ -40,9 +39,9 @@ export const useTimeoutToggle = (
   return [flag, callback];
 };
 
+/** @deprecated Use standard useId() instead */
 export const useDomId = (): string => {
-  const { current: id } = useRef(`dom-${uuid()}`);
-  return id;
+  return useId();
 };
 
 export const useElementRef = <T>() => useRef<T | null>(null);
