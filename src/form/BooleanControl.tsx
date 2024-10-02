@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { ChangeEvent, FC, PropsWithChildren } from 'react';
-import { useDomId } from '../hooks';
+import { useId } from 'react';
 
 export type BooleanControlProps = PropsWithChildren<{
   checked?: boolean;
@@ -16,7 +16,7 @@ type BooleanControlWithTypeProps = BooleanControlProps & {
 export const BooleanControl: FC<BooleanControlWithTypeProps> = (
   { checked = false, onChange, className, children, type, inline = false },
 ) => {
-  const id = useDomId();
+  const id = useId();
   const onChecked = (e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.checked, e);
   const typeClasses = {
     'form-switch': type === 'switch',

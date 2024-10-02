@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
+import { useId } from 'react';
 import type { InputType } from 'reactstrap/types/lib/Input';
-import { useDomId } from '../hooks';
 import { LabeledFormGroup } from './LabeledFormGroup';
 
 export type InputFormGroupProps = PropsWithChildren<{
@@ -16,7 +16,7 @@ export type InputFormGroupProps = PropsWithChildren<{
 export const InputFormGroup: FC<InputFormGroupProps> = (
   { children, value, onChange, type, required, placeholder, className, labelClassName },
 ) => {
-  const id = useDomId();
+  const id = useId();
 
   return (
     <LabeledFormGroup label={<>{children}:</>} className={className} labelClassName={labelClassName} id={id}>
