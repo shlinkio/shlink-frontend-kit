@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { NavPillItem, NavPills } from '../../src';
