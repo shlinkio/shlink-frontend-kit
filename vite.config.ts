@@ -13,11 +13,13 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'shlink-frontend-kit',
       fileName: 'index',
+      formats: ['es'], // Generate ES module only
     },
     rollupOptions: {
       // Make sure dependencies and peer dependencies are not bundled with the library
       external: [...Object.keys(pack.dependencies), ...Object.keys(pack.peerDependencies), 'react/jsx-runtime'],
       output: {
+        // This ensures generated CSS file is called index.css, not style.css
         assetFileNames: 'index.[ext]',
       },
     },
