@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.6.0] - 2024-10-19
 ### Added
 * *Nothing*
 
@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * *Nothing*
 
 ### Removed
-* *Nothing*
+* Removed deprecated `useDomId`, `parseQuery` and `stringifyQuery`.
 
 ### Fixed
 * *Nothing*
