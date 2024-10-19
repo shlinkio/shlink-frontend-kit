@@ -41,9 +41,3 @@ export const stringifyQueryParams = (params: Record<string, unknown | unknown[] 
 
   return searchParams.toString();
 };
-
-/** @deprecated Use parseQueryString instead */
-export const parseQuery = parseQueryString;
-
-/** @deprecated Use stringifyQueryParams instead */
-export const stringifyQuery = stringifyQueryParams;

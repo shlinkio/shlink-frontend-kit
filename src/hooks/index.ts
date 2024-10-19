@@ -1,4 +1,4 @@
-import { useCallback, useId, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { parseQueryString } from '../utils';
 
@@ -37,11 +37,6 @@ export const useTimeoutToggle = (
   }, [clearTimeout, delay, setTimeout]);
 
   return [flag, callback];
-};
-
-/** @deprecated Use standard useId() instead */
-export const useDomId = (): string => {
-  return useId();
 };
 
 export const useElementRef = <T>() => useRef<T | null>(null);
