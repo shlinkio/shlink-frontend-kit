@@ -6,8 +6,8 @@ import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<DropdownBtn />', () => {
-  const setUp = (props: PropsWithChildren<DropdownBtnProps>) => renderWithEvents(
-    <DropdownBtn children="foo" {...props} />,
+  const setUp = ({ children = 'foo', ...rest }: PropsWithChildren<DropdownBtnProps>) => renderWithEvents(
+    <DropdownBtn {...rest}>{children}</DropdownBtn>,
   );
 
   it('passes a11y checks', () => checkAccessibility(setUp({ text: 'Menu' })));
