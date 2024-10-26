@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.6.1] - 2024-10-26
+### Added
+* [#307](https://github.com/shlinkio/shlink-frontend-kit/issues/307) Define CSS vars for all base SCSS vars, to allow projects migrations from SASS to CSS.
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [0.6.0] - 2024-10-19
 ### Added
 * *Nothing*

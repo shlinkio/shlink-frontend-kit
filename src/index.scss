@@ -6,6 +6,31 @@
 :root {
   scroll-behavior: auto;
   color-scheme: var(--color-scheme);
+
+  // Breakpoints
+  --xs-breakpoint-max: #{$xsMax};
+  --sm-breakpoint-min: #{$smMin};
+  --sm-breakpoint-max: #{$smMax};
+  --md-breakpoint-min: #{$mdMin};
+  --md-breakpoint-max: #{$mdMax};
+  --lg-breakpoint-min: #{$lgMin};
+  --lg-breakpoint-max: #{$lgMax};
+  --xlg-breakpoint-min: #{$xlgMin};
+  --responsive-table-breakpoint: #{$responsiveTableBreakpoint};
+
+  // Colors
+  --main-color: #{$mainColor};
+  --light-color: #{$lightColor};
+  --danger-color: #{$dangerColor};
+  --light-grey-color: #{$lightGrey};
+  --medium-grey-color: #{$mediumGrey};
+  --text-placeholder-color: #{$textPlaceholder};
+
+  // Misc
+  --header-height: #{$headerHeight};
+  --aside-menu-width: #{$asideMenuWidth};
+  --footer-height: #{$footer-height};
+  --footer-margin: #{$footer-margin};
 }
 
 html,
@@ -28,7 +53,7 @@ a:not(.nav-link):not(.navbar-brand):not(.page-link):not(.highlight-card):not(.bt
 }
 
 .bg-main {
-  background-color: $mainColor !important;
+  background-color: var(--main-color) !important;
 }
 
 .bg-warning {
@@ -101,11 +126,11 @@ hr {
 }
 
 .container-xl {
-  @media (min-width: $xlgMin) {
+  @media (min-width: var(--xlg-breakpoint-min)) {
     max-width: 1320px;
   }
 
-  @media (max-width: $smMax) {
+  @media (max-width: var(--sm-breakpoint-max)) {
     padding-right: 0;
     padding-left: 0;
   }
@@ -148,12 +173,12 @@ hr {
 }
 
 .dropdown-item--danger.dropdown-item--danger {
-  color: $dangerColor;
+  color: var(--danger-color);
 
   &:hover,
   &:active,
   &.active {
-    color: $dangerColor !important;
+    color: var(--danger-color) !important;
   }
 }
 
@@ -230,7 +255,7 @@ $input-types: "text", "date", "datetime-local", "password", "number", "email", "
 }
 
 .navbar-brand {
-  @media (max-width: $smMax) {
+  @media (max-width: var(--sm-breakpoint-max)) {
     margin: 0 auto !important;
   }
 }
@@ -244,25 +269,25 @@ $input-types: "text", "date", "datetime-local", "password", "number", "email", "
 }
 
 .progress-bar {
-  background-color: $mainColor;
+  background-color: var(--main-color);
 }
 
 .btn-xs-block {
-  @media (max-width: $xsMax) {
+  @media (max-width: var(--xs-breakpoint-max)) {
     width: 100%;
     display: block;
   }
 }
 
 .btn-md-block {
-  @media (max-width: $mdMax) {
+  @media (max-width: var(--md-breakpoint-max)) {
     width: 100%;
     display: block;
   }
 }
 
 .btn-sm-block {
-  @media (max-width: $smMax) {
+  @media (max-width: var(--sm-breakpoint-max)) {
     width: 100%;
     display: block;
   }
