@@ -1,12 +1,11 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
-import type { InputType } from 'reactstrap/types/lib/Input';
 import { LabeledFormGroup } from './LabeledFormGroup';
 
 export type InputFormGroupProps = PropsWithChildren<{
   value: string;
   onChange: (newValue: string) => void;
-  type?: InputType;
+  type?: HTMLInputElement['type'];
   required?: boolean;
   placeholder?: string;
   className?: string;

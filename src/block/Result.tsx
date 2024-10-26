@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-import { Row } from 'reactstrap';
 import { SimpleCard } from './SimpleCard';
 
 export type ResultType = 'success' | 'error' | 'warning';
@@ -12,20 +11,18 @@ export type ResultProps = PropsWithChildren<{
 }>;
 
 export const Result: FC<ResultProps> = ({ children, type, className, small = false }) => (
-  <Row className={className}>
-    <div className={clsx({ 'col-md-10 offset-md-1': !small, 'col-12': small })}>
-      <SimpleCard
-        role="document"
-        className={clsx('text-center', {
-          'bg-main': type === 'success',
-          'bg-danger': type === 'error',
-          'bg-warning': type === 'warning',
-          'text-white': type !== 'warning',
-        })}
-        bodyClassName={clsx({ 'p-2': small })}
-      >
-        {children}
-      </SimpleCard>
-    </div>
-  </Row>
+  <SimpleCard
+    role="document"
+    className={clsx('text-center', {
+      'w-75 mx-auto': !small,
+      'w-100': small,
+      'bg-main': type === 'success',
+      'bg-danger': type === 'error',
+      'bg-warning': type === 'warning',
+      'text-white': type !== 'warning',
+    }, className)}
+    bodyClassName={clsx({ 'p-2': small })}
+  >
+    {children}
+  </SimpleCard>
 );

@@ -13,12 +13,12 @@ describe('<Message />', () => {
   ])('passes a11y checks', (props: MessageProps) => checkAccessibility(setUp(props)));
 
   it.each([
-    [true, 'col-md-12'],
-    [false, 'col-md-10 offset-md-1'],
-    [undefined, 'col-md-10 offset-md-1'],
+    [true, 'w-100'],
+    [false, 'w-75 mx-auto'],
+    [undefined, 'w-75 mx-auto'],
   ])('renders expected classes based on width', (fullWidth, expectedClass) => {
     const { container } = setUp({ fullWidth });
-    expect(container.firstChild?.firstChild).toHaveClass(expectedClass);
+    expect(container.firstChild).toHaveClass(expectedClass);
   });
 
   it.each([
@@ -49,8 +49,8 @@ describe('<Message />', () => {
     expect(screen.getByRole('heading')).toHaveClass(`text-center mb-0 ${expectedH3Class}`);
   });
 
-  it.each([{ className: 'foo' }, { className: 'bar' }, {}])('renders provided classes', ({ className }) => {
+  it.each([{ className: 'foo' }, { className: 'bar' }])('renders provided classes', ({ className }) => {
     const { container } = setUp({ className });
-    expect(container.firstChild).toHaveClass(`g-0${className ? ` ${className}` : ''}`);
+    expect(container.firstChild).toHaveClass(className);
   });
 });

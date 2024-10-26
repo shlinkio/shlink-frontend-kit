@@ -31,8 +31,8 @@ describe('<Result />', () => {
 
   it.each([{ small: true }, { small: false }])('renders small results properly', ({ small }) => {
     const { container } = setUp({ type: 'success', small });
-    const bigElement = container.querySelectorAll('.col-md-10');
-    const smallElement = container.querySelectorAll('.col-12');
+    const bigElement = container.querySelectorAll('.w-75');
+    const smallElement = container.querySelectorAll('.w-100');
 
     expect(bigElement).toHaveLength(small ? 0 : 1);
     expect(smallElement).toHaveLength(small ? 1 : 0);
