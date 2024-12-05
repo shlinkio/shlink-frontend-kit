@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
+import { Router } from 'react-router';
 import { useParsedQuery, useTimeoutToggle } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
