@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import { NavPillItem, NavPills } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 

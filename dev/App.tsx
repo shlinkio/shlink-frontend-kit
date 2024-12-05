@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router';
 import { MessagePage } from './block/MessagePage';
 import { ResultPage } from './block/ResultPage';
 import { SimpleCardPage } from './block/SimpleCardPage';
@@ -36,7 +36,10 @@ export const App: FC = () => (
         <Route path="/form/boolean-controls" element={<BooleanControlsPage />} />
         <Route path="/form/search-field" element={<SearchFieldPage />} />
         <Route path="/navigation/dropdowns" element={<DropdownsPage />} />
-        <Route path="/navigation/nav-pills/*" element={<NavPillsPage />} />
+        <Route path="/navigation/nav-pills">
+          <Route path="" element={<NavPillsPage />} />
+          <Route path="*" element={<NavPillsPage />} />
+        </Route>
         <Route path="/ordering/ordering-dropdown" element={<OrderingDropdownPage />} />
         <Route path="*" element={<h2 className="text-center">Not found</h2>} />
       </Routes>
