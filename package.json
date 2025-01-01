@@ -29,9 +29,9 @@
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "react": "^18.3 || ^19.0",
+    "react-dom": "^18.3 || ^19.0",
     "react-router": "^7.0.2",
     "reactstrap": "^9.2.0"
   },
@@ -43,8 +43,8 @@
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@total-typescript/shoehorn": "^0.1.2",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^2.1.8",
     "axe-core": "^4.10.2",

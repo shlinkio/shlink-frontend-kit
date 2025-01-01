@@ -25,7 +25,7 @@ export const useTimeoutToggle = (
 ): [boolean, () => void] => {
   const [flag, setFlag] = useState<boolean>(initialValue);
   const initialValueRef = useRef(initialValue);
-  const timeout = useRef<number>();
+  const timeout = useRef<number>(undefined);
   const callback = useCallback(() => {
     setFlag(!initialValueRef.current);
 
