@@ -1,4 +1,4 @@
-@import '../utils/vertical-align';
+@use '../utils/vertical-align';
 
 .search-field {
   position: relative;
@@ -19,14 +19,14 @@
 }
 
 .search-field__icon {
-  @include vertical-align();
+  @include vertical-align.vertical-align();
 
   left: 15px;
   color: #6c757d;
 }
 
 .search-field__close {
-  @include vertical-align();
+  @include vertical-align.vertical-align();
 
   right: 10px;
   cursor: pointer;

@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 
-@import '../utils/vertical-align';
+@use '../utils/vertical-align';
 
 .dropdown-btn__toggle.dropdown-btn__toggle {
   text-align: left;
@@ -36,7 +36,7 @@
 }
 
 .dropdown-btn__toggle.dropdown-btn__toggle:after {
-  @include vertical-align();
+  @include vertical-align.vertical-align();
 
   right: .75rem;
 }

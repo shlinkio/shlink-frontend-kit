@@ -1,5 +1,6 @@
-@import './utils/ResponsiveTable';
-@import './theme/theme';
+@use './utils/ResponsiveTable';
+@use './theme/theme';
+@use './base';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -28,11 +29,11 @@ a:not(.nav-link):not(.navbar-brand):not(.page-link):not(.highlight-card):not(.bt
 }
 
 .bg-main {
-  background-color: $mainColor !important;
+  background-color: base.$mainColor !important;
 }
 
 .bg-warning {
-  color: $lightTextColor;
+  color: theme.$lightTextColor;
 }
 
 .card-body,
@@ -101,11 +102,11 @@ hr {
 }
 
 .container-xl {
-  @media (min-width: $xlgMin) {
+  @media (min-width: base.$xlgMin) {
     max-width: 1320px;
   }
 
-  @media (max-width: $smMax) {
+  @media (max-width: base.$smMax) {
     padding-right: 0;
     padding-left: 0;
   }
@@ -148,12 +149,12 @@ hr {
 }
 
 .dropdown-item--danger.dropdown-item--danger {
-  color: $dangerColor;
+  color: base.$dangerColor;
 
   &:hover,
   &:active,
   &.active {
-    color: $dangerColor !important;
+    color: base.$dangerColor !important;
   }
 }
 
@@ -230,7 +231,7 @@ $input-types: "text", "date", "datetime-local", "password", "number", "email", "
 }
 
 .navbar-brand {
-  @media (max-width: $smMax) {
+  @media (max-width: base.$smMax) {
     margin: 0 auto !important;
   }
 }
@@ -244,25 +245,25 @@ $input-types: "text", "date", "datetime-local", "password", "number", "email", "
 }
 
 .progress-bar {
-  background-color: $mainColor;
+  background-color: base.$mainColor;
 }
 
 .btn-xs-block {
-  @media (max-width: $xsMax) {
+  @media (max-width: base.$xsMax) {
     width: 100%;
     display: block;
   }
 }
 
 .btn-md-block {
-  @media (max-width: $mdMax) {
+  @media (max-width: base.$mdMax) {
     width: 100%;
     display: block;
   }
 }
 
 .btn-sm-block {
-  @media (max-width: $smMax) {
+  @media (max-width: base.$smMax) {
     width: 100%;
     display: block;
   }
