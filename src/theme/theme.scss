@@ -1,17 +1,17 @@
-@import '../base';
+@use '../base';
 
 // Light theme colors
 $lightPrimaryColor: #ffffff;
 $lightPrimaryColorAlfa: rgba($lightPrimaryColor, .5);
-$lightSecondaryColor: $lightColor;
+$lightSecondaryColor: base.$lightColor;
 $lightTextColor: #232323;
 $lightBorderColor: rgb(0 0 0 / .125);
-$lightTableBorderColor: $mediumGrey;
-$lightActiveColor: $lightGrey;
-$lightBrandColor: $mainColor;
+$lightTableBorderColor: base.$mediumGrey;
+$lightActiveColor: base.$lightGrey;
+$lightBrandColor: base.$mainColor;
 $lightInputColor: $lightPrimaryColor;
 $lightInputTextColor: #495057;
-$lightDisabledInputColor: $lightColor;
+$lightDisabledInputColor: base.$lightColor;
 $lightBorderInputColor: rgb(0 0 0 / .19);
 $lightTableHighlightColor: rgb(0 0 0 / .075);
 

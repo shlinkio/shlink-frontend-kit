@@ -1,19 +1,19 @@
-@import '../base';
+@use '../base';
 
 .responsive-table__header {
-  @media (max-width: $responsiveTableBreakpoint) {
+  @media (max-width: base.$responsiveTableBreakpoint) {
     display: none;
   }
 }
 
 .responsive-table.table > :not(:first-child) {
-  @media (max-width: $responsiveTableBreakpoint) {
+  @media (max-width: base.$responsiveTableBreakpoint) {
     border: none;
   }
 }
 
 .responsive-table__row {
-  @media (max-width: $responsiveTableBreakpoint) {
+  @media (max-width: base.$responsiveTableBreakpoint) {
     display: block;
     border-bottom: 1px solid var(--border-color);
     border-top: 2px solid var(--border-color);
@@ -28,7 +28,7 @@
 .responsive-table__cell.responsive-table__cell {
   vertical-align: middle !important;
 
-  @media (max-width: $responsiveTableBreakpoint) {
+  @media (max-width: base.$responsiveTableBreakpoint) {
     display: block;
     width: 100%;
     position: relative;
@@ -52,7 +52,7 @@
 }
 
 .responsive-table__cell.responsive-table__cell .btn-sm {
-  @media (max-width: $responsiveTableBreakpoint) {
+  @media (max-width: base.$responsiveTableBreakpoint) {
     padding: 0.1rem 0.4rem;
     margin-top: 0.16rem;
   }

@@ -1,8 +1,8 @@
-@import '../base';
+@use '../base';
 
 .nav-pills__nav {
   position: sticky !important;
-  top: $headerHeight - 1px;
+  top: base.$headerHeight - 1px;
   z-index: 2;
 }
 
@@ -15,17 +15,17 @@
   cursor: pointer;
   text-decoration: none;
 
-  @media (min-width: $smMin) and (max-width: $mdMax) {
+  @media (min-width: base.$smMin) and (max-width: base.$mdMax) {
     font-size: 89%;
   }
 }
 
 .nav-pills__nav-link:hover {
-  color: $mainColor !important;
+  color: base.$mainColor !important;
 }
 
 .nav-pills__nav-link.active {
-  border-color: $mainColor !important;
+  border-color: base.$mainColor !important;
   background-color: var(--primary-color) !important;
-  color: $mainColor !important;
+  color: base.$mainColor !important;
 }
