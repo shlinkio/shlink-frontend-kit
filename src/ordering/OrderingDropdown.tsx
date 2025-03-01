@@ -4,7 +4,6 @@ import { clsx } from 'clsx';
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import type { Order, OrderDir } from './ordering';
 import { determineOrderDir } from './ordering';
-import './OrderingDropdown.scss';
 
 export type OrderingDropdownProps<T extends string = string> = {
   items: Record<T, string>;
@@ -37,19 +36,16 @@ export function OrderingDropdown<T extends string = string>(
         {isButton && !order.field && <i>Order by...</i>}
         {isButton && order.field && <>{prefixed && 'Order by: '}{items[order.field]} - <small>{order.dir ?? 'DESC'}</small></>}
       </DropdownToggle>
-      <DropdownMenu
-        end={right}
-        className={clsx('w-100', { 'ordering-dropdown__menu--link': !isButton })}
-      >
+      <DropdownMenu end={right} className="w-100" style={!isButton ? { minWidth: '11rem' } : undefined}>
         {Object.entries(items).map(([fieldKey, fieldValue]) => (
-          <DropdownItem key={fieldKey} active={order.field === fieldKey} onClick={handleItemClick(fieldKey as T)}>
+          <DropdownItem
+            key={fieldKey}
+            active={order.field === fieldKey}
+            onClick={handleItemClick(fieldKey as T)}
+            className="d-flex justify-content-between align-items-center"
+          >
             {fieldValue as string}
-            {order.field === fieldKey && (
-              <FontAwesomeIcon
-                icon={order.dir === 'ASC' ? sortAscIcon : sortDescIcon}
-                className="ordering-dropdown__sort-icon"
-              />
-            )}
+            {order.field === fieldKey && <FontAwesomeIcon icon={order.dir === 'ASC' ? sortAscIcon : sortDescIcon} />}
           </DropdownItem>
         ))}
         <DropdownItem divider />
