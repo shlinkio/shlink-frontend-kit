@@ -1,4 +1,4 @@
-import { determineOrder, determineOrderDir, orderToString, stringToOrder } from '../../src';
+import { determineOrder, determineOrderDir, orderToString, sortList, stringToOrder } from '../../src';
 
 describe('ordering', () => {
   describe('determineOrderDir', () => {
@@ -69,6 +69,58 @@ describe('ordering', () => {
       ['bar-DESC', { field: 'bar', dir: 'DESC' }],
     ])('casts a string to an order objects', (order, expectedResult) => {
       expect(stringToOrder(order)).toEqual(expectedResult);
+    });
+  });
+
+  describe('sortList', () => {
+    const list = [
+      { name: 'foo', surname: 'bar' },
+      { name: 'Alice', surname: 'Johnson' },
+      { name: 'John', surname: 'Doe' },
+    ];
+
+    it.each([
+      { field: 'name' as const },
+      { dir: 'ASC' as const },
+    ])('returns list as is when either order field or dir are not set', (order) => {
+      expect(sortList(list, order)).toEqual(list);
+    });
+
+    it.each([
+      {
+        order: { field: 'name' as const, dir: 'ASC' as const },
+        expectedList: [
+          { name: 'Alice', surname: 'Johnson' },
+          { name: 'John', surname: 'Doe' },
+          { name: 'foo', surname: 'bar' },
+        ],
+      },
+      {
+        order: { field: 'name' as const, dir: 'DESC' as const },
+        expectedList: [
+          { name: 'foo', surname: 'bar' },
+          { name: 'John', surname: 'Doe' },
+          { name: 'Alice', surname: 'Johnson' },
+        ],
+      },
+      {
+        order: { field: 'surname' as const, dir: 'ASC' as const },
+        expectedList: [
+          { name: 'John', surname: 'Doe' },
+          { name: 'Alice', surname: 'Johnson' },
+          { name: 'foo', surname: 'bar' },
+        ],
+      },
+      {
+        order: { field: 'surname' as const, dir: 'DESC' as const },
+        expectedList: [
+          { name: 'foo', surname: 'bar' },
+          { name: 'Alice', surname: 'Johnson' },
+          { name: 'John', surname: 'Doe' },
+        ],
+      },
+    ])('orders list based on provided options', ({ order, expectedList }) => {
+      expect(sortList(list, order)).toEqual(expectedList);
     });
   });
 });
