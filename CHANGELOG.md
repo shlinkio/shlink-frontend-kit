@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.7.3] - 2025-03-07
+### Added
+* Add new `determineOrder` helper function, which works like `determineOrderDir`, but returns the full `Order` object, rather than just the new dir.
+
+### Changed
+* Add `eslint-plugin-react-compiler`.
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [0.7.2] - 2025-01-27
 ### Added
 * *Nothing*
