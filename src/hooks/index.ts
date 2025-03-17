@@ -39,7 +39,7 @@ export const useTimeoutToggle = (
   return [flag, callback];
 };
 
-export const useElementRef = <T>() => useRef<T | null>(null);
+export const useElementRef = <T extends HTMLElement>() => useRef<T>(null);
 
 export const useParsedQuery = <T>(): T => {
   const { search } = useLocation();
