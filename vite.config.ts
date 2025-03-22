@@ -10,9 +10,11 @@ export default defineConfig({
 
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        tailwind: resolve(__dirname, 'src/tailwind/index.ts'),
+      },
       name: 'shlink-frontend-kit',
-      fileName: 'index',
       formats: ['es'], // Generate ES module only
     },
     rollupOptions: {
