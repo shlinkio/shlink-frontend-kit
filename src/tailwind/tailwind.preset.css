@@ -4,21 +4,21 @@
  */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-@theme {
+@theme static inline {
     /* Light mode */
     /*--color-lm-main: #2078CF;*/ /*Properly accessible with white background*/
     --color-lm-main: #4696e5; /* TODO Rename to "brand" */
     --color-lm-main-dark: #1f69c0;
     --color-lm-primary: #ffffff;
-    --color-lm-primary-alfa: rgba(var(--color-lm-primary), .5);
+    --color-lm-primary-alfa: rgba(var(--tw-color-lm-primary), .5);
     --color-lm-secondary: #f5f6fe;
     --color-lm-text: #232323;
     --color-lm-border: rgb(0 0 0 / .125);
     --color-lm-table-border: #dee2e6;
     --color-lm-active: #eeeeee;
-    --color-lm-brand: var(--color-lm-main); /* TODO Rename to "main" */
-    --color-lm-input: var(--color-lm-primary);
-    --color-lm-disabled-input: var(--color-lm-secondary);
+    --color-lm-brand: var(--tw-color-lm-main); /* TODO Rename to "main" */
+    --color-lm-input: var(--tw-color-lm-primary);
+    --color-lm-disabled-input: var(--tw-color-lm-secondary);
     --color-lm-input-text: #495057;
     --color-lm-input-border: rgb(0 0 0 / .19);
     --color-lm-table-highlight: rgb(0 0 0 / .075);
@@ -27,18 +27,18 @@
     --color-dm-main: #4696e5; /* TODO Rename to "brand" */
     --color-dm-main-dark: #1f69c0;
     --color-dm-primary: #161b22;
-    --color-dm-primary-alfa: rgba(var(--color-dm-primary), .8);
+    --color-dm-primary-alfa: rgba(var(--tw-color-dm-primary), .8);
     --color-dm-secondary: #0f131a;
     --color-dm-text: rgb(201 209 217);
     --color-dm-border: rgb(255 255 255 / .15);
     --color-dm-table-border: #393d43;
-    --color-dm-active: var(--color-dm-secondary);
+    --color-dm-active: var(--tw-color-dm-secondary);
     --color-dm-brand: #0b2d4e; /* TODO Rename to "main" */
-    --color-dm-input: var(--color-dm-primary); /* TODO Darken 2% */
-    --color-dm-disabled-input: var(--color-dm-primary); /* TODO Lighten 2% */
-    --color-dm-input-text: var(--color-dm-text);
-    --color-dm-input-border: var(--color-dm-border);
-    --color-dm-table-highlight: var(--color-dm-border);
+    --color-dm-input: rgb(17.9928571429 22.0821428571 27.8071428571);
+    --color-dm-disabled-input: rgb(26.0071428571 31.9178571429 40.1928571429);
+    --color-dm-input-text: var(--tw-color-dm-text);
+    --color-dm-input-border: var(--tw-color-dm-border);
+    --color-dm-table-highlight: var(--tw-color-dm-border);
 
     /* TODO Remove these two colors */
     --color-brand: #4696e5;
@@ -88,6 +88,7 @@
 
 @layer base {
     :root {
+        --header-height: 56px;
         @apply tw:scheme-normal tw:dark:scheme-dark tw:scroll-auto;
     }
 
