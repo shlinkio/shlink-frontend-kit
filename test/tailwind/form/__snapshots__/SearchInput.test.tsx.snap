@@ -7,7 +7,7 @@ exports[`<SearchInput /> > applies visual changes for some props 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:left-3 tw:text-placeholder tw:group-focus-within:text-white tw:transition-colors"
+      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text tw:left-3"
       data-icon="magnifying-glass"
       data-prefix="fas"
       focusable="false"
@@ -36,7 +36,7 @@ exports[`<SearchInput /> > applies visual changes for some props 2`] = `
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:left-3 tw:text-placeholder tw:group-focus-within:text-white tw:transition-colors"
+      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text tw:left-3"
       data-icon="magnifying-glass"
       data-prefix="fas"
       focusable="false"
@@ -66,7 +66,7 @@ exports[`<SearchInput /> > applies visual changes for some props 3`] = `
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:left-3 tw:text-placeholder tw:group-focus-within:text-white tw:transition-colors"
+      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text tw:left-3"
       data-icon="magnifying-glass"
       data-prefix="fas"
       focusable="false"
@@ -95,7 +95,7 @@ exports[`<SearchInput /> > applies visual changes for some props 4`] = `
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:left-3 tw:text-placeholder tw:group-focus-within:text-white tw:transition-colors"
+      class="svg-inline--fa fa-magnifying-glass tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text tw:left-3"
       data-icon="magnifying-glass"
       data-prefix="fas"
       focusable="false"
