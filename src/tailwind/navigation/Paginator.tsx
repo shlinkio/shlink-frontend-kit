@@ -9,13 +9,13 @@ import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
 
 const buildPaginatorItemClasses = (active = false) => clsx(
-  'tw:border tw:border-r-0 tw:last:border-r tw:border-(--border-color)',
+  'tw:border tw:border-r-0 tw:last:border-r tw:border-lm-border tw:dark:border-dm-border',
   'tw:first:rounded-l tw:last:rounded-r',
   'tw:px-3 py-2 tw:cursor-pointer tw:no-underline',
   'tw:outline-none tw:focus-visible:ring-3 tw:focus-visible:ring-brand/75 tw:focus-visible:z-1',
   {
-    'tw:hover:bg-(--secondary-color) tw:text-brand tw:border-r-(--border-color)': !active,
-    'tw:bg-(--brand-color) tw:text-white tw:border-r-(--brand-color)': active,
+    'tw:hover:bg-lm-secondary tw:dark:hover:bg-dm-secondary tw:text-brand tw:border-r-lm-border tw:dark:border-r-dm-border': !active,
+    'tw:bg-brand tw:text-white tw:border-r-brand': active,
   },
 );
 

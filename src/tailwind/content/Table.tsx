@@ -37,7 +37,7 @@ const Row: FC<HTMLProps<HTMLTableRowElement>> = ({ children, className, ...rest 
         'tw:lg:table-row tw:flex tw:flex-col',
         'tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border',
         {
-          'tw:hover:bg-(--secondary-color)': sectionContext?.section === 'body',
+          'tw:hover:bg-lm-secondary tw:dark:hover:bg-dm-secondary': sectionContext?.section === 'body',
         },
         className,
       )}
