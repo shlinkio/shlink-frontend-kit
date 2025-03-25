@@ -9,6 +9,6 @@ This library provides some tailwindcss-based components. To use them make sure t
 A tailwind preset is also provided:
 
 ```css
-@import 'tailwindcss';
+@import 'tailwindcss' prefix(tw);
 @import '@shlinkio/shlink-frontend-kit/tailwind.preset.css';
 ```

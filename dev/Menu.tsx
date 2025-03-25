@@ -12,6 +12,8 @@ export const Menu: FC = () => {
           <hr/>
           <li><Link to="/tailwind/forms/inputs">Inputs</Link></li>
           <li><Link to="/tailwind/forms/search-input">SearchInput</Link></li>
+          <li><Link to="/tailwind/forms/buttons">Buttons</Link></li>
+          <li><Link to="/tailwind/surfaces/cards">Cards</Link></li>
         </>
       ) : (
         <>
