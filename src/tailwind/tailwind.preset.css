@@ -127,6 +127,10 @@
     hr {
         @apply tw:my-3
     }
+
+    p {
+        @apply tw:m-0;
+    }
 }
 
 @utility focus-ring-base {

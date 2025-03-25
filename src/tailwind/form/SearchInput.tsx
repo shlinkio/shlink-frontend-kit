@@ -7,7 +7,7 @@ import { useTimeout } from '../hooks/use-timeout';
 import type { InputProps } from './Input';
 import { Input } from './Input';
 
-export type SearchInputProps = Omit<InputProps, 'className' | 'onChange'> & {
+export type SearchInputProps = Omit<InputProps, 'className' | 'onChange' | 'value'> & {
   onChange: (searchTerm: string) => void;
   containerClassName?: string;
   inputClassName?: string;
@@ -37,13 +37,23 @@ export const SearchInput: FC<SearchInputProps> = ({
       <FontAwesomeIcon
         icon={searchIcon}
         className={clsx(
-          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:left-3',
-          'tw:text-placeholder tw:group-focus-within:text-white tw:transition-colors',
+          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors',
+          'tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text',
+          {
+            'tw:left-3': size !== 'sm',
+            'tw:scale-85 tw:left-2': size === 'sm',
+          },
         )}
       />
       <Input
         type="search"
-        className={clsx('tw:pl-9', inputClassName)}
+        className={clsx(
+          {
+            'tw:pl-9': size !== 'sm',
+            'tw:pl-7': size === 'sm',
+          },
+          inputClassName,
+        )}
         placeholder="Search..."
         onChange={(e) => searchTermChanged(e.target.value)}
         size={size}
