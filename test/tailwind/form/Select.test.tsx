@@ -1,24 +1,25 @@
 import { render } from '@testing-library/react';
-import type { InputProps } from '../../../src/tailwind';
-import { Input } from '../../../src/tailwind';
+import type { SelectProps } from '../../../src/tailwind';
+import { Select } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
 
-describe('<Input />', () => {
-  const setUp = (props: InputProps = {}) => render(<Input {...props} />);
+describe('<Select />', () => {
+  const setUp = (props: Omit<SelectProps, 'children'> = {}) => render(
+    <Select {...props}>
+      <option>Foo</option>
+      <option>Bar</option>
+    </Select>,
+  );
 
-  it('passes a11y checks', () => checkAccessibility(setUp({ 'aria-label': 'The input' })));
+  it('passes a11y checks', () => checkAccessibility(setUp({ 'aria-label': 'Select option' })));
 
   it.each([
     {},
-    { borderless: true },
-    { borderless: false },
     { size: 'sm' as const },
     { size: 'md' as const },
     { size: 'lg' as const },
     { feedback: 'error' as const },
     { disabled: true },
-    { readOnly: true },
-    { readOnly: true, disabled: true },
   ])('renders as expected based on provided props', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();

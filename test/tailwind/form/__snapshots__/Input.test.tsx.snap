@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Input /> > Renders as expected based on provided props 1`] = `
+exports[`<Input /> > renders as expected based on provided props 1`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -8,7 +8,7 @@ exports[`<Input /> > Renders as expected based on provided props 1`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 2`] = `
+exports[`<Input /> > renders as expected based on provided props 2`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -16,7 +16,7 @@ exports[`<Input /> > Renders as expected based on provided props 2`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 3`] = `
+exports[`<Input /> > renders as expected based on provided props 3`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -24,7 +24,7 @@ exports[`<Input /> > Renders as expected based on provided props 3`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 4`] = `
+exports[`<Input /> > renders as expected based on provided props 4`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-2 tw:py-1 tw:text-sm tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -32,7 +32,7 @@ exports[`<Input /> > Renders as expected based on provided props 4`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 5`] = `
+exports[`<Input /> > renders as expected based on provided props 5`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -40,7 +40,7 @@ exports[`<Input /> > Renders as expected based on provided props 5`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 6`] = `
+exports[`<Input /> > renders as expected based on provided props 6`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -48,7 +48,7 @@ exports[`<Input /> > Renders as expected based on provided props 6`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 7`] = `
+exports[`<Input /> > renders as expected based on provided props 7`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-danger tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
@@ -56,7 +56,7 @@ exports[`<Input /> > Renders as expected based on provided props 7`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 8`] = `
+exports[`<Input /> > renders as expected based on provided props 8`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input"
@@ -65,7 +65,7 @@ exports[`<Input /> > Renders as expected based on provided props 8`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 9`] = `
+exports[`<Input /> > renders as expected based on provided props 9`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input"
@@ -74,7 +74,7 @@ exports[`<Input /> > Renders as expected based on provided props 9`] = `
 </div>
 `;
 
-exports[`<Input /> > Renders as expected based on provided props 10`] = `
+exports[`<Input /> > renders as expected based on provided props 10`] = `
 <div>
   <input
     class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input"

@@ -11,11 +11,11 @@ export const InputsPage: FC = () => {
       </div>
       <div className="tw:flex tw:flex-col tw:gap-y-3">
         <h2>Inputs</h2>
-        <Input placeholder="Regular input"/>
+        <Input placeholder="Regular input" />
         <Input placeholder="Error input" feedback="error" />
         <Input placeholder="Disabled input" disabled />
         <Input placeholder="Readonly input" readOnly />
-        <LabelledInput label="Labelled input"/>
+        <LabelledInput label="Labelled input" />
         <Input placeholder="Large input" size="lg" />
         <Input placeholder="Small input" size="sm" />
       </div>
@@ -39,7 +39,7 @@ export const InputsPage: FC = () => {
       <div className="tw:flex tw:flex-col tw:gap-y-3">
         <h2>Inputs inside Cards</h2>
         <SimpleCard bodyClassName="tw:flex tw:flex-col tw:gap-y-3">
-          <Input placeholder="Regular input"/>
+          <Input placeholder="Regular input" />
           <Select>
             <option>Hello</option>
             <option>Goodbye</option>

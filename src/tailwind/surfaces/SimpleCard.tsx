@@ -5,12 +5,12 @@ import { Card } from './Card';
 
 type TitleProps = {
   title: ReactNode;
-  size?: Size;
+  titleSize?: Size;
 };
 
 type NoTitleProps = {
   title?: never;
-  size?: never;
+  titleSize?: never;
 };
 
 export type SimpleCardProps = Omit<CardProps, 'title' | 'size'> & {
@@ -18,14 +18,19 @@ export type SimpleCardProps = Omit<CardProps, 'title' | 'size'> & {
 } & (TitleProps | NoTitleProps);
 
 export const SimpleCard: FC<SimpleCardProps> = ({ bodyClassName, children, ...rest }) => {
-  const { title, size = 'md', ...cardProps } = 'title' in rest ? rest : { ...rest, title: undefined, size: undefined };
+  const { title, titleSize = 'md', ...cardProps } = 'title' in rest ? rest : {
+    ...rest,
+    title: undefined,
+    titleSize: undefined,
+  };
+
   return (
     <Card {...cardProps}>
       {title && (
         <Card.Header>
-          {size === 'lg' && <h4>{title}</h4>}
-          {size === 'md' && <h5>{title}</h5>}
-          {size === 'sm' && <h6>{title}</h6>}
+          {titleSize === 'lg' && <h4>{title}</h4>}
+          {titleSize === 'md' && <h5>{title}</h5>}
+          {titleSize === 'sm' && <h6>{title}</h6>}
         </Card.Header>
       )}
       <Card.Body className={bodyClassName}>

@@ -13,13 +13,13 @@ export const CardsPage: FC = () => {
       <SimpleCard>
         Simple card with no title
       </SimpleCard>
-      <SimpleCard title="Title" size="sm">
+      <SimpleCard title="Title" titleSize="sm">
         Small simple card
       </SimpleCard>
       <SimpleCard title="Title">
         Medium simple card (default)
       </SimpleCard>
-      <SimpleCard title="Title" size="lg">
+      <SimpleCard title="Title" titleSize="lg">
         Large simple card
       </SimpleCard>
     </div>
