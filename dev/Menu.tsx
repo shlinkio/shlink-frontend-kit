@@ -16,6 +16,7 @@ export const Menu: FC = () => {
           <li><Link to="/tailwind/surfaces/cards">Cards</Link></li>
           <li><Link to="/tailwind/content/tables">Tables</Link></li>
           <li><Link to="/tailwind/navigation/paginator">Paginator</Link></li>
+          <li><Link to="/tailwind/feedback/dialogs">Dialogs</Link></li>
         </>
       ) : (
         <>
