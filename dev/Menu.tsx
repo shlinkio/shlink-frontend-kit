@@ -14,6 +14,7 @@ export const Menu: FC = () => {
           <li><Link to="/tailwind/forms/search-input">SearchInput</Link></li>
           <li><Link to="/tailwind/forms/buttons">Buttons</Link></li>
           <li><Link to="/tailwind/surfaces/cards">Cards</Link></li>
+          <li><Link to="/tailwind/content/tables">Tables</Link></li>
         </>
       ) : (
         <>
