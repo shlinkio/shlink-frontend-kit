@@ -1,0 +1,2 @@
+@import 'tailwindcss' prefix(tw) important;
+@import '../../src/tailwind/tailwind.preset.css';

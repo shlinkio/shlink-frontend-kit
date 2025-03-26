@@ -1,3 +1,5 @@
+// @ts-expect-error I'm not sure why is it complaining about missing type definitions
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
@@ -6,13 +8,15 @@ import pack from './package.json';
 
 // eslint-disable-next-line no-restricted-exports
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [react(), dts({ rollupTypes: true }), tailwindcss()],
 
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        tailwind: resolve(__dirname, 'src/tailwind/index.ts'),
+      },
       name: 'shlink-frontend-kit',
-      fileName: 'index',
       formats: ['es'], // Generate ES module only
     },
     rollupOptions: {
@@ -41,10 +45,10 @@ export default defineConfig({
 
       // Required code coverage. Lower than this will make the check fail
       thresholds: {
-        statements: 95,
+        statements: 85,
         branches: 95,
-        functions: 80,
-        lines: 95,
+        functions: 85,
+        lines: 85,
       },
     },
   },

@@ -1,33 +1,25 @@
 import type { FC } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router';
+import { BrowserRouter, Route, Routes } from 'react-router';
 import { MessagePage } from './block/MessagePage';
 import { ResultPage } from './block/ResultPage';
 import { SimpleCardPage } from './block/SimpleCardPage';
 import { BooleanControlsPage } from './form/BooleanControlsPage';
 import { SearchFieldPage } from './form/SearchFieldPage';
+import { Menu } from './Menu';
 import { DropdownsPage } from './navigation/DropdownsPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { OrderingDropdownPage } from './ordering/OrderingDropdownPage';
+import { TailwindComponents } from './tailwind/TailwindComponents';
 import { ThemeToggle } from './ThemeToggle';
+import './tailwind/tailwind.css';
 
 export const App: FC = () => (
   <BrowserRouter>
-
-    <div className="container">
-      <ul className="mb-4">
-        <li><Link to="/block/message">Message</Link></li>
-        <li><Link to="/block/result">Result</Link></li>
-        <li><Link to="/block/simple-card">SimpleCard</Link></li>
-        <li><Link to="/form/boolean-controls">BooleanControl</Link></li>
-        <li><Link to="/form/search-field">SearchField</Link></li>
-        <li><Link to="/navigation/dropdowns">Dropdowns</Link></li>
-        <li><Link to="/navigation/nav-pills">NavPills</Link></li>
-        <li><Link to="/ordering/ordering-dropdown">OrderingDropdown</Link></li>
-      </ul>
-      <div className="float-end">
+    <div className="tw:container tw:m-auto tw:p-5">
+      <Menu />
+      <div className="tw:flex tw:flex-row-reverse tw:my-4">
         <ThemeToggle />
       </div>
-      <div className="clearfix mb-3" />
       <Routes>
         <Route path="/" element={<h2 className="text-center">Select component</h2>} />
         <Route path="/block/message" element={<MessagePage />} />
@@ -41,6 +33,10 @@ export const App: FC = () => (
           <Route path="*" element={<NavPillsPage />} />
         </Route>
         <Route path="/ordering/ordering-dropdown" element={<OrderingDropdownPage />} />
+        <Route path="/tailwind">
+          <Route path="" element={<TailwindComponents />} />
+          <Route path="*" element={<TailwindComponents />} />
+        </Route>
         <Route path="*" element={<h2 className="text-center">Not found</h2>} />
       </Routes>
     </div>

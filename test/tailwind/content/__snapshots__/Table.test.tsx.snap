@@ -1,0 +1,216 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Table /> > renders as expected based on provided props 1`] = `
+<div>
+  <table
+    class="tw:w-full"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class="tw:group"
+      >
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Foo
+        </th>
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Bar
+        </th>
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Baz
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class=""
+    >
+      <tr
+        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Baz
+        </td>
+      </tr>
+      <tr
+        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Baz
+        </td>
+      </tr>
+      <tr
+        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:border-b-1"
+        >
+          Baz
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`<Table /> > renders as expected based on provided props 2`] = `
+<div>
+  <table
+    class="tw:w-full"
+  >
+    <thead
+      class="tw:hidden tw:lg:table-header-group"
+    >
+      <tr
+        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+      >
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+        >
+          Foo
+        </th>
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+        >
+          Bar
+        </th>
+        <th
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+        >
+          Baz
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3"
+    >
+      <tr
+        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Foo"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Bar"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Baz"
+        >
+          Baz
+        </td>
+      </tr>
+      <tr
+        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Foo"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Bar"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          data-column="Baz"
+        >
+          Baz
+        </td>
+      </tr>
+      <tr
+        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Foo
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Bar
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Baz
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3 tw:mt-4"
+    >
+      <tr
+        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+      >
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Foo footer
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Bar footer
+        </td>
+        <td
+          class="tw:p-2 tw:border-lm-border tw:dark:border-dm-border tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+        >
+          Baz footer
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+`;
