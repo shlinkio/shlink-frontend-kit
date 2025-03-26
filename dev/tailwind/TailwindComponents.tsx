@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Route, Routes } from 'react-router';
 import { TablePage } from './content/TablePage';
+import { ModalDialogPage } from './feedback/ModalDialogPage';
 import { ButtonsPage } from './forms/ButtonsPage';
 import { InputsPage } from './forms/InputsPage';
 import { SearchInputPage } from './forms/SearchInputPage';
@@ -17,6 +18,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/surfaces/cards" element={<CardsPage />} />
       <Route path="/content/tables" element={<TablePage />} />
       <Route path="/navigation/paginator" element={<PaginatorPage />} />
+      <Route path="/feedback/dialogs" element={<ModalDialogPage />} />
       <Route path="*" element={<h2 className="text-center">Not found - Tailwind</h2>} />
     </Routes>
   );

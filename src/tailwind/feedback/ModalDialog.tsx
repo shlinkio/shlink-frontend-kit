@@ -10,12 +10,13 @@ import type { Size } from '../types';
 
 type CommonModalDialogProps = {
   open: boolean;
-  size?: Size | 'xl' | 'full';
+  /** Invoked when the modal is closed for any reason */
+  onClose: () => void;
 
   /** Modal header title */
   title: string;
-  /** Invoked when the modal is closed for any reason */
-  onClose?: () => void;
+  /** Determines the horizontal size of the dialog */
+  size?: Size | 'xl';
 };
 
 type CoverModalDialogProps = CommonModalDialogProps & {
@@ -104,7 +105,6 @@ export const ModalDialog: FC<ModalDialogProps> = ({
             'tw:md:w-lg': size === 'md',
             'tw:md:w-4xl': size === 'lg',
             'tw:md:w-6xl': size === 'xl',
-            'tw:w-full': size === 'full',
           },
         )}>
           <Card.Header className="tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0">
@@ -112,14 +112,14 @@ export const ModalDialog: FC<ModalDialogProps> = ({
             <CloseButton onClick={closeDialog} label="Close dialog" />
           </Card.Header>
           <Card.Body>{children}</Card.Body>
-          <Card.Footer className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0">
-            {onConfirm && (
+          {onConfirm && (
+            <Card.Footer className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0">
               <Button variant={variant === 'danger' ? 'danger' : 'primary'} onClick={confirmAndClose}>
                 {confirmText}
               </Button>
-            )}
-            <LinkButton onClick={closeDialog}>Cancel</LinkButton>
-          </Card.Footer>
+              <LinkButton onClick={closeDialog}>Cancel</LinkButton>
+            </Card.Footer>
+          )}
         </Card>
       )}
     </dialog>
