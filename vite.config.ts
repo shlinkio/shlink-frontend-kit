@@ -1,3 +1,4 @@
+// @ts-expect-error I'm not sure why is it complaining about missing type definitions
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
