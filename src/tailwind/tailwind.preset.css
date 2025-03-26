@@ -10,7 +10,7 @@
     --color-lm-main: #4696e5; /* TODO Rename to "brand" */
     --color-lm-main-dark: #1f69c0;
     --color-lm-primary: #ffffff;
-    --color-lm-primary-alfa: rgba(var(--tw-color-lm-primary), .5);
+    --color-lm-primary-alfa: rgb(var(--tw-color-lm-primary) / .5);
     --color-lm-secondary: #f5f6fe;
     --color-lm-text: #232323;
     --color-lm-border: rgb(0 0 0 / .125);
@@ -27,7 +27,7 @@
     --color-dm-main: #4696e5; /* TODO Rename to "brand" */
     --color-dm-main-dark: #1f69c0;
     --color-dm-primary: #161b22;
-    --color-dm-primary-alfa: rgba(var(--tw-color-dm-primary), .8);
+    --color-dm-primary-alfa: rgb(var(--tw-color-dm-primary) / .8);
     --color-dm-secondary: #0f131a;
     --color-dm-text: rgb(201 209 217);
     --color-dm-border: rgb(255 255 255 / .15);
