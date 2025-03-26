@@ -33,8 +33,8 @@ describe('<Paginator />', () => {
   });
 
   it.each([
-    { currentPage: 1, expectedPrevPage: 1, expectedNextPage: 2 },
-    { currentPage: 10, expectedPrevPage: 9, expectedNextPage: 10 },
+    { currentPage: 2, expectedPrevPage: 1, expectedNextPage: 3 },
+    { currentPage: 9, expectedPrevPage: 8, expectedNextPage: 10 },
     { currentPage: 5, expectedPrevPage: 4, expectedNextPage: 6 },
   ])('next and prev pages point to the right page', ({ currentPage, expectedPrevPage, expectedNextPage }) => {
     const urlForPage = (page: number) => `/${page}`;
@@ -43,6 +43,20 @@ describe('<Paginator />', () => {
 
     expect(screen.getByLabelText('Previous')).toHaveAttribute('href', urlForPage(expectedPrevPage));
     expect(screen.getByLabelText('Next')).toHaveAttribute('href', urlForPage(expectedNextPage));
+  });
+
+  it('disables prev when current page is the first one', () => {
+    setUp({ pagesCount: 10, currentPage: 1, onPageChange: vi.fn() });
+
+    expect(screen.queryByLabelText('Previous')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Next')).toBeInTheDocument();
+  });
+
+  it('disables next when current page is the last one', () => {
+    setUp({ pagesCount: 10, currentPage: 10, onPageChange: vi.fn() });
+
+    expect(screen.getByLabelText('Previous')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Next')).not.toBeInTheDocument();
   });
 
   it.each([

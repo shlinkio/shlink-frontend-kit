@@ -4,6 +4,7 @@ import { TablePage } from './content/TablePage';
 import { ButtonsPage } from './forms/ButtonsPage';
 import { InputsPage } from './forms/InputsPage';
 import { SearchInputPage } from './forms/SearchInputPage';
+import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
 
 export const TailwindComponents: FC = () => {
@@ -15,6 +16,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/forms/buttons" element={<ButtonsPage />} />
       <Route path="/surfaces/cards" element={<CardsPage />} />
       <Route path="/content/tables" element={<TablePage />} />
+      <Route path="/navigation/paginator" element={<PaginatorPage />} />
       <Route path="*" element={<h2 className="text-center">Not found - Tailwind</h2>} />
     </Routes>
   );

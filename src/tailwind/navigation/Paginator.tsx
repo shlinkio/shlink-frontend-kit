@@ -8,16 +8,28 @@ import { Link } from 'react-router';
 import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
 
-const buildPaginatorItemClasses = (active = false) => clsx(
+const commonClasses = [
   'tw:border tw:border-r-0 tw:last:border-r tw:border-lm-border tw:dark:border-dm-border',
-  'tw:first:rounded-l tw:last:rounded-r',
+  'tw:rounded-none tw:first:rounded-l tw:last:rounded-r',
+];
+
+const buildPaginatorItemClasses = (active = false) => clsx(
+  commonClasses,
   'tw:px-3 py-2 tw:cursor-pointer tw:no-underline',
-  'tw:outline-none tw:focus-visible:ring-3 tw:focus-visible:ring-brand/75 tw:focus-visible:z-1',
+  'tw:focus-ring tw:focus-visible:z-1',
   {
-    'tw:hover:bg-lm-secondary tw:dark:hover:bg-dm-secondary tw:text-brand tw:border-r-lm-border tw:dark:border-r-dm-border': !active,
-    'tw:bg-brand tw:text-white tw:border-r-brand': active,
+    'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary tw:text-brand': !active,
+    'tw:bg-lm-brand tw:dark:bg-dm-brand tw:text-white': active,
   },
 );
+
+const DisabledPaginatorItem: FC<PropsWithChildren> = ({ children }) => (
+  <span aria-hidden className={clsx(commonClasses, 'tw:px-3 py-2 tw:text-gray-400')}>
+    {children}
+  </span>
+);
+
+const EllipsisPaginatorItem = () => <DisabledPaginatorItem>{ELLIPSIS}</DisabledPaginatorItem>;
 
 type BasePaginatorItemProps = {
   active?: boolean;
@@ -27,22 +39,10 @@ type BasePaginatorItemProps = {
 type PaginatorItemProps<T extends HTMLElement> =
   PropsWithChildren<BasePaginatorItemProps & Omit<HTMLProps<T>, 'className'>>;
 
-function EllipsisPaginatorItem() {
-  return (
-    <span
-      aria-hidden
-      className="tw:border-r tw:last:border-none tw:px-3 py-2 tw:text-gray-400 tw:border-r-(--border-color)"
-    >
-      {ELLIPSIS}
-    </span>
-  );
-}
-
 function LinkPaginatorItem(
   { children, active, isEllipsis, href, ...anchorProps }: PaginatorItemProps<HTMLAnchorElement>,
 ) {
   const classes = useMemo(() => buildPaginatorItemClasses(active), [active]);
-
   return isEllipsis ? <EllipsisPaginatorItem /> : (
     <Link className={classes} to={href!} {...anchorProps}>
       {children}
@@ -86,9 +86,15 @@ export const Paginator: FC<PaginatorProps> = ({ currentPage, pagesCount, ...rest
 
   return (
     <div className="tw:select-none tw:flex" data-testid="paginator">
-      <PaginatorItem {...itemPropsForPageNumber(Math.max(1, currentPage - 1))} aria-label="Previous">
-        <FontAwesomeIcon size="xs" icon={faChevronLeft} />
-      </PaginatorItem>
+      {currentPage === 1 ? (
+        <DisabledPaginatorItem>
+          <FontAwesomeIcon size="xs" icon={faChevronLeft} />
+        </DisabledPaginatorItem>
+      ) : (
+        <PaginatorItem {...itemPropsForPageNumber(Math.max(1, currentPage - 1))} aria-label="Previous">
+          <FontAwesomeIcon size="xs" icon={faChevronLeft} />
+        </PaginatorItem>
+      )}
       {progressivePagination(currentPage, pagesCount).map((pageNumber, index) => (
         <PaginatorItem
           key={keyForPage(pageNumber, index)}
@@ -99,9 +105,16 @@ export const Paginator: FC<PaginatorProps> = ({ currentPage, pagesCount, ...rest
           {prettifyPageNumber(pageNumber)}
         </PaginatorItem>
       ))}
-      <PaginatorItem {...itemPropsForPageNumber(Math.min(pagesCount, currentPage + 1))} aria-label="Next">
-        <FontAwesomeIcon size="xs" icon={faChevronRight} />
-      </PaginatorItem>
+      {currentPage === pagesCount ? (
+
+        <DisabledPaginatorItem>
+          <FontAwesomeIcon size="xs" icon={faChevronRight} />
+        </DisabledPaginatorItem>
+      ) : (
+        <PaginatorItem {...itemPropsForPageNumber(Math.min(pagesCount, currentPage + 1))} aria-label="Next">
+          <FontAwesomeIcon size="xs" icon={faChevronRight} />
+        </PaginatorItem>
+      )}
     </div>
   );
 };
