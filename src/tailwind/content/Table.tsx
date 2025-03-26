@@ -46,11 +46,22 @@ const TableBody: FC<TableElementProps> = ({ children, className }) => {
   );
 };
 
-const TableFooter: FC<TableElementProps> = ({ children, className }) => (
-  <TableSectionContext.Provider value={{ section: 'footer' }}>
-    <tfoot className={className}>{children}</tfoot>
-  </TableSectionContext.Provider>
-);
+const TableFooter: FC<TableElementProps> = ({ children, className }) => {
+  const { responsive } = useContext(TableContext);
+
+  return (
+    <TableSectionContext.Provider value={{ section: 'footer' }}>
+      <tfoot
+        className={clsx(
+          { 'tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3 tw:mt-4': responsive },
+          className,
+        )}
+      >
+        {children}
+      </tfoot>
+    </TableSectionContext.Provider>
+  );
+};
 
 const Row: FC<HTMLProps<HTMLTableRowElement>> = ({ children, className, ...rest }) => {
   const sectionContext = useContext(TableSectionContext);
@@ -84,11 +95,17 @@ export type CellProps = HTMLProps<HTMLTableCellElement> & {
    * It is ignored for non-responsive tables.
    */
   columnName?: string;
+
+  /**
+   * Whether to use a th or td tag. If not provided, it is inferred based on the section, using td when inside tbody,
+   * and th when inside thead or tfoot
+   */
+  type?: 'td' | 'th';
 };
 
-const Cell: FC<CellProps> = ({ children, className, columnName, ...rest }) => {
+const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest }) => {
   const sectionContext = useContext(TableSectionContext);
-  const Tag = sectionContext?.section === 'head' ? 'th' : 'td';
+  const Tag = type ?? (sectionContext?.section !== 'body' ? 'th' : 'td');
   const { responsive } = useContext(TableContext);
 
   return (

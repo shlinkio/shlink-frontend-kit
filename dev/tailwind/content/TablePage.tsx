@@ -134,6 +134,31 @@ export const TablePage: FC = () => {
           </Table>
         </SimpleCard>
       </div>
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Table with footer</h2>
+        <Table
+          header={
+            <Table.Row>
+              <Table.Cell>Name</Table.Cell>
+              <Table.Cell>Surname</Table.Cell>
+              <Table.Cell>Role</Table.Cell>
+            </Table.Row>
+          }
+          footer={
+            <Table.Row>
+              <Table.Cell colSpan={3} className="tw:text-center" type="td">- Students -</Table.Cell>
+            </Table.Row>
+          }
+        >
+          {users.map((u) => (
+            <Table.Row key={u.id}>
+              <Table.Cell columnName="Name:">{u.name}</Table.Cell>
+              <Table.Cell columnName="Surname:">{u.surname}</Table.Cell>
+              <Table.Cell columnName="Role:">{u.role}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+      </div>
     </div>
   );
 };
