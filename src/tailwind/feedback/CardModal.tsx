@@ -67,40 +67,42 @@ export const CardModal: FC<CardModalProps> = ({
       open={open}
       onClose={onClose}
       className={clsx(
-        { 'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:px-4': open },
+        { 'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': open },
         className,
       )}
       {...restDialogProps}
     >
-      <Card className={clsx(
-        'tw:m-auto tw:w-full',
-        {
-          'tw:md:w-sm': size === 'sm',
-          'tw:md:w-lg': size === 'md',
-          'tw:md:w-4xl': size === 'lg',
-          'tw:md:w-6xl': size === 'xl',
-        },
-      )}>
-        <Card.Header className="tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0">
-          <h5 className={clsx({ 'tw:text-danger': variant === 'danger' })}>{title}</h5>
-          <CloseButton onClick={onClose} label="Close dialog" />
-        </Card.Header>
-        <Card.Body>{children}</Card.Body>
-        {onConfirm && (
-          <Card.Footer
-            className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0"
-          >
-            <Button
-              disabled={confirmDisabled}
-              variant={variant === 'danger' ? 'danger' : 'primary'}
-              onClick={onConfirm}
+      <div className="tw:m-auto tw:p-4">
+        <Card className={clsx(
+          'tw:w-full',
+          {
+            'tw:md:w-sm': size === 'sm',
+            'tw:md:w-lg': size === 'md',
+            'tw:md:w-4xl': size === 'lg',
+            'tw:md:w-6xl': size === 'xl',
+          },
+        )}>
+          <Card.Header className="tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0">
+            <h5 className={clsx({ 'tw:text-danger': variant === 'danger' })}>{title}</h5>
+            <CloseButton onClick={onClose} label="Close dialog" />
+          </Card.Header>
+          <Card.Body>{children}</Card.Body>
+          {onConfirm && (
+            <Card.Footer
+              className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0"
             >
-              {confirmText}
-            </Button>
-            <LinkButton onClick={onClose}>Cancel</LinkButton>
-          </Card.Footer>
-        )}
-      </Card>
+              <Button
+                disabled={confirmDisabled}
+                variant={variant === 'danger' ? 'danger' : 'primary'}
+                onClick={onConfirm}
+              >
+                {confirmText}
+              </Button>
+              <LinkButton onClick={onClose}>Cancel</LinkButton>
+            </Card.Footer>
+          )}
+        </Card>
+      </div>
     </ModalDialog>
   );
 };

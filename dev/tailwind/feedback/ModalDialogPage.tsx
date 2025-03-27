@@ -1,9 +1,12 @@
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Button } from '../../../src/tailwind';
+import { Button, ModalDialog } from '../../../src/tailwind';
 import { CardModal } from '../../../src/tailwind/feedback/CardModal';
 
 export const ModalDialogPage: FC = () => {
+  const [plainDialogOpen, setPlainDialogOpen] = useState(false);
+
   const [smallOpen, setSmallOpen] = useState(false);
   const [mediumOpen, setMediumOpen] = useState(false);
   const [largeOpen, setLargeOpen] = useState(false);
@@ -20,7 +23,26 @@ export const ModalDialogPage: FC = () => {
   return (
     <div className="tw:flex tw:flex-col tw:gap-y-4">
       <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Modal dialog sizes</h2>
+        <h2>Plain modal dialog</h2>
+        <div className="tw:flex tw:gap-x-2">
+          <Button onClick={() => setPlainDialogOpen(true)}>Open</Button>
+        </div>
+      </div>
+      <ModalDialog
+        open={plainDialogOpen}
+        onClose={() => setPlainDialogOpen(false)}
+        className={clsx(({
+          'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': plainDialogOpen,
+        }))}
+      >
+        <div className="tw:p-3 tw:bg-white tw:m-auto">
+          <p>Hello</p>
+          <Button className="tw:mt-3" variant="secondary" onClick={() => setPlainDialogOpen(false)}>Close me</Button>
+        </div>
+      </ModalDialog>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Card modal sizes</h2>
         <div className="tw:flex tw:gap-x-2">
           <Button onClick={() => setSmallOpen(true)}>Small</Button>
           <Button onClick={() => setMediumOpen(true)}>Medium</Button>
@@ -43,7 +65,7 @@ export const ModalDialogPage: FC = () => {
       </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Danger dialog</h2>
+        <h2>Danger card modal</h2>
         <div className="tw:flex tw:gap-x-2">
           <Button variant="danger" onClick={() => setDangerOpen(true)}>Danger</Button>
         </div>
@@ -60,7 +82,7 @@ export const ModalDialogPage: FC = () => {
       </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Dialog with confirm button</h2>
+        <h2>Card modal with confirm button</h2>
         <div className="tw:flex tw:gap-x-2">
           <Button onClick={() => setConfirmOpen(true)}>Custom confirm</Button>
           <Button onClick={() => setConfirmDisabledOpen(true)}>Confirm disabled</Button>
@@ -100,7 +122,7 @@ export const ModalDialogPage: FC = () => {
       </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Dialog with a lot of content</h2>
+        <h2>Card modal with a lot of content</h2>
         <div className="tw:flex tw:gap-x-2">
           <Button onClick={() => setContentOpen(true)}>Open</Button>
         </div>
