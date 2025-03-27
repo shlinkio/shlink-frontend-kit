@@ -1,81 +1,40 @@
 import clsx from 'clsx';
 import type { FC, HTMLProps } from 'react';
-import { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import { Button, CloseButton } from '../form';
-import { LinkButton } from '../navigation';
-import { Card } from '../surfaces';
-import type { Size } from '../types';
 
-type CommonModalDialogProps = {
+export type ModalDialogProps = HTMLProps<HTMLDialogElement> & {
+  /** Whether the dialog is open or not */
   open: boolean;
-  /** Invoked when the modal is closed for any reason */
+  /** Invoked when the dialog is closed for any reason */
   onClose: () => void;
-
-  /** Modal header title */
-  title: string;
-  /** Determines the horizontal size of the dialog */
-  size?: Size | 'xl';
 };
-
-type CoverModalDialogProps = CommonModalDialogProps & {
-  /**
-   * Cover dialogs have a body that span the whole dialog, and no buttons.
-   * The header overlaps the body with semi-transparent background.
-   */
-  variant: 'cover';
-};
-
-type RegularModalDialogProps = CommonModalDialogProps & {
-  /** Danger dialogs use danger variants in title and confirm button */
-  variant?: 'default' | 'danger'
-  /** Value to display in confirm button. Defaults to 'Confirm' */
-  confirmText?: string;
-  /** Invoked when the modal is closed via confirm button */
-  onConfirm?: () => void;
-};
-
-export type ModalDialogProps = Omit<HTMLProps<HTMLDialogElement>, 'title' | 'size'> & (
-  CoverModalDialogProps | RegularModalDialogProps
-);
 
 export const ModalDialog: FC<ModalDialogProps> = ({
   open,
-  variant = 'default',
-  size = 'md',
-  title,
   children,
   className,
   ...rest
 }) => {
-  const { onConfirm, confirmText = 'Confirm', ...restDialogProps } = 'onConfirm' in rest ? rest : {
-    ...rest,
-    onConfirm: undefined,
-    confirmText: undefined,
-  };
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const closeDialog = useCallback(() => dialogRef.current?.close(), []);
-  const confirmAndClose = useCallback(() => {
-    onConfirm?.();
-    closeDialog();
-  }, [closeDialog, onConfirm]);
 
   useEffect(() => {
-    const body = document.querySelector('body')!;
+    const body = document.body;
     const originalOverflow = body.style.overflow;
     const originalPadding = body.style.paddingRight;
 
     if (open) {
+      const paddingRight = window.outerWidth - body.clientWidth;
+      const hasScrollbar = body.scrollHeight > body.clientHeight;
+
       // When opened, hide body scroll and compensate for the scrollbar if present
       body.style.overflow = 'hidden';
-      if (body.scrollHeight > body.clientHeight) {
-        // TODO Calculate the offset instead of hardcoding 15px
-        body.style.paddingRight = '15px';
+      if (hasScrollbar) {
+        body.style.paddingRight = `${paddingRight}px`;
       }
       dialogRef.current?.showModal();
     } else {
-      closeDialog();
+      dialogRef.current?.close();
     }
 
     return () => {
@@ -83,45 +42,15 @@ export const ModalDialog: FC<ModalDialogProps> = ({
       body.style.overflow = originalOverflow;
       body.style.paddingRight = originalPadding;
     };
-  }, [closeDialog, open]);
+  }, [open]);
 
   return (
     <dialog
       ref={dialogRef}
-      className={clsx(
-        'tw:bg-transparent tw:backdrop:bg-black/50',
-        {
-          'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:px-4': open,
-        },
-        className,
-      )}
-      {...restDialogProps}
+      className={clsx('tw:bg-transparent tw:backdrop:bg-black/50', className)}
+      {...rest}
     >
-      {open && (
-        <Card className={clsx(
-          'tw:m-auto tw:w-full',
-          {
-            'tw:md:w-sm': size === 'sm',
-            'tw:md:w-lg': size === 'md',
-            'tw:md:w-4xl': size === 'lg',
-            'tw:md:w-6xl': size === 'xl',
-          },
-        )}>
-          <Card.Header className="tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0">
-            <h5 className={clsx({ 'tw:text-danger': variant === 'danger' })}>{title}</h5>
-            <CloseButton onClick={closeDialog} label="Close dialog" />
-          </Card.Header>
-          <Card.Body>{children}</Card.Body>
-          {onConfirm && (
-            <Card.Footer className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0">
-              <Button variant={variant === 'danger' ? 'danger' : 'primary'} onClick={confirmAndClose}>
-                {confirmText}
-              </Button>
-              <LinkButton onClick={closeDialog}>Cancel</LinkButton>
-            </Card.Footer>
-          )}
-        </Card>
-      )}
+      {open && children}
     </dialog>
   );
 };

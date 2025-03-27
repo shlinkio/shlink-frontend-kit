@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 export const MAIN_COLOR = '#4696e5';
 
 export const MAIN_COLOR_ALPHA = 'rgba(70, 150, 229, 0.4)';
@@ -19,3 +21,13 @@ export const isDarkThemeEnabled = (): boolean => document.querySelector('html')?
 export const getSystemPreferredTheme = (_matchMedia = window.matchMedia.bind(window)): Theme => (
   _matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 );
+
+export const useTheme = (initialTheme?: Theme) => {
+  const [theme, setTheme] = useState(() => initialTheme ?? getSystemPreferredTheme());
+
+  useEffect(() => {
+    changeThemeInMarkup(theme);
+  }, [theme]);
+
+  return [theme, setTheme] as const;
+};
