@@ -89,11 +89,13 @@ export const CardModal: FC<CardModalProps> = ({
           <Card.Body>{children}</Card.Body>
           {onConfirm && (
             <Card.Footer
-              className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:py-4 tw:sticky tw:bottom-0"
+              data-testid="footer"
+              className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:[&]:px-3 tw:sticky tw:bottom-0"
             >
               <Button
-                disabled={confirmDisabled}
+                solid
                 variant={variant === 'danger' ? 'danger' : 'primary'}
+                disabled={confirmDisabled}
                 onClick={onConfirm}
               >
                 {confirmText}
