@@ -359,3 +359,54 @@ exports[`<CardModal /> > renders expected variant 2`] = `
   </dialog>
 </div>
 `;
+
+exports[`<CardModal /> > renders expected variant 3`] = `
+<div>
+  <dialog
+    class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+  >
+    <div
+      class="tw:m-auto tw:p-4 tw:w-full tw:h-full"
+    >
+      <div
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:overflow-auto tw:relative"
+      >
+        <div
+          class="tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:flex tw:items-center tw:justify-between tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10 tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]"
+        >
+          <h5>
+            The title
+          </h5>
+          <button
+            aria-label="Close dialog"
+            class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-xmark fa-xl "
+              data-icon="xmark"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+        <div>
+          <div
+            data-testid="content"
+          >
+            This is the content
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</div>
+`;

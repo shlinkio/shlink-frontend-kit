@@ -14,8 +14,12 @@ describe('<CardModal />', () => {
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
-  it('closes modal when close button is clicked', async () => {
-    const { user } = setUp();
+  it.each([
+    ['default' as const],
+    ['danger' as const],
+    ['cover' as const],
+  ])('closes modal when close button is clicked', async (variant) => {
+    const { user } = setUp({ variant });
 
     await user.click(screen.getByLabelText('Close dialog'));
     expect(onClose).toHaveBeenCalled();
@@ -66,11 +70,11 @@ describe('<CardModal />', () => {
   });
 
   it.each([
-    ['default' as const],
-    ['danger' as const],
-    // ['cover' as const], // TODO
-  ])('renders expected variant', (variant) => {
-    const { container } = setUp({ variant, onConfirm: vi.fn() });
+    { variant: 'default' as const, onConfirm: vi.fn() },
+    { variant: 'danger' as const, onConfirm: vi.fn() },
+    { variant: 'cover' as const },
+  ])('renders expected variant', (props) => {
+    const { container } = setUp(props);
     expect(container).toMatchSnapshot();
   });
 });
