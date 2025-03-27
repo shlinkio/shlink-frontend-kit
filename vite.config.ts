@@ -16,7 +16,6 @@ export default defineConfig({
         index: resolve(__dirname, 'src/index.ts'),
         tailwind: resolve(__dirname, 'src/tailwind/index.ts'),
       },
-      name: 'shlink-frontend-kit',
       formats: ['es'], // Generate ES module only
     },
     rollupOptions: {
