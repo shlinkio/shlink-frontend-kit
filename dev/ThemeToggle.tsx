@@ -1,13 +1,12 @@
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
-import { changeThemeInMarkup, ToggleSwitch } from '../src';
+import { ToggleSwitch, useTheme } from '../src';
 
 export const ThemeToggle: FC = () => {
-  const [checked, setChecked] = useState(false);
+  const [theme, setTheme] = useTheme();
 
-  useEffect(() => {
-    changeThemeInMarkup(checked ? 'dark' : 'light');
-  }, [checked]);
-
-  return <ToggleSwitch checked={checked} onChange={setChecked}>Dark theme</ToggleSwitch>;
+  return (
+    <ToggleSwitch checked={theme === 'dark'} onChange={(checked) => setTheme(checked ? 'dark' : 'light')}>
+      Dark theme
+    </ToggleSwitch>
+  );
 };
