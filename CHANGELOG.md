@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.8.1] - 2025-03-27
+### Added
+* *Nothing*
+
+### Changed
+* Adjustments on existing tailwind-based components 
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [0.8.0] - 2025-03-26
 ### Added
 * [#394](https://github.com/shlinkio/shlink-frontend-kit/issues/394) Add first tailwind-based components
