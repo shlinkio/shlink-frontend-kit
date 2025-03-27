@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Button, ModalDialog } from '../../../src/tailwind';
+import { Button } from '../../../src/tailwind';
+import { CardModal } from '../../../src/tailwind/feedback/CardModal';
 
 export const ModalDialogPage: FC = () => {
   const [smallOpen, setSmallOpen] = useState(false);
@@ -9,6 +10,9 @@ export const ModalDialogPage: FC = () => {
   const [extraLargeOpen, setExtraLargeOpen] = useState(false);
 
   const [dangerOpen, setDangerOpen] = useState(false);
+
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmDisabledOpen, setConfirmDisabledOpen] = useState(false);
   const [dangerConfirmOpen, setDangerConfirmOpen] = useState(false);
 
   const [contentOpen, setContentOpen] = useState(false);
@@ -25,28 +29,27 @@ export const ModalDialogPage: FC = () => {
         </div>
       </div>
 
-      <ModalDialog size="sm" title="Small dialog" open={smallOpen} onClose={() => setSmallOpen(false)}>
+      <CardModal size="sm" title="Small dialog" open={smallOpen} onClose={() => setSmallOpen(false)}>
         Small dialog
-      </ModalDialog>
-      <ModalDialog size="md" title="Medium dialog" open={mediumOpen} onClose={() => setMediumOpen(false)}>
+      </CardModal>
+      <CardModal size="md" title="Medium dialog" open={mediumOpen} onClose={() => setMediumOpen(false)}>
         Medium dialog
-      </ModalDialog>
-      <ModalDialog size="lg" title="Large dialog" open={largeOpen} onClose={() => setLargeOpen(false)}>
+      </CardModal>
+      <CardModal size="lg" title="Large dialog" open={largeOpen} onClose={() => setLargeOpen(false)}>
         Large dialog
-      </ModalDialog>
-      <ModalDialog size="xl" title="Extra large dialog" open={extraLargeOpen} onClose={() => setExtraLargeOpen(false)}>
+      </CardModal>
+      <CardModal size="xl" title="Extra large dialog" open={extraLargeOpen} onClose={() => setExtraLargeOpen(false)}>
         Extra large dialog
-      </ModalDialog>
+      </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">
         <h2>Danger dialog</h2>
         <div className="tw:flex tw:gap-x-2">
           <Button variant="danger" onClick={() => setDangerOpen(true)}>Danger</Button>
-          <Button variant="danger" onClick={() => setDangerConfirmOpen(true)}>Danger with confirm</Button>
         </div>
       </div>
 
-      <ModalDialog
+      <CardModal
         size="md"
         title="Danger dialog"
         variant="danger"
@@ -54,8 +57,38 @@ export const ModalDialogPage: FC = () => {
         onClose={() => setDangerOpen(false)}
       >
         Danger dialog
-      </ModalDialog>
-      <ModalDialog
+      </CardModal>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Dialog with confirm button</h2>
+        <div className="tw:flex tw:gap-x-2">
+          <Button onClick={() => setConfirmOpen(true)}>Custom confirm</Button>
+          <Button onClick={() => setConfirmDisabledOpen(true)}>Confirm disabled</Button>
+          <Button variant="danger" onClick={() => setDangerConfirmOpen(true)}>Danger with confirm</Button>
+        </div>
+      </div>
+
+      <CardModal
+        size="md"
+        title="Custom confirm"
+        confirmText="Accept the action"
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        onConfirm={() => setConfirmOpen(false)}
+      >
+        Custom confirm text
+      </CardModal>
+      <CardModal
+        size="md"
+        title="Custom disabled"
+        confirmDisabled
+        open={confirmDisabledOpen}
+        onClose={() => setConfirmDisabledOpen(false)}
+        onConfirm={() => setConfirmDisabledOpen(false)}
+      >
+        Custom action is disabled
+      </CardModal>
+      <CardModal
         size="md"
         title="Danger dialog"
         variant="danger"
@@ -64,7 +97,7 @@ export const ModalDialogPage: FC = () => {
         onConfirm={() => setDangerConfirmOpen(false)}
       >
         Danger dialog with confirm buttons
-      </ModalDialog>
+      </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">
         <h2>Dialog with a lot of content</h2>
@@ -73,7 +106,7 @@ export const ModalDialogPage: FC = () => {
         </div>
       </div>
 
-      <ModalDialog
+      <CardModal
         size="md"
         title="Fixed header and footer"
         open={contentOpen}
@@ -132,7 +165,7 @@ export const ModalDialogPage: FC = () => {
             leo.
           </p>
         </div>
-      </ModalDialog>
+      </CardModal>
     </div>
   );
 };
