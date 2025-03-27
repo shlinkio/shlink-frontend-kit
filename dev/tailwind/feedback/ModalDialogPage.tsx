@@ -1,8 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Button, ModalDialog } from '../../../src/tailwind';
-import { CardModal } from '../../../src/tailwind/feedback/CardModal';
+import { Button, CardModal, ModalDialog } from '../../../src/tailwind';
 
 export const ModalDialogPage: FC = () => {
   const [plainDialogOpen, setPlainDialogOpen] = useState(false);
