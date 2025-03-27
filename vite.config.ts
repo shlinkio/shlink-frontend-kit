@@ -16,7 +16,6 @@ export default defineConfig({
         index: resolve(__dirname, 'src/index.ts'),
         tailwind: resolve(__dirname, 'src/tailwind/index.ts'),
       },
-      name: 'shlink-frontend-kit',
       formats: ['es'], // Generate ES module only
     },
     rollupOptions: {
@@ -41,14 +40,14 @@ export default defineConfig({
         'src/**/*.tsx',
         '!src/index.ts',
       ],
-      reporter: ['text', 'text-summary', 'clover'],
+      reporter: ['text', 'text-summary', 'clover', 'html'],
 
       // Required code coverage. Lower than this will make the check fail
       thresholds: {
-        statements: 85,
+        statements: 95,
         branches: 95,
         functions: 85,
-        lines: 85,
+        lines: 95,
       },
     },
   },
