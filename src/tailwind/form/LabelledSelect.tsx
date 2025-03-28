@@ -1,11 +1,12 @@
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 import { useId } from 'react';
+import type { RequiredReactNode } from '../types';
 import { Label } from './Label';
 import type { SelectProps } from './Select';
 import { Select } from './Select';
 
 export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & {
-  label: ReactNode;
+  label: RequiredReactNode;
   selectClassName?: string;
 
   /** Alternative to `required`. Causes the input to be required, without displaying an asterisk */

@@ -5,3 +5,4 @@ export * from './helpers';
 export * from './hooks';
 export * from './navigation';
 export * from './surfaces';
+export * from './types';
