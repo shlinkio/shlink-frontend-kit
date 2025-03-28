@@ -25,4 +25,5 @@ HTMLDialogElement.prototype.showModal = () => {};
 HTMLDialogElement.prototype.close = function() {
   const dialog = this as HTMLDialogElement;
   dialog.dispatchEvent(new CloseEvent('close'));
+  dialog.dispatchEvent(new CloseEvent('cancel'));
 };

@@ -14,6 +14,7 @@ export const ModalDialog: FC<ModalDialogProps> = ({
   open,
   children,
   className,
+  onClose,
   ...rest
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -48,6 +49,10 @@ export const ModalDialog: FC<ModalDialogProps> = ({
     <dialog
       ref={dialogRef}
       className={clsx('tw:bg-transparent tw:backdrop:bg-black/50', className)}
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
       {...rest}
     >
       {open && children}
