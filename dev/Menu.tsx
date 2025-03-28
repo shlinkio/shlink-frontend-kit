@@ -9,10 +9,10 @@ export const Menu: FC = () => {
       {location.pathname.startsWith('/tailwind') ? (
         <>
           <li><Link to="/">Home</Link></li>
-          <hr/>
-          <li><Link to="/tailwind/forms/inputs">Inputs</Link></li>
-          <li><Link to="/tailwind/forms/search-input">SearchInput</Link></li>
-          <li><Link to="/tailwind/forms/buttons">Buttons</Link></li>
+          <hr />
+          <li><Link to="/tailwind/form/inputs">Inputs</Link></li>
+          <li><Link to="/tailwind/form/search-input">SearchInput</Link></li>
+          <li><Link to="/tailwind/form/buttons">Buttons</Link></li>
           <li><Link to="/tailwind/surfaces/cards">Cards</Link></li>
           <li><Link to="/tailwind/content/tables">Tables</Link></li>
           <li><Link to="/tailwind/navigation/paginator">Paginator</Link></li>

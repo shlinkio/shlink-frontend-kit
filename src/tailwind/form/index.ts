@@ -1,4 +1,5 @@
 export * from './Button';
+export * from './Checkbox';
 export * from './CloseButton';
 export * from './Input';
 export * from './Label';
