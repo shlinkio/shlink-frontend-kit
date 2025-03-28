@@ -6,8 +6,6 @@ type SelectElementProps = Omit<HTMLProps<HTMLSelectElement>, 'size'>;
 
 export type SelectProps = PropsWithChildren<SelectElementProps & BaseInputProps>;
 
-const chevronImageUrl = String.raw`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>`;
-
 export const Select: FC<SelectProps> = ({
   className,
   size = 'md',
@@ -18,7 +16,8 @@ export const Select: FC<SelectProps> = ({
 }) => (
   <select
     className={clsx(
-      'tw:w-full tw:appearance-none tw:pr-9 tw:bg-no-repeat',
+      'tw:w-full tw:appearance-none tw:pr-9',
+      'tw:bg-(image:--chevron-down) tw:bg-no-repeat',
       {
         'tw:focus-ring': !feedback,
         'tw:focus-ring-danger': feedback === 'error',
@@ -40,9 +39,7 @@ export const Select: FC<SelectProps> = ({
     )}
     style={{
       ...style,
-      backgroundImage: `url("${chevronImageUrl}")`,
-      backgroundSize: '16px 12px',
-      backgroundPosition: 'right 0.75rem center',
+      background: 'right 0.75rem center / 16px 12px',
     }}
     disabled={disabled}
     {...rest}
