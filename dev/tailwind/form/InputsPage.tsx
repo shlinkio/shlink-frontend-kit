@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Input, Label, LabelledInput, LabelledSelect, Select, SimpleCard } from '../../../src/tailwind';
+import { Checkbox, Input, Label, LabelledInput, LabelledSelect, Select, SimpleCard } from '../../../src/tailwind';
 
 export const InputsPage: FC = () => {
   return (
@@ -8,6 +8,21 @@ export const InputsPage: FC = () => {
         <h2>Labels</h2>
         <Label>This label is not required</Label>
         <Label required>This label is required</Label>
+      </div>
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Checks</h2>
+        <div className="tw:flex tw:gap-x-2">
+          <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+            <Checkbox defaultChecked />
+            Check this
+          </Label>
+        </div>
+        <SimpleCard>
+          <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+            <Checkbox />
+            Check this
+          </Label>
+        </SimpleCard>
       </div>
       <div className="tw:flex tw:flex-col tw:gap-y-3">
         <h2>Inputs</h2>

@@ -30,7 +30,7 @@
     "test": "vitest run",
     "test:ci": "npm run test -- --coverage",
     "lint": "eslint dev src test",
-    "lint:fix": "npm run lint:js -- --fix",
+    "lint:fix": "npm run lint -- --fix",
     "types": "tsc",
     "dev": "vite serve --host=0.0.0.0 --port 3001"
   },
@@ -53,7 +53,7 @@
     }
   },
   "devDependencies": {
-    "@shlinkio/eslint-config-js-coding-standard": "~3.4.0",
+    "@shlinkio/eslint-config-js-coding-standard": "~3.4.1",
     "@stylistic/eslint-plugin": "^4.2.0",
     "@tailwindcss/vite": "^4.0.16",
     "@testing-library/jest-dom": "^6.6.3",
