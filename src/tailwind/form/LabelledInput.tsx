@@ -1,11 +1,11 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useId } from 'react';
 import type { InputProps } from './Input';
 import { Input } from './Input';
 import { Label } from './Label';
 
 export type LabelledInputProps = Omit<InputProps, 'className' | 'id' | 'feedback'> & {
-  label: string;
+  label: ReactNode;
   inputClassName?: string;
   error?: string;
 
