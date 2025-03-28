@@ -1,11 +1,12 @@
 import type { FC } from 'react';
 import { useId } from 'react';
+import type { RequiredReactNode } from '../types';
 import type { InputProps } from './Input';
 import { Input } from './Input';
 import { Label } from './Label';
 
 export type LabelledInputProps = Omit<InputProps, 'className' | 'id' | 'feedback'> & {
-  label: string;
+  label: RequiredReactNode;
   inputClassName?: string;
   error?: string;
 

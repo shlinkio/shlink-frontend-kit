@@ -1,12 +1,14 @@
 import type { FC } from 'react';
-import { ToggleSwitch, useTheme } from '../src';
+import { useTheme } from '../src';
+import { Label, ToggleSwitch } from '../src/tailwind';
 
 export const ThemeToggle: FC = () => {
   const [theme, setTheme] = useTheme();
 
   return (
-    <ToggleSwitch checked={theme === 'dark'} onChange={(checked) => setTheme(checked ? 'dark' : 'light')}>
+    <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+      <ToggleSwitch checked={theme === 'dark'} onChange={(checked) => setTheme(checked ? 'dark' : 'light')} />
       Dark theme
-    </ToggleSwitch>
+    </Label>
   );
 };

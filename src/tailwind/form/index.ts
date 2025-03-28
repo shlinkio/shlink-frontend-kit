@@ -7,3 +7,4 @@ export * from './LabelledInput';
 export * from './LabelledSelect';
 export * from './SearchInput';
 export * from './Select';
+export * from './ToggleSwitch';

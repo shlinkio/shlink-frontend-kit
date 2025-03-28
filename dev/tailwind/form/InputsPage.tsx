@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { Checkbox, Input, Label, LabelledInput, LabelledSelect, Select, SimpleCard } from '../../../src/tailwind';
+import { ToggleSwitch } from '../../../src/tailwind';
 
 export const InputsPage: FC = () => {
   return (
@@ -16,10 +17,18 @@ export const InputsPage: FC = () => {
             <Checkbox defaultChecked />
             Check this
           </Label>
+          <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+            <ToggleSwitch defaultChecked />
+            Check this
+          </Label>
         </div>
         <SimpleCard>
           <Label className="tw:flex tw:items-center tw:gap-x-1.5">
             <Checkbox />
+            Check this
+          </Label>
+          <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+            <ToggleSwitch />
             Check this
           </Label>
         </SimpleCard>

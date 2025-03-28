@@ -90,10 +90,16 @@
     :root {
         --header-height: 56px;
 
-        /* Tick image for checkboxes */
-        --tick: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
         /* Chevron image for selects */
         --chevron-down: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+        /* Tick image for checkboxes */
+        --tick: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
+
+        /* Circle images for toggle switches */
+        --circle-grey-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
+        --circle-grey-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28255, 255, 255, 0.25%29'/></svg>");
+        --circle-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
+        --circle-light-blue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
 
         @apply tw:scheme-normal tw:dark:scheme-dark tw:scroll-auto;
     }
