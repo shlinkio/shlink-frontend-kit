@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import { useMemo } from 'react';
-import { useState } from 'react';
+import { useMemo , useState } from 'react';
 import { SearchInput, SimpleCard, Table } from '../../../src/tailwind';
 
 const users = [

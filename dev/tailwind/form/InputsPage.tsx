@@ -1,6 +1,14 @@
 import type { FC } from 'react';
-import { Checkbox, Input, Label, LabelledInput, LabelledSelect, Select, SimpleCard } from '../../../src/tailwind';
-import { ToggleSwitch } from '../../../src/tailwind';
+import {
+  Checkbox,
+  Input,
+  Label,
+  LabelledInput,
+  LabelledSelect,
+  Select,
+  SimpleCard,
+  ToggleSwitch,
+} from '../../../src/tailwind';
 
 export const InputsPage: FC = () => {
   return (
