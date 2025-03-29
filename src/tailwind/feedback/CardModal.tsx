@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import { useEffect, useRef,useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';
@@ -62,32 +63,80 @@ export const CardModal: FC<CardModalProps> = ({
     ...restDialogProps
   } = 'onConfirm' in rest ? rest : { ...rest };
 
+  // Proxy the open/close modal state via an auxiliary variable, so that we can delay transitioning to `open=false`
+  // after a CSS transition has ended.
+  const [openProxy, setOpenProxy] = useState(open);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // When the modal is open, we immediately set the proxy to open as well, letting the "in" transition to trigger
+    // instantly.
+    if (open) {
+      setOpenProxy(true);
+      return;
+    }
+
+    // When the modal is going to be closed, we immediately remove the `data-open` attribute, which will trigger the
+    // "out" transition, and add a listener to actually set `open=false` once that transition has ended.
+    const content = ref.current;
+    if (content) {
+      delete ref.current!.dataset.open;
+
+      const handler = () => setOpenProxy(false);
+      content.addEventListener('transitionend', handler, { once: true });
+      return () => {
+        content.removeEventListener('transitionend', handler);
+      };
+    }
+  }, [open]);
+
+  useEffect(() => {
+    // We set the `data-open` attribute here so that things happen in this order in subsequent renders:
+    // 1. The modal transitions to `open=true`, rendering its children.
+    // 2. The outermost children div renders with its "closed" styles.
+    // 3. We set `data-open`, making its styles transition to "open".
+    const content = ref.current;
+    if (openProxy && content) {
+      content.dataset.open = '';
+    }
+  }, [openProxy]);
+
   return (
     <ModalDialog
-      open={open}
+      open={openProxy}
       onClose={onClose}
       className={clsx(
-        { 'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': open },
+        {
+          'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': openProxy,
+          'tw:overflow-hidden': variant === 'cover',
+        },
         className,
       )}
       {...restDialogProps}
     >
       <div
-        className={clsx('tw:m-auto tw:p-4', {
-          'tw:w-full tw:h-full': variant === 'cover',
-        })}
-      >
-        <Card className={clsx(
-          'tw:w-full',
+        data-testid="transition-container"
+        ref={ref}
+        className={clsx(
+          'tw:w-full tw:m-auto tw:p-4 tw:sm:p-6',
+
+          // CSS transitions are based on the presence of the `data-open` attribute
+          'tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100',
+          'tw:transition-[opacity_transform] tw:duration-300',
+
+          // Handle modal dimensions for different variants and sizes
           variant !== 'cover' && {
-            'tw:md:w-sm': size === 'sm',
+            'tw:sm:w-sm': size === 'sm',
             'tw:md:w-lg': size === 'md',
             'tw:md:w-4xl': size === 'lg',
             'tw:md:w-6xl': size === 'xl',
           },
-          {
-            'tw:h-full tw:overflow-auto tw:relative': variant === 'cover',
-          },
+          { 'tw:h-full': variant === 'cover' },
+        )}
+      >
+        <Card className={clsx(
+          'tw:w-full',
+          { 'tw:h-full tw:relative tw:overflow-auto': variant === 'cover' },
         )}>
           {variant === 'cover' ? (
             <>
@@ -106,7 +155,10 @@ export const CardModal: FC<CardModalProps> = ({
             </>
           ) : (
             <>
-              <Card.Header className="tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0">
+              <Card.Header className={clsx(
+                'tw:sticky tw:top-0',
+                'tw:flex tw:items-center tw:justify-between tw:gap-x-2',
+              )}>
                 <h5 className={clsx({ 'tw:text-danger': variant === 'danger' })}>{title}</h5>
                 <CloseButton onClick={onClose} label="Close dialog" />
               </Card.Header>
@@ -114,8 +166,12 @@ export const CardModal: FC<CardModalProps> = ({
               {onConfirm && (
                 <Card.Footer
                   data-testid="footer"
-                  className="tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:[&]:px-3 tw:sticky tw:bottom-0"
+                  className={clsx(
+                    'tw:flex tw:justify-end tw:items-center tw:gap-x-2',
+                    'tw:[&]:px-3 tw:sticky tw:bottom-0',
+                  )}
                 >
+                  <LinkButton onClick={onClose}>Cancel</LinkButton>
                   <Button
                     solid
                     variant={variant === 'danger' ? 'danger' : 'primary'}
@@ -124,7 +180,6 @@ export const CardModal: FC<CardModalProps> = ({
                   >
                     {confirmText}
                   </Button>
-                  <LinkButton onClick={onClose}>Cancel</LinkButton>
                 </Card.Footer>
               )}
             </>

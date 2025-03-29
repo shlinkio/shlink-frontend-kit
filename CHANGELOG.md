@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Add tailwind-based `Checkbox` component.
 * Add tailwind-based `ToggleSwitch` component.
 * Add tailwind-based `NavPills` component.
+* Add open/close CSS transitions to `CardModal` tailwind-based component.
 
 ### Changed
 * *Nothing*

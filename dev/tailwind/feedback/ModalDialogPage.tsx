@@ -37,7 +37,7 @@ export const ModalDialogPage: FC = () => {
         }))}
       >
         <div className="tw:p-3 tw:bg-white tw:m-auto">
-          <p>Hello</p>
+          <p className="tw:text-black">Hello</p>
           <Button className="tw:mt-3" variant="secondary" onClick={() => setPlainDialogOpen(false)}>Close me</Button>
         </div>
       </ModalDialog>
@@ -203,7 +203,7 @@ export const ModalDialogPage: FC = () => {
         open={coverOpen}
         onClose={() => setCoverOpen(false)}
       >
-        <div className="p-3">
+        <div className="p-3 tw:flex tw:flex-col tw:gap-y-3">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus urna et luctus sagittis. Vivamus nibh
             justo, fringilla ut luctus et, facilisis nec magna. In facilisis lacus sit amet sem mattis consequat. Aenean

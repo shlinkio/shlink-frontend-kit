@@ -6,13 +6,15 @@ exports[`<CardModal /> > renders expected size 1`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:sm:w-sm"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-sm"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class=""
@@ -61,13 +63,15 @@ exports[`<CardModal /> > renders expected size 2`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class=""
@@ -116,13 +120,15 @@ exports[`<CardModal /> > renders expected size 3`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-4xl"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-4xl"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class=""
@@ -171,13 +177,15 @@ exports[`<CardModal /> > renders expected size 4`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-6xl"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-6xl"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class=""
@@ -226,13 +234,15 @@ exports[`<CardModal /> > renders expected variant 1`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class=""
@@ -270,18 +280,18 @@ exports[`<CardModal /> > renders expected variant 1`] = `
           </div>
         </div>
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-b-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-t tw:border-lm-border tw:dark:border-dm-border tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:[&]:px-3 tw:sticky tw:bottom-0"
+          class="tw:px-4 tw:py-3 tw:rounded-b-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-t tw:border-lm-border tw:dark:border-dm-border tw:flex tw:justify-end tw:items-center tw:gap-x-2 tw:[&]:px-3 tw:sticky tw:bottom-0"
           data-testid="footer"
         >
-          <button
-            class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-brand tw:text-brand tw:text-white tw:bg-brand tw:highlight:bg-brand-dark tw:highlight:border-brand-dark tw:highlight:bg-brand"
-          >
-            Confirm
-          </button>
           <button
             class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
           >
             Cancel
+          </button>
+          <button
+            class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-brand tw:text-brand tw:text-white tw:bg-brand tw:highlight:bg-brand-dark tw:highlight:border-brand-dark tw:highlight:bg-brand"
+          >
+            Confirm
           </button>
         </div>
       </div>
@@ -296,13 +306,15 @@ exports[`<CardModal /> > renders expected variant 2`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
       >
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:flex tw:items-center tw:justify-between tw:sticky tw:top-0"
+          class="tw:px-4 tw:py-3 tw:rounded-t-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:sticky tw:top-0 tw:flex tw:items-center tw:justify-between tw:gap-x-2"
         >
           <h5
             class="tw:text-danger"
@@ -340,18 +352,18 @@ exports[`<CardModal /> > renders expected variant 2`] = `
           </div>
         </div>
         <div
-          class="tw:px-4 tw:py-3 tw:rounded-b-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-t tw:border-lm-border tw:dark:border-dm-border tw:flex tw:flex-row-reverse tw:gap-x-2 tw:items-center tw:[&]:px-3 tw:sticky tw:bottom-0"
+          class="tw:px-4 tw:py-3 tw:rounded-b-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-t tw:border-lm-border tw:dark:border-dm-border tw:flex tw:justify-end tw:items-center tw:gap-x-2 tw:[&]:px-3 tw:sticky tw:bottom-0"
           data-testid="footer"
         >
-          <button
-            class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:border-danger tw:text-white tw:bg-danger tw:highlight:bg-danger-dark tw:highlight:border-danger-dark tw:highlight:bg-danger"
-          >
-            Confirm
-          </button>
           <button
             class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
           >
             Cancel
+          </button>
+          <button
+            class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:border-danger tw:text-white tw:bg-danger tw:highlight:bg-danger-dark tw:highlight:border-danger-dark tw:highlight:bg-danger"
+          >
+            Confirm
           </button>
         </div>
       </div>
@@ -363,13 +375,15 @@ exports[`<CardModal /> > renders expected variant 2`] = `
 exports[`<CardModal /> > renders expected variant 3`] = `
 <div>
   <dialog
-    class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:overflow-hidden"
   >
     <div
-      class="tw:m-auto tw:p-4 tw:w-full tw:h-full"
+      class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:h-full"
+      data-open=""
+      data-testid="transition-container"
     >
       <div
-        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:overflow-auto tw:relative"
+        class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:relative tw:overflow-auto"
       >
         <div
           class="tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:flex tw:items-center tw:justify-between tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10 tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]"
