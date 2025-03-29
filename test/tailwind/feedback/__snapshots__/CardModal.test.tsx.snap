@@ -6,7 +6,8 @@ exports[`<CardModal /> > renders expected size 1`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-sm"
@@ -61,7 +62,8 @@ exports[`<CardModal /> > renders expected size 2`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
@@ -116,7 +118,8 @@ exports[`<CardModal /> > renders expected size 3`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-4xl"
@@ -171,7 +174,8 @@ exports[`<CardModal /> > renders expected size 4`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-6xl"
@@ -226,7 +230,8 @@ exports[`<CardModal /> > renders expected variant 1`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
@@ -296,7 +301,8 @@ exports[`<CardModal /> > renders expected variant 2`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:md:w-lg"
@@ -366,7 +372,8 @@ exports[`<CardModal /> > renders expected variant 3`] = `
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   >
     <div
-      class="tw:m-auto tw:p-4 tw:w-full tw:h-full"
+      class="tw:m-auto tw:p-4 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:w-full tw:h-full"
+      data-open=""
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:overflow-auto tw:relative"

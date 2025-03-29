@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import { useEffect, useRef,useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';
@@ -62,20 +63,62 @@ export const CardModal: FC<CardModalProps> = ({
     ...restDialogProps
   } = 'onConfirm' in rest ? rest : { ...rest };
 
+  // Proxy the open/close modal state via an auxiliary variable, so that we can delay transitioning to `open=false`
+  // after a CSS transition has ended.
+  const [openProxy, setOpenProxy] = useState(open);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // When the modal is open, we immediately set the proxy to open as well, letting the "in" transition to trigger
+    // instantly.
+    if (open) {
+      setOpenProxy(true);
+      return;
+    }
+
+    // When the modal is going to be closed, we immediately remove the `data-open` attribute, which will trigger the
+    // "out" transition, and add a listener to actually set `open=false` once that transition has ended.
+    const content = ref.current;
+    if (content) {
+      const handler = () => setOpenProxy(false);
+      content.addEventListener('transitionend', handler, { once: true });
+      delete ref.current!.dataset.open;
+      return () => {
+        content.removeEventListener('transitionend', handler);
+      };
+    }
+  }, [open]);
+
+  useEffect(() => {
+    // After the modal has been opened, and its content is rendered, we set the `data-open` attribute that triggers the
+    // "in" transition.
+    const content = ref.current;
+    if (openProxy && content) {
+      content.dataset.open = '';
+    }
+  }, [openProxy]);
+
   return (
     <ModalDialog
-      open={open}
+      open={openProxy}
       onClose={onClose}
       className={clsx(
-        { 'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': open },
+        { 'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': openProxy },
         className,
       )}
       {...restDialogProps}
     >
       <div
-        className={clsx('tw:m-auto tw:p-4', {
-          'tw:w-full tw:h-full': variant === 'cover',
-        })}
+        ref={ref}
+        className={clsx(
+          'tw:m-auto tw:p-4',
+          // CSS transitions are based on the presence of the `data-open` attribute
+          'tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100',
+          'tw:transition-[opacity_transform] tw:duration-300',
+          {
+            'tw:w-full tw:h-full': variant === 'cover',
+          },
+        )}
       >
         <Card className={clsx(
           'tw:w-full',
