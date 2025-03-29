@@ -8,6 +8,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:sm:w-sm"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -64,6 +65,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -120,6 +122,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-4xl"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -176,6 +179,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-6xl"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -232,6 +236,7 @@ exports[`<CardModal /> > renders expected variant 1`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -303,6 +308,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full"
@@ -374,6 +380,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:h-full"
       data-open=""
+      data-testid="transition-container"
     >
       <div
         class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:relative tw:overflow-auto"

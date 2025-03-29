@@ -115,12 +115,16 @@ export const CardModal: FC<CardModalProps> = ({
       {...restDialogProps}
     >
       <div
+        data-testid="transition-container"
         ref={ref}
         className={clsx(
           'tw:w-full tw:m-auto tw:p-4 tw:sm:p-6',
+
           // CSS transitions are based on the presence of the `data-open` attribute
           'tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100',
           'tw:transition-[opacity_transform] tw:duration-300',
+
+          // Handle modal dimensions for different variants and sizes
           variant !== 'cover' && {
             'tw:sm:w-sm': size === 'sm',
             'tw:md:w-lg': size === 'md',

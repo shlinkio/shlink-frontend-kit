@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
-import type { CardModalProps } from '../../../src/tailwind/feedback/CardModal';
-import { CardModal } from '../../../src/tailwind/feedback/CardModal';
+import { useState } from 'react';
+import type { CardModalProps } from '../../../src/tailwind';
+import { CardModal } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
 import { renderWithEvents } from '../../__helpers__/setUpTest';
 
@@ -76,5 +77,22 @@ describe('<CardModal />', () => {
   ])('renders expected variant', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();
+  });
+
+  it('defers closing the modal until the transition has finished', async () => {
+    function ClosableModalWrapper() {
+      const [open, setOpen] = useState(true);
+      return (
+        <CardModal open={open} onClose={() => setOpen(false)} title="The title">
+          <div data-testid="content">This is the content</div>
+        </CardModal>
+      );
+    }
+    const { user } = renderWithEvents(<ClosableModalWrapper />);
+
+    await user.click(screen.getByLabelText('Close dialog'));
+
+    // Immediately after, the modal is still open
+    expect(screen.getByTestId('transition-container')).toBeInTheDocument();
   });
 });
