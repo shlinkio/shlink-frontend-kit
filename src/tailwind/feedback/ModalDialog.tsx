@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import type { FC, HTMLProps } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useEffect , useRef } from 'react';
 
 export type ModalDialogProps = HTMLProps<HTMLDialogElement> & {
   /** Whether the dialog is open or not */

@@ -2,8 +2,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren } from 'react';
-import { useCallback } from 'react';
-import { useMemo } from 'react';
+import { useCallback , useMemo } from 'react';
 import { Link } from 'react-router';
 import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
