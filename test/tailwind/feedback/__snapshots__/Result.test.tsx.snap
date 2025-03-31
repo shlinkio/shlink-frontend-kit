@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Result /> > renders as expected based on provided props 1`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-4 tw:[&]:text-white tw:bg-brand"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 2`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-2 tw:[&]:text-white tw:bg-brand"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 3`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-4 tw:[&]:text-white tw:bg-brand"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 4`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-6 tw:[&]:text-white tw:bg-brand"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 5`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-4 tw:[&]:text-white tw:bg-brand"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 6`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-4 tw:[&]:text-white tw:bg-danger"
+  />
+</div>
+`;
+
+exports[`<Result /> > renders as expected based on provided props 7`] = `
+<div>
+  <div
+    class="tw:rounded-md tw:text-center tw:p-4 tw:bg-warning tw:text-black"
+  />
+</div>
+`;
