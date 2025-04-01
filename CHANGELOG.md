@@ -4,13 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.8.3] - 2025-04-01
 ### Added
 * Add tailwind-based `Checkbox` component.
 * Add tailwind-based `ToggleSwitch` component.
 * Add tailwind-based `NavPills` component.
 * Add open/close CSS transitions to `CardModal` tailwind-based component.
 * Add tailwind-based `Result` component.
+* Add tailwind-based `Message` component.
 
 ### Changed
 * *Nothing*

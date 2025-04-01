@@ -8,6 +8,9 @@ export type ResultProps = PropsWithChildren<{
   size?: Size;
 }>;
 
+/**
+ * Component used to display the result of an operation, which can be a success, failure or warning.
+ */
 export const Result: FC<ResultProps> = ({ variant, className, size = 'md', children }) => (
   <div
     className={clsx(
