@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 * Render `ModalDialog` in body element via portals.
+* Consolidate hooks and export `useTimeout` from main entry point.
 
 ### Deprecated
 * *Nothing*
