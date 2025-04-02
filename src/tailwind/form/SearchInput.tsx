@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { useCallback } from 'react';
-import { useTimeout } from '../hooks/use-timeout';
+import { useTimeout } from '../../hooks';
 import type { InputProps } from './Input';
 import { Input } from './Input';
 
