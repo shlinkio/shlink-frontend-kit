@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { FC, HTMLProps } from 'react';
 import { useEffect , useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 export type ModalDialogProps = HTMLProps<HTMLDialogElement> & {
   /** Whether the dialog is open or not */
@@ -44,7 +45,7 @@ export const ModalDialog: FC<ModalDialogProps> = ({
     };
   }, [open]);
 
-  return (
+  return createPortal(
     <dialog
       ref={dialogRef}
       className={clsx('tw:bg-transparent tw:backdrop:bg-black/50', className)}
@@ -55,6 +56,7 @@ export const ModalDialog: FC<ModalDialogProps> = ({
       {...rest}
     >
       {open && children}
-    </dialog>
+    </dialog>,
+    document.body,
   );
 };
