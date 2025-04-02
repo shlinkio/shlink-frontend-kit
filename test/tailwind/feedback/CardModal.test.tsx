@@ -67,7 +67,8 @@ describe('<CardModal />', () => {
     ['xl' as const],
   ])('renders expected size', (size) => {
     const { container } = setUp({ size });
-    expect(container).toMatchSnapshot();
+    // We need to match against the container's parent (the body) since dialogs are rendered there via portals
+    expect(container.parentNode).toMatchSnapshot();
   });
 
   it.each([
@@ -76,7 +77,8 @@ describe('<CardModal />', () => {
     { variant: 'cover' as const },
   ])('renders expected variant', (props) => {
     const { container } = setUp(props);
-    expect(container).toMatchSnapshot();
+    // We need to match against the container's parent (the body) since dialogs are rendered there via portals
+    expect(container.parentNode).toMatchSnapshot();
   });
 
   it('defers closing the modal until the transition has finished', async () => {
