@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import type { FC } from 'react';
-import { useTimeout } from '../../../src/tailwind';
-import { renderWithEvents } from '../../__helpers__/setUpTest';
+import { useTimeout } from '../../src';
+import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('use-timeout', () => {
   const DEFAULT_DELAY = 100;
