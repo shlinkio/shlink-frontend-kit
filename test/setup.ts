@@ -21,9 +21,11 @@ afterEach(() => {
 
 HTMLCanvasElement.prototype.getContext = (() => {}) as any;
 
-HTMLDialogElement.prototype.showModal = () => {};
+HTMLDialogElement.prototype.showModal = function() {
+  this.setAttribute('open', '');
+};
 HTMLDialogElement.prototype.close = function() {
-  const dialog = this as HTMLDialogElement;
-  dialog.dispatchEvent(new CloseEvent('close'));
-  dialog.dispatchEvent(new CloseEvent('cancel'));
+  this.removeAttribute('open');
+  this.dispatchEvent(new CloseEvent('close'));
+  this.dispatchEvent(new CloseEvent('cancel'));
 };
