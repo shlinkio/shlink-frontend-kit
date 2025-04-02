@@ -2,7 +2,7 @@ services:
     shlink_frontend_kit:
         container_name: shlink_frontend_kit
         user: 1000:1000
-        image: node:22.10-alpine
+        image: node:22.14-alpine
         volumes:
             - ./:/shlink-frontend-kit
         ports:
