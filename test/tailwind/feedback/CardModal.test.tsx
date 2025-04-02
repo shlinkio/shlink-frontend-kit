@@ -55,7 +55,7 @@ describe('<CardModal />', () => {
     const onConfirm = vi.fn();
     const { user } = setUp({ onConfirm });
 
-    await user.click(screen.getByText(button));
+    await user.click(screen.getByRole('button', { name: button }));
 
     expect(expectedCallback ?? onConfirm).toHaveBeenCalled();
   });

@@ -4,6 +4,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:sm:w-sm"
@@ -61,6 +62,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
@@ -118,6 +120,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-4xl"
@@ -175,6 +178,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-6xl"
@@ -232,6 +236,7 @@ exports[`<CardModal /> > renders expected variant 1`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
@@ -304,6 +309,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:md:w-lg"
@@ -376,6 +382,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
 <div>
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:overflow-hidden"
+    open=""
   >
     <div
       class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_transform] tw:duration-300 tw:h-full"
