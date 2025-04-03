@@ -17,9 +17,9 @@ export function useTimeout(
   defaultDelay: number,
 
   /** Test seam. Defaults to global setTimeout */
-  setTimeout_ = globalThis.setTimeout.bind(globalThis),
+  setTimeout_ = globalThis.setTimeout,
   /** Test seam. Defaults to global clearTimeout */
-  clearTimeout_ = globalThis.clearTimeout.bind(globalThis),
+  clearTimeout_ = globalThis.clearTimeout,
 ): UseTimeoutResult {
   const timeoutRef = useRef<ReturnType<typeof setTimeout_> | null>(null);
 

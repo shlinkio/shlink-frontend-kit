@@ -1,14 +1,38 @@
 import { useCallback, useRef, useState } from 'react';
 import { useTimeout } from './use-timeout';
 
+export type TimeoutToggleOptions = {
+  /**
+   * What should the flag value be initially.
+   * This will drive the behavior of the callback, which will set the opposite value, and then go back to the initial
+   * value after a delay.
+   *
+   * Defaults to false.
+   */
+  initialValue?: boolean;
+
+  /** Delay in ms after which the flag should return to its initial value. Defaults to 2000 */
+  delay?: number;
+};
+
+const DEFAULT_DELAY = 2000;
+
+/**
+ * Passing individual args is deprecated. Pass an object of options instead.
+ */
 export const useTimeoutToggle = (
-  initialValue = false,
-  delay = 2000,
+  initialValueOrOptions: TimeoutToggleOptions | boolean = {},
+  secondArg?: number,
 
   // Test seams
-  setTimeout_ = globalThis.setTimeout.bind(globalThis),
-  clearTimeout_ = globalThis.clearTimeout.bind(globalThis),
+  setTimeout_ = globalThis.setTimeout,
+  clearTimeout_ = globalThis.clearTimeout,
 ): [boolean, () => void] => {
+  const { initialValue = false, delay = DEFAULT_DELAY } = typeof initialValueOrOptions === 'boolean' ? {
+    initialValue: initialValueOrOptions,
+    delay: secondArg,
+  } : initialValueOrOptions;
+
   const { setTimeout } = useTimeout(delay, setTimeout_, clearTimeout_);
   const [flag, setFlag] = useState(initialValue);
   const initialValueRef = useRef(initialValue);
