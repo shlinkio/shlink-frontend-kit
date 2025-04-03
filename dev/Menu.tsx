@@ -31,6 +31,7 @@ export const Menu: FC = () => {
           <li><Link to="/navigation/dropdowns">Dropdowns</Link></li>
           <li><Link to="/navigation/nav-pills">NavPills</Link></li>
           <li><Link to="/ordering/ordering-dropdown">OrderingDropdown</Link></li>
+          <li><Link to="/hooks/hooks">HooksPage</Link></li>
           <hr />
           <li><Link to="/tailwind">Tailwind components</Link></li>
         </>

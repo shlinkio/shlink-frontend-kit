@@ -5,6 +5,7 @@ import { ResultPage } from './block/ResultPage';
 import { SimpleCardPage } from './block/SimpleCardPage';
 import { BooleanControlsPage } from './form/BooleanControlsPage';
 import { SearchFieldPage } from './form/SearchFieldPage';
+import { HooksPage } from './hooks/HooksPage';
 import { Menu } from './Menu';
 import { DropdownsPage } from './navigation/DropdownsPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
@@ -33,6 +34,7 @@ export const App: FC = () => (
           <Route path="*" element={<NavPillsPage />} />
         </Route>
         <Route path="/ordering/ordering-dropdown" element={<OrderingDropdownPage />} />
+        <Route path="/hooks/hooks" element={<HooksPage />} />
         <Route path="/tailwind">
           <Route path="" element={<TailwindComponents />} />
           <Route path="*" element={<TailwindComponents />} />

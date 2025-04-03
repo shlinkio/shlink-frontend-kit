@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.8.5] - 2025-04-03
 ### Added
 * Add `onClosed` callback to `CardModal`, which is invoked when the close transition ends.
 * Add `cancelText` to `CardModal`, which allows the cancel button text to be customized.
@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 * Fix transition management in modal, so that child element transitions with a different duration do not affect the transition handler.
+* Fix `useTimeoutToggle` and `useTimeout` re-rendering too often due to setTimeout and clearTimeout test util references.
 
 
 ## [0.8.4] - 2025-04-03
