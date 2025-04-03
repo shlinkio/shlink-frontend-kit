@@ -98,6 +98,7 @@ export const ModalDialogPage: FC = () => {
         open={confirmOpen}
         onClose={() => setConfirmOpen(false)}
         onConfirm={() => setConfirmOpen(false)}
+        onClosed={(exitAction) => console.log(`Closed custom confirm: ${exitAction}`)}
       >
         Custom confirm text
       </CardModal>
@@ -118,6 +119,7 @@ export const ModalDialogPage: FC = () => {
         open={dangerConfirmOpen}
         onClose={() => setDangerConfirmOpen(false)}
         onConfirm={() => setDangerConfirmOpen(false)}
+        onClosed={(exitAction) => console.log(`Closed danger dialog: ${exitAction}`)}
       >
         Danger dialog with confirm buttons
       </CardModal>

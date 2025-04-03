@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { FC } from 'react';
-import { useEffect, useRef,useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useCallback , useEffect, useRef, useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';
@@ -21,6 +21,8 @@ type CoverCardModalProps = CommonCardModalProps & {
   variant: 'cover';
 };
 
+export type ExitAction = 'confirm' | 'cancel';
+
 type RegularCardModalProps = CommonCardModalProps & {
   /** Danger dialogs use danger variants in title and confirm button */
   variant?: 'default' | 'danger'
@@ -28,7 +30,9 @@ type RegularCardModalProps = CommonCardModalProps & {
   size?: Size | 'xl';
 
   /** Value to display in confirm button. Defaults to 'Confirm' */
-  confirmText?: string;
+  confirmText?: ReactNode;
+  /** Value to display in cancel button. Defaults to 'Cancel' */
+  cancelText?: ReactNode;
   /** Whether the confirm button is disabled or not */
   confirmDisabled?: boolean;
 
@@ -37,6 +41,9 @@ type RegularCardModalProps = CommonCardModalProps & {
    * Invoked when the confirm button is actioned.
    */
   onConfirm?: () => void;
+
+  /** Invoked after finishing the close transition */
+  onClosed?: (exitAction: ExitAction) => void;
 };
 
 export type CardModalProps = Omit<ModalDialogProps, 'title' | 'size'> & (
@@ -58,8 +65,10 @@ export const CardModal: FC<CardModalProps> = ({
   const {
     size = 'md',
     confirmText = 'Confirm',
+    cancelText = 'Cancel',
     confirmDisabled,
     onConfirm,
+    onClosed,
     ...restDialogProps
   } = 'onConfirm' in rest ? rest : { ...rest };
 
@@ -68,27 +77,46 @@ export const CardModal: FC<CardModalProps> = ({
   const [openProxy, setOpenProxy] = useState(open);
   const ref = useRef<HTMLDivElement>(null);
 
+  // Track what was the exit action, so that we can call onConfirmed with the right value, once close transition ended
+  const exitAction = useRef<ExitAction>('cancel');
+  const confirm = useCallback(() => {
+    exitAction.current = 'confirm';
+    onConfirm?.();
+  }, [onConfirm]);
+
   useEffect(() => {
     // When the modal is open, we immediately set the proxy to open as well, letting the "in" transition to trigger
     // instantly.
     if (open) {
+      exitAction.current = 'cancel';
       setOpenProxy(true);
       return;
     }
 
-    // When the modal is going to be closed, we immediately remove the `data-open` attribute, which will trigger the
-    // "out" transition, and add a listener to actually set `open=false` once that transition has ended.
     const content = ref.current;
     if (content) {
+      // When the modal is going to be closed, we immediately remove the `data-open` attribute, which will trigger the
+      // "out" transition, and add a listener to actually set `open=false` once that transition has ended.
       delete ref.current!.dataset.open;
 
-      const handler = () => setOpenProxy(false);
-      content.addEventListener('transitionend', handler, { once: true });
+      let triggered = false;
+      const handler = (e: TransitionEvent) => {
+        // The event should be triggered only once, but since we also need to check it ignores transitions in children,
+        // we have to manually track the first execution, rather than using `{ once: true }`
+        if (triggered || e.target !== content) {
+          return;
+        }
+
+        triggered = true;
+        setOpenProxy(false);
+        onClosed?.(exitAction.current);
+      };
+      content.addEventListener('transitionend', handler);
       return () => {
         content.removeEventListener('transitionend', handler);
       };
     }
-  }, [open]);
+  }, [onClosed, open]);
 
   useEffect(() => {
     // We set the `data-open` attribute here so that things happen in this order in subsequent renders:
@@ -122,7 +150,7 @@ export const CardModal: FC<CardModalProps> = ({
 
           // CSS transitions are based on the presence of the `data-open` attribute
           'tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100',
-          'tw:transition-[opacity_transform] tw:duration-300',
+          'tw:transition-[opacity_,_translate] tw:duration-300',
 
           // Handle modal dimensions for different variants and sizes
           variant !== 'cover' && {
@@ -171,12 +199,12 @@ export const CardModal: FC<CardModalProps> = ({
                     'tw:[&]:px-3 tw:sticky tw:bottom-0',
                   )}
                 >
-                  <LinkButton onClick={onClose}>Cancel</LinkButton>
+                  <LinkButton onClick={onClose}>{cancelText}</LinkButton>
                   <Button
                     solid
                     variant={variant === 'danger' ? 'danger' : 'primary'}
                     disabled={confirmDisabled}
-                    onClick={onConfirm}
+                    onClick={confirm}
                   >
                     {confirmText}
                   </Button>
