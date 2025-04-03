@@ -157,6 +157,19 @@
     @apply tw:focus-ring-base tw:focus-visible:ring-danger/50;
 }
 
+@utility scroll-thin {
+    /* Standard. New browsers */
+    scrollbar-width: thin;
+
+    /* Fallbacks */
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: .5rem;
+    }
+}
+
 @custom-variant highlight {
     &:hover,
     &:focus {
