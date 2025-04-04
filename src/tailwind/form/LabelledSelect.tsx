@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import { useId } from 'react';
+import { forwardRef , useId } from 'react';
 import type { RequiredReactNode } from '../types';
 import { Label } from './Label';
 import type { SelectProps } from './Select';
@@ -13,14 +12,15 @@ export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & {
   hiddenRequired?: boolean;
 };
 
-export const LabelledSelect: FC<LabelledSelectProps> = (
+export const LabelledSelect = forwardRef<HTMLSelectElement, LabelledSelectProps>((
   { selectClassName, label, required, hiddenRequired, ...rest },
+  ref,
 ) => {
   const id = useId();
   return (
     <div className="tw:flex tw:flex-col tw:gap-1">
       <Label htmlFor={id} required={required}>{label}</Label>
-      <Select id={id} className={selectClassName} required={required || hiddenRequired} {...rest} />
+      <Select ref={ref} id={id} className={selectClassName} required={required || hiddenRequired} {...rest} />
     </div>
   );
-};
+});

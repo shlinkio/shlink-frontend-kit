@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import { useId } from 'react';
+import { forwardRef , useId } from 'react';
 import type { RequiredReactNode } from '../types';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -14,14 +13,16 @@ export type LabelledInputProps = Omit<InputProps, 'className' | 'id' | 'feedback
   hiddenRequired?: boolean;
 };
 
-export const LabelledInput: FC<LabelledInputProps> = (
+export const LabelledInput = forwardRef<HTMLInputElement, LabelledInputProps>((
   { label, inputClassName, required, hiddenRequired, error, ...rest },
+  ref,
 ) => {
   const id = useId();
   return (
     <div className="tw:flex tw:flex-col tw:gap-1">
       <Label htmlFor={id} required={required}>{label}</Label>
       <Input
+        ref={ref}
         id={id}
         className={inputClassName}
         required={required || hiddenRequired}
@@ -31,4 +32,4 @@ export const LabelledInput: FC<LabelledInputProps> = (
       {error && <span className="tw:text-danger">{error}</span>}
     </div>
   );
-};
+});

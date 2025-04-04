@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import type { FC, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import type { Size } from '../types';
 
 export type BaseInputProps = {
@@ -7,11 +8,12 @@ export type BaseInputProps = {
   feedback?: 'error',
 };
 
-export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & BaseInputProps & {
-  borderless?: boolean;
-};
+export type InputProps =
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'checked' | 'defaultChecked'> & BaseInputProps & {
+    borderless?: boolean;
+  };
 
-export const Input: FC<InputProps> = ({
+export const Input = forwardRef<HTMLInputElement, InputProps>(({
   borderless = false,
   size = 'md',
   feedback,
@@ -19,10 +21,11 @@ export const Input: FC<InputProps> = ({
   disabled,
   readOnly,
   ...rest
-}) => {
+}, ref) => {
   const isEditable = !disabled && !readOnly;
   return (
     <input
+      ref={ref}
       className={clsx(
         'tw:w-full',
         {
@@ -52,4 +55,4 @@ export const Input: FC<InputProps> = ({
       {...rest}
     />
   );
-};
+});
