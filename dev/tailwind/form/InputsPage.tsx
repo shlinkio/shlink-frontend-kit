@@ -4,6 +4,7 @@ import {
   Input,
   Label,
   LabelledInput,
+  LabelledRevealablePasswordInput,
   LabelledSelect,
   Select,
   SimpleCard,
@@ -50,6 +51,7 @@ export const InputsPage: FC = () => {
         <LabelledInput label="Labelled input" />
         <Input placeholder="Large input" size="lg" />
         <Input placeholder="Small input" size="sm" />
+        <LabelledRevealablePasswordInput label="Revealable password input" defaultValue="some_password" />
       </div>
       <div className="tw:flex tw:flex-col tw:gap-y-3">
         <h2>Selects</h2>

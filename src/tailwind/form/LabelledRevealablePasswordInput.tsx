@@ -1,19 +1,20 @@
 import { forwardRef , useId } from 'react';
 import type { RequiredReactNode } from '../types';
-import type { InputProps } from './Input';
-import { Input } from './Input';
 import { Label } from './Label';
+import type { RevealablePasswordInputProps } from './RevealablePasswordInput';
+import { RevealablePasswordInput } from './RevealablePasswordInput';
 
-export type LabelledInputProps = Omit<InputProps, 'className' | 'id' | 'feedback'> & {
-  label: RequiredReactNode;
-  inputClassName?: string;
-  error?: string;
+export type LabelledRevealablePasswordInputProps =
+  Omit<RevealablePasswordInputProps, 'className' | 'id' | 'feedback'> & {
+    label: RequiredReactNode;
+    inputClassName?: string;
+    error?: string;
 
-  /** Alternative to `required`. Causes the input to be required, without displaying an asterisk */
-  hiddenRequired?: boolean;
-};
+    /** Alternative to `required`. Causes the input to be required, without displaying an asterisk */
+    hiddenRequired?: boolean;
+  };
 
-export const LabelledInput = forwardRef<HTMLInputElement, LabelledInputProps>((
+export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, LabelledRevealablePasswordInputProps>((
   { label, inputClassName, required, hiddenRequired, error, ...rest },
   ref,
 ) => {
@@ -21,7 +22,7 @@ export const LabelledInput = forwardRef<HTMLInputElement, LabelledInputProps>((
   return (
     <div className="tw:flex tw:flex-col tw:gap-1">
       <Label htmlFor={id} required={required}>{label}</Label>
-      <Input
+      <RevealablePasswordInput
         ref={ref}
         id={id}
         className={inputClassName}

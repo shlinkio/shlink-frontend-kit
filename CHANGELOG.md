@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+### Added
+* Add tailwind-based `RevealablePasswordInput` component.
+
+### Changed
+* All tailwind-based form controls can now be forwarded a ref.
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [0.8.5] - 2025-04-03
 ### Added
 * Add `onClosed` callback to `CardModal`, which is invoked when the close transition ends.

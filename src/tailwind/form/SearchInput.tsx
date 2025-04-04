@@ -1,8 +1,7 @@
 import { faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import type { FC } from 'react';
-import { useCallback } from 'react';
+import { forwardRef , useCallback } from 'react';
 import { useTimeout } from '../../hooks';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -13,14 +12,14 @@ export type SearchInputProps = Omit<InputProps, 'className' | 'onChange' | 'valu
   inputClassName?: string;
 };
 
-export const SearchInput: FC<SearchInputProps> = ({
+export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   onChange,
   containerClassName,
   inputClassName,
   // Inputs have a default 'md' size. Search inputs are usually 'lg' as they are rendered at the top of sections
   size = 'lg',
   ...inputProps
-}) => {
+}, ref) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
   const searchTermChanged = useCallback((newSearchTerm: string) => {
     if (!newSearchTerm) {
@@ -46,6 +45,7 @@ export const SearchInput: FC<SearchInputProps> = ({
         )}
       />
       <Input
+        ref={ref}
         type="search"
         className={clsx(
           {
@@ -61,4 +61,4 @@ export const SearchInput: FC<SearchInputProps> = ({
       />
     </div>
   );
-};
+});
