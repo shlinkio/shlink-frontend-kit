@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import type { LinkButtonProps } from '../../../src/tailwind';
 import { LinkButton } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
@@ -17,5 +17,15 @@ describe('<LinkButton />', () => {
   ])('renders as expected based on provided props', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();
+  });
+
+  it.each([
+    { type: undefined, expectedType: 'button' },
+    { type: 'button' as const, expectedType: 'button' },
+    { type: 'submit' as const, expectedType: 'submit' },
+    { type: 'reset' as const, expectedType: 'reset' },
+  ])('defaults type to `button`', ({ type, expectedType }) => {
+    setUp({ type, children: 'The button' });
+    expect(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
   });
 });
