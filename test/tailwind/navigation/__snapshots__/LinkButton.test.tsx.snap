@@ -4,6 +4,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 1`] = `
 <div>
   <button
     class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+    type="button"
   />
 </div>
 `;
@@ -13,6 +14,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 2`] = `
   <button
     class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5 tw:pointer-events-none tw:opacity-65"
     disabled=""
+    type="button"
   />
 </div>
 `;
@@ -21,6 +23,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 3`] = `
 <div>
   <button
     class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-1.5 tw:py-1 tw:text-sm"
+    type="button"
   />
 </div>
 `;
@@ -29,6 +32,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 4`] = `
 <div>
   <button
     class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+    type="button"
   />
 </div>
 `;
@@ -37,6 +41,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 5`] = `
 <div>
   <button
     class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-4 tw:py-2 tw:text-lg"
+    type="button"
   />
 </div>
 `;

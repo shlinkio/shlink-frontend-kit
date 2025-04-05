@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.8.7] - 2024-04-05
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Add missing `type="button"` in `button` used to reveal password in `RevealablePasswordInput`.
+* Make `Button`, `LinkButton` and `CloseButton` default their `type` to `'button'` instead of `undefined`.
+
+
 ## [0.8.6] - 2024-04-05
 ### Added
 * Add tailwind-based `RevealablePasswordInput` component.

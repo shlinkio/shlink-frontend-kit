@@ -4,11 +4,10 @@ import type { Size } from '../types';
 
 export type LinkButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'> & {
   size?: Size;
-  // HTMLProps<HTMLButtonElement> resolves `type` as `string | undefined`, instead of HTMLButtonElement['type']
   type?: HTMLButtonElement['type'];
 };
 
-export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'md', ...rest }) => (
+export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'md', type = 'button', ...rest }) => (
   <button
     className={clsx(
       'tw:inline-flex tw:rounded-md tw:focus-ring',
@@ -22,6 +21,7 @@ export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'm
       className,
     )}
     disabled={disabled}
+    type={type}
     {...rest}
   />
 );

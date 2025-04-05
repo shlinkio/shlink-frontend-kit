@@ -4,13 +4,14 @@ import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
 import type { Size } from '../types';
 
-type RegularButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size'>;
+type RegularButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'>;
 type LinkButtonProps = LinkProps;
 
 export type ButtonProps = PropsWithChildren<{
   disabled?: boolean;
   className?: string;
   variant?: 'primary' | 'secondary' | 'danger';
+  type?: HTMLButtonElement['type'];
   size?: Size;
   inline?: boolean;
   solid?: boolean;
@@ -24,9 +25,11 @@ export const Button: FC<ButtonProps> = ({
   size = 'md',
   inline = false,
   solid = false,
+  type: providedType = 'button',
   ...rest
 }) => {
   const Tag = 'to' in rest ? Link : 'button';
+  const type = Tag === Link ? undefined : providedType;
 
   return (
     // @ts-expect-error We are explicitly checking for the `to` prop before using Link
@@ -78,6 +81,7 @@ export const Button: FC<ButtonProps> = ({
         className,
       )}
       disabled={disabled}
+      type={type}
       {...rest}
     >
       {children}
