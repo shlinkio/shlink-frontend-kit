@@ -44,6 +44,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
         {...rest}
       />
       <button
+        type="button"
         onClick={togglePasswordRevealed}
         title={passwordRevealed ? 'Hide password' : 'Show password'}
         aria-label={passwordRevealed ? 'Hide password' : 'Show password'}

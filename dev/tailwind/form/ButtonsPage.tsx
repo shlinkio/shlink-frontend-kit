@@ -51,6 +51,8 @@ export const ButtonsPage: FC = () => {
         <div className="tw:flex tw:gap-x-2">
           <LinkButton>Link button</LinkButton>
           <CloseButton />
+          <Button type="submit">Submit</Button>
+          <Button to="">Button with link</Button>
         </div>
       </div>
     </div>
