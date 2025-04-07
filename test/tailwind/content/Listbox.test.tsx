@@ -21,19 +21,22 @@ describe('<Listbox />', () => {
   const onSelectItem = vi.fn();
   const defaultItems = ['foo', 'bar', 'baz'];
 
-  const setUp = (props: Partial<Props> = {}) => renderWithEvents(
+  const setUp = ({ items, ...rest }: Partial<Props> = {}) => renderWithEvents(
     <FakeComponent
-      items={new Map(defaultItems.map((item) => [item, item]))}
+      items={items ?? new Map(defaultItems.map((item) => [item, item]))}
       onSelectItem={onSelectItem}
       renderItem={(i) => i}
       id="id"
-      {...props}
+      {...rest}
     />,
   );
 
   const getSelectedOption = () => screen.getByRole('option', { selected: true });
 
-  it('passes a11y checks', () => checkAccessibility(setUp()));
+  it.each([
+    undefined,
+    new Map(),
+  ])('passes a11y checks', (items) => checkAccessibility(setUp({ items })));
 
   it.each([
     { items: new Map(), noItemsMessage: undefined, expectedText: 'No items' },

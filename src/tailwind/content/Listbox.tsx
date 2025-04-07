@@ -69,7 +69,11 @@ export function Listbox<Item>({ id,
       aria-label={label}
       {...rest}
     >
-      {items.size === 0 && <i data-testid="no-items" className="tw:px-2 tw:py-1">{noItemsMessage}</i>}
+      {items.size === 0 && (
+        <i role="option" aria-disabled aria-selected={false} data-testid="no-items" className="tw:px-2 tw:py-1">
+          {noItemsMessage}
+        </i>
+      )}
       {[...items.entries()].map(([key, item], index) => (
         <button
           key={key}

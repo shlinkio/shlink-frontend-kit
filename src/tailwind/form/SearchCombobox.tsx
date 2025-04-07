@@ -10,7 +10,7 @@ type BaseInputProps = Omit<
   'role' | 'aria-autocomplete' | 'aria-expanded' | 'aria-controls' | 'onChange'
 >;
 
-export type ComboboxProps<Item> = BaseInputProps & {
+export type SearchComboboxProps<Item> = BaseInputProps & {
   /** If defined, it will display a listbox with the search results */
   searchResults?: Map<string, Item>;
   /** Invoked when the search input value changes */
@@ -43,10 +43,9 @@ export function SearchCombobox<Item>({
   renderSearchResult,
   size = 'md',
   listboxSpan = 'full',
-  onBlur,
   onFocus,
   ...rest
-}: ComboboxProps<Item>) {
+}: SearchComboboxProps<Item>) {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const listboxId = useId();
 
@@ -57,7 +56,15 @@ export function SearchCombobox<Item>({
   }, [onSearch, onSelectSearchResult]);
 
   return (
-    <div className="tw:relative">
+    <div
+      className="tw:relative"
+      onBlur={(e) => {
+        // Clears search when focus is moving away of this container, so that the listbox is closed.
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          onSearch('');
+        }
+      }}
+    >
       <SearchInput
         onChange={onSearch}
         size={size}
@@ -66,11 +73,6 @@ export function SearchCombobox<Item>({
         aria-autocomplete="list"
         aria-expanded={!!searchResults}
         aria-controls={listboxId}
-        onBlur={(e) => {
-          onBlur?.(e);
-          // Clears search when focus is lost, so that the listbox is closed
-          onSearch('');
-        }}
         onFocus={(e) => {
           onFocus?.(e);
           // "Recover" search when focus is set, so that the listbox is open for current value
