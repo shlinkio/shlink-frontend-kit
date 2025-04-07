@@ -22,10 +22,12 @@ export type ComboboxProps<Item> = BaseInputProps & {
 
   /**
    * Determines how the listbox should span when visible.
-   * - `auto`: Take only the needed space to display its content, up to the width of the input.
    * - `full`: Be always as big as the input, regardless its content.
+   * - `auto`: Take only the needed space to display its content, up to the width of the input.
+   *
+   * Defaults to `full`.
    */
-  listboxSpan?: 'auto' | 'full';
+  listboxSpan?: 'full' | 'auto';
 };
 
 /**
@@ -45,7 +47,7 @@ export function SearchCombobox<Item>({
   onFocus,
   ...rest
 }: ComboboxProps<Item>) {
-  const searchInputRef = useRef<HTMLInputElement>(undefined);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const listboxId = useId();
 
   const applySearchResult = useCallback((item: Item) => {
@@ -59,7 +61,7 @@ export function SearchCombobox<Item>({
       <SearchInput
         onChange={onSearch}
         size={size}
-        ref={searchInputRef as any}
+        ref={searchInputRef}
         role="combobox"
         aria-autocomplete="list"
         aria-expanded={!!searchResults}
@@ -80,7 +82,7 @@ export function SearchCombobox<Item>({
         <Listbox
           id={listboxId}
           items={searchResults}
-          anchor={searchInputRef as any}
+          anchor={searchInputRef}
           onSelectItem={applySearchResult}
           renderItem={renderSearchResult}
           className={clsx(
