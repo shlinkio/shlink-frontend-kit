@@ -7,6 +7,7 @@ export * from './LabelledInput';
 export * from './LabelledRevealablePasswordInput';
 export * from './LabelledSelect';
 export * from './RevealablePasswordInput';
+export * from './SearchCombobox';
 export * from './SearchInput';
 export * from './Select';
 export * from './ToggleSwitch';
