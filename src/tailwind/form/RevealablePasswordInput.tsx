@@ -2,8 +2,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FocusEvent } from 'react';
-import { forwardRef , useCallback } from 'react';
-import { useElementRef, useToggle } from '../../hooks';
+import { forwardRef, useCallback, useRef  } from 'react';
+import { useToggle } from '../../hooks';
 import type { InputProps } from './Input';
 import { Input } from './Input';
 
@@ -16,7 +16,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
   ref,
 ) => {
   const [passwordRevealed, togglePasswordRevealed,, hidePassword] = useToggle(false);
-  const containerRef = useElementRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
   const onContainerBlur = useCallback(({ relatedTarget }: FocusEvent) => {
     if (!containerRef.current?.contains(relatedTarget)) {
       hidePassword();

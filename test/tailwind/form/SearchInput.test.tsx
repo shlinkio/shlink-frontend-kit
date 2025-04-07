@@ -54,4 +54,12 @@ describe('<SearchInput />', () => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();
   });
+
+  it.each([
+    { loading: false, icon: 'magnifying-glass' },
+    { loading: true, icon: 'circle-notch' },
+  ])('shows a different icon depending on its loading state', ({ loading, icon }) => {
+    setUp({ loading });
+    expect(screen.getByRole('img', { hidden: true })).toHaveAttribute('data-icon', icon);
+  });
 });

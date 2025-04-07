@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 ### Added
 * Add `useGoBack` hook, which returns a stable callback that navigates one level back in the history.
+* Add tailwind-based `Listbox` and `SearchCombobox` components. 
 
 ### Changed
 * *Nothing*
