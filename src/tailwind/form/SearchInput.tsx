@@ -1,4 +1,4 @@
-import { faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import { forwardRef , useCallback } from 'react';
@@ -10,6 +10,9 @@ export type SearchInputProps = Omit<InputProps, 'className' | 'onChange' | 'valu
   onChange: (searchTerm: string) => void;
   containerClassName?: string;
   inputClassName?: string;
+
+  /** When set to true, it displays a loading indicator in place of the magnifyinf glass icon */
+  loading?: boolean;
 };
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
@@ -18,6 +21,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   inputClassName,
   // Inputs have a default 'md' size. Search inputs are usually 'lg' as they are rendered at the top of sections
   size = 'lg',
+  loading = false,
   ...inputProps
 }, ref) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
@@ -34,7 +38,8 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   return (
     <div className={clsx('tw:group tw:relative tw:focus-within:z-10', containerClassName)}>
       <FontAwesomeIcon
-        icon={searchIcon}
+        icon={loading ? faCircleNotch : searchIcon}
+        spin={loading}
         className={clsx(
           'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors',
           'tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text',

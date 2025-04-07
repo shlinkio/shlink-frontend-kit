@@ -30,6 +30,12 @@ export const SearchInputPage: FC = () => {
         <SearchInput onChange={setValueBorderless} borderless />
         <p>The value is <b>{valueBorderless}</b></p>
       </div>
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Loading input</h2>
+        <SearchInput onChange={console.log} size="sm" loading />
+        <SearchInput onChange={console.log} size="md" loading />
+        <SearchInput onChange={console.log} loading />
+      </div>
     </div>
   );
 };
