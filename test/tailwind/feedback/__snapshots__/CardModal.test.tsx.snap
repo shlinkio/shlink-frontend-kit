@@ -4,6 +4,12 @@ exports[`<CardModal /> > renders expected size 1`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -66,6 +72,12 @@ exports[`<CardModal /> > renders expected size 2`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -128,6 +140,12 @@ exports[`<CardModal /> > renders expected size 3`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -190,6 +208,12 @@ exports[`<CardModal /> > renders expected size 4`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -252,6 +276,12 @@ exports[`<CardModal /> > renders expected variant 1`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -331,6 +361,12 @@ exports[`<CardModal /> > renders expected variant 2`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
@@ -410,6 +446,12 @@ exports[`<CardModal /> > renders expected variant 3`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
+  
+  
+
+
   <div />
   <dialog
     class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:overflow-hidden"

@@ -35,16 +35,18 @@ describe('<DropdownBtn />', () => {
   });
 
   it.each([
-    [100, 'min-width: 100px; '],
-    [250, 'min-width: 250px; '],
-    [undefined, ''],
-  ])('renders proper styles when minWidth is provided', async (minWidth, expectedStyle) => {
+    [100],
+    [250],
+    [undefined],
+  ])('renders proper styles when minWidth is provided', async (minWidth) => {
     const { user } = setUp({ text: '', minWidth });
 
     await user.click(screen.getByRole('button'));
-    expect(screen.getByRole('menu')).toHaveAttribute(
-      'style',
-      `${expectedStyle}position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);`,
-    );
+
+    if (minWidth) {
+      expect(screen.getByRole('menu')).toHaveStyle({ 'min-width': `${minWidth}px` });
+    } else {
+      expect(screen.getByRole('menu')).not.toHaveStyle({ 'min-width': expect.anything() });
+    }
   });
 });

@@ -23,7 +23,9 @@ describe('<ModalDialog />', () => {
   });
 
   it('invokes onClose when the dialog is closed', () => {
-    setUp(false);
+    setUp();
+
+    screen.getByRole('dialog').dispatchEvent(new CloseEvent('cancel'));
     expect(onClose).toHaveBeenCalled();
   });
 
