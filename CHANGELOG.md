@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.8.8] - 2025-04-08
 ### Added
 * Add `useGoBack` hook, which returns a stable callback that navigates one level back in the history.
 * Add tailwind-based `Listbox` and `SearchCombobox` components. 
