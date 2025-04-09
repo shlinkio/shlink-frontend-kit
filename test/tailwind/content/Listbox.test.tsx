@@ -61,16 +61,19 @@ describe('<Listbox />', () => {
   });
 
   it.each(defaultItems)('marks item as selected on hover', async (name) => {
-    const { user } = setUp();
+    const onActiveItemChange = vi.fn();
+    const { user } = setUp({ onActiveItemChange });
     const option = screen.getByRole('option', { name });
 
     expect(option).toHaveAttribute('aria-selected', name === 'foo' ? 'true' : 'false');
     await user.hover(option);
     expect(option).toHaveAttribute('aria-selected', 'true');
+    expect(onActiveItemChange).toHaveBeenCalledWith(name, name);
   });
 
-  it('can change selected option via vertical arrow keys', async () => {
-    const { user } = setUp();
+  it('can change active option via vertical arrow keys', async () => {
+    const onActiveItemChange = vi.fn();
+    const { user } = setUp({ onActiveItemChange });
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
@@ -80,8 +83,10 @@ describe('<Listbox />', () => {
     expect(getSelectedOption()).toHaveTextContent('foo');
     await user.keyboard('{ArrowDown}');
     expect(getSelectedOption()).toHaveTextContent('bar');
+    expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowDown}');
     expect(getSelectedOption()).toHaveTextContent('baz');
+    expect(onActiveItemChange).toHaveBeenLastCalledWith('baz', 'baz');
 
     // It can go lower than the last option
     await user.keyboard('{ArrowDown}');
@@ -89,8 +94,10 @@ describe('<Listbox />', () => {
 
     await user.keyboard('{ArrowUp}');
     expect(getSelectedOption()).toHaveTextContent('bar');
+    expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowUp}');
     expect(getSelectedOption()).toHaveTextContent('foo');
+    expect(onActiveItemChange).toHaveBeenLastCalledWith('foo', 'foo');
 
     // It can go higher than the first option
     await user.keyboard('{ArrowUp}');

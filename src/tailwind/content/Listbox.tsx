@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { ReactNode, RefObject } from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 
@@ -9,6 +9,8 @@ export type ListboxProps<Item> = Omit<CardProps, 'id' | 'role' | 'aria-orientati
   items: Map<string, Item>;
   /** Invoked when the active item is selected via click or `Enter` */
   onSelectItem: (item: Item) => void;
+  /** Invoked when the active item changes via vertical arrows or hover */
+  onActiveItemChange?: (key: string, item: Item) => void;
   /** To customize the shape of an item */
   renderItem: (item: Item) => ReactNode;
   /** Used to link with the element controlling this listbox */
@@ -30,6 +32,7 @@ export type ListboxProps<Item> = Omit<CardProps, 'id' | 'role' | 'aria-orientati
 export function Listbox<Item>({ id,
   items,
   onSelectItem,
+  onActiveItemChange,
   renderItem,
   className,
   noItemsMessage = 'No items',
@@ -39,6 +42,13 @@ export function Listbox<Item>({ id,
 }: ListboxProps<Item>,
 ) {
   const [activeItem, setActiveItem] = useState(0);
+  const changeActiveItem = useCallback((index: number) => {
+    setActiveItem(index);
+    if (onActiveItemChange) {
+      const [activeKey, activeItem] = [...items.entries()][index];
+      onActiveItemChange(activeKey, activeItem);
+    }
+  }, [items, onActiveItemChange]);
 
   useEffect(() => {
     const anchorEl = anchor?.current;
@@ -47,10 +57,15 @@ export function Listbox<Item>({ id,
     }
 
     const handler = (e: KeyboardEvent) => {
+      // Prevent default for any of the keys used to handle active descendant
+      if (['Enter', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        e.preventDefault();
+      }
+
       if (e.key === 'ArrowDown') {
-        setActiveItem((prev) => Math.min(prev + 1, items.size - 1));
+        changeActiveItem(Math.min(activeItem + 1, items.size - 1));
       } else if (e.key === 'ArrowUp') {
-        setActiveItem((prev) => Math.max(prev - 1, 0));
+        changeActiveItem(Math.max(activeItem - 1, 0));
       } else if (e.key === 'Enter') {
         onSelectItem([...items.values()][activeItem]);
       }
@@ -58,7 +73,7 @@ export function Listbox<Item>({ id,
 
     anchorEl.addEventListener('keydown', handler);
     return () => anchorEl.removeEventListener('keydown', handler);
-  }, [activeItem, anchor, items, onSelectItem]);
+  }, [activeItem, anchor, changeActiveItem, items, onSelectItem]);
 
   return (
     <Card
@@ -76,6 +91,7 @@ export function Listbox<Item>({ id,
       )}
       {[...items.entries()].map(([key, item], index) => (
         <button
+          id={`${id}_${key}`}
           key={key}
           type="button"
           role="option"
@@ -88,7 +104,7 @@ export function Listbox<Item>({ id,
           onClick={() => onSelectItem(item)}
           // We are setting tabIndex -1 so that this element cannot be focused
           // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-          onMouseOver={() => setActiveItem(index)}
+          onMouseOver={() => changeActiveItem(index)}
         >
           {renderItem(item)}
         </button>
