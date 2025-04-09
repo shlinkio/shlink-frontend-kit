@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
-import { useCallback , useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';

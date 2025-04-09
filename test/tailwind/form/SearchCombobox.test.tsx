@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import type { SearchComboboxProps } from '../../../src/tailwind';
 import { SearchCombobox } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
@@ -38,9 +38,23 @@ describe('<SearchCombobox />', () => {
 
   it('does not show a listbox while there is no search results', () => {
     setUp();
+    const combobox = screen.getByLabelText('Combobox');
 
     expect(screen.queryByLabelText('Matching items')).not.toBeInTheDocument();
-    expect(screen.getByLabelText('Combobox')).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).toHaveAttribute('aria-expanded', 'false');
+    expect(combobox).not.toHaveAttribute('aria-activedescendant');
+  });
+
+  it('sets expected active descendant', async () => {
+    const { user } = setUp({ searchResults: new Map([['foo', 'foo'], ['bar', 'bar']]) });
+    const combobox = screen.getByLabelText('Combobox');
+
+    // Focus combobox first
+    await user.click(combobox);
+    await waitFor(() => expect(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_foo$/)));
+
+    await user.keyboard('{ArrowDown}');
+    await waitFor(() => expect(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_bar$/)));
   });
 
   it('invokes onSearch when the search input changes', async () => {
