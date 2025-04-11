@@ -1,7 +1,8 @@
 import { faSortAmountDown as sortDescIcon, faSortAmountUp as sortAscIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
-import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
+import { Dropdown,DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
+import { useToggle } from '../hooks';
 import type { Order, OrderDir } from './ordering';
 import { determineOrderDir } from './ordering';
 
@@ -17,13 +18,14 @@ export type OrderingDropdownProps<T extends string = string> = {
 export function OrderingDropdown<T extends string = string>(
   { items, order, onChange, isButton = true, right = false, prefixed = true }: OrderingDropdownProps<T>,
 ) {
+  const [isOpen, toggle] = useToggle();
   const handleItemClick = (fieldKey: T) => () => {
     const newOrderDir = determineOrderDir(fieldKey, order.field, order.dir);
     onChange(newOrderDir ? fieldKey : undefined, newOrderDir);
   };
 
   return (
-    <UncontrolledDropdown>
+    <Dropdown isOpen={isOpen} toggle={toggle}>
       <DropdownToggle
         caret
         color={isButton ? 'primary' : 'link'}
@@ -37,22 +39,27 @@ export function OrderingDropdown<T extends string = string>(
         {isButton && order.field && <>{prefixed && 'Order by: '}{items[order.field]} - <small>{order.dir ?? 'DESC'}</small></>}
       </DropdownToggle>
       <DropdownMenu end={right} className="w-100" style={!isButton ? { minWidth: '11rem' } : undefined}>
-        {Object.entries(items).map(([fieldKey, fieldValue]) => (
-          <DropdownItem
-            key={fieldKey}
-            active={order.field === fieldKey}
-            onClick={handleItemClick(fieldKey as T)}
-            className="d-flex justify-content-between align-items-center"
-          >
-            {fieldValue as string}
-            {order.field === fieldKey && <FontAwesomeIcon icon={order.dir === 'ASC' ? sortAscIcon : sortDescIcon} />}
-          </DropdownItem>
-        ))}
-        <DropdownItem divider />
-        <DropdownItem disabled={!order.field} onClick={() => onChange()}>
-          <i>Clear selection</i>
-        </DropdownItem>
+        {isOpen && (
+          <>
+            {Object.entries(items).map(([fieldKey, fieldValue]) => (
+              <DropdownItem
+                key={fieldKey}
+                active={order.field === fieldKey}
+                onClick={handleItemClick(fieldKey as T)}
+                className="d-flex justify-content-between align-items-center"
+                tabIndex={-1}
+              >
+                {fieldValue as string}
+                {order.field === fieldKey && <FontAwesomeIcon icon={order.dir === 'ASC' ? sortAscIcon : sortDescIcon} />}
+              </DropdownItem>
+            ))}
+            <DropdownItem divider tag="hr" />
+            <DropdownItem disabled={!order.field} onClick={() => onChange()} tabIndex={-1}>
+              <i>Clear selection</i>
+            </DropdownItem>
+          </>
+        )}
       </DropdownMenu>
-    </UncontrolledDropdown>
+    </Dropdown>
   );
 }

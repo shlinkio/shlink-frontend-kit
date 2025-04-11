@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
+import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<OrderingDropdown />', () => {
@@ -17,10 +18,16 @@ describe('<OrderingDropdown />', () => {
     const { user } = result;
 
     await user.click(screen.getByRole('button'));
-    expect(await screen.findByRole('menu')).toBeInTheDocument();
+    await screen.findByRole('menu');
 
     return result;
   };
+
+  it.each([
+    setUp,
+    // FIXME reactstrap sets tabindex={0} to items, when it should be setting -1. It cannot be overwritten
+    // setUpWithDisplayedMenu,
+  ])('passes a11y checks', (s) => checkAccessibility(s()));
 
   it('properly renders provided list of items', async () => {
     await setUpWithDisplayedMenu();

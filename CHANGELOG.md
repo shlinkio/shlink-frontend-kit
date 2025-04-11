@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.8.10] - 2025-04-11
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Ensure `DropdownBtn` and `OrderingDropdown` do not render the menu children while it's closed, for performance and accessibility reasons.
+
+
 ## [0.8.9] - 2025-04-09
 ### Added
 * *Nothing*
