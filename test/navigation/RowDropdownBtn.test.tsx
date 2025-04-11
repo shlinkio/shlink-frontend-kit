@@ -24,8 +24,18 @@ describe('<RowDropdownBtn />', () => {
     expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument();
   });
 
-  it('renders expected children', () => {
-    setUp();
+  it('renders expected children only while it is open', async () => {
+    const { user } = setUp({ label: 'The button' });
+
+    // Children are not shown, as it is initially closed
+    expect(screen.queryByText('the children')).not.toBeInTheDocument();
+
+    // After clicking on it, the menu is open, and children are rendered
+    await user.click(screen.getByLabelText('The button'));
     expect(screen.getByText('the children')).toBeInTheDocument();
+
+    // Clicking again will close the menu, removing children
+    await user.click(screen.getByLabelText('The button'));
+    expect(screen.queryByText('the children')).not.toBeInTheDocument();
   });
 });
