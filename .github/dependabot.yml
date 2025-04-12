@@ -40,6 +40,10 @@ updates:
           - 'vitest'
           - 'vitest-canvas-mock'
           - '@vitest/*'
+      tailwindcss:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
     ignore:
       # Bootstrap can introduce visual breaking changes on styles
       # Ignore it, since the plan is to remove it anyway
