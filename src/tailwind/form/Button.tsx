@@ -43,7 +43,8 @@ export const Button: FC<ButtonProps> = ({
         'tw:border tw:rounded-md tw:no-underline',
         'tw:transition-colors',
         {
-          'tw:focus-ring': variant !== 'danger',
+          'tw:focus-ring': variant === 'primary',
+          'tw:focus-ring-secondary': variant === 'secondary',
           'tw:focus-ring-danger': variant === 'danger',
         },
         {
