@@ -76,7 +76,7 @@ exports[`<Button /> > renders as expected based on provided props 8`] = `
 exports[`<Button /> > renders as expected based on provided props 9`] = `
 <div>
   <button
-    class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-zinc-500 tw:highlight:text-white tw:highlight:bg-zinc-500"
+    class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-secondary tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-zinc-500 tw:highlight:text-white tw:highlight:bg-zinc-500"
     type="button"
   />
 </div>
@@ -103,7 +103,7 @@ exports[`<Button /> > renders as expected based on provided props 11`] = `
 exports[`<Button /> > renders as expected based on provided props 12`] = `
 <div>
   <button
-    class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-white tw:bg-zinc-500 tw:highlight:bg-zinc-600 tw:highlight:border-zinc-600 tw:highlight:bg-zinc-500"
+    class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-secondary tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-white tw:bg-zinc-500 tw:highlight:bg-zinc-600 tw:highlight:border-zinc-600 tw:highlight:bg-zinc-500"
     type="button"
   />
 </div>

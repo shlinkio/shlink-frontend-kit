@@ -157,6 +157,10 @@
     @apply tw:focus-ring-base tw:focus-visible:ring-danger/50;
 }
 
+@utility focus-ring-secondary {
+    @apply tw:focus-ring-base tw:focus-visible:ring-zinc-500/50;
+}
+
 @utility scroll-thin {
     /* Standard. New browsers */
     scrollbar-width: thin;
@@ -172,7 +176,7 @@
 
 @custom-variant highlight {
     &:hover,
-    &:focus {
+    &:focus-visible {
         @slot;
     }
 }
