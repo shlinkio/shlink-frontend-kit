@@ -4,13 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.8.11] - 2025-04-20
 ### Added
-* *Nothing*
+* Add default tailwind styles for `code` elements.
+* Add tailwind-based `Details` component.
 
 ### Changed
 * `useToggle` can now return its result as a tuple or as an object, with the former being deprecated.
 * Change focus ring for secondary tailwind-based buttons, to match the button color.
+* Add `cursor-pointer` to `Label` component.
+* Add `cursor-[inherit]` to tailwind-based `Checkbox` and `ToggleSwitch` components.
 
 ### Deprecated
 * *Nothing*

@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { Route, Routes } from 'react-router';
+import { DetailsPage } from './content/DetailsPage';
 import { TablePage } from './content/TablePage';
 import { MessagePage } from './feedback/MessagePage';
 import { ModalDialogPage } from './feedback/ModalDialogPage';
@@ -22,6 +23,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/form/buttons" element={<ButtonsPage />} />
       <Route path="/surfaces/cards" element={<CardsPage />} />
       <Route path="/content/tables" element={<TablePage />} />
+      <Route path="/content/details" element={<DetailsPage />} />
       <Route path="/navigation/paginator" element={<PaginatorPage />} />
       <Route path="/navigation/nav-pills">
         <Route path="" element={<NavPillsPage />} />
