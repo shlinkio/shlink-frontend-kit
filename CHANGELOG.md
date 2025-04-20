@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [0.8.11] - 2025-04-20
 ### Added
 * Add default tailwind styles for `code` elements.
+* Add tailwind-based `Details` component.
 
 ### Changed
 * `useToggle` can now return its result as a tuple or as an object, with the former being deprecated.
