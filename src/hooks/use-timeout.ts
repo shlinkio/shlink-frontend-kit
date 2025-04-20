@@ -21,7 +21,7 @@ export function useTimeout(
   /** Test seam. Defaults to global clearTimeout */
   clearTimeout_ = globalThis.clearTimeout,
 ): UseTimeoutResult {
-  const timeoutRef = useRef<ReturnType<typeof setTimeout_> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout_>>(null);
 
   const clearCurrentTimeout = useCallback(() => {
     if (timeoutRef.current) {

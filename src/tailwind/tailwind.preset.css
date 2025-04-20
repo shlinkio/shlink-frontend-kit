@@ -143,6 +143,10 @@
     p {
         @apply tw:m-0;
     }
+
+    code {
+        @apply tw:text-sm tw:text-pink-600 tw:dark:text-pink-500 tw:font-mono;
+    }
 }
 
 @utility focus-ring-base {
