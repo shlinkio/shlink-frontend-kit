@@ -50,6 +50,13 @@
     --color-warning: #ffc107;
     --color-warning-dark: #ffca2c;
     --color-placeholder: #6c757d;
+
+    /* Override breakpoints with the values from bootstrap, to keep sizing until fully migrated */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1400px;
 }
 
 @layer base {
