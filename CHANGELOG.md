@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Define bootstrap breakpoints in tailwind preset, so that migration can be done progressively.
 
 ### Deprecated
-* *Nothing*
+* Deprecate `LabeledFormGroup`.
 
 ### Removed
 * *Nothing*

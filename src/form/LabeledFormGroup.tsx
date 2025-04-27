@@ -8,6 +8,7 @@ type LabeledFormGroupProps = PropsWithChildren<{
   id?: string;
 }>;
 
+/** @deprecated */
 export const LabeledFormGroup: FC<LabeledFormGroupProps> = (
   { children, label, className = '', labelClassName = '', noMargin = false, id },
 ) => (
