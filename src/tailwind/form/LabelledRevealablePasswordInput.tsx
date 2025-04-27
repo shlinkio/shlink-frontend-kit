@@ -1,26 +1,27 @@
 import { forwardRef , useId } from 'react';
 import type { RequiredReactNode } from '../types';
+import type { FormControlWithFeedbackProps } from './FormControlWithFeedback';
+import { FormControlWithFeedback } from './FormControlWithFeedback';
 import { Label } from './Label';
 import type { RevealablePasswordInputProps } from './RevealablePasswordInput';
 import { RevealablePasswordInput } from './RevealablePasswordInput';
 
 export type LabelledRevealablePasswordInputProps =
-  Omit<RevealablePasswordInputProps, 'className' | 'id' | 'feedback'> & {
+  Omit<RevealablePasswordInputProps, 'className' | 'id' | 'feedback'> & FormControlWithFeedbackProps & {
     label: RequiredReactNode;
     inputClassName?: string;
-    error?: string;
 
     /** Alternative to `required`. Causes the input to be required, without displaying an asterisk */
     hiddenRequired?: boolean;
   };
 
 export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, LabelledRevealablePasswordInputProps>((
-  { label, inputClassName, required, hiddenRequired, error, ...rest },
+  { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
   ref,
 ) => {
   const id = useId();
   return (
-    <div className="tw:flex tw:flex-col tw:gap-1">
+    <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
       <Label htmlFor={id} required={required}>{label}</Label>
       <RevealablePasswordInput
         ref={ref}
@@ -30,7 +31,6 @@ export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, Labe
         feedback={error ? 'error' : undefined}
         {...rest}
       />
-      {error && <span className="tw:text-danger">{error}</span>}
-    </div>
+    </FormControlWithFeedback>
   );
 });

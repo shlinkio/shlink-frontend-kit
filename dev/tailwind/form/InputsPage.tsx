@@ -48,7 +48,8 @@ export const InputsPage: FC = () => {
         <Input placeholder="Error input" feedback="error" />
         <Input placeholder="Disabled input" disabled />
         <Input placeholder="Readonly input" readOnly />
-        <LabelledInput label="Labelled input" />
+        <LabelledInput label="Labelled input" helpText="This is the help text under the input" />
+        <LabelledInput label="Error labelled input" error="This input is invalid!" />
         <Input placeholder="Large input" size="lg" />
         <Input placeholder="Small input" size="sm" />
         <LabelledRevealablePasswordInput label="Revealable password input" defaultValue="some_password" />
