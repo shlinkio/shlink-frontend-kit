@@ -5,6 +5,8 @@ exports[`<CardModal /> > renders expected size 1`] = `
   style="overflow: hidden;"
 >
   
+    
+  
   
 
 
@@ -70,6 +72,8 @@ exports[`<CardModal /> > renders expected size 2`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
   
   
 
@@ -137,6 +141,8 @@ exports[`<CardModal /> > renders expected size 3`] = `
   style="overflow: hidden;"
 >
   
+    
+  
   
 
 
@@ -203,6 +209,8 @@ exports[`<CardModal /> > renders expected size 4`] = `
   style="overflow: hidden;"
 >
   
+    
+  
   
 
 
@@ -268,6 +276,8 @@ exports[`<CardModal /> > renders expected variant 1`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
   
   
 
@@ -352,6 +362,8 @@ exports[`<CardModal /> > renders expected variant 2`] = `
   style="overflow: hidden;"
 >
   
+    
+  
   
 
 
@@ -434,6 +446,8 @@ exports[`<CardModal /> > renders expected variant 3`] = `
 <body
   style="overflow: hidden;"
 >
+  
+    
   
   
 

@@ -1,10 +1,12 @@
-import { forwardRef , useId } from 'react';
+import { forwardRef, useId } from 'react';
 import type { RequiredReactNode } from '../types';
+import type { FormControlWithFeedbackProps } from './FormControlWithFeedback';
+import { FormControlWithFeedback } from './FormControlWithFeedback';
 import { Label } from './Label';
 import type { SelectProps } from './Select';
 import { Select } from './Select';
 
-export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & {
+export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & FormControlWithFeedbackProps & {
   label: RequiredReactNode;
   selectClassName?: string;
 
@@ -13,14 +15,21 @@ export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & {
 };
 
 export const LabelledSelect = forwardRef<HTMLSelectElement, LabelledSelectProps>((
-  { selectClassName, label, required, hiddenRequired, ...rest },
+  { selectClassName, label, error, helpText, required, hiddenRequired, 'data-testid': testId, ...rest },
   ref,
 ) => {
   const id = useId();
   return (
-    <div className="tw:flex tw:flex-col tw:gap-1">
+    <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
       <Label htmlFor={id} required={required}>{label}</Label>
-      <Select ref={ref} id={id} className={selectClassName} required={required || hiddenRequired} {...rest} />
-    </div>
+      <Select
+        ref={ref}
+        id={id}
+        className={selectClassName}
+        required={required || hiddenRequired}
+        feedback={error ? 'error' : undefined}
+        {...rest}
+      />
+    </FormControlWithFeedback>
   );
 });
