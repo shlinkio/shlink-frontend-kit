@@ -16,12 +16,12 @@ export type LabelledRevealablePasswordInputProps =
   };
 
 export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, LabelledRevealablePasswordInputProps>((
-  { label, inputClassName, required, hiddenRequired, error, helpText, ...rest },
+  { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
   ref,
 ) => {
   const id = useId();
   return (
-    <FormControlWithFeedback error={error} helpText={helpText}>
+    <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
       <Label htmlFor={id} required={required}>{label}</Label>
       <RevealablePasswordInput
         ref={ref}
