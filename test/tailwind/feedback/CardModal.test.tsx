@@ -68,7 +68,7 @@ describe('<CardModal />', () => {
   ])('renders expected size', (size) => {
     const { container } = setUp({ size });
     // We need to match against the container's parent (the body) since dialogs are rendered there via portals
-    expect(container.parentNode).toMatchSnapshot();
+    expect(container.parentNode?.querySelector('dialog')).toMatchSnapshot();
   });
 
   it.each([
@@ -78,7 +78,7 @@ describe('<CardModal />', () => {
   ])('renders expected variant', (props) => {
     const { container } = setUp(props);
     // We need to match against the container's parent (the body) since dialogs are rendered there via portals
-    expect(container.parentNode).toMatchSnapshot();
+    expect(container.parentNode?.querySelector('dialog')).toMatchSnapshot();
   });
 
   it('defers closing the modal until the transition has finished', async () => {
