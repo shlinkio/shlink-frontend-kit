@@ -4,6 +4,8 @@ services:
         user: 1000:1000
         build:
             context: .
+        working_dir: /shlink-frontend-kit
+        command: /bin/sh -c "npm i && node --run dev"
         volumes:
             - ./:/shlink-frontend-kit
         ports:
