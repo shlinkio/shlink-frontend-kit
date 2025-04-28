@@ -12,6 +12,7 @@ import { SearchInputPage } from './form/SearchInputPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
+import { UtilsPage } from './utils/UtilsPage';
 
 export const TailwindComponents: FC = () => {
   return (
@@ -32,6 +33,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/feedback/dialogs" element={<ModalDialogPage />} />
       <Route path="/feedback/result" element={<ResultPage />} />
       <Route path="/feedback/message" element={<MessagePage />} />
+      <Route path="/utils" element={<UtilsPage />} />
       <Route path="*" element={<h2 className="text-center">Not found - Tailwind</h2>} />
     </Routes>
   );
