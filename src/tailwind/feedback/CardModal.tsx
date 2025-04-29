@@ -4,13 +4,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';
-import type { Size } from '../types';
+import type { RequiredReactNode, Size } from '../types';
 import type { ModalDialogProps } from './ModalDialog';
 import { ModalDialog } from './ModalDialog';
 
 type CommonCardModalProps = {
   /** Modal header title */
-  title: string;
+  title: RequiredReactNode;
 };
 
 type CoverCardModalProps = CommonCardModalProps & {
