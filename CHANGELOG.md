@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.9.1] - 2025-05-08
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Remove old SCSS-based theme, as everything is now defined in tailwind's preset.
+
+### Fixed
+* Fix `--brand-color` CSS var alias in dark mode.
+
+
 ## [0.9.0] - 2025-05-08
 ### Added
 * Add tailwind-based `CopyToClipboardButton` component.
