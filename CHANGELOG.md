@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.9.0] - 2025-05-08
 ### Added
 * Add tailwind-based `CopyToClipboardButton` component.
 * Allow `CardModal`'s `title` to be any `ReactNode` not just a `string`.
 
 ### Changed
-* *Nothing*
+* Define accessible brand colors for light and dark mode.
+
+  The one used for dark mode is the same previously used, but for light mode we use a slightly darker shade of blue that ensures proper color contrast.
+
+  As a consequence, the `--color-brand` and `--color-brand-dark` CSS variables have been removed, and specific ones have been defined for light and dark modes.
 
 ### Deprecated
 * *Nothing*

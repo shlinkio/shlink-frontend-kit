@@ -20,7 +20,7 @@ export const Result: FC<ResultProps> = ({ variant, className, size = 'md', child
         'tw:p-4': size === 'md',
         'tw:p-6': size === 'lg',
         'tw:[&]:text-white': variant !== 'warning',
-        'tw:bg-brand': variant === 'success',
+        'tw:bg-lm-brand tw:dark:bg-dm-brand': variant === 'success',
         'tw:bg-danger': variant === 'error',
         'tw:bg-warning tw:text-black': variant === 'warning',
       },

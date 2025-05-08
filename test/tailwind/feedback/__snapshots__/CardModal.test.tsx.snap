@@ -285,13 +285,13 @@ exports[`<CardModal /> > renders expected variant 1`] = `
         data-testid="footer"
       >
         <button
-          class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+          class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
           type="button"
         >
           Cancel
         </button>
         <button
-          class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-brand tw:text-brand tw:text-white tw:bg-brand tw:highlight:bg-brand-dark tw:highlight:border-brand-dark tw:highlight:bg-brand"
+          class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-white tw:bg-lm-brand tw:dark:bg-dm-brand tw:highlight:bg-lm-brand-dark tw:dark:highlight:bg-dm-brand-dark tw:highlight:border-lm-brand-dark tw:dark:highlight:border-dm-brand-dark tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand"
           type="button"
         >
           Confirm
@@ -359,7 +359,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
         data-testid="footer"
       >
         <button
-          class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+          class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
           type="button"
         >
           Cancel

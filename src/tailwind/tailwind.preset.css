@@ -6,9 +6,8 @@
 
 @theme static inline {
     /* Light mode */
-    /*--color-lm-main: #2078CF;*/ /*Properly accessible with white background*/
-    --color-lm-main: #4696e5; /* TODO Rename to "brand" */
-    --color-lm-main-dark: #1f69c0;
+    --color-lm-brand: #2078CF;
+    --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--tw-color-lm-brand) 80%);
     --color-lm-primary: #ffffff;
     --color-lm-primary-alfa: rgb(var(--tw-color-lm-primary) / .5);
     --color-lm-secondary: #f5f6fe;
@@ -16,7 +15,7 @@
     --color-lm-border: rgb(0 0 0 / .125);
     --color-lm-table-border: #dee2e6;
     --color-lm-active: #eeeeee;
-    --color-lm-brand: var(--tw-color-lm-main); /* TODO Rename to "main" */
+    --color-lm-main: var(--tw-color-lm-brand);
     --color-lm-input: var(--tw-color-lm-primary);
     --color-lm-disabled-input: var(--tw-color-lm-secondary);
     --color-lm-input-text: #495057;
@@ -24,8 +23,8 @@
     --color-lm-table-highlight: rgb(0 0 0 / .075);
 
     /* Dark mode */
-    --color-dm-main: #4696e5; /* TODO Rename to "brand" */
-    --color-dm-main-dark: #1f69c0;
+    --color-dm-brand: #4696e5;
+    --color-dm-brand-dark: color-mix(in srgb, black 25%, var(--tw-color-dm-brand) 75%);
     --color-dm-primary: #161b22;
     --color-dm-primary-alfa: rgb(var(--tw-color-dm-primary) / .8);
     --color-dm-secondary: #0f131a;
@@ -33,22 +32,18 @@
     --color-dm-border: rgb(255 255 255 / .15);
     --color-dm-table-border: #393d43;
     --color-dm-active: var(--tw-color-dm-secondary);
-    --color-dm-brand: #0b2d4e; /* TODO Rename to "main" */
+    --color-dm-main: #0b2d4e;
     --color-dm-input: rgb(17.9928571429 22.0821428571 27.8071428571);
     --color-dm-disabled-input: rgb(26.0071428571 31.9178571429 40.1928571429);
     --color-dm-input-text: var(--tw-color-dm-text);
     --color-dm-input-border: var(--tw-color-dm-border);
     --color-dm-table-highlight: var(--tw-color-dm-border);
 
-    /* TODO Remove these two colors */
-    --color-brand: #4696e5;
-    --color-brand-dark: #1f69c0;
-
     /* General color palette */
     --color-danger: #dc3545;
-    --color-danger-dark: #bb2d3b;
+    --color-danger-dark: color-mix(in srgb, black 20%, var(--tw-color-danger) 80%);
     --color-warning: #ffc107;
-    --color-warning-dark: #ffca2c;
+    --color-warning-dark: color-mix(in srgb, black 20%, var(--tw-color-warning) 80%);
     --color-placeholder: #6c757d;
 
     /* Override breakpoints with the values from bootstrap, to keep sizing until fully migrated */
@@ -59,6 +54,7 @@
     --breakpoint-2xl: 1400px;
 }
 
+/* Deprecated. TODO Remove with bootstrap support */
 @layer base {
     html:not([data-theme='dark']) {
         --primary-color: var(--tw-color-lm-primary);
@@ -67,7 +63,7 @@
         --text-color: var(--tw-color-lm-text);
         --border-color: var(--tw-color-lm-border);
         --active-color: var(--tw-color-lm-active);
-        --brand-color: var(--tw-color-lm-brand);
+        --brand-color: var(--tw-color-lm-main);
         --input-color: var(--tw-color-lm-input);
         --input-disabled-color: var(--tw-color-lm-disabled-input);
         --input-text-color: var(--tw-color-lm-input-text);
@@ -121,7 +117,10 @@
         color: var(--tw-color-brand);
         border-radius: var(--tw-radius-xs);
 
-        @apply tw:focus-visible:outline-3 tw:focus-visible:outline-brand/50 tw:focus-visible:outline-offset-3 tw:focus-visible:z-1;
+        @apply
+            tw:focus-visible:outline-3 tw:focus-visible:outline-offset-3
+            tw:focus-visible:outline-lm-brand/50 tw:dark:focus-visible:outline-dm-brand/50
+            tw:focus-visible:z-1;
     }
 
     h1 {
@@ -161,7 +160,7 @@
 }
 
 @utility focus-ring {
-    @apply tw:focus-ring-base tw:focus-visible:ring-brand/50;
+    @apply tw:focus-ring-base tw:focus-visible:ring-lm-brand/50 tw:dark:focus-visible:ring-dm-brand/50;
 }
 
 @utility focus-ring-danger {

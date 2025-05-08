@@ -28,6 +28,15 @@ export default defineConfig({
     },
   },
 
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Silence annoying sass deprecation warnings until we get rid of bootstrap
+        silenceDeprecations: ['mixed-decls', 'abs-percent', 'color-functions', 'global-builtin', 'import'],
+      },
+    },
+  },
+
   server: {
     watch: {
       // Do not watch test files or generated files, avoiding the dev server to constantly reload when not needed
@@ -46,7 +55,7 @@ export default defineConfig({
     },
     globals: true,
     allowOnly: true,
-    setupFiles: './test/setup.ts',
+    setupFiles: ['./test/setup.ts', './dev/tailwind/tailwind.css'],
     coverage: {
       provider: 'v8',
       reportsDirectory: './coverage',
