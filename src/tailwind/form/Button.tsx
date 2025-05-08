@@ -53,7 +53,8 @@ export const Button: FC<ButtonProps> = ({
           'tw:px-4 tw:py-2 tw:text-lg': size === 'lg',
         },
         {
-          'tw:border-brand tw:text-brand': variant === 'primary',
+          'tw:border-lm-brand tw:dark:border-dm-brand': variant === 'primary',
+          'tw:text-lm-brand tw:dark:text-dm-brand': variant === 'primary' && !solid,
           'tw:border-zinc-500': variant === 'secondary',
           'tw:text-zinc-500': variant === 'secondary' && !solid,
           'tw:border-danger': variant === 'danger',
@@ -61,8 +62,9 @@ export const Button: FC<ButtonProps> = ({
         },
         solid && {
           'tw:text-white': true,
-          'tw:bg-brand': variant === 'primary',
-          'tw:highlight:bg-brand-dark tw:highlight:border-brand-dark': variant === 'primary',
+          'tw:bg-lm-brand tw:dark:bg-dm-brand': variant === 'primary',
+          'tw:highlight:bg-lm-brand-dark tw:dark:highlight:bg-dm-brand-dark': variant === 'primary',
+          'tw:highlight:border-lm-brand-dark tw:dark:highlight:border-dm-brand-dark': variant === 'primary',
 
           'tw:bg-zinc-500': variant === 'secondary',
           'tw:highlight:bg-zinc-600 tw:highlight:border-zinc-600': variant === 'secondary',
@@ -72,7 +74,7 @@ export const Button: FC<ButtonProps> = ({
         },
         !disabled && {
           'tw:highlight:text-white': !solid,
-          'tw:highlight:bg-brand': variant === 'primary',
+          'tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand': variant === 'primary',
           'tw:highlight:bg-zinc-500': variant === 'secondary',
           'tw:highlight:bg-danger': variant === 'danger',
         },

@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import { SimpleCard } from '../../../src';
-import { Paginator } from '../../../src/tailwind';
+import { Paginator, SimpleCard } from '../../../src/tailwind';
 
 export const PaginatorPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(3);

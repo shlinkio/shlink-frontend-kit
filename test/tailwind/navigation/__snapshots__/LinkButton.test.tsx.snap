@@ -3,7 +3,7 @@
 exports[`<LinkButton /> > renders as expected based on provided props 1`] = `
 <div>
   <button
-    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
     type="button"
   />
 </div>
@@ -12,7 +12,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 1`] = `
 exports[`<LinkButton /> > renders as expected based on provided props 2`] = `
 <div>
   <button
-    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5 tw:pointer-events-none tw:opacity-65"
+    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5 tw:pointer-events-none tw:opacity-65"
     disabled=""
     type="button"
   />
@@ -22,7 +22,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 2`] = `
 exports[`<LinkButton /> > renders as expected based on provided props 3`] = `
 <div>
   <button
-    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-1.5 tw:py-1 tw:text-sm"
+    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-1.5 tw:py-1 tw:text-sm"
     type="button"
   />
 </div>
@@ -31,7 +31,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 3`] = `
 exports[`<LinkButton /> > renders as expected based on provided props 4`] = `
 <div>
   <button
-    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
+    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"
     type="button"
   />
 </div>
@@ -40,7 +40,7 @@ exports[`<LinkButton /> > renders as expected based on provided props 4`] = `
 exports[`<LinkButton /> > renders as expected based on provided props 5`] = `
 <div>
   <button
-    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-brand tw:highlight:text-brand-dark tw:highlight:underline tw:px-4 tw:py-2 tw:text-lg"
+    class="tw:inline-flex tw:rounded-md tw:focus-ring tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-4 tw:py-2 tw:text-lg"
     type="button"
   />
 </div>

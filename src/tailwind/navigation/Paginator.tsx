@@ -16,10 +16,12 @@ const buildPaginatorItemClasses = (active = false) => clsx(
   commonClasses,
   'tw:px-3 py-2 tw:cursor-pointer tw:no-underline',
   'tw:focus-ring tw:focus-visible:z-1',
-  {
-    'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary tw:text-brand': !active,
-    'tw:bg-lm-brand tw:dark:bg-dm-brand tw:text-white': active,
-  },
+  !active && [
+    'tw:text-lm-brand tw:dark:text-dm-brand',
+    'tw:bg-lm-primary tw:dark:bg-dm-primary',
+    'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary',
+  ],
+  active && 'tw:bg-lm-main tw:dark:bg-dm-main tw:text-white',
 );
 
 const DisabledPaginatorItem: FC<PropsWithChildren> = ({ children }) => (
