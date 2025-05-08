@@ -39,12 +39,6 @@
     --color-dm-input-border: var(--tw-color-dm-border);
     --color-dm-table-highlight: var(--tw-color-dm-border);
 
-    /* TODO Remove these two colors */
-    /* Deprecated */
-    --color-brand: #4696e5;
-    /* Deprecated */
-    --color-brand-dark: #1f69c0;
-
     /* General color palette */
     --color-danger: #dc3545;
     --color-danger-dark: color-mix(in srgb, black 20%, var(--tw-color-danger) 80%);
