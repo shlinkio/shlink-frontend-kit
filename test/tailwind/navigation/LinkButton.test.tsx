@@ -4,7 +4,11 @@ import { LinkButton } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
 
 describe('<LinkButton />', () => {
-  const setUp = (props: LinkButtonProps = {}) => render(<LinkButton {...props} />);
+  const setUp = (props: LinkButtonProps = {}) => render(
+    <div className="tw:bg-white">
+      <LinkButton {...props} />
+    </div>,
+  );
 
   it('passes a11y checks', () => checkAccessibility(setUp({ children: 'Press me' })));
 
@@ -15,8 +19,8 @@ describe('<LinkButton />', () => {
     { size: 'md' as const },
     { size: 'lg' as const },
   ])('renders as expected based on provided props', (props) => {
-    const { container } = setUp(props);
-    expect(container).toMatchSnapshot();
+    setUp(props);
+    expect(screen.getByRole('button')).toMatchSnapshot();
   });
 
   it.each([

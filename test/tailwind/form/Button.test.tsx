@@ -7,7 +7,9 @@ import { checkAccessibility } from '../../__helpers__/accessibility';
 describe('<Button />', () => {
   const setUp = (props: ButtonProps = {}) => render(
     <MemoryRouter>
-      <Button {...props} />
+      <div className="tw:bg-white">
+        <Button {...props} />
+      </div>
     </MemoryRouter>,
   );
 
