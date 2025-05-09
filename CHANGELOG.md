@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [0.9.3] - 2025-05-09
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Rollback change in links color, as it overrides too many other styles. Bootstrap color will have preference for now.
+
+
 ## [0.9.2] - 2025-05-09
 ### Added
 * *Nothing*

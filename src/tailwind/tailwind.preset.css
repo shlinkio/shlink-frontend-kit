@@ -113,10 +113,11 @@
 
     a {
         /*
-         * FIXME Set this style as plain CSS instead of @apply to avoid higher specificity.
+         * FIXME Set these styles as plain CSS instead of @apply to avoid higher specificity.
          *       This can be set via @apply as soon as we stop using important for tailwind classes, once bootstrap is
          *       removed
          */
+        color: var(--tw-color-lm-brand);
         border-radius: var(--tw-radius-xs);
 
         @apply
@@ -125,12 +126,8 @@
             tw:focus-visible:z-1;
     }
 
-    /*
-     * FIXME Workaround to avoid paginator items to be set with the wrong color.
-     *       Colors can be set above as soon as we stop using important for tailwind classes, once bootstrap is removed.
-     */
-    a:not(.tw\:text-white) {
-        @apply tw:text-lm-brand tw:dark:text-dm-brand
+    [data-theme="dark"] a {
+        color: var(--tw-color-dm-brand);
     }
 
     h1 {
