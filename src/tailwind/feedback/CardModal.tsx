@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { FC, ReactNode } from 'react';
+import type { FC, FormEvent, ReactNode } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
@@ -75,11 +75,13 @@ export const CardModal: FC<CardModalProps> = ({
   // Proxy the open/close modal state via an auxiliary variable, so that we can delay transitioning to `open=false`
   // after a CSS transition has ended.
   const [openProxy, setOpenProxy] = useState(open);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLFormElement>(null);
 
   // Track what was the exit action, so that we can call onConfirmed with the right value, once close transition ended
   const exitAction = useRef<ExitAction>('cancel');
-  const confirm = useCallback(() => {
+  const confirm = useCallback((e: FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     exitAction.current = 'confirm';
     onConfirm?.();
   }, [onConfirm]);
@@ -142,7 +144,7 @@ export const CardModal: FC<CardModalProps> = ({
       )}
       {...restDialogProps}
     >
-      <div
+      <form
         data-testid="transition-container"
         ref={ref}
         className={clsx(
@@ -161,6 +163,7 @@ export const CardModal: FC<CardModalProps> = ({
           },
           { 'tw:h-full': variant === 'cover' },
         )}
+        onSubmit={confirm}
       >
         <Card className={clsx(
           'tw:w-full',
@@ -204,7 +207,7 @@ export const CardModal: FC<CardModalProps> = ({
                     solid
                     variant={variant === 'danger' ? 'danger' : 'primary'}
                     disabled={confirmDisabled}
-                    onClick={confirm}
+                    type="submit"
                   >
                     {confirmText}
                   </Button>
@@ -213,7 +216,7 @@ export const CardModal: FC<CardModalProps> = ({
             </>
           )}
         </Card>
-      </div>
+      </form>
     </ModalDialog>
   );
 };
