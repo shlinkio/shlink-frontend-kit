@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Button, CardModal, ModalDialog } from '../../../src/tailwind';
+import { Button, CardModal, Input, ModalDialog } from '../../../src/tailwind';
 
 export const ModalDialogPage: FC = () => {
   const [plainDialogOpen, setPlainDialogOpen] = useState(false);
@@ -16,6 +16,8 @@ export const ModalDialogPage: FC = () => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [confirmDisabledOpen, setConfirmDisabledOpen] = useState(false);
   const [dangerConfirmOpen, setDangerConfirmOpen] = useState(false);
+
+  const [formOpen, setFormOpen] = useState(false);
 
   const [contentOpen, setContentOpen] = useState(false);
 
@@ -122,6 +124,28 @@ export const ModalDialogPage: FC = () => {
         onClosed={(exitAction) => console.log(`Closed danger dialog: ${exitAction}`)}
       >
         Danger dialog with confirm buttons
+      </CardModal>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Card modal with form</h2>
+        <div className="tw:flex tw:gap-x-2">
+          <Button onClick={() => setFormOpen(true)}>With form</Button>
+        </div>
+      </div>
+
+      <CardModal
+        size="md"
+        title="Dialog with form"
+        variant="danger"
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        onConfirm={() => setFormOpen(false)}
+        onClosed={(exitAction) => console.log(`Closed form dialog: ${exitAction}`)}
+      >
+        <div className="tw:flex tw:flex-col tw:gap-3">
+          <Input placeholder="Foo" name="foo" />
+          <Input placeholder="Bar" name="bar" />
+        </div>
       </CardModal>
 
       <div className="tw:flex tw:flex-col tw:gap-y-2">

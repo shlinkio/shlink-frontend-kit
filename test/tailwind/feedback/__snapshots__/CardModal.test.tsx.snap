@@ -5,7 +5,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:sm:w-sm"
     data-open=""
     data-testid="transition-container"
@@ -53,7 +53,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -62,7 +62,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:md:w-lg"
     data-open=""
     data-testid="transition-container"
@@ -110,7 +110,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -119,7 +119,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:md:w-4xl"
     data-open=""
     data-testid="transition-container"
@@ -167,7 +167,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -176,7 +176,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:md:w-6xl"
     data-open=""
     data-testid="transition-container"
@@ -224,7 +224,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -233,7 +233,7 @@ exports[`<CardModal /> > renders expected variant 1`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:md:w-lg"
     data-open=""
     data-testid="transition-container"
@@ -292,13 +292,13 @@ exports[`<CardModal /> > renders expected variant 1`] = `
         </button>
         <button
           class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-white tw:bg-lm-brand tw:dark:bg-dm-brand tw:highlight:bg-lm-brand-dark tw:dark:highlight:bg-dm-brand-dark tw:highlight:border-lm-brand-dark tw:dark:highlight:border-dm-brand-dark tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand"
-          type="button"
+          type="submit"
         >
           Confirm
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -307,7 +307,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:md:w-lg"
     data-open=""
     data-testid="transition-container"
@@ -366,13 +366,13 @@ exports[`<CardModal /> > renders expected variant 2`] = `
         </button>
         <button
           class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:border-danger tw:text-white tw:bg-danger tw:highlight:bg-danger-dark tw:highlight:border-danger-dark tw:highlight:bg-danger"
-          type="button"
+          type="submit"
         >
           Confirm
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
 
@@ -381,7 +381,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
   class="tw:bg-transparent tw:backdrop:bg-black/50 tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen tw:overflow-hidden"
   open=""
 >
-  <div
+  <form
     class="tw:w-full tw:m-auto tw:p-4 tw:sm:p-6 tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100 tw:transition-[opacity_,_translate] tw:duration-300 tw:h-full"
     data-open=""
     data-testid="transition-container"
@@ -425,6 +425,6 @@ exports[`<CardModal /> > renders expected variant 3`] = `
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </dialog>
 `;
