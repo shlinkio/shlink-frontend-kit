@@ -197,3 +197,45 @@
         @slot;
     }
 }
+
+/* For sticky-positioned cells with a background */
+@utility sticky-cell-base {
+    @apply tw:z-1 tw:relative tw:sticky;
+    @apply tw:before:absolute tw:before:bg-lm-table-border tw:dark:before:bg-dm-table-border tw:before:-z-2;
+    @apply tw:after:absolute tw:after:bg-lm-primary tw:dark:after:bg-dm-primary tw:after:-z-1;
+
+    &:before, &:after {
+        content: '';
+    }
+    &:first-child:after {
+        left: 0;
+    }
+}
+
+@utility sticky-cell {
+    @apply tw:sticky-cell-base;
+
+    &:before {
+        inset: -1px 0 -1px 0;
+    }
+    &:first-child:before {
+        left: 0;
+    }
+    &:after {
+        inset: 0 0 0 0;
+    }
+}
+
+@utility sticky-cell-separated {
+    @apply tw:sticky-cell-base;
+
+    &:before {
+        inset: -1px -1px -1px 0;
+    }
+    &:first-child:before {
+        left: -1px;
+    }
+    &:after {
+        inset: 0 0 0 1px;
+    }
+}
