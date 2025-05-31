@@ -46,6 +46,8 @@ describe('<Table />', () => {
         </Table.Row>
       ),
     },
+    { size: 'sm' as const },
+    { size: 'lg' as const },
   ])('renders as expected based on provided props', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();

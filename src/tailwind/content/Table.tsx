@@ -1,12 +1,13 @@
 import clsx from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
+import type { Size } from '../types';
 
 export type SectionType = 'head' | 'body' | 'footer';
 
 const TableSectionContext = createContext<{ section: SectionType } | undefined>(undefined);
 
-const TableContext = createContext<{ responsive: boolean }>({ responsive: true });
+const TableContext = createContext<{ responsive: boolean; size: Size }>({ responsive: true, size: 'md' });
 
 export type TableElementProps = PropsWithChildren & {
   className?: string;
@@ -106,17 +107,22 @@ export type CellProps = HTMLProps<HTMLTableCellElement> & {
 const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest }) => {
   const sectionContext = useContext(TableSectionContext);
   const Tag = type ?? (sectionContext?.section !== 'body' ? 'th' : 'td');
-  const { responsive } = useContext(TableContext);
+  const { responsive, size } = useContext(TableContext);
 
   return (
     <Tag
       data-column={responsive ? columnName : undefined}
       className={clsx(
-        'tw:p-2 tw:border-lm-border tw:dark:border-dm-border',
+        'tw:border-lm-border tw:dark:border-dm-border',
         {
+          'tw:p-1': size === 'sm',
+          'tw:p-2': size === 'md',
+          'tw:p-3': size === 'lg',
+
           'tw:border-b-1': !responsive,
           'tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1': responsive,
-          // For md and lower, display the content in data-column attribute as before
+
+          // For responsive tables, display the content in data-column attribute for md sizes and lower
           'tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1': responsive && Tag === 'td',
         },
         className,
@@ -128,7 +134,7 @@ const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest })
   );
 };
 
-export type TableProps = HTMLProps<HTMLTableElement> & {
+export type TableProps = Omit<HTMLProps<HTMLTableElement>, 'size'> & {
   header: ReactNode;
   footer?: ReactNode;
 
@@ -138,20 +144,13 @@ export type TableProps = HTMLProps<HTMLTableElement> & {
    */
   responsive?: boolean;
 
-  /**
-   * @todo
-   * `default`: Only horizontal borders are rendered. No background color on any row
-   * `stripped`: Every other row has a different background color
-   * `grid`: Both horizontal and vertical borders are rendered. No background color on any row
-   */
-  // variant?: 'default' | 'stripped' | 'grid';
-
-  // size?: Size;
+  /** Determines the padding in every cell. Defaults to md */
+  size?: Size;
 };
 
-const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, ...rest }) => {
+const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, size = 'md', ...rest }) => {
   return (
-    <TableContext.Provider value={{ responsive }}>
+    <TableContext.Provider value={{ responsive, size }}>
       <table className="tw:w-full" {...rest}>
         <TableHead>
           {header}
