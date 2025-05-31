@@ -173,7 +173,7 @@ export const CardModal: FC<CardModalProps> = ({
             <>
               <div
                 className={clsx(
-                  'tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0',
+                  'tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:z-3000',
                   'tw:flex tw:items-center tw:justify-between',
                   'tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10',
                   'tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]',
@@ -182,7 +182,7 @@ export const CardModal: FC<CardModalProps> = ({
                 <h5>{title}</h5>
                 <CloseButton onClick={onClose} label="Close dialog" />
               </div>
-              <div>{children}</div>
+              {children}
             </>
           ) : (
             <>

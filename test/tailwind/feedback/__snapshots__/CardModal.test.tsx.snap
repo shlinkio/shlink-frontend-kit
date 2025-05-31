@@ -390,7 +390,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
       class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:w-full tw:h-full tw:relative tw:overflow-auto"
     >
       <div
-        class="tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:flex tw:items-center tw:justify-between tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10 tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]"
+        class="tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:z-3000 tw:flex tw:items-center tw:justify-between tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10 tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]"
       >
         <h5>
           The title
@@ -417,12 +417,10 @@ exports[`<CardModal /> > renders expected variant 3`] = `
           </svg>
         </button>
       </div>
-      <div>
-        <div
-          data-testid="content"
-        >
-          This is the content
-        </div>
+      <div
+        data-testid="content"
+      >
+        This is the content
       </div>
     </div>
   </form>
