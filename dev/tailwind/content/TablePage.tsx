@@ -96,6 +96,7 @@ export const TablePage: FC = () => {
           ))}
         </Table>
       </div>
+
       <div className="tw:flex tw:flex-col tw:gap-y-2">
         <h2>Non-responsive table inside Card</h2>
         <SimpleCard>
@@ -133,6 +134,7 @@ export const TablePage: FC = () => {
           </Table>
         </SimpleCard>
       </div>
+
       <div className="tw:flex tw:flex-col tw:gap-y-2">
         <h2>Table with footer</h2>
         <Table
@@ -150,6 +152,64 @@ export const TablePage: FC = () => {
           }
         >
           {users.map((u) => (
+            <Table.Row key={u.id}>
+              <Table.Cell columnName="Name:">{u.name}</Table.Cell>
+              <Table.Cell columnName="Surname:">{u.surname}</Table.Cell>
+              <Table.Cell columnName="Role:">{u.role}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+      </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Table sizes</h2>
+        <Table
+          size="sm"
+          header={
+            <Table.Row>
+              <Table.Cell>Small</Table.Cell>
+              <Table.Cell>Small</Table.Cell>
+              <Table.Cell>Small</Table.Cell>
+            </Table.Row>
+          }
+        >
+          {users.slice(0, 2).map((u) => (
+            <Table.Row key={u.id}>
+              <Table.Cell columnName="Name:">{u.name}</Table.Cell>
+              <Table.Cell columnName="Surname:">{u.surname}</Table.Cell>
+              <Table.Cell columnName="Role:">{u.role}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+        <Table
+          size="md"
+          header={
+            <Table.Row>
+              <Table.Cell>Medium</Table.Cell>
+              <Table.Cell>Medium</Table.Cell>
+              <Table.Cell>Medium</Table.Cell>
+            </Table.Row>
+          }
+        >
+          {users.slice(0, 2).map((u) => (
+            <Table.Row key={u.id}>
+              <Table.Cell columnName="Name:">{u.name}</Table.Cell>
+              <Table.Cell columnName="Surname:">{u.surname}</Table.Cell>
+              <Table.Cell columnName="Role:">{u.role}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+        <Table
+          size="lg"
+          header={
+            <Table.Row>
+              <Table.Cell>Large</Table.Cell>
+              <Table.Cell>Large</Table.Cell>
+              <Table.Cell>Large</Table.Cell>
+            </Table.Row>
+          }
+        >
+          {users.slice(0, 2).map((u) => (
             <Table.Row key={u.id}>
               <Table.Cell columnName="Name:">{u.name}</Table.Cell>
               <Table.Cell columnName="Surname:">{u.surname}</Table.Cell>
