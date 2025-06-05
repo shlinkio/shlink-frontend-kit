@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react';
-import { arrow, autoPlacement, offset, useFloating, useHover, useInteractions } from '@floating-ui/react';
+import { arrow, autoPlacement, offset, useFloating, useHover, useInteractions,useTransitionStyles  } from '@floating-ui/react';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren, RefObject } from 'react';
 import { useMemo, useRef, useState } from 'react';
@@ -40,6 +40,7 @@ export const Tooltip: FC<TooltipProps> = ({ placement = 'auto', anchor, children
     delay: { open: 300 },
   });
   const { getFloatingProps } = useInteractions([hover]);
+  const { isMounted, styles } = useTransitionStyles(context, { duration: 200 });
 
   const arrowSide = useMemo(() => {
     const side = context.placement.split('-')[0];
@@ -51,12 +52,12 @@ export const Tooltip: FC<TooltipProps> = ({ placement = 'auto', anchor, children
     }[side] ?? '';
   }, [context.placement]);
 
-  return open && (
+  return isMounted && (
     <div
       role="tooltip"
       className="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
       ref={refs.setFloating}
-      style={floatingStyles}
+      style={{ ...floatingStyles, ...styles }}
       {...getFloatingProps()}
     >
       {children}
