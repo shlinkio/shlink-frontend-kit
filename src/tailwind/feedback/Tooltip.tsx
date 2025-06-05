@@ -106,6 +106,7 @@ export const Tooltip: FC<TooltipProps> = (
         top: arrowPos?.y,
         [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
       }}
+      data-testid="arrow"
     />
   </div>
 );

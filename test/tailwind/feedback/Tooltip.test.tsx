@@ -42,12 +42,12 @@ describe('<Tooltip />', () => {
     'bottom' as const,
     'left' as const,
     'right' as const,
-  ])('renders tooltip in the proper location based on placement option', async (placement) => {
+  ])('renders arrow in the proper location based on placement option', async (placement) => {
     const { user } = setUp({ placement });
 
     await user.hover(screen.getByTestId('anchor'));
     await screen.findByRole('tooltip');
 
-    expect(screen.getByRole('tooltip')).toMatchSnapshot();
+    expect(screen.getByTestId('arrow').className).toMatchSnapshot();
   });
 });
