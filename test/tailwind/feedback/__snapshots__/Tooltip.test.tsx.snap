@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Tooltip /> > renders tooltip in the proper location based on placement option 1`] = `
+<div
+  class="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
+  data-floating-ui-focusable=""
+  role="tooltip"
+  style="position: absolute; left: 0px; top: 0px; transform: translate(181px, -38px); transition-property: opacity; transition-duration: 200ms;"
+  tabindex="-1"
+>
+  Hello!
+  <div
+    class="tw:absolute tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90 tw:rotate-180"
+    style="bottom: -6px; left: 20px;"
+  />
+</div>
+`;
+
+exports[`<Tooltip /> > renders tooltip in the proper location based on placement option 2`] = `
+<div
+  class="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
+  data-floating-ui-focusable=""
+  role="tooltip"
+  style="position: absolute; left: 0px; top: 0px; transform: translate(181px, 34px); transition-property: opacity; transition-duration: 200ms;"
+  tabindex="-1"
+>
+  Hello!
+  <div
+    class="tw:absolute tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90"
+    style="top: -6px; left: 20px;"
+  />
+</div>
+`;
+
+exports[`<Tooltip /> > renders tooltip in the proper location based on placement option 3`] = `
+<div
+  class="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
+  data-floating-ui-focusable=""
+  role="tooltip"
+  style="position: absolute; left: 0px; top: 0px; transform: translate(-62px, -2px); transition-property: opacity; transition-duration: 200ms;"
+  tabindex="-1"
+>
+  Hello!
+  <div
+    class="tw:absolute tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90 tw:rotate-90 tw:mr-[-3px]"
+    style="right: -6px; top: 11px;"
+  />
+</div>
+`;
+
+exports[`<Tooltip /> > renders tooltip in the proper location based on placement option 4`] = `
+<div
+  class="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
+  data-floating-ui-focusable=""
+  role="tooltip"
+  style="position: absolute; left: 0px; top: 0px; transform: translate(424px, -2px); transition-property: opacity; transition-duration: 200ms;"
+  tabindex="-1"
+>
+  Hello!
+  <div
+    class="tw:absolute tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90 tw:rotate-270 tw:ml-[-3px]"
+    style="left: -6px; top: 11px;"
+  />
+</div>
+`;
