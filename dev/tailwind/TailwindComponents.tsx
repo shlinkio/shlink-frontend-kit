@@ -5,6 +5,7 @@ import { TablePage } from './content/TablePage';
 import { MessagePage } from './feedback/MessagePage';
 import { ModalDialogPage } from './feedback/ModalDialogPage';
 import { ResultPage } from './feedback/ResultPage';
+import { TooltipPage } from './feedback/TooltipPage';
 import { ButtonsPage } from './form/ButtonsPage';
 import { InputsPage } from './form/InputsPage';
 import { SearchComboboxPage } from './form/SearchComboboxPage';
@@ -33,6 +34,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/feedback/dialogs" element={<ModalDialogPage />} />
       <Route path="/feedback/result" element={<ResultPage />} />
       <Route path="/feedback/message" element={<MessagePage />} />
+      <Route path="/feedback/tooltip" element={<TooltipPage />} />
       <Route path="/utils" element={<UtilsPage />} />
       <Route path="*" element={<h2 className="text-center">Not found - Tailwind</h2>} />
     </Routes>
