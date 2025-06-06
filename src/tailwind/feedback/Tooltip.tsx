@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/react';
-import { arrow, autoPlacement, offset, useFloating, useHover, useInteractions,useTransitionStyles  } from '@floating-ui/react';
+import { arrow, autoPlacement, useFloating, useHover, useInteractions, useTransitionStyles } from '@floating-ui/react';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { useMemo, useRef, useState } from 'react';
@@ -14,7 +14,7 @@ export type UseTooltipOptions = {
 export const useTooltip = ({ placement = 'auto' }: UseTooltipOptions = {}) => {
   const arrowRef = useRef<HTMLDivElement>(null);
   const middleware = (() => {
-    const list = [offset(10)];
+    const list = [];
     if (placement === 'auto') {
       list.push(autoPlacement());
     }
@@ -82,31 +82,45 @@ export const Tooltip: FC<TooltipProps> = (
 ) => isMounted && (
   <div
     role="tooltip"
-    className="tw:bg-black/90 tw:text-white tw:text-center tw:px-1.5 tw:py-0.5 tw:rounded"
+    aria-live="polite"
+    className={clsx(
+      'tw:z-1000 tw:max-w-64',
+      // Add space between anchor and tooltip via padding, so that if the tooltip is inside the anchor, you can hover it
+      // and it's never closed
+      {
+        'tw:pt-2.5': arrowSide === 'top',
+        'tw:pb-2.5': arrowSide === 'bottom',
+        'tw:pr-2.5': arrowSide === 'right',
+        'tw:pl-2.5': arrowSide === 'left',
+      },
+    )}
     ref={refSetter}
     style={styles}
     {...rest}
   >
-    {children}
-    <div
-      ref={arrowRef}
-      className={clsx(
-        'tw:absolute',
-        // Render as a triangle
-        'tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90',
-        // Rotate triangle so that it points to the correct direction
-        {
-          'tw:rotate-180': arrowSide === 'bottom',
-          'tw:rotate-90 tw:mr-[-3px]': arrowSide === 'right',
-          'tw:rotate-270 tw:ml-[-3px]': arrowSide === 'left',
-        },
-      )}
-      style={{
-        left: arrowPos?.x,
-        top: arrowPos?.y,
-        [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
-      }}
-      data-testid="arrow"
-    />
+    <div className="tw:relative tw:px-1.5 tw:py-1 tw:rounded tw:bg-black/90 tw:text-white tw:text-center">
+      <span className="tw:sr-only">Tooltip: </span>
+      {children}
+      <div
+        ref={arrowRef}
+        className={clsx(
+          'tw:absolute',
+          // Render as a triangle
+          'tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90',
+          // Rotate triangle so that it points to the correct direction
+          {
+            'tw:rotate-180': arrowSide === 'bottom',
+            'tw:rotate-90 tw:mr-[-3px]': arrowSide === 'right',
+            'tw:rotate-270 tw:ml-[-3px]': arrowSide === 'left',
+          },
+        )}
+        style={{
+          left: arrowPos?.x,
+          top: arrowPos?.y,
+          [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
+        }}
+        data-testid="arrow"
+      />
+    </div>
   </div>
 );
