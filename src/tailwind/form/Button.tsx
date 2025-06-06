@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import type { FC, HTMLProps, PropsWithChildren } from 'react';
+import type { HTMLProps, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
 import type { Size } from '../types';
@@ -17,7 +18,7 @@ export type ButtonProps = PropsWithChildren<{
   solid?: boolean;
 } & (RegularButtonProps | LinkButtonProps)>;
 
-export const Button: FC<ButtonProps> = ({
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(({
   children,
   className,
   disabled,
@@ -27,13 +28,14 @@ export const Button: FC<ButtonProps> = ({
   solid = false,
   type: providedType = 'button',
   ...rest
-}) => {
+}, ref) => {
   const Tag = 'to' in rest ? Link : 'button';
   const type = Tag === Link ? undefined : providedType;
 
   return (
-    // @ts-expect-error We are explicitly checking for the `to` prop before using Link
     <Tag
+      // @ts-expect-error The dual nature of this component makes properly typing the ref a bit complex
+      ref={ref}
       className={clsx(
         {
           'tw:inline-flex': inline,
@@ -90,4 +92,4 @@ export const Button: FC<ButtonProps> = ({
       {children}
     </Tag>
   );
-};
+});
