@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import type { FC, HTMLProps } from 'react';
+import type { HTMLProps } from 'react';
+import { forwardRef } from 'react';
 import type { Size } from '../types';
 
 export type LinkButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'> & {
@@ -7,7 +8,10 @@ export type LinkButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'
   type?: HTMLButtonElement['type'];
 };
 
-export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'md', type = 'button', ...rest }) => (
+export const LinkButton = forwardRef<HTMLButtonElement, LinkButtonProps>((
+  { className, disabled, size = 'md', type = 'button', ...rest },
+  ref,
+) => (
   <button
     className={clsx(
       'tw:inline-flex tw:rounded-md tw:focus-ring',
@@ -24,5 +28,6 @@ export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'm
     disabled={disabled}
     type={type}
     {...rest}
+    ref={ref}
   />
-);
+));
