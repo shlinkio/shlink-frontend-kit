@@ -46,8 +46,9 @@ describe('<Tooltip />', () => {
     const { user } = setUp({ placement });
 
     await user.hover(screen.getByTestId('anchor'));
-    await screen.findByRole('tooltip');
+    const tooltip = await screen.findByRole('tooltip');
+    const arrow = screen.getByTestId('arrow');
 
-    expect(screen.getByTestId('arrow').className).toMatchSnapshot();
+    expect(`${tooltip.className}_${arrow.className}`).toMatchSnapshot();
   });
 });
