@@ -19,7 +19,6 @@ export type ButtonProps = PropsWithChildren<{
 } & (RegularButtonProps | LinkButtonProps)>;
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(({
-  children,
   className,
   disabled,
   variant = 'primary',
@@ -88,8 +87,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       disabled={disabled}
       type={type}
       {...rest}
-    >
-      {children}
-    </Tag>
+    />
   );
 });
