@@ -19,6 +19,9 @@ export const MenuPage: FC = () => {
           <Menu.Separator />
           <Menu.Title>More numbers:</Menu.Title>
           <Menu.Item selected={selectedMenu === 3} onClick={() => toggleMenu(3)}>Three</Menu.Item>
+          <Menu.Item selected={selectedMenu === 4} onClick={() => toggleMenu(4)} disabled={true}>
+            Four (disabled)
+          </Menu.Item>
         </Menu>
       </div>
     </div>
