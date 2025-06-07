@@ -14,6 +14,7 @@ type NavPillItemProps = PropsWithChildren<{
   replace?: boolean;
 }>;
 
+/** @deprecated */
 export const NavPillItem: FC<NavPillItemProps> = ({ children, ...rest }) => (
   <NavItem>
     <NavLink className="nav-pills__nav-link" tag={RouterNavLink} {...rest}>
@@ -22,6 +23,7 @@ export const NavPillItem: FC<NavPillItemProps> = ({ children, ...rest }) => (
   </NavItem>
 );
 
+/** @deprecated */
 export const NavPills: FC<NavPillsProps> = ({ children, fill = false, className = '' }) => (
   <Card className={`nav-pills__nav p-0 overflow-hidden ${className}`} body>
     <Nav pills fill={fill}>
