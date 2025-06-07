@@ -19,7 +19,6 @@ export type ButtonProps = PropsWithChildren<{
 } & (RegularButtonProps | LinkButtonProps)>;
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(({
-  children,
   className,
   disabled,
   variant = 'primary',
@@ -29,8 +28,9 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   type: providedType = 'button',
   ...rest
 }, ref) => {
-  const Tag = 'to' in rest ? Link : 'button';
-  const type = Tag === Link ? undefined : providedType;
+  const isLink = 'to' in rest;
+  const Tag = isLink ? Link : 'button';
+  const type = isLink ? undefined : providedType;
 
   return (
     <Tag
@@ -85,11 +85,10 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         },
         className,
       )}
-      disabled={disabled}
+      disabled={!isLink ? disabled : undefined}
+      aria-disabled={isLink ? disabled : undefined}
       type={type}
       {...rest}
-    >
-      {children}
-    </Tag>
+    />
   );
 });

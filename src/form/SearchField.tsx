@@ -22,6 +22,7 @@ type SearchFieldProps = {
   setTimeout_?: typeof setTimeout,
 };
 
+/** @deprecated */
 export const SearchField = (
   { onChange, className, large = true, noBorder = false, initialValue = '', setTimeout_ = setTimeout }: SearchFieldProps,
 ) => {

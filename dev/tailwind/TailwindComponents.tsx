@@ -10,6 +10,7 @@ import { ButtonsPage } from './form/ButtonsPage';
 import { InputsPage } from './form/InputsPage';
 import { SearchComboboxPage } from './form/SearchComboboxPage';
 import { SearchInputPage } from './form/SearchInputPage';
+import { MenuPage } from './navigation/MenuPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
@@ -31,6 +32,7 @@ export const TailwindComponents: FC = () => {
         <Route path="" element={<NavPillsPage />} />
         <Route path="*" element={<NavPillsPage />} />
       </Route>
+      <Route path="/navigation/menu" element={<MenuPage />} />
       <Route path="/feedback/dialogs" element={<ModalDialogPage />} />
       <Route path="/feedback/result" element={<ResultPage />} />
       <Route path="/feedback/message" element={<MessagePage />} />

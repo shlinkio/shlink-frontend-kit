@@ -13,6 +13,7 @@ type BooleanControlWithTypeProps = BooleanControlProps & {
   type: 'switch' | 'checkbox';
 };
 
+/** @deprecated */
 export const BooleanControl: FC<BooleanControlWithTypeProps> = (
   { checked = false, onChange, className, children, type, inline = false },
 ) => {
