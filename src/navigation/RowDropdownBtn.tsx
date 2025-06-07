@@ -10,6 +10,7 @@ export type DropdownBtnMenuProps = PropsWithChildren<{
   label?: string;
 }>;
 
+/** @deprecated */
 export const RowDropdownBtn: FC<DropdownBtnMenuProps> = ({ children, minWidth, label = 'Options' }) => (
   <DropdownBtn
     text={<FontAwesomeIcon className="px-1" icon={menuIcon} />}

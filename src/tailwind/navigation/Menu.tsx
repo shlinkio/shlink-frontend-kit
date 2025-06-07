@@ -1,8 +1,9 @@
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
+import { useArrowKeyNavigation } from '../../hooks';
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 
@@ -67,49 +68,9 @@ export type MenuProps = Omit<CardProps, 'role'>;
 const BaseMenu: FC<MenuProps> = ({ children, className, ...rest }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Set-up arrow key navigation for children that can be focused
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) {
-      return () => {};
-    }
-
-    const controller = new AbortController();
-    const getFocusableElements = () => [...card.querySelectorAll(
-      'a:not([aria-disabled]),button:not([disabled]),input:not([disabled]),select:not([disabled])',
-    )] as HTMLElement[];
-
-    // Do not allow focusable elements inside the menu to be focused via Tab key, except the first one or the first
-    // selected one
-    const elements = getFocusableElements();
-    const selectedElement = Math.max(elements.findIndex((el) => el.dataset.selected === 'true'), 0);
-    elements.forEach((el, index) => {
-      el.tabIndex = index === selectedElement ? 0 : -1;
-    });
-
-    card.addEventListener('keydown', (e) => {
-      if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-        return;
-      }
-
-      const elements = getFocusableElements();
-      const currentlyFocused = elements.findIndex((el) => el.tabIndex === 0);
-
-      // Find the new element to be focused, based on the pressed key and the previously focused element
-      const newElementToFocus = ['ArrowDown', 'ArrowRight'].includes(e.key)
-        ? (elements[currentlyFocused + 1] ?? elements[0])
-        : (elements[currentlyFocused - 1] ?? elements[elements.length - 1]);
-
-      // "Un-focus" all elements, then focus the new one
-      elements.forEach((el) => {
-        el.tabIndex = -1;
-      });
-      newElementToFocus.tabIndex = 0;
-      newElementToFocus.focus();
-    }, { signal: controller.signal });
-
-    return () => controller.abort();
-  }, []);
+  useArrowKeyNavigation(cardRef, {
+    elementsSelector: 'a:not([aria-disabled]),button:not([disabled]),input:not([disabled]),select:not([disabled])',
+  });
 
   return (
     <Card ref={cardRef} role="menu" className={clsx('tw:py-2', className)} {...rest}>

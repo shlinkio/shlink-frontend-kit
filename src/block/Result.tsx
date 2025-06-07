@@ -10,6 +10,7 @@ export type ResultProps = PropsWithChildren<{
   small?: boolean;
 }>;
 
+/** @deprecated */
 export const Result: FC<ResultProps> = ({ children, type, className, small = false }) => (
   <SimpleCard
     role="document"

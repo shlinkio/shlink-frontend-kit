@@ -7,6 +7,7 @@ export type SimpleCardProps = Omit<CardProps, 'title'> & {
   bodyClassName?: string;
 };
 
+/** @deprecated */
 export const SimpleCard = ({ title, children, bodyClassName, ...rest }: SimpleCardProps) => (
   <Card {...rest}>
     {title && <CardHeader role="heading" aria-level={4}>{title}</CardHeader>}
