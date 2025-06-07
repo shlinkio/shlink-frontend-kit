@@ -77,6 +77,7 @@ export const ButtonsPage: FC = () => {
           <CloseButton />
           <Button type="submit">Submit</Button>
           <Button to="">Button with link</Button>
+          <Button to="" disabled>Disabled button with link</Button>
         </div>
       </div>
 
