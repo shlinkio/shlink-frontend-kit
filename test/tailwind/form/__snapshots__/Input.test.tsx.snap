@@ -68,7 +68,7 @@ exports[`<Input /> > renders as expected based on provided props 8`] = `
 exports[`<Input /> > renders as expected based on provided props 9`] = `
 <div>
   <input
-    class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input"
+    class="tw:w-full tw:focus-ring tw:px-3 tw:py-1.5 tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
     readonly=""
   />
 </div>

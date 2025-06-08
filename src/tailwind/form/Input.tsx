@@ -19,10 +19,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
   feedback,
   className,
   disabled,
-  readOnly,
   ...rest
 }, ref) => {
-  const isEditable = !disabled && !readOnly;
   return (
     <input
       ref={ref}
@@ -43,15 +41,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           'tw:border-lm-input-border tw:dark:border-dm-input-border': !borderless && !feedback,
           'tw:border-danger': !borderless && feedback === 'error',
 
-          'tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input': !isEditable,
-          'tw:bg-lm-primary tw:dark:bg-dm-primary': isEditable,
+          'tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input': disabled,
+          'tw:bg-lm-primary tw:dark:bg-dm-primary': !disabled,
           // Use different background color when rendered inside a card
-          'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': isEditable,
+          'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': !disabled,
         },
         className,
       )}
       disabled={disabled}
-      readOnly={readOnly}
       {...rest}
     />
   );

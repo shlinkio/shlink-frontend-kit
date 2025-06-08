@@ -12,6 +12,7 @@ export type InputFormGroupProps = PropsWithChildren<{
   labelClassName?: string;
 }>;
 
+/** @deprecated */
 export const InputFormGroup: FC<InputFormGroupProps> = (
   { children, value, onChange, type, required, placeholder, className, labelClassName },
 ) => {

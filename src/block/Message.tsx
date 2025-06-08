@@ -13,6 +13,7 @@ export type MessageProps = PropsWithChildren<{
   type?: MessageType;
 }>;
 
+/** @deprecated */
 export const Message: FC<MessageProps> = (
   { className, children, loading = false, type = 'default', fullWidth = false },
 ) => (

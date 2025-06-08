@@ -10,7 +10,7 @@
     --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--tw-color-lm-brand) 80%);
     --color-lm-primary: #ffffff;
     --color-lm-primary-alfa: rgb(var(--tw-color-lm-primary) / .5);
-    --color-lm-secondary: #f5f6fe;
+    --color-lm-secondary: #eeeff8;
     --color-lm-text: #232323;
     --color-lm-border: rgb(0 0 0 / .125);
     --color-lm-table-border: #dee2e6;
@@ -150,7 +150,7 @@
     }
 
     hr {
-        @apply tw:my-3
+        @apply tw:my-2
     }
 
     p {
