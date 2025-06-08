@@ -45,7 +45,7 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
 
 const Separator: FC = () => (
   // TODO Use an <hr /> tag once tailwind styles are not set with !important
-  <div role="separator" className="tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:my-2" />
+  <div role="separator" aria-hidden className="tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:my-2" />
 );
 
 const Title: FC<PropsWithChildren> = ({ children }) => (
@@ -53,6 +53,7 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
     // TODO Use an <h6 /> tag once tailwind styles are not set with !important
     role="heading"
     aria-level={6}
+    aria-hidden
     className={clsx(
       'tw:flex tw:items-center tw:w-full tw:px-3 tw:py-1.5',
       'tw:text-gray-500 tw:text-sm tw:font-semibold',
