@@ -7,13 +7,17 @@ import { useArrowKeyNavigation } from '../../hooks';
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 
-export type MenuItemProps = {
+type ButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'role' | 'disabled' | 'aria-disabled' | 'tabIndex'>;
+type AnchorProps = Omit<LinkProps, 'role' | 'aria-disabled' | 'tabIndex'>;
+
+export type MenuItemProps = (ButtonProps | AnchorProps) & {
   selected?: boolean;
   disabled?: boolean;
-} & Omit<HTMLProps<HTMLButtonElement> | LinkProps, 'role'>;
+};
 
 const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => {
-  const Tag = 'to' in rest ? Link : 'button';
+  const isLink = 'to' in rest;
+  const Tag = isLink ? Link : 'button';
 
   return (
     // @ts-expect-error The Tag is inferred from provided props, so they should always match
@@ -22,6 +26,8 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
       data-selected={selected}
       className={clsx(
         'tw:flex tw:items-center tw:w-full tw:px-3 tw:py-1.5 tw:focus-ring',
+        // Overwrite link styles in case a Link is being used
+        'tw:no-underline tw:text-inherit',
         {
           'tw:pointer-events-none tw:opacity-50': disabled,
           'tw:bg-lm-secondary tw:dark:bg-dm-secondary': selected && !disabled,
@@ -30,8 +36,8 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
         className,
       )}
       tabIndex={-1}
-      disabled={disabled}
-      aria-disabled={disabled}
+      disabled={!isLink ? disabled : undefined}
+      aria-disabled={isLink ? disabled : undefined}
       {...rest}
     />
   );
@@ -63,14 +69,23 @@ const Misc: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <div className={clsx('tw:px-3 tw:py-1.5', className)} {...rest} />
 );
 
-export type MenuProps = Omit<CardProps, 'role'>;
+export type MenuProps = Omit<CardProps, 'role'> & {
+  /**
+   * Selector to determine elements that should be part of the focus sequence.
+   * Defaults to '[role="menuitem"]:not([disabled]):not([aria-disabled])'
+   */
+  focusableElementsSelector?: string;
+};
 
-const BaseMenu: FC<MenuProps> = ({ children, className, ...rest }) => {
+const BaseMenu: FC<MenuProps> = ({
+  children,
+  className,
+  focusableElementsSelector = '[role="menuitem"]:not([disabled]):not([aria-disabled])',
+  ...rest
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useArrowKeyNavigation(cardRef, {
-    elementsSelector: 'a:not([aria-disabled]),button:not([disabled]),input:not([disabled]),select:not([disabled])',
-  });
+  useArrowKeyNavigation(cardRef, { elementsSelector: focusableElementsSelector });
 
   return (
     <Card ref={cardRef} role="menu" className={clsx('tw:py-2', className)} {...rest}>

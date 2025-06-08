@@ -22,6 +22,17 @@ export const MenuPage: FC = () => {
           <Menu.Item selected={selectedMenu === 4} onClick={() => toggleMenu(4)} disabled={true}>
             Four (disabled)
           </Menu.Item>
+        </Menu>
+      </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Menu with links and misc items</h2>
+        <Menu
+          focusableElementsSelector={'[role="menuitem"]:not([disabled]):not([aria-disabled]),input:not([disabled])'}
+        >
+          <Menu.Item to="">One</Menu.Item>
+          <Menu.Item to="" disabled>Two (disabled)</Menu.Item>
+          <Menu.Item to="">Three</Menu.Item>
           <Menu.Separator />
           <Menu.Misc className="tw:flex tw:gap-3">
             <div className="tw:w-1/2">
