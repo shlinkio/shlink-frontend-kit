@@ -10,6 +10,12 @@ export type ArrowKeyNavigationOptions = {
   horizontal?: boolean;
 };
 
+/**
+ * Allows focus navigation via arrow keys on the elements of a container.
+ *
+ * Initially, the first element with [data-selected=true] or the first globally, matching `elementsSelector`, will be
+ * focusable via Tab, then arrow keys need to be used to move through the sequence.
+ */
 export function useArrowKeyNavigation(
   containerRef: RefObject<HTMLElement | null>,
   { elementsSelector, vertical = true, horizontal = true }: ArrowKeyNavigationOptions,
@@ -68,7 +74,7 @@ export function useArrowKeyNavigation(
         ? (elements[currentlyFocused + 1] ?? elements[0])
         : (elements[currentlyFocused - 1] ?? elements[elements.length - 1]);
 
-      // "Un-focus" all elements, then focus the new one
+      // Disable focus in all elements, then focus the new one
       elements.forEach((el) => {
         el.tabIndex = -1;
       });
