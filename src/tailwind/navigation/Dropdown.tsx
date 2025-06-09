@@ -59,13 +59,6 @@ const BaseDropdown: FC<DropdownProps> = ({
 
     const controller = new AbortController();
 
-    // Close menu when pressing Escape
-    container.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        setIsOpen(false);
-      }
-    }, { signal: controller.signal });
-
     // Close menu when clicking anywhere except the toggle button
     document.body.addEventListener('click', (e) => {
       if (!e.composedPath().includes(button)) {
@@ -77,7 +70,23 @@ const BaseDropdown: FC<DropdownProps> = ({
   }, []);
 
   return (
-    <div ref={containerRef} className={clsx('tw:relative tw:inline-block', containerClassName)}>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      ref={containerRef}
+      className={clsx('tw:relative tw:inline-block', containerClassName)}
+      onKeyDown={(e) => {
+        // Close menu when pressing Escape
+        if (e.key === 'Escape') {
+          setIsOpen(false);
+        }
+      }}
+      onBlur={(e) => {
+        // Close menu when focusing away
+        if (e.relatedTarget && !containerRef.current!.contains(e.relatedTarget as HTMLElement)) {
+          setIsOpen(false);
+        }
+      }}
+    >
       <button
         ref={buttonRef}
         {...getReferenceProps()}
@@ -95,6 +104,13 @@ const BaseDropdown: FC<DropdownProps> = ({
           },
           buttonClassName,
         )}
+        onKeyDown={(e) => {
+          // Open dropdown when pressing ArrowDown
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setIsOpen(true);
+          }
+        }}
       >
         {buttonContent}
         <FontAwesomeIcon icon={faCaretDown} size="xs" />
