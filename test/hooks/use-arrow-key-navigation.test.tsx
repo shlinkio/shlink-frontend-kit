@@ -59,6 +59,16 @@ describe('useArrowKeyNavigation', () => {
     });
   });
 
+  it.each([
+    { selected: undefined, expectedFocusedButton: 'One' },
+    { selected: 0 as const, expectedFocusedButton: 'One' },
+    { selected: 1 as const, expectedFocusedButton: 'Two' },
+    { selected: 2 as const, expectedFocusedButton: 'Three' },
+  ])('focuses first selected item when `focusFirstItem`is true', ({ selected, expectedFocusedButton }) => {
+    setUp({ selected, focusFirstItem: true });
+    expectFocusedButton(expectedFocusedButton);
+  });
+
   it.each(['ArrowDown', 'ArrowRight'])('can move to next items via Down/Right key', async (arrowKey) => {
     const { user } = setUp();
 
