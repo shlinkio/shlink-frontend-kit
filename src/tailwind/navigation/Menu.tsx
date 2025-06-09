@@ -58,6 +58,7 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
       'tw:flex tw:items-center tw:w-full tw:px-3 tw:py-1.5',
       'tw:text-gray-500 tw:text-sm tw:font-semibold',
     )}
+    onClick={(e) => e.stopPropagation()}
   >
     {children}
   </div>
@@ -66,8 +67,16 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
 /**
  * Allows to add any arbitrary content inside a Menu
  */
-const Misc: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <div className={clsx('tw:px-3 tw:py-1.5', className)} {...rest} />
+const Misc: FC<HTMLProps<HTMLDivElement>> = ({ className, onClick, ...rest }) => (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+  <div
+    className={clsx('tw:px-3 tw:py-1.5', className)}
+    {...rest}
+    onClick={(e) => {
+      e.stopPropagation();
+      onClick?.(e);
+    }}
+  />
 );
 
 export type MenuProps = Omit<CardProps, 'role'> & {
@@ -76,17 +85,24 @@ export type MenuProps = Omit<CardProps, 'role'> & {
    * Defaults to '[role="menuitem"]:not([disabled]):not([aria-disabled])'
    */
   focusableElementsSelector?: string;
+
+  /**
+   * Whether first focusable item should be focused or not.
+   * Defaults to false.
+   */
+  focusFirstItem?: boolean;
 };
 
 const BaseMenu: FC<MenuProps> = ({
   children,
   className,
   focusableElementsSelector = '[role="menuitem"]:not([disabled]):not([aria-disabled])',
+  focusFirstItem = false,
   ...rest
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useArrowKeyNavigation(cardRef, { elementsSelector: focusableElementsSelector });
+  useArrowKeyNavigation(cardRef, { elementsSelector: focusableElementsSelector, focusFirstItem });
 
   return (
     <Card ref={cardRef} role="menu" className={clsx('tw:py-2', className)} {...rest}>

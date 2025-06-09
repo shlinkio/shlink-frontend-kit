@@ -40,14 +40,12 @@ export type NavPillsProps = PropsWithChildren<{
   className?: string;
 }>;
 
-const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => {
-  return (
-    <NavPillsContext.Provider value={{ fill }}>
-      <Card role="menubar" className={clsx('tw:flex tw:overflow-hidden', className)}>
-        {children}
-      </Card>
-    </NavPillsContext.Provider>
-  );
-};
+const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => (
+  <NavPillsContext.Provider value={{ fill }}>
+    <Card role="menubar" className={clsx('tw:flex tw:overflow-hidden', className)}>
+      {children}
+    </Card>
+  </NavPillsContext.Provider>
+);
 
 export const NavPills = Object.assign(BaseNavPills, { Pill });

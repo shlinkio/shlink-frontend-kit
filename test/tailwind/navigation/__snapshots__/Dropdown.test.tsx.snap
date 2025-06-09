@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Dropdown /> > renders toggle button with the right size 1`] = `"tw:flex tw:justify-between tw:items-center tw:gap-x-2 tw:rounded-md tw:focus-ring tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-1.5 tw:py-1 tw:text-sm"`;
+
+exports[`<Dropdown /> > renders toggle button with the right size 2`] = `"tw:flex tw:justify-between tw:items-center tw:gap-x-2 tw:rounded-md tw:focus-ring tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-3 tw:py-1.5"`;
+
+exports[`<Dropdown /> > renders toggle button with the right size 3`] = `"tw:flex tw:justify-between tw:items-center tw:gap-x-2 tw:rounded-md tw:focus-ring tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-4 tw:py-2 tw:text-lg"`;

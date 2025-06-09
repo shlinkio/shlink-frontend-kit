@@ -4,6 +4,8 @@ import { useEffect,useMemo  } from 'react';
 export type ArrowKeyNavigationOptions = {
   /** Query selector for focusable elements that need to be included in the loop */
   elementsSelector: string;
+  /** Whether first focusable item should be focused or not. Defaults to false */
+  focusFirstItem?: boolean;
   /** Enables up and down arrows navigation. Defaults to true */
   vertical?: boolean;
   /** Enables left and right arrows navigation. Defaults to true */
@@ -18,7 +20,7 @@ export type ArrowKeyNavigationOptions = {
  */
 export function useArrowKeyNavigation(
   containerRef: RefObject<HTMLElement | null>,
-  { elementsSelector, vertical = true, horizontal = true }: ArrowKeyNavigationOptions,
+  { elementsSelector, focusFirstItem = false, vertical = true, horizontal = true }: ArrowKeyNavigationOptions,
 ) {
   const nextArrows = useMemo(() => {
     const keys = [];
@@ -59,12 +61,16 @@ export function useArrowKeyNavigation(
     const selectedElement = Math.max(elements.findIndex((el) => el.dataset.selected === 'true'), 0);
     elements.forEach((el, index) => {
       el.tabIndex = index === selectedElement ? 0 : -1;
+      if (focusFirstItem && index === selectedElement) {
+        el.focus();
+      }
     });
 
     container.addEventListener('keydown', (e) => {
       if (!allArrows.includes(e.key)) {
         return;
       }
+      e.preventDefault();
 
       const elements = getFocusableElements();
       const currentlyFocused = elements.findIndex((el) => el.tabIndex === 0);
@@ -83,5 +89,5 @@ export function useArrowKeyNavigation(
     }, { signal: controller.signal });
 
     return () => controller.abort();
-  }, [allArrows, containerRef, elementsSelector, nextArrows]);
+  }, [allArrows, containerRef, elementsSelector, focusFirstItem, nextArrows]);
 }
