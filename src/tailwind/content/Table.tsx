@@ -148,24 +148,22 @@ export type TableProps = Omit<HTMLProps<HTMLTableElement>, 'size'> & {
   size?: Size;
 };
 
-const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, size = 'md', ...rest }) => {
-  return (
-    <TableContext.Provider value={{ responsive, size }}>
-      <table className="tw:w-full" {...rest}>
-        <TableHead>
-          {header}
-        </TableHead>
-        <TableBody>
-          {children}
-        </TableBody>
-        {footer && (
-          <TableFooter>
-            {footer}
-          </TableFooter>
-        )}
-      </table>
-    </TableContext.Provider>
-  );
-};
+const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, size = 'md', ...rest }) => (
+  <TableContext.Provider value={{ responsive, size }}>
+    <table className="tw:w-full" {...rest}>
+      <TableHead>
+        {header}
+      </TableHead>
+      <TableBody>
+        {children}
+      </TableBody>
+      {footer && (
+        <TableFooter>
+          {footer}
+        </TableFooter>
+      )}
+    </table>
+  </TableContext.Provider>
+);
 
 export const Table = Object.assign(BaseTable, { Row, Cell });

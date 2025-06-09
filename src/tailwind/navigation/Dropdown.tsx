@@ -3,13 +3,14 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-import { useEffect , useId, useRef , useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { RequiredReactNode, Size } from '../types';
 import { Menu } from './Menu';
 
 export type DropdownProps = PropsWithChildren<{
   buttonContent: RequiredReactNode;
   buttonSize?: Size;
+  buttonClassName?: string;
 
   /** Classes to be set on the containing wrapper element */
   containerClassName?: string;
@@ -23,9 +24,15 @@ export type DropdownProps = PropsWithChildren<{
   menuAlignment?: 'left' | 'right';
 }>;
 
-const BaseDropdown: FC<DropdownProps> = (
-  { children, menuAlignment = 'left', buttonSize = 'md', containerClassName, buttonContent, menuClassName },
-) => {
+const BaseDropdown: FC<DropdownProps> = ({
+  children,
+  menuAlignment = 'left',
+  buttonContent,
+  buttonClassName,
+  buttonSize = 'md',
+  containerClassName,
+  menuClassName,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { refs, floatingStyles, context } = useFloating({
@@ -86,6 +93,7 @@ const BaseDropdown: FC<DropdownProps> = (
             'tw:px-3 tw:py-1.5': buttonSize === 'md',
             'tw:px-4 tw:py-2 tw:text-lg': buttonSize === 'lg',
           },
+          buttonClassName,
         )}
       >
         {buttonContent}
@@ -114,6 +122,9 @@ const BaseDropdown: FC<DropdownProps> = (
   );
 };
 
-const { Item, Separator, Title, Misc } = Menu;
-
-export const Dropdown = Object.assign(BaseDropdown, { Item, Separator, Title, Misc });
+export const Dropdown = Object.assign(BaseDropdown, {
+  Item: Menu.Item,
+  Separator: Menu.Separator,
+  Title: Menu.Title,
+  Misc: Menu.Misc,
+});

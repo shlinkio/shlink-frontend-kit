@@ -70,6 +70,7 @@ export function useArrowKeyNavigation(
       if (!allArrows.includes(e.key)) {
         return;
       }
+      e.preventDefault();
 
       const elements = getFocusableElements();
       const currentlyFocused = elements.findIndex((el) => el.tabIndex === 0);

@@ -52,6 +52,27 @@ export const DropdownPage: FC = () => {
           </Dropdown>
         </div>
       </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Toggle button sizes</h2>
+        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+          <Dropdown buttonContent="Small" buttonSize="sm">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+          <Dropdown buttonContent="Medium (default)" buttonSize="md">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+          <Dropdown buttonContent="Large" buttonSize="lg">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+        </div>
+      </div>
     </div>
   );
 };
