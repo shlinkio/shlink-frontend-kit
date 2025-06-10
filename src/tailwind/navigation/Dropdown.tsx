@@ -11,6 +11,10 @@ export type DropdownProps = PropsWithChildren<{
   buttonContent: RequiredReactNode;
   buttonSize?: Size;
   buttonClassName?: string;
+  buttonVariant?: 'button' | 'link';
+
+  /** Set as the button's `aria-label` attribute */
+  buttonLabel?: string;
 
   /** Classes to be set on the containing wrapper element */
   containerClassName?: string;
@@ -22,16 +26,22 @@ export type DropdownProps = PropsWithChildren<{
    * Defaults to 'left'.
    */
   menuAlignment?: 'left' | 'right';
+
+  /** Whether to hide the caret or not. Defaults to false */
+  caretless?: boolean;
 }>;
 
 const BaseDropdown: FC<DropdownProps> = ({
   children,
   menuAlignment = 'left',
+  buttonVariant = 'button',
   buttonContent,
   buttonClassName,
   buttonSize = 'md',
   containerClassName,
   menuClassName,
+  caretless,
+  buttonLabel,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -93,11 +103,21 @@ const BaseDropdown: FC<DropdownProps> = ({
         aria-haspopup
         aria-expanded={isOpen}
         aria-controls={menuId}
+        aria-label={buttonLabel}
         className={clsx(
-          'tw:flex tw:justify-between tw:items-center tw:gap-x-2',
-          'tw:rounded-md tw:focus-ring',
-          'tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary',
+          'tw:flex tw:items-center tw:gap-x-2 tw:focus-ring',
           {
+            'tw:justify-between': !caretless,
+
+            // Button variant
+            'tw:border tw:border-lm-border tw:dark:border-dm-border': buttonVariant === 'button',
+            'tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary': buttonVariant === 'button',
+
+            // Link variant
+            'tw:text-lm-brand tw:dark:text-dm-brand': buttonVariant === 'link',
+            'tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline': buttonVariant === 'link',
+
+            // Button sizes
             'tw:px-1.5 tw:py-1 tw:text-sm': buttonSize === 'sm',
             'tw:px-3 tw:py-1.5': buttonSize === 'md',
             'tw:px-4 tw:py-2 tw:text-lg': buttonSize === 'lg',
@@ -113,7 +133,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         }}
       >
         {buttonContent}
-        <FontAwesomeIcon icon={faCaretDown} size="xs" />
+        {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" />}
       </button>
       {isOpen && (
         <div

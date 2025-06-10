@@ -18,7 +18,7 @@ describe('useArrowKeyNavigation', () => {
     });
 
     return (
-      <div ref={container} data-testid="container">
+      <div ref={container}>
         <button data-selected={selected === 0}>One</button>
         <button data-selected={selected === 1}>Two</button>
         <button data-selected={selected === 2}>Three</button>
@@ -73,7 +73,7 @@ describe('useArrowKeyNavigation', () => {
     const { user } = setUp();
 
     // Start by focusing the first element normally
-    await user.type(screen.getByTestId('container'), '{Tab}');
+    await user.tab();
     expectFocusedButton('One');
 
     // Move focus to the next element
@@ -91,7 +91,7 @@ describe('useArrowKeyNavigation', () => {
     const { user } = setUp({ selected: 2 });
 
     // Start by focusing the selected element normally
-    await user.type(screen.getByTestId('container'), '{Tab}');
+    await user.tab();
     expectFocusedButton('Three');
 
     // Move focus to the previous element
@@ -109,7 +109,7 @@ describe('useArrowKeyNavigation', () => {
     const { user } = setUp({ selected: 1, vertical: false });
 
     // Start by focusing the selected element normally
-    await user.type(screen.getByTestId('container'), '{Tab}');
+    await user.tab();
     expectFocusedButton('Two');
 
     // Pressing Up/Down keys won't change focused item
@@ -123,7 +123,7 @@ describe('useArrowKeyNavigation', () => {
     const { user } = setUp({ selected: 1, horizontal: false });
 
     // Start by focusing the selected element normally
-    await user.type(screen.getByTestId('container'), '{Tab}');
+    await user.tab();
     expectFocusedButton('Two');
 
     // Pressing Up/Down keys won't change focused item

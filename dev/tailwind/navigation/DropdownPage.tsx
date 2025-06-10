@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useCallback , useState } from 'react';
 import { Dropdown, LabelledInput } from '../../../src/tailwind';
+import { RowDropdown } from '../../../src/tailwind/navigation/RowDropdown';
 
 export const DropdownPage: FC = () => {
   const [selected, setSelected] = useState<string>();
@@ -71,6 +72,43 @@ export const DropdownPage: FC = () => {
             <Dropdown.Item>Bar</Dropdown.Item>
             <Dropdown.Item>Baz</Dropdown.Item>
           </Dropdown>
+        </div>
+      </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Variants</h2>
+        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+          <Dropdown buttonContent="Caretless" caretless>
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+          <Dropdown buttonContent="Link" buttonVariant="link">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+        </div>
+      </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>RowDropdown</h2>
+        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+          <RowDropdown buttonSize="sm">
+            <RowDropdown.Item>Foo</RowDropdown.Item>
+            <RowDropdown.Item>Bar</RowDropdown.Item>
+            <RowDropdown.Item>Baz</RowDropdown.Item>
+          </RowDropdown>
+          <RowDropdown>
+            <RowDropdown.Item>Foo</RowDropdown.Item>
+            <RowDropdown.Item>Bar</RowDropdown.Item>
+            <RowDropdown.Item>Baz</RowDropdown.Item>
+          </RowDropdown>
+          <RowDropdown buttonSize="lg">
+            <RowDropdown.Item>Foo</RowDropdown.Item>
+            <RowDropdown.Item>Bar</RowDropdown.Item>
+            <RowDropdown.Item>Baz</RowDropdown.Item>
+          </RowDropdown>
         </div>
       </div>
     </div>

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<RowDropdown /> > renders ellipsis with the right classes based on size 1`] = `"svg-inline--fa fa-ellipsis-vertical tw:px-1"`;
+
+exports[`<RowDropdown /> > renders ellipsis with the right classes based on size 2`] = `"svg-inline--fa fa-ellipsis-vertical "`;
+
+exports[`<RowDropdown /> > renders ellipsis with the right classes based on size 3`] = `"svg-inline--fa fa-ellipsis-vertical "`;
