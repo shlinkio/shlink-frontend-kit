@@ -8,14 +8,14 @@ export type Order<Fields> = {
 };
 
 export type OrderDirChange<Fields extends string = string> = {
-  currentField: Fields,
+  currentField?: Fields,
   newField?: Fields,
   currentOrderDir?: OrderDir,
 };
 
 export function determineOrderDir<Fields extends string = string>(orderDirChange: OrderDirChange<Fields>): OrderDir;
 export function determineOrderDir<Fields extends string = string>(
-  currentField: Fields,
+  currentField?: Fields,
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): OrderDir;
@@ -23,7 +23,7 @@ export function determineOrderDir<Fields extends string = string>(
  * Generate an Order dir for the new order field, based on previous order field and direction.
  */
 export function determineOrderDir<Fields extends string = string>(
-  firstArg: Fields | OrderDirChange<Fields>,
+  firstArg?: Fields | OrderDirChange<Fields>,
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): OrderDir {
@@ -45,7 +45,7 @@ export function determineOrderDir<Fields extends string = string>(
 
 export function determineOrder<Fields extends string = string>(orderDirChange: OrderDirChange<Fields>): Order<Fields>;
 export function determineOrder<Fields extends string = string>(
-  currentField: Fields,
+  currentField?: Fields,
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): Order<Fields>;
@@ -53,7 +53,7 @@ export function determineOrder<Fields extends string = string>(
  * Generate an Order object for the new order field, based on previous order field and direction.
  */
 export function determineOrder<Fields extends string = string>(
-  firstArg: Fields | OrderDirChange<Fields>,
+  firstArg?: Fields | OrderDirChange<Fields>,
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): Order<Fields> {
@@ -61,9 +61,10 @@ export function determineOrder<Fields extends string = string>(
     return determineOrder(firstArg.currentField, firstArg.newField, firstArg.currentOrderDir);
   }
 
+  const newOrderDir = determineOrderDir(firstArg, newField, currentOrderDir);
   return {
-    field: newField,
-    dir: determineOrderDir(firstArg, newField, currentOrderDir),
+    field: newOrderDir ? newField : undefined,
+    dir: newOrderDir,
   };
 }
 
@@ -89,9 +90,21 @@ export const stringToOrder = <T>(order: string): Order<T> => {
   return { field, dir };
 };
 
-export const useOrder = <T>(initialOrder: Order<T>): [Order<T>, (orderField?: T, orderDir?: OrderDir) => void] => {
+export type OrderSetter<T> = {
+  (order: Order<T>): void;
+  (orderField?: T, orderDir?: OrderDir): void;
+};
+
+export const useOrder = <T>(initialOrder: Order<T>): [Order<T>, OrderSetter<T>] => {
   const [order, setOrder] = useState<Order<T>>(initialOrder);
-  const onChange = useCallback((field?: T, dir?: OrderDir) => setOrder({ field, dir }), []);
+  const onChange = useCallback(
+    (fieldOrOrder: T | undefined | Order<T>, dir?: OrderDir) => setOrder(
+      !!fieldOrOrder && typeof fieldOrOrder === 'object'
+        ? fieldOrOrder
+        : { field: fieldOrOrder, dir },
+    ),
+    [],
+  );
 
   return [order, onChange];
 };

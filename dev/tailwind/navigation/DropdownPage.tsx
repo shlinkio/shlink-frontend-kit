@@ -1,11 +1,19 @@
 import type { FC } from 'react';
 import { useCallback , useState } from 'react';
-import { Dropdown, LabelledInput } from '../../../src/tailwind';
-import { RowDropdown } from '../../../src/tailwind/navigation/RowDropdown';
+import { useOrder } from '../../../src';
+import { Dropdown, LabelledInput, OrderingDropdown, RowDropdown } from '../../../src/tailwind';
+
+const items = {
+  foo: 'Foo',
+  bar: 'Bar',
+  baz: 'Baz',
+};
 
 export const DropdownPage: FC = () => {
   const [selected, setSelected] = useState<string>();
   const toggleSelected = useCallback((value: string) => setSelected((prev) => prev === value ? undefined : value), []);
+  const [order, onChange] = useOrder<keyof typeof items>({});
+  const [orderLink, onChangeLink] = useOrder<keyof typeof items>({});
 
   return (
     <div className="tw:flex tw:flex-col tw:gap-y-4">
@@ -114,6 +122,14 @@ export const DropdownPage: FC = () => {
             <RowDropdown.Item>Bar</RowDropdown.Item>
             <RowDropdown.Item>Baz</RowDropdown.Item>
           </RowDropdown>
+        </div>
+      </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>OrderingDropdown</h2>
+        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+          <OrderingDropdown items={items} order={order} onChange={onChange} />
+          <OrderingDropdown items={items} order={orderLink} onChange={onChangeLink} buttonVariant="link" />
         </div>
       </div>
     </div>

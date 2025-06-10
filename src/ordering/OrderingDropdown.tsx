@@ -1,7 +1,7 @@
 import { faSortAmountDown as sortDescIcon, faSortAmountUp as sortAscIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
-import { Dropdown,DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import { useToggle } from '../hooks';
 import type { Order, OrderDir } from './ordering';
 import { determineOrderDir } from './ordering';
@@ -15,6 +15,7 @@ export type OrderingDropdownProps<T extends string = string> = {
   prefixed?: boolean;
 };
 
+/** @deprecated */
 export function OrderingDropdown<T extends string = string>(
   { items, order, onChange, isButton = true, right = false, prefixed = true }: OrderingDropdownProps<T>,
 ) {
