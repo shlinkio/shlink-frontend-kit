@@ -1,4 +1,4 @@
-import { screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import type { DropdownProps } from '../../../src/tailwind';
 import { Dropdown,LabelledInput  } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
@@ -49,11 +49,12 @@ describe('<Dropdown />', () => {
   });
 
   it('closes menu when focusing away', async () => {
-    await setUpOpened();
+    const { user } = await setUpOpened();
 
     expect(screen.getByRole('menu')).toBeInTheDocument();
-    screen.getByRole('button', { name: 'Other button' }).focus();
-    await waitForElementToBeRemoved(screen.getByRole('menu'));
+    await user.tab(); // Tab to focus the next focusable element, which is outside the menu
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Other button' }));
   });
 
   it.each([
