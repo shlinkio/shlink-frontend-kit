@@ -1,13 +1,13 @@
 import { screen, waitForElementToBeRemoved } from '@testing-library/react';
-import type { Size } from '../../../src/tailwind';
+import type { DropdownProps } from '../../../src/tailwind';
 import { Dropdown,LabelledInput  } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
 import { renderWithEvents } from '../../__helpers__/setUpTest';
 
 describe('<Dropdown />', () => {
-  const setUp = (buttonSize?: Size) => renderWithEvents(
+  const setUp = (props: Pick<DropdownProps, 'buttonSize' | 'buttonVariant' | 'caretless'> = {}) => renderWithEvents(
     <div>
-      <Dropdown buttonContent="Press me" buttonSize={buttonSize}>
+      <Dropdown buttonContent="Press me" {...props}>
         <Dropdown.Item>One</Dropdown.Item>
         <Dropdown.Item>Two</Dropdown.Item>
         <Dropdown.Item>Three</Dropdown.Item>
@@ -57,11 +57,29 @@ describe('<Dropdown />', () => {
   });
 
   it.each([
-    'sm' as const,
-    'md' as const,
-    'lg' as const,
-  ])('renders toggle button with the right size', (buttonSize) => {
-    setUp(buttonSize);
+    { buttonSize: 'sm' as const },
+    { buttonSize: 'md' as const },
+    { buttonSize: 'lg' as const },
+    { buttonVariant: 'button' as const },
+    { buttonVariant: 'link' as const },
+    { caretless: false },
+    { caretless: true },
+  ])('renders toggle button with the right classes based on provided props', (props) => {
+    setUp(props);
     expect(screen.getByRole('button', { name: 'Press me' }).className).toMatchSnapshot();
+  });
+
+  it.each([
+    { props: {} },
+    { props: { caretless: true } },
+    { props: { caretless: false } },
+  ])('renders caret only if caretless is false', ({ props }) => {
+    setUp(props);
+
+    if (!props.caretless) {
+      expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument();
+    } else {
+      expect(screen.queryByRole('img', { hidden: true })).not.toBeInTheDocument();
+    }
   });
 });

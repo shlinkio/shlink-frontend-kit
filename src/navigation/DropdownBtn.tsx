@@ -15,6 +15,7 @@ export type DropdownBtnProps = PropsWithChildren<Omit<DropdownToggleProps, 'care
   size?: 'sm' | 'md' | 'lg';
 }>;
 
+/** @deprecated */
 export const DropdownBtn: FC<DropdownBtnProps> = ({
   text,
   disabled = false,

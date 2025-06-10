@@ -73,6 +73,22 @@ export const DropdownPage: FC = () => {
           </Dropdown>
         </div>
       </div>
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Variants</h2>
+        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+          <Dropdown buttonContent="Caretless" caretless>
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+          <Dropdown buttonContent="Link" buttonVariant="link">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
+        </div>
+      </div>
     </div>
   );
 };
