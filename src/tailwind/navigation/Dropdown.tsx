@@ -112,6 +112,8 @@ const BaseDropdown: FC<DropdownProps> = ({
             // Button variant
             'tw:border tw:border-lm-border tw:dark:border-dm-border': buttonVariant === 'button',
             'tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary': buttonVariant === 'button',
+            // Use different bg color when inside a card
+            'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': buttonVariant === 'button',
 
             // Link variant
             'tw:text-lm-brand tw:dark:text-dm-brand': buttonVariant === 'link',

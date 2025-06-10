@@ -105,7 +105,7 @@ const BaseMenu: FC<MenuProps> = ({
   useArrowKeyNavigation(cardRef, { elementsSelector: focusableElementsSelector, focusFirstItem });
 
   return (
-    <Card ref={cardRef} role="menu" className={clsx('tw:py-2', className)} {...rest}>
+    <Card ref={cardRef} role="menu" className={clsx('tw:py-2 tw:whitespace-nowrap', className)} {...rest}>
       {children}
     </Card>
   );

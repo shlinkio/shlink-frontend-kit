@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 1`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-1.5 tw:py-1 tw:text-sm"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 1`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-1.5 tw:py-1 tw:text-sm"`;
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 2`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-3 tw:py-1.5"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 2`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-3 tw:py-1.5"`;
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 3`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-4 tw:py-2 tw:text-lg"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 3`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-4 tw:py-2 tw:text-lg"`;
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 4`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-3 tw:py-1.5"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 4`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-3 tw:py-1.5"`;
 
 exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 5`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline tw:px-3 tw:py-1.5"`;
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 6`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-3 tw:py-1.5"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 6`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:justify-between tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-3 tw:py-1.5"`;
 
-exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 7`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:px-3 tw:py-1.5"`;
+exports[`<Dropdown /> > renders toggle button with the right classes based on provided props 7`] = `"tw:flex tw:items-center tw:gap-x-2 tw:focus-ring tw:border tw:border-lm-border tw:dark:border-dm-border tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:px-3 tw:py-1.5"`;

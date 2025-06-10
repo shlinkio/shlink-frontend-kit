@@ -47,9 +47,9 @@ export const DropdownPage: FC = () => {
         <h2 className="tw:text-right">Right-aligned Dropdown</h2>
         <div className="tw:flex tw:justify-end">
           <Dropdown buttonContent="Right menu" menuAlignment="right">
-            <Dropdown.Item className="tw:whitespace-nowrap">Foo with a very long text</Dropdown.Item>
-            <Dropdown.Item className="tw:whitespace-nowrap">Bar with a very long text</Dropdown.Item>
-            <Dropdown.Item className="tw:whitespace-nowrap">Baz with a very long text</Dropdown.Item>
+            <Dropdown.Item>Foo with a very long text</Dropdown.Item>
+            <Dropdown.Item>Bar with a very long text</Dropdown.Item>
+            <Dropdown.Item>Baz with a very long text</Dropdown.Item>
           </Dropdown>
         </div>
       </div>
