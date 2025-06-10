@@ -12,6 +12,7 @@ export type DropdownProps = PropsWithChildren<{
   buttonSize?: Size;
   buttonClassName?: string;
   buttonVariant?: 'button' | 'link';
+  buttonDisabled?: boolean;
 
   /** Set as the button's `aria-label` attribute */
   buttonLabel?: string;
@@ -38,6 +39,7 @@ const BaseDropdown: FC<DropdownProps> = ({
   buttonContent,
   buttonClassName,
   buttonSize = 'md',
+  buttonDisabled = false,
   containerClassName,
   menuClassName,
   caretless,
@@ -100,18 +102,21 @@ const BaseDropdown: FC<DropdownProps> = ({
       <button
         ref={buttonRef}
         {...getReferenceProps()}
+        type="button"
         aria-haspopup
         aria-expanded={isOpen}
         aria-controls={menuId}
         aria-label={buttonLabel}
+        disabled={buttonDisabled}
         className={clsx(
-          'tw:flex tw:items-center tw:gap-x-2 tw:focus-ring',
+          'tw:flex tw:items-center tw:rounded-md tw:focus-ring',
           {
             'tw:justify-between': !caretless,
+            'tw:pointer-events-none tw:opacity-50': buttonDisabled,
 
             // Button variant
             'tw:border tw:border-lm-border tw:dark:border-dm-border': buttonVariant === 'button',
-            'tw:rounded-md tw:bg-lm-primary tw:dark:bg-dm-primary': buttonVariant === 'button',
+            'tw:bg-lm-primary tw:dark:bg-dm-primary': buttonVariant === 'button',
             // Use different bg color when inside a card
             'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': buttonVariant === 'button',
 
@@ -120,9 +125,9 @@ const BaseDropdown: FC<DropdownProps> = ({
             'tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline': buttonVariant === 'link',
 
             // Button sizes
-            'tw:px-1.5 tw:py-1 tw:text-sm': buttonSize === 'sm',
-            'tw:px-3 tw:py-1.5': buttonSize === 'md',
-            'tw:px-4 tw:py-2 tw:text-lg': buttonSize === 'lg',
+            'tw:px-1.5 tw:py-1 tw:text-sm tw:gap-x-1.5': buttonSize === 'sm',
+            'tw:px-3 tw:py-1.5 tw:gap-x-2': buttonSize === 'md',
+            'tw:px-4 tw:py-2 tw:text-lg tw:gap-x-2': buttonSize === 'lg',
           },
           buttonClassName,
         )}
