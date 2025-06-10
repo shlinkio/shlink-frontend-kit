@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import type{ LabelProps } from '../../../src/tailwind';
+import type { LabelProps } from '../../../src/tailwind';
 import { Label } from '../../../src/tailwind';
 import { checkAccessibility } from '../../__helpers__/accessibility';
 
