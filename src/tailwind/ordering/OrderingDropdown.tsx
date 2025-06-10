@@ -28,9 +28,7 @@ export function OrderingDropdown<T extends string = string>(
         <>
           {!isButton && 'Order by'}
           {isButton && !order.field && <i>Order by...</i>}
-          {isButton && order.field && (
-            <>{prefixed && 'Order by: '}{items[order.field]} - <small>{order.dir ?? 'DESC'}</small></>
-          )}
+          {isButton && order.field && <>{prefixed && 'Order by: '}{items[order.field]} - {order.dir ?? 'DESC'}</>}
         </>
       )}
       buttonVariant={buttonVariant}
