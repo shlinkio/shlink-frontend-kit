@@ -13,6 +13,9 @@ export type DropdownProps = PropsWithChildren<{
   buttonClassName?: string;
   buttonVariant?: 'button' | 'link';
 
+  /** Set as the button's `aria-label` attribute */
+  buttonLabel?: string;
+
   /** Classes to be set on the containing wrapper element */
   containerClassName?: string;
   /** Classes to be set on the menu element */
@@ -38,6 +41,7 @@ const BaseDropdown: FC<DropdownProps> = ({
   containerClassName,
   menuClassName,
   caretless,
+  buttonLabel,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -99,6 +103,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         aria-haspopup
         aria-expanded={isOpen}
         aria-controls={menuId}
+        aria-label={buttonLabel}
         className={clsx(
           'tw:flex tw:items-center tw:gap-x-2 tw:focus-ring',
           {
