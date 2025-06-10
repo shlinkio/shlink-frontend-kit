@@ -5,7 +5,9 @@ import { checkAccessibility } from '../../__helpers__/accessibility';
 import { renderWithEvents } from '../../__helpers__/setUpTest';
 
 describe('<Dropdown />', () => {
-  const setUp = (props: Pick<DropdownProps, 'buttonSize' | 'buttonVariant' | 'caretless'> = {}) => renderWithEvents(
+  const setUp = (
+    props: Pick<DropdownProps, 'buttonSize' | 'buttonVariant' | 'caretless' | 'buttonDisabled'> = {},
+  ) => renderWithEvents(
     <div>
       <Dropdown buttonContent="Press me" {...props}>
         <Dropdown.Item>One</Dropdown.Item>
@@ -65,6 +67,7 @@ describe('<Dropdown />', () => {
     { buttonVariant: 'link' as const },
     { caretless: false },
     { caretless: true },
+    { buttonDisabled: true },
   ])('renders toggle button with the right classes based on provided props', (props) => {
     setUp(props);
     expect(screen.getByRole('button', { name: 'Press me' }).className).toMatchSnapshot();
