@@ -49,7 +49,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
         title={passwordRevealed ? 'Hide password' : 'Show password'}
         aria-label={passwordRevealed ? 'Hide password' : 'Show password'}
         className={clsx(
-          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:px-1',
+          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:px-1 tw:cursor-pointer',
           'tw:text-placeholder tw:hover:text-lm-text tw:hover:dark:text-dm-text tw:transition-colors',
           {
             'tw:right-1.5': size !== 'sm',

@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * *Nothing*
 
 ### Fixed
-* *Nothing*
+* Fixes and adjustments to work when bootstrap styles are not present.
 
 
 ## [0.9.9] - 2025-06-10

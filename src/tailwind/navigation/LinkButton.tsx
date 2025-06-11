@@ -21,6 +21,7 @@ export const LinkButton = forwardRef<HTMLButtonElement, LinkButtonProps>((
         'tw:px-1.5 tw:py-1 tw:text-sm': size === 'sm',
         'tw:px-3 tw:py-1.5': size === 'md',
         'tw:px-4 tw:py-2 tw:text-lg': size === 'lg',
+        'tw:cursor-pointer': !disabled,
         'tw:pointer-events-none tw:opacity-65': disabled,
       },
       className,

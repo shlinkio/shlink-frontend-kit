@@ -12,17 +12,17 @@ exports[`<Table /> > renders as expected based on provided props 1`] = `
         class="tw:group"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
         >
           Baz
         </th>
@@ -105,17 +105,17 @@ exports[`<Table /> > renders as expected based on provided props 2`] = `
         class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Baz
         </th>
@@ -227,17 +227,17 @@ exports[`<Table /> > renders as expected based on provided props 3`] = `
         class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Baz
         </th>
@@ -326,17 +326,17 @@ exports[`<Table /> > renders as expected based on provided props 4`] = `
         class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1"
+          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
         >
           Baz
         </th>

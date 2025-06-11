@@ -150,7 +150,7 @@
     }
 
     hr {
-        @apply tw:my-2
+        @apply tw:my-3;
     }
 
     p {
@@ -159,6 +159,10 @@
 
     code {
         @apply tw:text-sm tw:text-pink-600 tw:dark:text-pink-500 tw:font-mono;
+    }
+
+    input[type="search"]::-webkit-search-cancel-button {
+        @apply tw:cursor-pointer;
     }
 }
 

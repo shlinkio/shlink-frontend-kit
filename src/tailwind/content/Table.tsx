@@ -121,6 +121,7 @@ const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest })
 
           'tw:border-b-1': !responsive,
           'tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1': responsive,
+          'tw:text-left': Tag === 'th',
 
           // For responsive tables, display the content in data-column attribute for md sizes and lower
           'tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1': responsive && Tag === 'td',
