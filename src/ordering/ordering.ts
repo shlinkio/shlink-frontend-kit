@@ -14,6 +14,7 @@ export type OrderDirChange<Fields extends string = string> = {
 };
 
 export function determineOrderDir<Fields extends string = string>(orderDirChange: OrderDirChange<Fields>): OrderDir;
+/** @deprecated */
 export function determineOrderDir<Fields extends string = string>(
   currentField?: Fields,
   newField?: Fields,
@@ -27,11 +28,12 @@ export function determineOrderDir<Fields extends string = string>(
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): OrderDir {
-  if (typeof firstArg === 'object') {
-    return determineOrderDir(firstArg.currentField, firstArg.newField, firstArg.currentOrderDir);
+  if (!firstArg || typeof firstArg === 'string') {
+    return determineOrderDir({ currentField: firstArg, newField, currentOrderDir });
   }
 
-  if (firstArg !== newField) {
+  const orderDirChange = firstArg;
+  if (orderDirChange.currentField !== orderDirChange.newField) {
     return 'ASC';
   }
 
@@ -40,10 +42,11 @@ export function determineOrderDir<Fields extends string = string>(
     DESC: undefined,
   };
 
-  return currentOrderDir ? newOrderMap[currentOrderDir] : 'ASC';
+  return orderDirChange.currentOrderDir ? newOrderMap[orderDirChange.currentOrderDir] : 'ASC';
 }
 
 export function determineOrder<Fields extends string = string>(orderDirChange: OrderDirChange<Fields>): Order<Fields>;
+/** @deprecated */
 export function determineOrder<Fields extends string = string>(
   currentField?: Fields,
   newField?: Fields,
@@ -57,13 +60,14 @@ export function determineOrder<Fields extends string = string>(
   newField?: Fields,
   currentOrderDir?: OrderDir,
 ): Order<Fields> {
-  if (typeof firstArg === 'object') {
-    return determineOrder(firstArg.currentField, firstArg.newField, firstArg.currentOrderDir);
+  if (!firstArg || typeof firstArg === 'string') {
+    return determineOrder({ currentField: firstArg, newField, currentOrderDir });
   }
 
-  const newOrderDir = determineOrderDir(firstArg, newField, currentOrderDir);
+  const orderDirChange = firstArg;
+  const newOrderDir = determineOrderDir(orderDirChange);
   return {
-    field: newOrderDir ? newField : undefined,
+    field: newOrderDir ? orderDirChange.newField : undefined,
     dir: newOrderDir,
   };
 }
@@ -92,6 +96,7 @@ export const stringToOrder = <T>(order: string): Order<T> => {
 
 export type OrderSetter<T> = {
   (order: Order<T>): void;
+  /** @deprecated Pass the order object as the only argument */
   (orderField?: T, orderDir?: OrderDir): void;
 };
 
