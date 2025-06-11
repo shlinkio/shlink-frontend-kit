@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [0.9.10] - 2025-06-11
 ### Added
 * *Nothing*
 
@@ -12,13 +12,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Change 2xl breakpoint to 1320px.
 
 ### Deprecated
-* *Nothing*
+* Deprecated `determineOrder` and `determineOrderDir` when arguments are passed individually. The only supported signature going forward is the one where an `OrderDirChange` object is passed.
 
 ### Removed
 * *Nothing*
 
 ### Fixed
-* *Nothing*
+* Fixes and adjustments to work when bootstrap styles are not present.
 
 
 ## [0.9.9] - 2025-06-10

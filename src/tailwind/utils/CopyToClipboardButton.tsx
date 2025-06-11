@@ -32,7 +32,7 @@ export const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = (
     <button
       type="button"
       className={clsx(
-        'tw:focus-ring tw:rounded-sm',
+        'tw:focus-ring tw:rounded-sm tw:cursor-pointer',
         {
           'tw:text-md': size === 'sm',
           'tw:text-lg': size === 'md',

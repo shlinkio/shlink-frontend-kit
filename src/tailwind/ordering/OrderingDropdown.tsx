@@ -39,7 +39,7 @@ export function OrderingDropdown<T extends string = string>(
           key={fieldKey}
           selected={order.field === fieldKey}
           onClick={() => handleItemClick(fieldKey as T)}
-          className="tw:flex tw:items-center tw:justify-between"
+          className="tw:flex tw:items-center tw:justify-between tw:gap-2"
         >
           {fieldValue as string}
           {order.field === fieldKey && <FontAwesomeIcon icon={order.dir === 'ASC' ? sortAscIcon : sortDescIcon} />}

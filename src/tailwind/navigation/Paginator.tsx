@@ -14,7 +14,7 @@ const commonClasses = [
 
 const buildPaginatorItemClasses = (active = false) => clsx(
   commonClasses,
-  'tw:px-3 py-2 tw:cursor-pointer tw:no-underline',
+  'tw:px-3 tw:py-2 tw:cursor-pointer tw:no-underline',
   'tw:focus-ring tw:focus-visible:z-1',
   !active && [
     'tw:text-lm-brand tw:dark:text-dm-brand',
@@ -25,7 +25,7 @@ const buildPaginatorItemClasses = (active = false) => clsx(
 );
 
 const DisabledPaginatorItem: FC<PropsWithChildren> = ({ children }) => (
-  <span aria-hidden className={clsx(commonClasses, 'tw:px-3 py-2 tw:text-gray-400')}>
+  <span aria-hidden className={clsx(commonClasses, 'tw:px-3 tw:py-2 tw:text-gray-400')}>
     {children}
   </span>
 );

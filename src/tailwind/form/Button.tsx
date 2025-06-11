@@ -81,6 +81,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           'tw:highlight:bg-danger': variant === 'danger',
         },
         {
+          'tw:cursor-pointer': !disabled,
           'tw:pointer-events-none tw:opacity-65': disabled,
         },
         className,

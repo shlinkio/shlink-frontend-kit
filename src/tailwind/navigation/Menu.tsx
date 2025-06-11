@@ -29,6 +29,7 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
         // Overwrite link styles in case a Link is being used
         'tw:no-underline tw:text-inherit',
         {
+          'tw:cursor-pointer': !disabled,
           'tw:pointer-events-none tw:opacity-50': disabled,
           'tw:bg-lm-secondary tw:dark:bg-dm-secondary': selected && !disabled,
           'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary tw:highlight:z-1 tw:relative': !selected && !disabled,

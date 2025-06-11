@@ -112,6 +112,7 @@ const BaseDropdown: FC<DropdownProps> = ({
           'tw:flex tw:items-center tw:rounded-md tw:focus-ring',
           {
             'tw:justify-between': !caretless,
+            'tw:cursor-pointer': !buttonDisabled,
             'tw:pointer-events-none tw:opacity-50': buttonDisabled,
 
             // Button variant
