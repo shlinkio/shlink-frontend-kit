@@ -51,7 +51,7 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --breakpoint-2xl: 1400px;
+    --breakpoint-2xl: 1320px; /* 1400px according to bootstrap docs, but then the container is bigger than before */
 }
 
 /* Deprecated. TODO Remove with bootstrap support */
