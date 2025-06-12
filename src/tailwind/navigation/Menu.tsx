@@ -25,7 +25,8 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
       role="menuitem"
       data-selected={selected}
       className={clsx(
-        'tw:flex tw:items-center tw:w-full tw:px-3 tw:py-1.5 tw:focus-ring',
+        'tw:flex tw:items-center tw:gap-2',
+        'tw:w-full tw:px-3 tw:py-1.5 tw:focus-ring',
         // Overwrite link styles in case a Link is being used
         'tw:no-underline tw:text-inherit',
         {
