@@ -16,7 +16,7 @@ export type MenuItemProps = (ButtonProps | AnchorProps) & {
 };
 
 const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => {
-  const isLink = 'to' in rest;
+  const isLink = 'to' in rest && typeof rest.to === 'string';
   const Tag = isLink ? Link : 'button';
 
   return (

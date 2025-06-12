@@ -28,7 +28,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   type: providedType = 'button',
   ...rest
 }, ref) => {
-  const isLink = 'to' in rest;
+  const isLink = 'to' in rest &&  typeof rest.to === 'string';
   const Tag = isLink ? Link : 'button';
   const type = isLink ? undefined : providedType;
 
