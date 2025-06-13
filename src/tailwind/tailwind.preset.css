@@ -182,6 +182,11 @@
     @apply tw:focus-ring-base tw:focus-visible:ring-zinc-500/50;
 }
 
+@utility focus-within-ring {
+    @apply tw:outline-none tw:focus-within:ring-3 tw:focus-within:z-1 tw:transition-[box-shadow];
+    @apply tw:focus-within:ring-lm-brand/50 tw:dark:focus-within:ring-dm-brand/50;
+}
+
 @utility scroll-thin {
     /* Standard. New browsers */
     scrollbar-width: thin;
@@ -192,6 +197,21 @@
     }
     &::-webkit-scrollbar-thumb {
         border-radius: .5rem;
+    }
+}
+
+@utility no-clear-button {
+    &::-webkit-search-cancel-button {
+        display: none;
+    }
+    &::-ms-clear {
+        display: none;
+    }
+    &::-o-clear {
+        display: none;
+    }
+    &::-moz-clear {
+        display: none;
     }
 }
 

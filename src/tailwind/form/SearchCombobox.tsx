@@ -28,6 +28,8 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
    * Defaults to `full`.
    */
   listboxSpan?: 'full' | 'auto';
+
+  containerClassName?: string;
 };
 
 /**
@@ -44,6 +46,7 @@ export function SearchCombobox<Item>({
   size = 'md', // SearchInput defaults its size to 'lg'. Change it to 'md'
   listboxSpan = 'full',
   onFocus,
+  containerClassName,
   ...rest
 }: SearchComboboxProps<Item>) {
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -65,7 +68,7 @@ export function SearchCombobox<Item>({
 
   return (
     <div
-      className="tw:relative"
+      className={clsx('tw:relative', containerClassName)}
       onBlur={(e) => {
         // Clears search when focus is moving away of this container, so that the listbox is closed.
         if (!e.currentTarget.contains(e.relatedTarget)) {

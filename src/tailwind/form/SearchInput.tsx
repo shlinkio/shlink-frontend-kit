@@ -22,6 +22,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   // Inputs have a default 'md' size. Search inputs are usually 'lg' as they are rendered at the top of sections
   size = 'lg',
   loading = false,
+  variant = 'default',
   ...inputProps
 }, ref) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
@@ -37,23 +38,26 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
 
   return (
     <div className={clsx('tw:group tw:relative tw:focus-within:z-10', containerClassName)}>
-      <FontAwesomeIcon
-        icon={loading ? faCircleNotch : searchIcon}
-        spin={loading}
-        className={clsx(
-          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors',
-          'tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text',
-          {
-            'tw:left-3': size !== 'sm',
-            'tw:scale-85 tw:left-2': size === 'sm',
-          },
-        )}
-      />
+      {variant === 'default' && (
+        <FontAwesomeIcon
+          icon={loading ? faCircleNotch : searchIcon}
+          spin={loading}
+          className={clsx(
+            'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors',
+            'tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text',
+            {
+              'tw:left-3': size !== 'sm',
+              'tw:scale-85 tw:left-2': size === 'sm',
+            },
+          )}
+        />
+      )}
       <Input
         ref={ref}
+        variant={variant}
         type="search"
         className={clsx(
-          {
+          variant === 'default' && {
             'tw:pl-9': size !== 'sm',
             'tw:pl-7': size === 'sm',
           },
