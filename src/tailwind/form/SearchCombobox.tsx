@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { ReactNode } from 'react';
-import { useCallback, useId, useMemo , useRef,useState  } from 'react';
+import type { ForwardedRef, ReactNode } from 'react';
+import { forwardRef , useCallback, useId, useImperativeHandle , useMemo , useRef,useState  } from 'react';
 import { Listbox } from '../content';
 import type { SearchInputProps } from './SearchInput';
 import { SearchInput } from './SearchInput';
@@ -28,6 +28,11 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
    * Defaults to `full`.
    */
   listboxSpan?: 'full' | 'auto';
+
+  /** Classes to add to the wrapping container */
+  containerClassName?: string;
+  /** Classes to add to the listbox */
+  listboxClassName?: string;
 };
 
 /**
@@ -36,7 +41,7 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
  * The main difference is that the input is used only to search in the listbox, and once an item is selected, the input
  * is cleared and the listbox is closed.
  */
-export function SearchCombobox<Item>({
+function SearchComboboxInner<Item>({
   searchResults,
   onSearch,
   onSelectSearchResult,
@@ -44,11 +49,15 @@ export function SearchCombobox<Item>({
   size = 'md', // SearchInput defaults its size to 'lg'. Change it to 'md'
   listboxSpan = 'full',
   onFocus,
+  containerClassName,
+  listboxClassName,
   ...rest
-}: SearchComboboxProps<Item>) {
-  const searchInputRef = useRef<HTMLInputElement>(null);
+}: SearchComboboxProps<Item>, ref: ForwardedRef<HTMLInputElement>) {
   const listboxId = useId();
   const [activeKey, setActiveKey] = useState<string>();
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useImperativeHandle(ref, () => searchInputRef.current!);
 
   // The active key is undefined while the listbox is closed. While open, we use the explicitly set activeKey, or the
   // first key of the search results.
@@ -61,11 +70,11 @@ export function SearchCombobox<Item>({
     onSelectSearchResult(item);
     onSearch('');
     searchInputRef.current!.value = '';
-  }, [onSearch, onSelectSearchResult]);
+  }, [onSearch, onSelectSearchResult, searchInputRef]);
 
   return (
     <div
-      className="tw:relative"
+      className={clsx('tw:relative', containerClassName)}
       onBlur={(e) => {
         // Clears search when focus is moving away of this container, so that the listbox is closed.
         if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -102,9 +111,10 @@ export function SearchCombobox<Item>({
           className={clsx(
             'tw:absolute tw:top-full tw:mt-1 tw:z-10',
             {
-              'tw:min-w-60 tw:max-w-full': listboxSpan === 'auto',
+              'tw:min-w-60': listboxSpan === 'auto',
               'tw:w-full': listboxSpan === 'full',
             },
+            listboxClassName,
           )}
           aria-label="Matching items"
           noItemsMessage="No results found matching search"
@@ -113,3 +123,7 @@ export function SearchCombobox<Item>({
     </div>
   );
 }
+
+export const SearchCombobox = forwardRef(SearchComboboxInner) as <T>(
+  props: SearchComboboxProps<T> & { ref?: ForwardedRef<HTMLInputElement> }
+) => ReturnType<typeof SearchComboboxInner>;

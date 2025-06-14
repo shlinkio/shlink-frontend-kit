@@ -29,7 +29,7 @@ describe('<RowDropdown />', () => {
     setUpOpened,
   ])('passes a11y checks', (setUpFunction) => checkAccessibility(setUpFunction()));
 
-  it.only.each([
+  it.each([
     'sm' as const,
     'md' as const,
     'lg' as const,

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 import { useTimeout } from '../../../src';
-import { SearchCombobox } from '../../../src/tailwind';
+import { SearchCombobox, TagsAutocomplete } from '../../../src/tailwind';
 
 const colors = [
   { name: 'red', value: '#FF0000' },
@@ -33,7 +33,7 @@ const ColorItem: FC<typeof colors[number]> = ({ name, value }) => (
   </div>
 );
 
-export const SearchComboboxPage: FC = () => {
+const SyncSearch: FC = () => {
   const [syncSearchResults, setSyncSearchResults] = useState<Map<string, typeof colors[number]>>();
   const [syncSelectedItem, setSyncSelectedItem] = useState<typeof colors[number]>();
   const onSyncSearch = useCallback((searchTerm: string) => {
@@ -49,6 +49,26 @@ export const SearchComboboxPage: FC = () => {
     ));
   }, []);
 
+  return (
+    <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <h2>Sync search</h2>
+      <SearchCombobox
+        onSearch={onSyncSearch}
+        onSelectSearchResult={setSyncSelectedItem}
+        renderSearchResult={(color) => <ColorItem {...color} />}
+        searchResults={syncSearchResults}
+        placeholder="Search colors synchronously..."
+      />
+      {syncSelectedItem && (
+        <div className="tw:flex tw:gap-3">
+          Last selected color is: <ColorItem {...syncSelectedItem} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const AsyncSearch: FC = () => {
   const { setTimeout } = useTimeout(1000);
   const [asyncSearchResults, setAsyncSearchResults] = useState<Map<string, typeof colors[number]>>();
   const [asyncSelectedItem, setAsyncSelectedItem] = useState<typeof colors[number]>();
@@ -71,37 +91,50 @@ export const SearchComboboxPage: FC = () => {
   }, [setTimeout]);
 
   return (
+    <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <h2>Async search</h2>
+      <SearchCombobox
+        onSearch={onAsyncSearch}
+        onSelectSearchResult={setAsyncSelectedItem}
+        renderSearchResult={(color) => <ColorItem {...color} />}
+        searchResults={asyncSearchResults}
+        placeholder="Search colors asynchronously..."
+        loading={asyncLoading}
+      />
+      {asyncSelectedItem && (
+        <div className="tw:flex tw:gap-3">
+          Last selected color is: <ColorItem {...asyncSelectedItem} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const TagsAutocompleteExample: FC<{ immutable: boolean }> = ({ immutable }) => {
+  const [selectedTags, setSelectedTags] = useState(immutable ? [] : ['blue', 'yellow']);
+
+  return (
+    <TagsAutocomplete
+      tags={colors.map(({ name }) => name)}
+      selectedTags={selectedTags}
+      onTagsChange={setSelectedTags}
+      getColorForTag={(tag) => colors.find(({ name }) => name === tag)?.value ?? '#99A1AF'}
+      placeholder={immutable ? 'Select tags from list...' : 'Select or add tags...'}
+      immutable={immutable}
+    />
+  );
+};
+
+export const SearchComboboxPage: FC = () => {
+  return (
     <div className="tw:flex tw:flex-col tw:gap-y-4">
+      <SyncSearch />
+      <AsyncSearch />
+
       <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Sync search</h2>
-        <SearchCombobox
-          onSearch={onSyncSearch}
-          onSelectSearchResult={setSyncSelectedItem}
-          renderSearchResult={(color) => <ColorItem {...color} />}
-          searchResults={syncSearchResults}
-          placeholder="Search colors synchronously..."
-        />
-        {syncSelectedItem && (
-          <div className="tw:flex tw:gap-3">
-            Last selected color is: <ColorItem {...syncSelectedItem} />
-          </div>
-        )}
-      </div>
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2>Async search</h2>
-        <SearchCombobox
-          onSearch={onAsyncSearch}
-          onSelectSearchResult={setAsyncSelectedItem}
-          renderSearchResult={(color) => <ColorItem {...color} />}
-          searchResults={asyncSearchResults}
-          placeholder="Search colors asynchronously..."
-          loading={asyncLoading}
-        />
-        {asyncSelectedItem && (
-          <div className="tw:flex tw:gap-3">
-            Last selected color is: <ColorItem {...asyncSelectedItem} />
-          </div>
-        )}
+        <h2>Tags autocomplete</h2>
+        <TagsAutocompleteExample immutable={false} />
+        <TagsAutocompleteExample immutable={true} />
       </div>
     </div>
   );

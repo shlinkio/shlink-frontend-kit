@@ -21,7 +21,7 @@ exports[`<SearchInput /> > applies visual changes for some props 1`] = `
       />
     </svg>
     <input
-      class="tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
+      class="tw:outline-none tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
       placeholder="Search..."
       type="search"
     />
@@ -50,7 +50,7 @@ exports[`<SearchInput /> > applies visual changes for some props 2`] = `
       />
     </svg>
     <input
-      class="tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
+      class="tw:outline-none tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
       placeholder="Search..."
       type="search"
       value="something"
@@ -80,7 +80,7 @@ exports[`<SearchInput /> > applies visual changes for some props 3`] = `
       />
     </svg>
     <input
-      class="tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
+      class="tw:outline-none tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9"
       placeholder="Search..."
       type="search"
     />
@@ -109,7 +109,21 @@ exports[`<SearchInput /> > applies visual changes for some props 4`] = `
       />
     </svg>
     <input
-      class="tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9 something"
+      class="tw:outline-none tw:w-full tw:focus-ring tw:px-4 tw:py-2 tw:text-xl tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input tw:pl-9 something"
+      placeholder="Search..."
+      type="search"
+    />
+  </div>
+</div>
+`;
+
+exports[`<SearchInput /> > applies visual changes for some props 5`] = `
+<div>
+  <div
+    class="tw:group tw:relative tw:focus-within:z-10"
+  >
+    <input
+      class="tw:outline-none"
       placeholder="Search..."
       type="search"
     />

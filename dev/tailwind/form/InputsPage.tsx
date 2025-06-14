@@ -48,6 +48,7 @@ export const InputsPage: FC = () => {
         <Input placeholder="Error input" feedback="error" />
         <Input placeholder="Disabled input" disabled />
         <Input placeholder="Readonly input" readOnly />
+        <Input placeholder="Unstyled input" variant="unstyled" />
         <LabelledInput label="Labelled input" helpText="This is the help text under the input" />
         <LabelledInput label="Error labelled input" error="This input is invalid!" />
         <Input placeholder="Large input" size="lg" />
