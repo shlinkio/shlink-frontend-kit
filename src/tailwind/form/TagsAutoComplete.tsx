@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
-import { useCallback, useState  } from 'react';
+import { useCallback, useRef , useState  } from 'react';
 import { isLightColor } from '../../utils';
 import { CloseButton } from './CloseButton';
 import type { SearchComboboxProps } from './SearchCombobox';
@@ -18,25 +18,47 @@ const TagItem: FC<TagItemProps> = ({ name, color }) => (
   </div>
 );
 
+const ONE_OR_MORE_SPACES_REGEX = /\s+/g;
+
+/**
+ * Normalizes a tag, making it lowercase, trimmed and replacing space characters with dashes
+ */
+const normalizeTag = (tag: string) => tag.trim().toLowerCase().replace(ONE_OR_MORE_SPACES_REGEX, '-');
+
 export type TagsAutoCompleteProps = Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled'> & {
   tags: string[];
   selectedTags?: string[];
   onTagsChange?: (tags: string[]) => void;
   placeholder?: string;
   getColorForTag?: (tag: string) => string;
+
+  /**
+   * How to filter the list of tags when searching:
+   *   - `startsWith`: those that start with the search term
+   *   -  `includes`: those that include the search term
+   * Defaults to `startsWith`.
+   */
+  searchMode?: 'startsWith' | 'includes';
 };
 
-export const TagsAutoComplete: FC<TagsAutoCompleteProps> = (
-  { tags, selectedTags = [], onTagsChange, getColorForTag, size = 'md', disabled, ...rest },
-) => {
+export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
+  tags,
+  selectedTags = [],
+  onTagsChange,
+  getColorForTag,
+  searchMode = 'startsWith',
+  size = 'md',
+  disabled,
+  ...rest
+}) => {
   const [searchResults, setSearchResults] = useState<Map<string, string>>();
   const onSearch = useCallback((searchTerm: string) => {
-    if (!searchTerm) {
+    const normalizedSearchTerm = searchTerm.toLowerCase().trim();
+    if (!normalizedSearchTerm) {
       setSearchResults(undefined);
       return;
     }
 
-    const lowerSearchTerm = searchTerm.toLowerCase();
     const matches: (string)[] = tags
       .filter((t) => {
         // Exclude any tag which is already selected
@@ -44,29 +66,34 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = (
           return false;
         }
 
-        // Include tags starting with the search term only
-        return t.toLowerCase().startsWith(lowerSearchTerm);
+        const lowerTag = t.toLowerCase();
+        return searchMode === 'startsWith'
+          ? lowerTag.startsWith(normalizedSearchTerm)
+          : lowerTag.includes(normalizedSearchTerm);
       })
       // Do not show more than 5 matches
       .slice(0, 5);
 
     // Add an extra item to just "create" the input verbatim
-    matches.push(`Add "${lowerSearchTerm}" tag`);
+    matches.push(`Add "${normalizeTag(normalizedSearchTerm)}" tag`);
 
     setSearchResults(new Map(matches.map((tag) => [tag, tag])));
-  }, [selectedTags, tags]);
+  }, [searchMode, selectedTags, tags]);
 
   const addTag = useCallback((tag: string) => {
     const match = tag.match(/Add\s+"([^"]+)"\s+tag/);
-    const addedTag = match?.[1] ?? tag;
+    const tagsToAdd = (match?.[1] ?? tag).split(',').map(normalizeTag);
 
-    onTagsChange?.([...new Set([...selectedTags, addedTag])]);
+    onTagsChange?.([...new Set([...selectedTags, ...tagsToAdd])]);
   }, [onTagsChange, selectedTags]);
   const removeTag = useCallback((deletedTag: string) => {
     onTagsChange?.(selectedTags.filter((tag) => tag !== deletedTag));
   }, [onTagsChange, selectedTags]);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={clsx(
         'tw:rounded-md tw:flex tw:flex-wrap tw:gap-1',
@@ -83,6 +110,11 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = (
           'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': !disabled,
         },
       )}
+      onClick={(e) => {
+        if (e.target !== inputRef.current) {
+          inputRef.current?.focus();
+        }
+      }}
     >
       {selectedTags.map((tag, index) => {
         const tagColor = getColorForTag?.(tag) ?? '#99a1af';
@@ -125,14 +157,20 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = (
         searchResults={searchResults}
         onSearch={onSearch}
         onSelectSearchResult={addTag}
-        renderSearchResult={(tag) => tag.match(/Add\s+"([^"]+)"\s+tag/) ? tag : <TagItem name={tag} color={getColorForTag?.(tag) ?? '#99A1AF'} />}
+        renderSearchResult={(tag) =>
+          tag.match(/Add\s+"([^"]+)"\s+tag/)
+            ? tag
+            : <TagItem name={tag} color={getColorForTag?.(tag) ?? '#99A1AF'} />
+        }
         onKeyDown={(e) => {
-          if (e.key === 'Backspace') {
+          if (e.key === 'Backspace' && !searchResults) {
             removeTag(selectedTags[selectedTags.length -1 ]);
           }
         }}
         size={size}
         disabled={disabled}
+        ref={inputRef}
+        immediate
         {...rest}
       />
     </div>

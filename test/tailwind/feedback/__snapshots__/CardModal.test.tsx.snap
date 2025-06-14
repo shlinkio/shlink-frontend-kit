@@ -23,7 +23,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -80,7 +80,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -137,7 +137,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -194,7 +194,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -251,7 +251,7 @@ exports[`<CardModal /> > renders expected variant 1`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -325,7 +325,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg
@@ -397,7 +397,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
         </h5>
         <button
           aria-label="Close dialog"
-          class="tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity tw:rounded-md tw:focus-ring tw:cursor-pointer"
+          class="tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"
           type="button"
         >
           <svg

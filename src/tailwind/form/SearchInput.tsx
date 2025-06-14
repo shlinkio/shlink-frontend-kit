@@ -13,6 +13,12 @@ export type SearchInputProps = Omit<InputProps, 'className' | 'onChange' | 'valu
 
   /** When set to true, it displays a loading indicator in place of the magnifyinf glass icon */
   loading?: boolean;
+
+  /**
+   * Whether onChange should be triggered immediately or debounced.
+   * Defaults to false.
+   */
+  immediate?: boolean;
 };
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
@@ -23,18 +29,19 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   size = 'lg',
   loading = false,
   variant = 'default',
+  immediate = false,
   ...inputProps
 }, ref) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
   const searchTermChanged = useCallback((newSearchTerm: string) => {
-    if (!newSearchTerm) {
+    if (!newSearchTerm || immediate) {
       // When setting an empty value, do it immediately
       clearCurrentTimeout();
       onChange(newSearchTerm);
     } else {
       setTimeout(() => onChange(newSearchTerm));
     }
-  }, [clearCurrentTimeout, onChange, setTimeout]);
+  }, [clearCurrentTimeout, immediate, onChange, setTimeout]);
 
   return (
     <div className={clsx('tw:group tw:relative tw:focus-within:z-10', containerClassName)}>
