@@ -110,8 +110,8 @@ const AsyncSearch: FC = () => {
   );
 };
 
-const TagsAutoCompleteExample: FC = () => {
-  const [selectedTags, setSelectedTags] = useState(['blue', 'yellow']);
+const TagsAutoCompleteExample: FC<{ immutable: boolean }> = ({ immutable }) => {
+  const [selectedTags, setSelectedTags] = useState(immutable ? [] : ['blue', 'yellow']);
 
   return (
     <div className="tw:flex tw:flex-col tw:gap-y-2">
@@ -121,7 +121,8 @@ const TagsAutoCompleteExample: FC = () => {
         selectedTags={selectedTags}
         onTagsChange={setSelectedTags}
         getColorForTag={(tag) => colors.find(({ name }) => name === tag)?.value ?? '#99A1AF'}
-        placeholder="Select tag..."
+        placeholder={immutable ? 'Select tags from list...' : 'Select or add tags...'}
+        immutable={immutable}
       />
     </div>
   );
@@ -132,7 +133,8 @@ export const SearchComboboxPage: FC = () => {
     <div className="tw:flex tw:flex-col tw:gap-y-4">
       <SyncSearch />
       <AsyncSearch />
-      <TagsAutoCompleteExample />
+      <TagsAutoCompleteExample immutable={false} />
+      <TagsAutoCompleteExample immutable={true} />
     </div>
   );
 };

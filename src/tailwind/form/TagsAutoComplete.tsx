@@ -40,6 +40,12 @@ export type TagsAutoCompleteProps = Pick<SearchComboboxProps<string>, 'placehold
   containerClassName?: string;
 
   /**
+   * Whether to allow adding new arbitrary tags, or only select from the list of tags.
+   * Defaults to false.
+   */
+  immutable?: boolean;
+
+  /**
    * How to filter the list of tags when searching:
    *   - `startsWith`: those that start with the search term
    *   -  `includes`: those that include the search term
@@ -54,6 +60,7 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
   onTagsChange,
   getColorForTag,
   searchMode = 'startsWith',
+  immutable = false,
   size = 'md',
   disabled,
   containerClassName,
@@ -82,11 +89,13 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
       // Do not show more than 5 matches
       .slice(0, 5);
 
-    // Add an extra item to just "create" the input verbatim
-    matches.push(`Add "${normalizeTag(normalizedSearchTerm)}" tag`);
+    if (!immutable) {
+      // Add an extra item to just "create" the input verbatim
+      matches.push(`Add "${normalizeTag(normalizedSearchTerm)}" tag`);
+    }
 
     setSearchResults(new Map(matches.map((tag) => [tag, tag])));
-  }, [searchMode, selectedTags, tags]);
+  }, [immutable, searchMode, selectedTags, tags]);
 
   const addTag = useCallback((tag: string) => {
     const match = tag.match(/Add\s+"([^"]+)"\s+tag/);
@@ -155,11 +164,12 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
         variant="unstyled"
         listboxSpan="auto"
         containerClassName="tw:flex tw:items-center"
+        listboxClassName="tw:whitespace-nowrap"
         inputClassName={clsx(
-          'tw:no-clear-button tw:h-[26px]',
+          'tw:no-clear-button',
           {
             'tw:px-1 tw:text-sm': size === 'sm',
-            'tw:px-2 ': size === 'md',
+            'tw:px-2 tw:h-[26px]': size === 'md',
             'tw:px-3 tw:text-xl': size === 'lg',
           },
         )}

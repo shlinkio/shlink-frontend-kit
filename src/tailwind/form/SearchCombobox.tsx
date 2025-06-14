@@ -29,7 +29,10 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
    */
   listboxSpan?: 'full' | 'auto';
 
+  /** Classes to add to the wrapping container */
   containerClassName?: string;
+  /** Classes to add to the listbox */
+  listboxClassName?: string;
 };
 
 /**
@@ -47,6 +50,7 @@ function SearchComboboxInner<Item>({
   listboxSpan = 'full',
   onFocus,
   containerClassName,
+  listboxClassName,
   ...rest
 }: SearchComboboxProps<Item>, ref: ForwardedRef<HTMLInputElement>) {
   const listboxId = useId();
@@ -107,9 +111,10 @@ function SearchComboboxInner<Item>({
           className={clsx(
             'tw:absolute tw:top-full tw:mt-1 tw:z-10',
             {
-              'tw:min-w-60 tw:max-w-full': listboxSpan === 'auto',
+              'tw:min-w-60': listboxSpan === 'auto',
               'tw:w-full': listboxSpan === 'full',
             },
+            listboxClassName,
           )}
           aria-label="Matching items"
           noItemsMessage="No results found matching search"
