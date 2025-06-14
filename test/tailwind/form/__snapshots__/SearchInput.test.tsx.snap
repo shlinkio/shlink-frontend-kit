@@ -116,3 +116,17 @@ exports[`<SearchInput /> > applies visual changes for some props 4`] = `
   </div>
 </div>
 `;
+
+exports[`<SearchInput /> > applies visual changes for some props 5`] = `
+<div>
+  <div
+    class="tw:group tw:relative tw:focus-within:z-10"
+  >
+    <input
+      class="tw:outline-none"
+      placeholder="Search..."
+      type="search"
+    />
+  </div>
+</div>
+`;

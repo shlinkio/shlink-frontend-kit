@@ -45,11 +45,19 @@ describe('<SearchInput />', () => {
     expect(onChange).toHaveBeenCalledWith('something');
   });
 
+  it('invokes onChange immediately when immediate is true', () => {
+    setUp({ immediate: true });
+    onSearchInputChange('the value');
+
+    expect(onChange).toHaveBeenCalledWith('the value');
+  });
+
   it.each([
     { borderless: true },
     { defaultValue: 'something' },
     { containerClassName: 'something' },
     { inputClassName: 'something' },
+    { variant: 'unstyled' as const },
   ])('applies visual changes for some props', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();
