@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useCallback, useRef , useState  } from 'react';
 import { isLightColor } from '../../utils';
+import type { Size } from '../types';
 import { CloseButton } from './CloseButton';
 import type { SearchComboboxProps } from './SearchCombobox';
 import { SearchCombobox } from './SearchCombobox';
@@ -18,14 +19,44 @@ const TagItem: FC<TagItemProps> = ({ name, color }) => (
   </div>
 );
 
+type TagSearchResultProps = {
+  tag: string;
+  color: string;
+  size: Size;
+  onRemove: (tag: string) => void;
+};
+
+const TagSearchResult: FC<TagSearchResultProps> = ({ tag, color, size, onRemove }) => (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+  <li
+    className={clsx(
+      'tw:inline-flex tw:items-center tw:gap-1 tw:font-bold tw:[&]:rounded-md',
+      {
+        'tw:px-1 tw:text-sm': size === 'sm',
+        'tw:py-0.25 tw:px-1.5': size === 'md',
+        'tw:py-0.5 tw:px-1.5': size === 'lg',
+      },
+    )}
+    style={{
+      backgroundColor: color,
+      color: isLightColor(color) ? '#000' : '#fff',
+    }}
+    onClick={(e) => e.stopPropagation()}
+  >
+    {tag}
+    <CloseButton label={`Remove ${tag}`} solid size="sm" onClick={() => onRemove(tag)} />
+  </li>
+);
+
 const ONE_OR_MORE_SPACES_REGEX = /\s+/g;
+const DEFAULT_TAG_COLOR = '#99a1af';
 
 /**
  * Normalizes a tag, making it lowercase, trimmed and replacing space characters with dashes
  */
 const normalizeTag = (tag: string) => tag.trim().toLowerCase().replace(ONE_OR_MORE_SPACES_REGEX, '-');
 
-export type TagsAutocompleteProps = Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled'> & {
+export type TagsAutocompleteProps = {
   /** Full list of tags from which to build the suggestions */
   tags: string[];
   /** Tags currently selected */
@@ -52,7 +83,7 @@ export type TagsAutocompleteProps = Pick<SearchComboboxProps<string>, 'placehold
    * Defaults to `startsWith`.
    */
   searchMode?: 'startsWith' | 'includes';
-};
+} & Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled' | 'aria-label'>;
 
 export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
   tags,
@@ -91,7 +122,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
 
     if (!immutable) {
       // Add an extra item to just "create" the input verbatim
-      matches.push(`Add "${normalizeTag(normalizedSearchTerm)}" tag`);
+      matches.push(`Add "${normalizedSearchTerm.split(',').map(normalizeTag).join(',')}" tag`);
     }
 
     setSearchResults(new Map(matches.map((tag) => [tag, tag])));
@@ -103,9 +134,10 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
 
     onTagsChange?.([...new Set([...selectedTags, ...tagsToAdd])]);
   }, [onTagsChange, selectedTags]);
-  const removeTag = useCallback((deletedTag: string) => {
-    onTagsChange?.(selectedTags.filter((tag) => tag !== deletedTag));
-  }, [onTagsChange, selectedTags]);
+  const removeTag = useCallback(
+    (deletedTag: string) => onTagsChange?.(selectedTags.filter((tag) => tag !== deletedTag)),
+    [onTagsChange, selectedTags],
+  );
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -134,32 +166,12 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
         }
       }}
     >
-      {selectedTags.map((tag, index) => {
-        const tagColor = getColorForTag?.(tag) ?? '#99a1af';
-
-        return (
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
-          <span
-            key={`${tag}${index}`}
-            className={clsx(
-              'tw:inline-flex tw:items-center tw:gap-1 tw:font-bold tw:[&]:rounded-md',
-              {
-                'tw:px-1 tw:text-sm': size === 'sm',
-                'tw:py-0.25 tw:px-1.5': size === 'md',
-                'tw:py-0.5 tw:px-1.5': size === 'lg',
-              },
-            )}
-            style={{
-              backgroundColor: tagColor,
-              color: isLightColor(tagColor) ? '#000' : '#fff',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {tag}
-            <CloseButton label={`Remove ${tag}`} solid size="sm" onClick={() => removeTag(tag)} />
-          </span>
-        );
-      })}
+      <ul className="tw:m-0 tw:p-0 tw:flex tw:flex-wrap tw:gap-1">
+        {selectedTags.map((tag, index) => {
+          const tagColor = getColorForTag?.(tag) ?? DEFAULT_TAG_COLOR;
+          return <TagSearchResult key={`${tag}${index}`} tag={tag} color={tagColor} onRemove={removeTag} size={size} />;
+        })}
+      </ul>
       <SearchCombobox
         variant="unstyled"
         listboxSpan="auto"
@@ -179,7 +191,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
         renderSearchResult={(tag) =>
           tag.match(/Add\s+"([^"]+)"\s+tag/)
             ? tag
-            : <TagItem name={tag} color={getColorForTag?.(tag) ?? '#99A1AF'} />
+            : <TagItem name={tag} color={getColorForTag?.(tag) ?? DEFAULT_TAG_COLOR} />
         }
         onKeyDown={(e) => {
           if (e.key === 'Backspace' && !searchResults) {
