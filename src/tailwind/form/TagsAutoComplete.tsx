@@ -26,11 +26,18 @@ const ONE_OR_MORE_SPACES_REGEX = /\s+/g;
 const normalizeTag = (tag: string) => tag.trim().toLowerCase().replace(ONE_OR_MORE_SPACES_REGEX, '-');
 
 export type TagsAutoCompleteProps = Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled'> & {
+  /** Full list of tags from which to build the suggestions */
   tags: string[];
+  /** Tags currently selected */
   selectedTags?: string[];
+  /** Invoked when tags are added or removed */
   onTagsChange?: (tags: string[]) => void;
-  placeholder?: string;
+  /** Invoked to determine what is the color of a tag */
   getColorForTag?: (tag: string) => string;
+  /** Search input placeholder */
+  placeholder?: string;
+  /** Classes to be added to the wrapping container */
+  containerClassName?: string;
 
   /**
    * How to filter the list of tags when searching:
@@ -49,6 +56,7 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
   searchMode = 'startsWith',
   size = 'md',
   disabled,
+  containerClassName,
   ...rest
 }) => {
   const [searchResults, setSearchResults] = useState<Map<string, string>>();
@@ -109,6 +117,7 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
           // Use different background color when rendered inside a card
           'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': !disabled,
         },
+        containerClassName,
       )}
       onClick={(e) => {
         if (e.target !== inputRef.current) {
