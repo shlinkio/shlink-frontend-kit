@@ -10,5 +10,5 @@ export * from './RevealablePasswordInput';
 export * from './SearchCombobox';
 export * from './SearchInput';
 export * from './Select';
-export * from './TagsAutoComplete';
+export * from './TagsAutocomplete';
 export * from './ToggleSwitch';

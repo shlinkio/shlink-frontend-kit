@@ -25,7 +25,7 @@ const ONE_OR_MORE_SPACES_REGEX = /\s+/g;
  */
 const normalizeTag = (tag: string) => tag.trim().toLowerCase().replace(ONE_OR_MORE_SPACES_REGEX, '-');
 
-export type TagsAutoCompleteProps = Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled'> & {
+export type TagsAutocompleteProps = Pick<SearchComboboxProps<string>, 'placeholder' | 'size' | 'disabled'> & {
   /** Full list of tags from which to build the suggestions */
   tags: string[];
   /** Tags currently selected */
@@ -54,7 +54,7 @@ export type TagsAutoCompleteProps = Pick<SearchComboboxProps<string>, 'placehold
   searchMode?: 'startsWith' | 'includes';
 };
 
-export const TagsAutoComplete: FC<TagsAutoCompleteProps> = ({
+export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
   tags,
   selectedTags = [],
   onTagsChange,

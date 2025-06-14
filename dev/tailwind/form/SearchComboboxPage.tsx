@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 import { useTimeout } from '../../../src';
-import { SearchCombobox, TagsAutoComplete } from '../../../src/tailwind';
+import { SearchCombobox, TagsAutocomplete } from '../../../src/tailwind';
 
 const colors = [
   { name: 'red', value: '#FF0000' },
@@ -110,21 +110,18 @@ const AsyncSearch: FC = () => {
   );
 };
 
-const TagsAutoCompleteExample: FC<{ immutable: boolean }> = ({ immutable }) => {
+const TagsAutocompleteExample: FC<{ immutable: boolean }> = ({ immutable }) => {
   const [selectedTags, setSelectedTags] = useState(immutable ? [] : ['blue', 'yellow']);
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-2">
-      <h2>Tags autocomplete</h2>
-      <TagsAutoComplete
-        tags={colors.map(({ name }) => name)}
-        selectedTags={selectedTags}
-        onTagsChange={setSelectedTags}
-        getColorForTag={(tag) => colors.find(({ name }) => name === tag)?.value ?? '#99A1AF'}
-        placeholder={immutable ? 'Select tags from list...' : 'Select or add tags...'}
-        immutable={immutable}
-      />
-    </div>
+    <TagsAutocomplete
+      tags={colors.map(({ name }) => name)}
+      selectedTags={selectedTags}
+      onTagsChange={setSelectedTags}
+      getColorForTag={(tag) => colors.find(({ name }) => name === tag)?.value ?? '#99A1AF'}
+      placeholder={immutable ? 'Select tags from list...' : 'Select or add tags...'}
+      immutable={immutable}
+    />
   );
 };
 
@@ -133,8 +130,12 @@ export const SearchComboboxPage: FC = () => {
     <div className="tw:flex tw:flex-col tw:gap-y-4">
       <SyncSearch />
       <AsyncSearch />
-      <TagsAutoCompleteExample immutable={false} />
-      <TagsAutoCompleteExample immutable={true} />
+
+      <div className="tw:flex tw:flex-col tw:gap-y-2">
+        <h2>Tags autocomplete</h2>
+        <TagsAutocompleteExample immutable={false} />
+        <TagsAutocompleteExample immutable={true} />
+      </div>
     </div>
   );
 };
