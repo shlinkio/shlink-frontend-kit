@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useCallback, useState  } from 'react';
+import { isLightColor } from '../../utils';
 import { CloseButton } from './CloseButton';
 import type { SearchComboboxProps } from './SearchCombobox';
 import { SearchCombobox } from './SearchCombobox';
@@ -83,25 +84,32 @@ export const TagsAutoComplete: FC<TagsAutoCompleteProps> = (
         },
       )}
     >
-      {selectedTags.map((tag, index) => (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
-        <span
-          key={`${tag}${index}`}
-          className={clsx(
-            'tw:inline-flex tw:items-center tw:gap-1 tw:font-bold tw:[&]:rounded-md',
-            {
-              'tw:px-1 tw:text-sm': size === 'sm',
-              'tw:py-0.25 tw:px-1': size === 'md',
-              'tw:py-0.5 tw:px-1': size === 'lg',
-            },
-          )}
-          style={{ backgroundColor: getColorForTag?.(tag) ?? '#99A1AF' }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {tag}
-          <CloseButton label={`Remove ${tag}`} solid size="sm" onClick={() => removeTag(tag)} />
-        </span>
-      ))}
+      {selectedTags.map((tag, index) => {
+        const tagColor = getColorForTag?.(tag) ?? '#99a1af';
+
+        return (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+          <span
+            key={`${tag}${index}`}
+            className={clsx(
+              'tw:inline-flex tw:items-center tw:gap-1 tw:font-bold tw:[&]:rounded-md',
+              {
+                'tw:px-1 tw:text-sm': size === 'sm',
+                'tw:py-0.25 tw:px-1.5': size === 'md',
+                'tw:py-0.5 tw:px-1.5': size === 'lg',
+              },
+            )}
+            style={{
+              backgroundColor: tagColor,
+              color: isLightColor(tagColor) ? '#000' : '#fff',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {tag}
+            <CloseButton label={`Remove ${tag}`} solid size="sm" onClick={() => removeTag(tag)} />
+          </span>
+        );
+      })}
       <SearchCombobox
         variant="unstyled"
         listboxSpan="auto"
