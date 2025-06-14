@@ -19,6 +19,7 @@ describe('<Input />', () => {
     { disabled: true },
     { readOnly: true },
     { readOnly: true, disabled: true },
+    { variant: 'unstyled' as const },
   ])('renders as expected based on provided props', (props) => {
     const { container } = setUp(props);
     expect(container).toMatchSnapshot();

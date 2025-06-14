@@ -83,3 +83,11 @@ exports[`<Input /> > renders as expected based on provided props 10`] = `
   />
 </div>
 `;
+
+exports[`<Input /> > renders as expected based on provided props 11`] = `
+<div>
+  <input
+    class="tw:outline-none"
+  />
+</div>
+`;
