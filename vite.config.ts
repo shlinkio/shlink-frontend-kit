@@ -54,7 +54,6 @@ export default defineConfig({
       instances: [{ browser: 'chromium' }],
     },
     globals: true,
-    allowOnly: true,
     setupFiles: ['./test/setup.ts', './dev/tailwind/tailwind.css'],
     coverage: {
       provider: 'v8',
