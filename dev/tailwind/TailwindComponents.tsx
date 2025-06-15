@@ -12,6 +12,7 @@ import { SearchComboboxPage } from './form/SearchComboboxPage';
 import { SearchInputPage } from './form/SearchInputPage';
 import { DropdownPage } from './navigation/DropdownPage';
 import { MenuPage } from './navigation/MenuPage';
+import { NavBarPage } from './navigation/NavBarPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
@@ -29,6 +30,7 @@ export const TailwindComponents: FC = () => {
       <Route path="/content/tables" element={<TablePage />} />
       <Route path="/content/details" element={<DetailsPage />} />
       <Route path="/navigation/paginator" element={<PaginatorPage />} />
+      <Route path="/navigation/nav-bar" element={<NavBarPage />} />
       <Route path="/navigation/nav-pills">
         <Route path="" element={<NavPillsPage />} />
         <Route path="*" element={<NavPillsPage />} />
