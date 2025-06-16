@@ -11,7 +11,11 @@ import type { RequiredReactNode } from '../types';
 import type { DropdownProps } from './Dropdown';
 import { Dropdown as BaseDropdown } from './Dropdown';
 
-const MenuItem: FC<LinkProps & { active?: boolean }> = ({ className, active, ...props }) => (
+type ItemProps = {
+  active?: boolean;
+};
+
+const MenuItem: FC<LinkProps & ItemProps> = ({ className, active, ...props }) => (
   <li role="menuitem" className="tw:w-full tw:flex">
     <Link
       className={clsx(
@@ -29,8 +33,8 @@ const MenuItem: FC<LinkProps & { active?: boolean }> = ({ className, active, ...
   </li>
 );
 
-const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'>> = (
-  { containerClassName, buttonClassName, menuClassName, ...props },
+const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'> & ItemProps> = (
+  { containerClassName, buttonClassName, menuClassName, active, ...props },
 ) => {
   return (
     <li role="menuitem" className="tw:w-full tw:flex">
@@ -38,9 +42,13 @@ const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menu
         containerClassName={clsx('tw:max-md:w-full', containerClassName)}
         buttonVariant="text"
         buttonClassName={clsx(
-          'tw:text-white tw:opacity-60 tw:highlight:opacity-100 tw:transition-opacity',
           'tw:px-2 tw:py-3',
           'tw:max-md:w-full tw:max-md:px-3 tw:max-md:py-2',
+          'tw:text-white tw:highlight:opacity-100 tw:transition-opacity',
+          {
+            'tw:opacity-60': !active,
+            'tw:opacity-100': active,
+          },
           buttonClassName,
         )}
         menuAlignment="right"
