@@ -2,8 +2,9 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
+import { useEffect } from 'react';
 import type { LinkProps } from 'react-router';
-import { Link } from 'react-router';
+import { Link,useLocation  } from 'react-router';
 import { useToggle } from '../../hooks';
 import { Button } from '../form';
 import type { RequiredReactNode } from '../types';
@@ -43,7 +44,7 @@ const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menu
           buttonClassName,
         )}
         menuAlignment="right"
-        menuOffset={-4}
+        menuOffset={-3}
         menuClassName={clsx('tw:mx-2', menuClassName)}
         {...props}
       />
@@ -56,7 +57,11 @@ export type NavBarProps = HTMLProps<HTMLElement> & {
 };
 
 export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
-  const { flag: menuOpen, toggle: toggleMenu } = useToggle(false, true);
+  const { flag: menuOpen, toggle: toggleMenu, setToFalse: closeMenu } = useToggle(false, true);
+  const { pathname } = useLocation();
+
+  // In mobile devices, collapse the navbar when the pathname changes
+  useEffect(() => closeMenu(), [pathname, closeMenu]);
 
   return (
     <nav

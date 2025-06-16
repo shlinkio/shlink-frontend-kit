@@ -151,7 +151,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         <div
           ref={refs.setFloating}
           style={floatingStyles}
-          className="tw:min-w-full tw:z-1000"
+          className="tw:min-w-full tw:z-500"
           {...getFloatingProps()}
         >
           <Menu
