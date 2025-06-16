@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * *Nothing*
 
 ### Changed
-* *Nothing*
+* Used tailwind classes no longer expect the `tw` prefix.
 
 ### Deprecated
 * *Nothing*
