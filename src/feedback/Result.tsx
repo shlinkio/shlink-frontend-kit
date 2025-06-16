@@ -14,15 +14,15 @@ export type ResultProps = PropsWithChildren<{
 export const Result: FC<ResultProps> = ({ variant, className, size = 'md', children }) => (
   <div
     className={clsx(
-      'tw:rounded-md tw:text-center',
+      'rounded-md text-center',
       {
-        'tw:p-2': size === 'sm',
-        'tw:p-4': size === 'md',
-        'tw:p-6': size === 'lg',
-        'tw:[&]:text-white': variant !== 'warning',
-        'tw:bg-lm-brand tw:dark:bg-dm-brand': variant === 'success',
-        'tw:bg-danger': variant === 'error',
-        'tw:bg-warning tw:text-black': variant === 'warning',
+        'p-2': size === 'sm',
+        'p-4': size === 'md',
+        'p-6': size === 'lg',
+        '[&]:text-white': variant !== 'warning',
+        'bg-lm-brand dark:bg-dm-brand': variant === 'success',
+        'bg-danger': variant === 'error',
+        'bg-warning text-black': variant === 'warning',
       },
       className,
     )}

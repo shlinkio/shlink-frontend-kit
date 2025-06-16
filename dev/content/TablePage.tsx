@@ -75,8 +75,8 @@ export const TablePage: FC = () => {
   );
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-2">
         <h2>Responsive table</h2>
         <Table
           header={
@@ -97,7 +97,7 @@ export const TablePage: FC = () => {
         </Table>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Non-responsive table inside Card</h2>
         <SimpleCard>
           <Table
@@ -110,7 +110,7 @@ export const TablePage: FC = () => {
                   <Table.Cell>Role</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell colSpan={3} className="tw:[&]:p-0">
+                  <Table.Cell colSpan={3} className="[&]:p-0">
                     <SearchInput onChange={setSearchTerm} borderless size="md" />
                   </Table.Cell>
                 </Table.Row>
@@ -135,7 +135,7 @@ export const TablePage: FC = () => {
         </SimpleCard>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Table with footer</h2>
         <Table
           header={
@@ -147,7 +147,7 @@ export const TablePage: FC = () => {
           }
           footer={
             <Table.Row>
-              <Table.Cell colSpan={3} className="tw:text-center" type="td">- Students -</Table.Cell>
+              <Table.Cell colSpan={3} className="text-center" type="td">- Students -</Table.Cell>
             </Table.Row>
           }
         >
@@ -161,7 +161,7 @@ export const TablePage: FC = () => {
         </Table>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Table sizes</h2>
         <Table
           size="sm"

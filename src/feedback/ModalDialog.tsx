@@ -48,7 +48,7 @@ export const ModalDialog: FC<ModalDialogProps> = ({
   return createPortal(
     <dialog
       ref={dialogRef}
-      className={clsx('tw:bg-transparent tw:backdrop:bg-black/50', className)}
+      className={clsx('bg-transparent backdrop:bg-black/50', className)}
       onCancel={(e) => {
         e.preventDefault();
         onClose();

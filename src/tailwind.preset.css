@@ -7,43 +7,43 @@
 @theme static inline {
     /* Light mode */
     --color-lm-brand: #2078CF;
-    --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--tw-color-lm-brand) 80%);
+    --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--color-lm-brand) 80%);
     --color-lm-primary: #ffffff;
-    --color-lm-primary-alfa: rgb(var(--tw-color-lm-primary) / .5);
+    --color-lm-primary-alfa: rgb(var(--color-lm-primary) / .5);
     --color-lm-secondary: #eeeff8;
     --color-lm-text: #232323;
     --color-lm-border: rgb(0 0 0 / .125);
     --color-lm-table-border: #dee2e6;
     --color-lm-active: #eeeeee;
-    --color-lm-main: var(--tw-color-lm-brand);
-    --color-lm-input: var(--tw-color-lm-primary);
-    --color-lm-disabled-input: var(--tw-color-lm-secondary);
+    --color-lm-main: var(--color-lm-brand);
+    --color-lm-input: var(--color-lm-primary);
+    --color-lm-disabled-input: var(--color-lm-secondary);
     --color-lm-input-text: #495057;
     --color-lm-input-border: rgb(0 0 0 / .19);
     --color-lm-table-highlight: rgb(0 0 0 / .075);
 
     /* Dark mode */
     --color-dm-brand: #4696e5;
-    --color-dm-brand-dark: color-mix(in srgb, black 25%, var(--tw-color-dm-brand) 75%);
+    --color-dm-brand-dark: color-mix(in srgb, black 25%, var(--color-dm-brand) 75%);
     --color-dm-primary: #161b22;
-    --color-dm-primary-alfa: rgb(var(--tw-color-dm-primary) / .8);
+    --color-dm-primary-alfa: rgb(var(--color-dm-primary) / .8);
     --color-dm-secondary: #0f131a;
     --color-dm-text: rgb(201 209 217);
     --color-dm-border: rgb(255 255 255 / .15);
     --color-dm-table-border: #393d43;
-    --color-dm-active: var(--tw-color-dm-secondary);
+    --color-dm-active: var(--color-dm-secondary);
     --color-dm-main: #0b2d4e;
     --color-dm-input: rgb(17.9928571429 22.0821428571 27.8071428571);
     --color-dm-disabled-input: rgb(26.0071428571 31.9178571429 40.1928571429);
-    --color-dm-input-text: var(--tw-color-dm-text);
-    --color-dm-input-border: var(--tw-color-dm-border);
-    --color-dm-table-highlight: var(--tw-color-dm-border);
+    --color-dm-input-text: var(--color-dm-text);
+    --color-dm-input-border: var(--color-dm-border);
+    --color-dm-table-highlight: var(--color-dm-border);
 
     /* General color palette */
     --color-danger: #dc3545;
-    --color-danger-dark: color-mix(in srgb, black 20%, var(--tw-color-danger) 80%);
+    --color-danger-dark: color-mix(in srgb, black 20%, var(--color-danger) 80%);
     --color-warning: #ffc107;
-    --color-warning-dark: color-mix(in srgb, black 20%, var(--tw-color-warning) 80%);
+    --color-warning-dark: color-mix(in srgb, black 20%, var(--color-warning) 80%);
     --color-placeholder: #6c757d;
 
     /* Override breakpoints with the values from bootstrap, to keep sizing until fully migrated */
@@ -56,8 +56,7 @@
 
 @layer base {
     :root {
-        --header-height: 56px;
-        --tw-header-height: 52px;
+        --header-height: 52px;
 
         /* Chevron image for selects */
         --chevron-down: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
@@ -70,11 +69,11 @@
         --circle-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
         --circle-light-blue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
 
-        @apply tw:scheme-normal tw:dark:scheme-dark tw:scroll-auto;
+        @apply scheme-normal dark:scheme-dark scroll-auto;
     }
 
     html, body {
-        @apply tw:h-full tw:bg-lm-secondary tw:dark:bg-dm-secondary tw:text-lm-text tw:dark:text-dm-text;
+        @apply h-full bg-lm-secondary dark:bg-dm-secondary text-lm-text dark:text-dm-text;
     }
 
     a {
@@ -83,78 +82,78 @@
          *       This can be set via @apply as soon as we stop using important for tailwind classes, once bootstrap is
          *       removed
          */
-        color: var(--tw-color-lm-brand);
-        border-radius: var(--tw-radius-xs);
+        color: var(--color-lm-brand);
+        border-radius: var(--radius-xs);
 
         @apply
-            tw:focus-visible:outline-3 tw:focus-visible:outline-offset-3
-            tw:focus-visible:outline-lm-brand/50 tw:dark:focus-visible:outline-dm-brand/50
-            tw:focus-visible:z-1;
+            focus-visible:outline-3 focus-visible:outline-offset-3
+            focus-visible:outline-lm-brand/50 dark:focus-visible:outline-dm-brand/50
+            focus-visible:z-1;
     }
 
     [data-theme="dark"] a {
-        color: var(--tw-color-dm-brand);
+        color: var(--color-dm-brand);
     }
 
     h1 {
-        @apply tw:text-[2.5rem]/[1.2] tw:m-0 tw:font-medium;
+        @apply text-[2.5rem]/[1.2] m-0 font-medium;
     }
     h2 {
-        @apply tw:text-[2rem]/[1.2] tw:m-0 tw:font-medium;
+        @apply text-[2rem]/[1.2] m-0 font-medium;
     }
     h3 {
-        @apply tw:text-[1.75rem]/[1.2] tw:m-0 tw:font-medium;
+        @apply text-[1.75rem]/[1.2] m-0 font-medium;
     }
     h4 {
-        @apply tw:text-2xl/[1.2] tw:m-0 tw:font-medium;
+        @apply text-2xl/[1.2] m-0 font-medium;
     }
     h5 {
-        @apply tw:text-xl/[1.2] tw:m-0 tw:font-medium;
+        @apply text-xl/[1.2] m-0 font-medium;
     }
     h6 {
-        @apply tw:text-base/[1.2] tw:m-0 tw:font-medium;
+        @apply text-base/[1.2] m-0 font-medium;
     }
 
     hr {
-        @apply tw:my-3 tw:border-lm-border tw:dark:border-dm-border;
+        @apply my-3 border-lm-border dark:border-dm-border;
     }
 
     p {
-        @apply tw:m-0;
+        @apply m-0;
     }
 
     code {
-        @apply tw:text-sm tw:text-pink-600 tw:dark:text-pink-500 tw:font-mono;
+        @apply text-sm text-pink-600 dark:text-pink-500 font-mono;
     }
 
     input[type="search"]::-webkit-search-cancel-button {
-        @apply tw:cursor-pointer;
+        @apply cursor-pointer;
     }
 
     summary {
-        @apply tw:cursor-pointer;
+        @apply cursor-pointer;
     }
 }
 
 @utility focus-ring-base {
-    @apply tw:outline-none tw:focus-visible:ring-3 tw:focus-visible:z-1 tw:transition-[box-shadow];
+    @apply outline-none focus-visible:ring-3 focus-visible:z-1 transition-[box-shadow];
 }
 
 @utility focus-ring {
-    @apply tw:focus-ring-base tw:focus-visible:ring-lm-brand/50 tw:dark:focus-visible:ring-dm-brand/50;
+    @apply focus-ring-base focus-visible:ring-lm-brand/50 dark:focus-visible:ring-dm-brand/50;
 }
 
 @utility focus-ring-danger {
-    @apply tw:focus-ring-base tw:focus-visible:ring-danger/50;
+    @apply focus-ring-base focus-visible:ring-danger/50;
 }
 
 @utility focus-ring-secondary {
-    @apply tw:focus-ring-base tw:focus-visible:ring-zinc-500/50;
+    @apply focus-ring-base focus-visible:ring-zinc-500/50;
 }
 
 @utility focus-within-ring {
-    @apply tw:outline-none tw:focus-within:ring-3 tw:focus-within:z-1 tw:transition-[box-shadow];
-    @apply tw:focus-within:ring-lm-brand/50 tw:dark:focus-within:ring-dm-brand/50;
+    @apply outline-none focus-within:ring-3 focus-within:z-1 transition-[box-shadow];
+    @apply focus-within:ring-lm-brand/50 dark:focus-within:ring-dm-brand/50;
 }
 
 @utility scroll-thin {
@@ -194,9 +193,9 @@
 
 /* For sticky-positioned cells with a background */
 @utility sticky-cell-base {
-    @apply tw:z-1 tw:relative tw:sticky;
-    @apply tw:before:absolute tw:before:bg-lm-table-border tw:dark:before:bg-dm-table-border tw:before:-z-2;
-    @apply tw:after:absolute tw:after:bg-lm-primary tw:dark:after:bg-dm-primary tw:after:-z-1;
+    @apply z-1 relative sticky;
+    @apply before:absolute before:bg-lm-table-border dark:before:bg-dm-table-border before:-z-2;
+    @apply after:absolute after:bg-lm-primary dark:after:bg-dm-primary after:-z-1;
 
     &:before, &:after {
         content: '';
@@ -207,7 +206,7 @@
 }
 
 @utility sticky-cell {
-    @apply tw:sticky-cell-base;
+    @apply sticky-cell-base;
 
     &:before {
         inset: -1px 0 -1px 0;
@@ -221,7 +220,7 @@
 }
 
 @utility sticky-cell-separated {
-    @apply tw:sticky-cell-base;
+    @apply sticky-cell-base;
 
     &:before {
         inset: -1px -1px -1px 0;

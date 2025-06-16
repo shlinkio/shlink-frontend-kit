@@ -78,14 +78,14 @@ export function Listbox<Item>({ id,
   return (
     <Card
       id={id}
-      className={clsx('tw:py-1 tw:flex tw:flex-col', className)}
+      className={clsx('py-1 flex flex-col', className)}
       role="listbox"
       aria-orientation="vertical"
       aria-label={label}
       {...rest}
     >
       {items.size === 0 && (
-        <i role="option" aria-disabled aria-selected={false} data-testid="no-items" className="tw:px-2 tw:py-1">
+        <i role="option" aria-disabled aria-selected={false} data-testid="no-items" className="px-2 py-1">
           {noItemsMessage}
         </i>
       )}
@@ -97,8 +97,8 @@ export function Listbox<Item>({ id,
           role="option"
           aria-selected={index === activeItem}
           className={clsx(
-            'tw:px-2 tw:py-1 tw:text-left tw:truncate',
-            { 'tw:bg-lm-secondary tw:dark:bg-dm-secondary': index === activeItem },
+            'px-2 py-1 text-left truncate',
+            { 'bg-lm-secondary dark:bg-dm-secondary': index === activeItem },
           )}
           tabIndex={-1}
           onClick={() => onSelectItem(item)}

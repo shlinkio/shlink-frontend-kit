@@ -15,15 +15,15 @@ export type MessageProps = PropsWithChildren<{
  */
 export const Message: FC<MessageProps> = ({ className, children, loading = false, variant = 'default' }) => {
   return (
-    <SimpleCard className={clsx({ 'tw:[&]:border-danger': variant === 'error' }, className)}>
-      <h3 className={clsx('tw:text-center', {
-        'tw:text-gray-500 tw:dark:text-gray-400': variant === 'default',
-        'tw:text-danger': variant === 'error',
+    <SimpleCard className={clsx({ '[&]:border-danger': variant === 'error' }, className)}>
+      <h3 className={clsx('text-center', {
+        'text-gray-500 dark:text-gray-400': variant === 'default',
+        'text-danger': variant === 'error',
       })}>
         {loading && (
           <>
             <FontAwesomeIcon icon={preloader} spin />
-            <span className="tw:ml-2">{children ?? 'Loading...'}</span>
+            <span className="ml-2">{children ?? 'Loading...'}</span>
           </>
         )}
         {!loading && children}

@@ -25,7 +25,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
 
   return (
     <div
-      className={clsx('tw:group tw:relative', containerClassName)}
+      className={clsx('group relative', containerClassName)}
       ref={containerRef}
       onBlurCapture={onContainerBlur}
     >
@@ -34,8 +34,8 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
         type={passwordRevealed ? 'text' : 'password'}
         className={clsx(
           {
-            'tw:pr-10': size !== 'sm',
-            'tw:pr-8': size === 'sm',
+            'pr-10': size !== 'sm',
+            'pr-8': size === 'sm',
           },
           className,
         )}
@@ -49,11 +49,11 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
         title={passwordRevealed ? 'Hide password' : 'Show password'}
         aria-label={passwordRevealed ? 'Hide password' : 'Show password'}
         className={clsx(
-          'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:px-1 tw:cursor-pointer',
-          'tw:text-placeholder tw:hover:text-lm-text tw:hover:dark:text-dm-text tw:transition-colors',
+          'absolute top-[50%] translate-y-[-50%] px-1 cursor-pointer',
+          'text-placeholder hover:text-lm-text hover:dark:text-dm-text transition-colors',
           {
-            'tw:right-1.5': size !== 'sm',
-            'tw:scale-85 tw:right-1': size === 'sm',
+            'right-1.5': size !== 'sm',
+            'scale-85 right-1': size === 'sm',
           },
         )}
         tabIndex={-1}

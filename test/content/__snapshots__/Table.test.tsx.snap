@@ -3,26 +3,26 @@
 exports[`<Table /> > renders as expected based on provided props 1`] = `
 <div>
   <table
-    class="tw:w-full"
+    class="w-full"
   >
     <thead
       class=""
     >
       <tr
-        class="tw:group"
+        class="group"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
         >
           Baz
         </th>
@@ -32,58 +32,58 @@ exports[`<Table /> > renders as expected based on provided props 1`] = `
       class=""
     >
       <tr
-        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:border-b-1"
+          class="border-lm-border dark:border-dm-border p-2 border-b-1"
         >
           Baz
         </td>
@@ -96,116 +96,116 @@ exports[`<Table /> > renders as expected based on provided props 1`] = `
 exports[`<Table /> > renders as expected based on provided props 2`] = `
 <div>
   <table
-    class="tw:w-full"
+    class="w-full"
   >
     <thead
-      class="tw:hidden tw:lg:table-header-group"
+      class="hidden lg:table-header-group"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Baz
         </th>
       </tr>
     </thead>
     <tbody
-      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3"
+      class="lg:table-row-group flex flex-col gap-y-3"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Baz
         </td>
       </tr>
     </tbody>
     <tfoot
-      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3 tw:mt-4"
+      class="lg:table-row-group flex flex-col gap-y-3 mt-4"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Foo footer
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Bar footer
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-2 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Baz footer
         </td>
@@ -218,93 +218,93 @@ exports[`<Table /> > renders as expected based on provided props 2`] = `
 exports[`<Table /> > renders as expected based on provided props 3`] = `
 <div>
   <table
-    class="tw:w-full"
+    class="w-full"
   >
     <thead
-      class="tw:hidden tw:lg:table-header-group"
+      class="hidden lg:table-header-group"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Baz
         </th>
       </tr>
     </thead>
     <tbody
-      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3"
+      class="lg:table-row-group flex flex-col gap-y-3"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-1 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Baz
         </td>
@@ -317,93 +317,93 @@ exports[`<Table /> > renders as expected based on provided props 3`] = `
 exports[`<Table /> > renders as expected based on provided props 4`] = `
 <div>
   <table
-    class="tw:w-full"
+    class="w-full"
   >
     <thead
-      class="tw:hidden tw:lg:table-header-group"
+      class="hidden lg:table-header-group"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border"
       >
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Foo
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Bar
         </th>
         <th
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:text-left"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
         >
           Baz
         </th>
       </tr>
     </thead>
     <tbody
-      class="tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3"
+      class="lg:table-row-group flex flex-col gap-y-3"
     >
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Foo"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Bar"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
           data-column="Baz"
         >
           Baz
         </td>
       </tr>
       <tr
-        class="tw:group tw:lg:table-row tw:flex tw:flex-col tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary"
+        class="group lg:table-row flex flex-col lg:border-0 border-y-2 border-lm-border dark:border-dm-border hover:bg-lm-primary dark:hover:bg-dm-primary group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary"
       >
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Foo
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Bar
         </td>
         <td
-          class="tw:border-lm-border tw:dark:border-dm-border tw:p-3 tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1 tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1"
+          class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1"
         >
           Baz
         </td>

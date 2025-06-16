@@ -3,8 +3,8 @@ import { Dropdown, NavBar } from '../../src';
 
 export const NavBarPage: FC = () => {
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-2">
         <h2>NavBar</h2>
         <NavBar brand={<>Shlink</>}>
           <NavBar.MenuItem to="">Foo</NavBar.MenuItem>

@@ -18,24 +18,24 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   <select
     ref={ref}
     className={clsx(
-      'tw:w-full tw:appearance-none tw:pr-9',
-      'tw:bg-(image:--chevron-down) tw:bg-no-repeat',
+      'w-full appearance-none pr-9',
+      'bg-(image:--chevron-down) bg-no-repeat',
       {
-        'tw:focus-ring': !feedback,
-        'tw:focus-ring-danger': feedback === 'error',
+        'focus-ring': !feedback,
+        'focus-ring-danger': feedback === 'error',
       },
-      'tw:rounded-md tw:border',
+      'rounded-md border',
       {
-        'tw:border-lm-input-border tw:dark:border-dm-input-border': !feedback,
-        'tw:border-danger': feedback === 'error',
+        'border-lm-input-border dark:border-dm-input-border': !feedback,
+        'border-danger': feedback === 'error',
       },
       {
-        'tw:pl-2 tw:py-1 tw:text-sm': size === 'sm',
-        'tw:pl-3 tw:py-1.5': size === 'md',
-        'tw:pl-4 tw:py-2 tw:text-xl': size === 'lg',
-        'tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input': disabled,
+        'pl-2 py-1 text-sm': size === 'sm',
+        'pl-3 py-1.5': size === 'md',
+        'pl-4 py-2 text-xl': size === 'lg',
+        'bg-lm-disabled-input dark:bg-dm-disabled-input': disabled,
         // Apply different background color when rendered inside a card
-        'tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': !disabled,
+        'bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input': !disabled,
       },
       className,
     )}

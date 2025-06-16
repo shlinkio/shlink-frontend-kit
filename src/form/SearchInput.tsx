@@ -44,17 +44,17 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   }, [clearCurrentTimeout, immediate, onChange, setTimeout]);
 
   return (
-    <div className={clsx('tw:group tw:relative tw:focus-within:z-10', containerClassName)}>
+    <div className={clsx('group relative focus-within:z-10', containerClassName)}>
       {variant === 'default' && (
         <FontAwesomeIcon
           icon={loading ? faCircleNotch : searchIcon}
           spin={loading}
           className={clsx(
-            'tw:absolute tw:top-[50%] tw:translate-y-[-50%] tw:transition-colors',
-            'tw:text-placeholder tw:group-focus-within:text-lm-text tw:dark:group-focus-within:text-dm-text',
+            'absolute top-[50%] translate-y-[-50%] transition-colors',
+            'text-placeholder group-focus-within:text-lm-text dark:group-focus-within:text-dm-text',
             {
-              'tw:left-3': size !== 'sm',
-              'tw:scale-85 tw:left-2': size === 'sm',
+              'left-3': size !== 'sm',
+              'scale-85 left-2': size === 'sm',
             },
           )}
         />
@@ -65,8 +65,8 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
         type="search"
         className={clsx(
           variant === 'default' && {
-            'tw:pl-9': size !== 'sm',
-            'tw:pl-7': size === 'sm',
+            'pl-9': size !== 'sm',
+            'pl-7': size === 'sm',
           },
           inputClassName,
         )}

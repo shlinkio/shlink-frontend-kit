@@ -20,7 +20,7 @@ const TableHead: FC<TableElementProps> = ({ children, className }) => {
     <TableSectionContext.Provider value={{ section: 'head' }}>
       <thead
         className={clsx(
-          { 'tw:hidden tw:lg:table-header-group': responsive },
+          { 'hidden lg:table-header-group': responsive },
           className,
         )}
       >
@@ -37,7 +37,7 @@ const TableBody: FC<TableElementProps> = ({ children, className }) => {
     <TableSectionContext.Provider value={{ section: 'body' }}>
       <tbody
         className={clsx(
-          { 'tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3': responsive },
+          { 'lg:table-row-group flex flex-col gap-y-3': responsive },
           className,
         )}
       >
@@ -54,7 +54,7 @@ const TableFooter: FC<TableElementProps> = ({ children, className }) => {
     <TableSectionContext.Provider value={{ section: 'footer' }}>
       <tfoot
         className={clsx(
-          { 'tw:lg:table-row-group tw:flex tw:flex-col tw:gap-y-3 tw:mt-4': responsive },
+          { 'lg:table-row-group flex flex-col gap-y-3 mt-4': responsive },
           className,
         )}
       >
@@ -72,14 +72,14 @@ const Row: FC<HTMLProps<HTMLTableRowElement>> = ({ children, className, ...rest 
   return (
     <tr
       className={clsx(
-        'tw:group',
+        'group',
         {
-          'tw:lg:table-row tw:flex tw:flex-col': responsive,
-          'tw:lg:border-0 tw:border-y-2 tw:border-lm-border tw:dark:border-dm-border': responsive,
+          'lg:table-row flex flex-col': responsive,
+          'lg:border-0 border-y-2 border-lm-border dark:border-dm-border': responsive,
 
-          'tw:hover:bg-lm-primary tw:dark:hover:bg-dm-primary': inBody,
+          'hover:bg-lm-primary dark:hover:bg-dm-primary': inBody,
           // Use a different hover bg color depending on the table being inside a card or not
-          'tw:group-[&]/card:hover:bg-lm-secondary tw:dark:group-[&]/card:hover:bg-dm-secondary': inBody,
+          'group-[&]/card:hover:bg-lm-secondary dark:group-[&]/card:hover:bg-dm-secondary': inBody,
         },
         className,
       )}
@@ -113,18 +113,18 @@ const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest })
     <Tag
       data-column={responsive ? columnName : undefined}
       className={clsx(
-        'tw:border-lm-border tw:dark:border-dm-border',
+        'border-lm-border dark:border-dm-border',
         {
-          'tw:p-1': size === 'sm',
-          'tw:p-2': size === 'md',
-          'tw:p-3': size === 'lg',
+          'p-1': size === 'sm',
+          'p-2': size === 'md',
+          'p-3': size === 'lg',
 
-          'tw:border-b-1': !responsive,
-          'tw:block tw:lg:table-cell tw:not-last:border-b-1 tw:lg:border-b-1': responsive,
-          'tw:text-left': Tag === 'th',
+          'border-b-1': !responsive,
+          'block lg:table-cell not-last:border-b-1 lg:border-b-1': responsive,
+          'text-left': Tag === 'th',
 
           // For responsive tables, display the content in data-column attribute for md sizes and lower
-          'tw:before:lg:hidden tw:before:content-[attr(data-column)] tw:before:font-bold tw:before:mr-1': responsive && Tag === 'td',
+          'before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1': responsive && Tag === 'td',
         },
         className,
       )}
@@ -151,7 +151,7 @@ export type TableProps = Omit<HTMLProps<HTMLTableElement>, 'size'> & {
 
 const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, size = 'md', ...rest }) => (
   <TableContext.Provider value={{ responsive, size }}>
-    <table className="tw:w-full" {...rest}>
+    <table className="w-full" {...rest}>
       <TableHead>
         {header}
       </TableHead>

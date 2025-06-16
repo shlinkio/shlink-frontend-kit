@@ -26,8 +26,8 @@ const colors = [
 ];
 
 const ColorItem: FC<typeof colors[number]> = ({ name, value }) => (
-  <div className="tw:inline-flex tw:items-center tw:gap-2">
-    <div aria-hidden className="tw:w-4 tw:h-4 tw:rounded-full" style={{ backgroundColor: value }} />
+  <div className="inline-flex items-center gap-2">
+    <div aria-hidden className="w-4 h-4 rounded-full" style={{ backgroundColor: value }} />
     {name}
   </div>
 );
@@ -49,7 +49,7 @@ const SyncSearch: FC = () => {
   }, []);
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-2">
       <h2>Sync search</h2>
       <SearchCombobox
         onSearch={onSyncSearch}
@@ -59,7 +59,7 @@ const SyncSearch: FC = () => {
         placeholder="Search colors synchronously..."
       />
       {syncSelectedItem && (
-        <div className="tw:flex tw:gap-3">
+        <div className="flex gap-3">
           Last selected color is: <ColorItem {...syncSelectedItem} />
         </div>
       )}
@@ -90,7 +90,7 @@ const AsyncSearch: FC = () => {
   }, [setTimeout]);
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-2">
       <h2>Async search</h2>
       <SearchCombobox
         onSearch={onAsyncSearch}
@@ -101,7 +101,7 @@ const AsyncSearch: FC = () => {
         loading={asyncLoading}
       />
       {asyncSelectedItem && (
-        <div className="tw:flex tw:gap-3">
+        <div className="flex gap-3">
           Last selected color is: <ColorItem {...asyncSelectedItem} />
         </div>
       )}
@@ -126,11 +126,11 @@ const TagsAutocompleteExample: FC<{ immutable: boolean }> = ({ immutable }) => {
 
 export const SearchComboboxPage: FC = () => {
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
+    <div className="flex flex-col gap-y-4">
       <SyncSearch />
       <AsyncSearch />
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Tags autocomplete</h2>
         <TagsAutocompleteExample immutable={false} />
         <TagsAutocompleteExample immutable={true} />

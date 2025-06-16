@@ -5,7 +5,7 @@ export const ThemeToggle: FC = () => {
   const [theme, setTheme] = useTheme();
 
   return (
-    <Label className="tw:flex tw:items-center tw:gap-x-1.5">
+    <Label className="flex items-center gap-x-1.5">
       <ToggleSwitch checked={theme === 'dark'} onChange={(checked) => setTheme(checked ? 'dark' : 'light')} />
       Dark theme
     </Label>

@@ -3,10 +3,10 @@
 exports[`<Button /> > renders as expected based on provided props 1`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -16,10 +16,10 @@ exports[`<Button /> > renders as expected based on provided props 1`] = `
 exports[`<Button /> > renders as expected based on provided props 2`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-white tw:bg-lm-brand tw:dark:bg-dm-brand tw:highlight:bg-lm-brand-dark tw:dark:highlight:bg-dm-brand-dark tw:highlight:border-lm-brand-dark tw:dark:highlight:border-dm-brand-dark tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-white bg-lm-brand dark:bg-dm-brand highlight:bg-lm-brand-dark dark:highlight:bg-dm-brand-dark highlight:border-lm-brand-dark dark:highlight:border-dm-brand-dark highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -29,10 +29,10 @@ exports[`<Button /> > renders as expected based on provided props 2`] = `
 exports[`<Button /> > renders as expected based on provided props 3`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:inline-flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="inline-flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -42,10 +42,10 @@ exports[`<Button /> > renders as expected based on provided props 3`] = `
 exports[`<Button /> > renders as expected based on provided props 4`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:pointer-events-none tw:opacity-65"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand pointer-events-none opacity-65"
       disabled=""
       type="button"
     />
@@ -56,10 +56,10 @@ exports[`<Button /> > renders as expected based on provided props 4`] = `
 exports[`<Button /> > renders as expected based on provided props 5`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-1.5 tw:py-1 tw:text-sm tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-1.5 py-1 text-sm border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -69,10 +69,10 @@ exports[`<Button /> > renders as expected based on provided props 5`] = `
 exports[`<Button /> > renders as expected based on provided props 6`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -82,10 +82,10 @@ exports[`<Button /> > renders as expected based on provided props 6`] = `
 exports[`<Button /> > renders as expected based on provided props 7`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-4 tw:py-2 tw:text-lg tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-4 py-2 text-lg border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -95,10 +95,10 @@ exports[`<Button /> > renders as expected based on provided props 7`] = `
 exports[`<Button /> > renders as expected based on provided props 8`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -108,10 +108,10 @@ exports[`<Button /> > renders as expected based on provided props 8`] = `
 exports[`<Button /> > renders as expected based on provided props 9`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-secondary tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-zinc-500 tw:highlight:text-white tw:highlight:bg-zinc-500 tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring-secondary px-3 py-1.5 border-zinc-500 text-zinc-500 highlight:text-white highlight:bg-zinc-500 cursor-pointer"
       type="button"
     />
   </div>
@@ -121,10 +121,10 @@ exports[`<Button /> > renders as expected based on provided props 9`] = `
 exports[`<Button /> > renders as expected based on provided props 10`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:border-danger tw:text-danger tw:highlight:text-white tw:highlight:bg-danger tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring-danger px-3 py-1.5 border-danger text-danger highlight:text-white highlight:bg-danger cursor-pointer"
       type="button"
     />
   </div>
@@ -134,10 +134,10 @@ exports[`<Button /> > renders as expected based on provided props 10`] = `
 exports[`<Button /> > renders as expected based on provided props 11`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-white tw:bg-lm-brand tw:dark:bg-dm-brand tw:highlight:bg-lm-brand-dark tw:dark:highlight:bg-dm-brand-dark tw:highlight:border-lm-brand-dark tw:dark:highlight:border-dm-brand-dark tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-white bg-lm-brand dark:bg-dm-brand highlight:bg-lm-brand-dark dark:highlight:bg-dm-brand-dark highlight:border-lm-brand-dark dark:highlight:border-dm-brand-dark highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       type="button"
     />
   </div>
@@ -147,10 +147,10 @@ exports[`<Button /> > renders as expected based on provided props 11`] = `
 exports[`<Button /> > renders as expected based on provided props 12`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-secondary tw:px-3 tw:py-1.5 tw:border-zinc-500 tw:text-white tw:bg-zinc-500 tw:highlight:bg-zinc-600 tw:highlight:border-zinc-600 tw:highlight:bg-zinc-500 tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring-secondary px-3 py-1.5 border-zinc-500 text-white bg-zinc-500 highlight:bg-zinc-600 highlight:border-zinc-600 highlight:bg-zinc-500 cursor-pointer"
       type="button"
     />
   </div>
@@ -160,10 +160,10 @@ exports[`<Button /> > renders as expected based on provided props 12`] = `
 exports[`<Button /> > renders as expected based on provided props 13`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <button
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring-danger tw:px-3 tw:py-1.5 tw:border-danger tw:text-white tw:bg-danger tw:highlight:bg-danger-dark tw:highlight:border-danger-dark tw:highlight:bg-danger tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring-danger px-3 py-1.5 border-danger text-white bg-danger highlight:bg-danger-dark highlight:border-danger-dark highlight:bg-danger cursor-pointer"
       type="button"
     />
   </div>
@@ -173,10 +173,10 @@ exports[`<Button /> > renders as expected based on provided props 13`] = `
 exports[`<Button /> > renders as expected based on provided props 14`] = `
 <div>
   <div
-    class="tw:bg-white"
+    class="bg-white"
   >
     <a
-      class="tw:flex tw:gap-2 tw:items-center tw:justify-center tw:border tw:rounded-md tw:no-underline tw:transition-colors tw:focus-ring tw:px-3 tw:py-1.5 tw:border-lm-brand tw:dark:border-dm-brand tw:text-lm-brand tw:dark:text-dm-brand tw:highlight:text-white tw:highlight:bg-lm-brand tw:dark:highlight:bg-dm-brand tw:cursor-pointer"
+      class="flex gap-2 items-center justify-center border rounded-md no-underline transition-colors focus-ring px-3 py-1.5 border-lm-brand dark:border-dm-brand text-lm-brand dark:text-dm-brand highlight:text-white highlight:bg-lm-brand dark:highlight:bg-dm-brand cursor-pointer"
       data-discover="true"
       href="/foo/bar"
     />

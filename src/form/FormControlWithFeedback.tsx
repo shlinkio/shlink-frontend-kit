@@ -15,16 +15,16 @@ export type FormControlWithFeedbackProps = PropsWithChildren<{
 export const FormControlWithFeedback: FC<FormControlWithFeedbackProps> = (
   { children, helpText, error, 'data-testid': testId },
 ) => (
-  <div className="tw:flex tw:flex-col tw:gap-1" data-testid={testId}>
+  <div className="flex flex-col gap-1" data-testid={testId}>
     {children}
     {helpText && (
       <small
         data-testid={testId ? `${testId}-help-text` : 'help-text'}
-        className="tw:text-gray-500 tw:dark:text-gray-400"
+        className="text-gray-500 dark:text-gray-400"
       >
         {helpText}
       </small>
     )}
-    {error && <span data-testid={testId ? `${testId}-error` : 'error'} className="tw:text-danger">{error}</span>}
+    {error && <span data-testid={testId ? `${testId}-error` : 'error'} className="text-danger">{error}</span>}
   </div>
 );

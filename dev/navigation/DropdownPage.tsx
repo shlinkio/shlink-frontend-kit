@@ -16,8 +16,8 @@ export const DropdownPage: FC = () => {
   const [orderLink, onChangeLink] = useState<Order<keyof typeof items>>({});
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-2">
         <h2>Dropdown</h2>
         <div>
           <Dropdown buttonContent={selected ?? <i>Click me</i>}>
@@ -27,11 +27,11 @@ export const DropdownPage: FC = () => {
             <Dropdown.Separator />
             <Dropdown.Title>More stuff</Dropdown.Title>
             <Dropdown.Misc>
-              <div className="tw:flex tw:items-center tw:gap-3 tw:min-w-92">
-                <div className="tw:w-1/2">
+              <div className="flex items-center gap-3 min-w-92">
+                <div className="w-1/2">
                   <LabelledInput label="Foo" />
                 </div>
-                <div className="tw:w-1/2">
+                <div className="w-1/2">
                   <LabelledInput label="Bar" />
                 </div>
               </div>
@@ -40,7 +40,7 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Menu at least as big as button</h2>
         <div>
           <Dropdown buttonContent="Select something from the menu">
@@ -51,9 +51,9 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
-        <h2 className="tw:text-right">Right-aligned Dropdown</h2>
-        <div className="tw:flex tw:justify-end">
+      <div className="flex flex-col gap-y-2">
+        <h2 className="text-right">Right-aligned Dropdown</h2>
+        <div className="flex justify-end">
           <Dropdown buttonContent="Right menu" menuAlignment="right">
             <Dropdown.Item>Foo with a very long text</Dropdown.Item>
             <Dropdown.Item>Bar with a very long text</Dropdown.Item>
@@ -62,9 +62,9 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Toggle button sizes</h2>
-        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+        <div className="flex gap-3 flex-wrap items-center">
           <Dropdown buttonContent="Small" buttonSize="sm">
             <Dropdown.Item>Foo</Dropdown.Item>
             <Dropdown.Item>Bar</Dropdown.Item>
@@ -83,9 +83,9 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Variants</h2>
-        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+        <div className="flex gap-3 flex-wrap items-center">
           <Dropdown buttonContent="Caretless" caretless>
             <Dropdown.Item>Foo</Dropdown.Item>
             <Dropdown.Item>Bar</Dropdown.Item>
@@ -109,9 +109,9 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>RowDropdown</h2>
-        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+        <div className="flex gap-3 flex-wrap items-center">
           <RowDropdown buttonSize="sm">
             <RowDropdown.Item>Foo</RowDropdown.Item>
             <RowDropdown.Item>Bar</RowDropdown.Item>
@@ -130,9 +130,9 @@ export const DropdownPage: FC = () => {
         </div>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>OrderingDropdown</h2>
-        <div className="tw:flex tw:gap-3 tw:flex-wrap tw:items-center">
+        <div className="flex gap-3 flex-wrap items-center">
           <OrderingDropdown items={items} order={order} onChange={onChange} />
           <OrderingDropdown items={items} order={orderLink} onChange={onChangeLink} buttonVariant="link" />
         </div>
