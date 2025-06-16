@@ -5,7 +5,7 @@ import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('useToggle', () => {
   function FakeComponent({ initialValue }: { initialValue: boolean }) {
-    const { flag, toggle, setToFalse, setToTrue } = useToggle(initialValue, true);
+    const { flag, toggle, setToFalse, setToTrue } = useToggle(initialValue);
 
     return (
       <div>

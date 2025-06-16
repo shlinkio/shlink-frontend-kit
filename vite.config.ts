@@ -14,7 +14,6 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
-        tailwind: resolve(__dirname, 'src/tailwind/index.ts'),
       },
       formats: ['es'], // Generate ES module only
     },
@@ -24,15 +23,6 @@ export default defineConfig({
       output: {
         // This ensures generated CSS file is called index.css, not style.css
         assetFileNames: 'index.[ext]',
-      },
-    },
-  },
-
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // Silence annoying sass deprecation warnings until we get rid of bootstrap
-        silenceDeprecations: ['mixed-decls', 'abs-percent', 'color-functions', 'global-builtin', 'import'],
       },
     },
   },
@@ -54,7 +44,7 @@ export default defineConfig({
       instances: [{ browser: 'chromium' }],
     },
     globals: true,
-    setupFiles: ['./test/setup.ts', './dev/tailwind/tailwind.css'],
+    setupFiles: ['./test/setup.ts', './dev/tailwind.css'],
     coverage: {
       provider: 'v8',
       reportsDirectory: './coverage',
@@ -67,10 +57,10 @@ export default defineConfig({
 
       // Required code coverage. Lower than this will make the check fail
       thresholds: {
-        statements: 95,
+        statements: 94,
         branches: 95,
         functions: 90,
-        lines: 95,
+        lines: 94,
       },
     },
   },

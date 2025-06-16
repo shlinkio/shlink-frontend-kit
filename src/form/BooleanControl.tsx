@@ -1,34 +1,31 @@
 import { clsx } from 'clsx';
-import type { ChangeEvent, FC, PropsWithChildren } from 'react';
-import { useId } from 'react';
+import type { ChangeEvent, HTMLProps } from 'react';
+import { forwardRef , useCallback } from 'react';
 
-export type BooleanControlProps = PropsWithChildren<{
-  checked?: boolean;
+export type BooleanControlProps = Omit<HTMLProps<HTMLInputElement>, 'type' | 'onChange' | 'value' | 'defaultValue'> & {
   onChange?: (checked: boolean, e: ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
-  inline?: boolean;
-}>;
-
-type BooleanControlWithTypeProps = BooleanControlProps & {
-  type: 'switch' | 'checkbox';
 };
 
-/** @deprecated */
-export const BooleanControl: FC<BooleanControlWithTypeProps> = (
-  { checked = false, onChange, className, children, type, inline = false },
+export const BooleanControl = forwardRef<HTMLInputElement, BooleanControlProps>((
+  { className, onChange, ...rest },
+  ref,
 ) => {
-  const id = useId();
-  const onChecked = (e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.checked, e);
-  const typeClasses = {
-    'form-switch': type === 'switch',
-    'form-checkbox': type === 'checkbox',
-  };
-  const style = inline ? { display: 'inline-block' } : {};
+  const onChecked = useCallback((e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.checked, e), [onChange]);
 
   return (
-    <span className={clsx('form-check', typeClasses, className)} style={style}>
-      <input type="checkbox" className="form-check-input" id={id} checked={checked} onChange={onChecked} />
-      <label className="form-check-label" htmlFor={id}>{children}</label>
-    </span>
+    <input
+      ref={ref}
+      type="checkbox"
+      className={clsx(
+        'tw:appearance-none tw:focus-ring tw:cursor-[inherit]',
+        'tw:border-1 tw:border-lm-input-border tw:dark:border-dm-input-border',
+        'tw:bg-lm-primary tw:dark:bg-dm-primary tw:checked:bg-lm-brand tw:dark:checked:bg-dm-brand tw:bg-no-repeat',
+        // Use different background color when rendered inside a card
+        'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input',
+        className,
+      )}
+      onChange={onChecked}
+      {...rest}
+    />
   );
-};
+});

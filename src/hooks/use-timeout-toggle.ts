@@ -17,22 +17,13 @@ export type TimeoutToggleOptions = {
 
 const DEFAULT_DELAY = 2000;
 
-/**
- * Passing individual args is deprecated. Pass an object of options instead.
- */
 export const useTimeoutToggle = (
-  initialValueOrOptions: TimeoutToggleOptions | boolean = {},
-  secondArg?: number,
+  { initialValue = false, delay = DEFAULT_DELAY }: TimeoutToggleOptions,
 
   // Test seams
   setTimeout_ = globalThis.setTimeout,
   clearTimeout_ = globalThis.clearTimeout,
 ): [boolean, () => void] => {
-  const { initialValue = false, delay = DEFAULT_DELAY } = typeof initialValueOrOptions === 'boolean' ? {
-    initialValue: initialValueOrOptions,
-    delay: secondArg,
-  } : initialValueOrOptions;
-
   const { setTimeout } = useTimeout(delay, setTimeout_, clearTimeout_);
   const [flag, setFlag] = useState(initialValue);
   const initialValueRef = useRef(initialValue);

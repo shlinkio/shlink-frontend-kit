@@ -3,51 +3,43 @@ import { determineOrder, determineOrderDir, orderToString, sortList, stringToOrd
 describe('ordering', () => {
   describe('determineOrderDir', () => {
     it('returns ASC when current order field and selected field are different', () => {
-      expect(determineOrderDir('foo', 'bar')).toEqual('ASC');
-      expect(determineOrderDir('bar', 'foo')).toEqual('ASC');
+      expect(determineOrderDir({ currentField: 'foo', newField: 'bar' })).toEqual('ASC');
+      expect(determineOrderDir({ currentField: 'bar', newField: 'foo' })).toEqual('ASC');
     });
 
     it('returns ASC when no current order dir is provided', () => {
-      expect(determineOrderDir('foo', 'foo')).toEqual('ASC');
-      expect(determineOrderDir('bar', 'bar')).toEqual('ASC');
+      expect(determineOrderDir({ currentField: 'foo', newField: 'foo' })).toEqual('ASC');
+      expect(determineOrderDir({ currentField: 'bar', newField: 'bar' })).toEqual('ASC');
     });
 
     it('returns DESC when current order field and selected field are equal and current order dir is ASC', () => {
-      expect(determineOrderDir('foo', 'foo', 'ASC')).toEqual('DESC');
-      expect(determineOrderDir('bar', 'bar', 'ASC')).toEqual('DESC');
+      expect(determineOrderDir({ currentField: 'foo', newField: 'foo', currentOrderDir: 'ASC' })).toEqual('DESC');
+      expect(determineOrderDir({ currentField: 'bar', newField: 'bar', currentOrderDir: 'ASC' })).toEqual('DESC');
     });
 
     it('returns undefined when current order field and selected field are equal and current order dir is DESC', () => {
-      expect(determineOrderDir('foo', 'foo', 'DESC')).toBeUndefined();
-      expect(determineOrderDir('bar', 'bar', 'DESC')).toBeUndefined();
-    });
-
-    it('accepts a single object as argument', () => {
-      expect(determineOrderDir({ newField: 'foo', currentField: 'bar' })).toEqual('ASC');
-      expect(determineOrderDir({ newField: 'foo', currentField: 'foo', currentOrderDir: 'ASC' })).toEqual('DESC');
+      expect(determineOrderDir({ currentField: 'foo', newField: 'foo', currentOrderDir: 'DESC' })).toBeUndefined();
+      expect(determineOrderDir({ currentField: 'bar', newField: 'bar', currentOrderDir: 'DESC' })).toBeUndefined();
     });
   });
 
   describe('determineOrder', () => {
     it('returns ASC when current order field and selected field are different', () => {
-      expect(determineOrder('foo', 'bar')).toEqual({ field: 'bar', dir: 'ASC' });
-      expect(determineOrder('bar', 'foo')).toEqual({ field: 'foo', dir: 'ASC' });
+      expect(determineOrder({ currentField: 'foo', newField: 'bar' })).toEqual({ field: 'bar', dir: 'ASC' });
+      expect(determineOrder({ currentField: 'bar', newField: 'foo' })).toEqual({ field: 'foo', dir: 'ASC' });
     });
 
     it('returns ASC when no current order dir is provided', () => {
-      expect(determineOrder('foo', 'foo')).toEqual({ field: 'foo', dir: 'ASC' });
-      expect(determineOrder('bar', 'bar')).toEqual({ field: 'bar', dir: 'ASC' });
+      expect(determineOrder({ currentField: 'foo', newField: 'foo' })).toEqual({ field: 'foo', dir: 'ASC' });
+      expect(determineOrder({ currentField: 'bar', newField: 'bar' })).toEqual({ field: 'bar', dir: 'ASC' });
     });
 
     it('returns DESC when current order field and selected field are equal and current order dir is ASC', () => {
-      expect(determineOrder('foo', 'foo', 'ASC')).toEqual({ field: 'foo', dir: 'DESC' });
-      expect(determineOrder('bar', 'bar', 'ASC')).toEqual({ field: 'bar', dir: 'DESC' });
-    });
-
-    it('accepts a single object as argument', () => {
-      expect(determineOrder({ newField: 'foo', currentField: 'bar' })).toEqual({ field: 'foo', dir: 'ASC' });
-      expect(determineOrder({ newField: 'foo', currentField: 'foo', currentOrderDir: 'ASC' })).toEqual(
+      expect(determineOrder({ currentField: 'foo', newField: 'foo', currentOrderDir: 'ASC' })).toEqual(
         { field: 'foo', dir: 'DESC' },
+      );
+      expect(determineOrder({ currentField: 'bar', newField: 'bar', currentOrderDir: 'ASC' })).toEqual(
+        { field: 'bar', dir: 'DESC' },
       );
     });
   });

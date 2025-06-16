@@ -1,39 +1,51 @@
+import clsx from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-import { Children, isValidElement } from 'react';
-import { NavLink as RouterNavLink } from 'react-router';
-import { Card, Nav, NavItem, NavLink } from 'reactstrap';
-import './NavPills.scss';
+import { createContext,useContext  } from 'react';
+import type { LinkProps } from 'react-router';
+import { NavLink } from 'react-router';
+import { Card } from '../surfaces';
 
-type NavPillsProps = PropsWithChildren<{
+const NavPillsContext = createContext<{ fill?: boolean } | null>(null);
+
+export type PillProps = LinkProps;
+
+const Pill: FC<PillProps> = ({ className, to, ...rest }) => {
+  const context = useContext(NavPillsContext);
+
+  return (
+    <NavLink
+      role="menuitem"
+      to={to}
+      className={({ isActive }) => clsx(
+        'tw:px-4 tw:pt-2 tw:pb-[calc(0.5rem-3px)] tw:border-b-3',
+        'tw:highlight:text-lm-brand tw:dark:highlight:text-dm-brand',
+        'tw:font-bold tw:text-center tw:no-underline tw:transition-colors',
+        'tw:rounded-none tw:outline-none tw:focus-visible:inset-ring-2',
+        'tw:focus-visible:inset-ring-lm-brand/50 tw:dark:focus-visible:inset-ring-dm-brand/50',
+        {
+          'tw:text-lm-brand tw:dark:text-dm-brand': isActive,
+          'tw:border-b-lm-brand tw:dark:border-b-dm-brand active': isActive,
+          'tw:border-b-transparent tw:text-gray-500': !isActive,
+          'tw:flex-grow': context?.fill,
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};
+
+export type NavPillsProps = PropsWithChildren<{
   fill?: boolean;
   className?: string;
 }>;
 
-type NavPillItemProps = PropsWithChildren<{
-  to: string;
-  replace?: boolean;
-}>;
-
-/** @deprecated */
-export const NavPillItem: FC<NavPillItemProps> = ({ children, ...rest }) => (
-  <NavItem>
-    <NavLink className="nav-pills__nav-link" tag={RouterNavLink} {...rest}>
+const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => (
+  <NavPillsContext.Provider value={{ fill }}>
+    <Card role="menubar" className={clsx('tw:flex tw:overflow-hidden', className)}>
       {children}
-    </NavLink>
-  </NavItem>
+    </Card>
+  </NavPillsContext.Provider>
 );
 
-/** @deprecated */
-export const NavPills: FC<NavPillsProps> = ({ children, fill = false, className = '' }) => (
-  <Card className={`nav-pills__nav p-0 overflow-hidden ${className}`} body>
-    <Nav pills fill={fill}>
-      {Children.map(children, (child) => {
-        if (!isValidElement(child) || child.type !== NavPillItem) {
-          throw new Error('Only NavPillItem children are allowed inside NavPills.');
-        }
-
-        return child;
-      })}
-    </Nav>
-  </Card>
-);
+export const NavPills = Object.assign(BaseNavPills, { Pill });
