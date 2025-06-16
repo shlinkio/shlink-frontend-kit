@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { useCallback , useState } from 'react';
-import { Dropdown, LabelledInput, OrderingDropdown, RowDropdown, useOrder } from '../../src';
+import type { Order } from '../../src';
+import { Dropdown, LabelledInput, OrderingDropdown, RowDropdown } from '../../src';
 
 const items = {
   foo: 'Foo',
@@ -11,8 +12,8 @@ const items = {
 export const DropdownPage: FC = () => {
   const [selected, setSelected] = useState<string>();
   const toggleSelected = useCallback((value: string) => setSelected((prev) => prev === value ? undefined : value), []);
-  const [order, onChange] = useOrder<keyof typeof items>({});
-  const [orderLink, onChangeLink] = useOrder<keyof typeof items>({});
+  const [order, onChange] = useState<Order<keyof typeof items>>({});
+  const [orderLink, onChangeLink] = useState<Order<keyof typeof items>>({});
 
   return (
     <div className="tw:flex tw:flex-col tw:gap-y-4">

@@ -6,7 +6,7 @@ describe('useTimeoutToggle', () => {
   const setTimeout = vi.fn().mockReturnValue(1);
   const clearTimeout = vi.fn();
   const FakeComponent = ({ initialValue }: { initialValue: boolean }) => {
-    const [flag, toggle] = useTimeoutToggle(initialValue, 10, setTimeout as any, clearTimeout);
+    const [flag, toggle] = useTimeoutToggle({ initialValue, delay: 10 }, setTimeout as any, clearTimeout);
 
     return (
       <>

@@ -65,7 +65,7 @@ export type NavBarProps = HTMLProps<HTMLElement> & {
 };
 
 export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
-  const { flag: menuOpen, toggle: toggleMenu, setToFalse: closeMenu } = useToggle(false, true);
+  const { flag: menuOpen, toggle: toggleMenu, setToFalse: closeMenu } = useToggle();
   const menuId = useId();
   const toggleButtonId = useId();
 

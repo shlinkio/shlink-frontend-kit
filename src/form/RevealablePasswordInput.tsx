@@ -15,7 +15,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
   { containerClassName, className, size, ...rest },
   ref,
 ) => {
-  const [passwordRevealed, togglePasswordRevealed,, hidePassword] = useToggle(false);
+  const { flag: passwordRevealed, toggle: togglePasswordRevealed, setToFalse: hidePassword } = useToggle();
   const containerRef = useRef<HTMLDivElement>(null);
   const onContainerBlur = useCallback(({ relatedTarget }: FocusEvent) => {
     if (!containerRef.current?.contains(relatedTarget)) {
