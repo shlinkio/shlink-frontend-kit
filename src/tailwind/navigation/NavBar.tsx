@@ -72,11 +72,19 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
         className,
       )}
     >
-      <div className="tw:flex tw:items-center tw:justify-between tw:w-full">
-        <h4 className="tw:px-4 tw:py-3">{brand}</h4>
+      <div className="tw:w-full tw:relative">
+        <h4
+          className={clsx(
+            'tw:px-4 tw:py-3',
+            'tw:max-md:w-full tw:max-md:flex tw:max-md:flex-col tw:items-center',
+          )}
+        >
+          {brand}
+        </h4>
         <Button
           variant="secondary"
           className={clsx(
+            'tw:absolute tw:right-0 tw:top-[50%] tw:translate-y-[-50%]',
             'tw:md:hidden tw:mx-2 tw:[&]:px-2',
             'tw:opacity-60 tw:highlight:opacity-100 tw:transition-opacity',
             'tw:[&]:text-inherit tw:[&]:border-white tw:[&]:highlight:bg-transparent',
