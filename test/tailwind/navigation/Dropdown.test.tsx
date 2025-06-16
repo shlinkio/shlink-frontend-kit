@@ -65,6 +65,7 @@ describe('<Dropdown />', () => {
     { buttonSize: 'lg' as const },
     { buttonVariant: 'button' as const },
     { buttonVariant: 'link' as const },
+    { buttonVariant: 'text' as const },
     { caretless: false },
     { caretless: true },
     { buttonDisabled: true },

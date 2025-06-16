@@ -96,6 +96,11 @@ export const DropdownPage: FC = () => {
             <Dropdown.Item>Bar</Dropdown.Item>
             <Dropdown.Item>Baz</Dropdown.Item>
           </Dropdown>
+          <Dropdown buttonContent="Text" buttonVariant="text">
+            <Dropdown.Item>Foo</Dropdown.Item>
+            <Dropdown.Item>Bar</Dropdown.Item>
+            <Dropdown.Item>Baz</Dropdown.Item>
+          </Dropdown>
           <Dropdown buttonContent="Disabled" buttonDisabled>
             <Dropdown.Item>Foo</Dropdown.Item>
             <Dropdown.Item>Bar</Dropdown.Item>

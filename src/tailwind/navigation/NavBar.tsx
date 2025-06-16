@@ -2,23 +2,52 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
+import type { LinkProps } from 'react-router';
+import { Link } from 'react-router';
 import { useToggle } from '../../hooks';
 import { Button } from '../form';
 import type { RequiredReactNode } from '../types';
+import type { DropdownProps } from './Dropdown';
+import { Dropdown as BaseDropdown } from './Dropdown';
 
-type MenuItemProps = Omit<HTMLProps<HTMLLIElement>, 'role'>;
-
-const MenuItem: FC<MenuItemProps> = ({ className, ...props }) => {
-  return (
-    <li
-      role="menuitem"
+const MenuItem: FC<LinkProps & { active?: boolean }> = ({ className, active, ...props }) => (
+  <li role="menuitem" className="tw:w-full tw:flex">
+    <Link
       className={clsx(
         'tw:px-2 tw:py-3',
         'tw:max-md:w-full tw:max-md:px-3 tw:max-md:py-2',
+        'tw:text-white tw:no-underline tw:highlight:opacity-100 tw:transition-opacity',
+        {
+          'tw:opacity-60': !active,
+          'tw:opacity-100': active,
+        },
         className,
       )}
       {...props}
     />
+  </li>
+);
+
+const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'>> = (
+  { containerClassName, buttonClassName, menuClassName, ...props },
+) => {
+  return (
+    <li role="menuitem" className="tw:w-full tw:flex">
+      <BaseDropdown
+        containerClassName={clsx('tw:max-md:w-full', containerClassName)}
+        buttonVariant="text"
+        buttonClassName={clsx(
+          'tw:text-white tw:opacity-60 tw:highlight:opacity-100 tw:transition-opacity',
+          'tw:px-2 tw:py-3',
+          'tw:max-md:w-full tw:max-md:px-3 tw:max-md:py-2',
+          buttonClassName,
+        )}
+        menuAlignment="right"
+        menuOffset={-4}
+        menuClassName={clsx('tw:mx-2', menuClassName)}
+        {...props}
+      />
+    </li>
   );
 };
 
@@ -44,6 +73,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
           variant="secondary"
           className={clsx(
             'tw:md:hidden tw:mx-2 tw:[&]:px-2',
+            'tw:opacity-60 tw:highlight:opacity-100 tw:transition-opacity',
             'tw:[&]:text-inherit tw:[&]:border-white tw:[&]:highlight:bg-transparent',
           )}
           onClick={toggleMenu}
@@ -68,4 +98,4 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
   );
 };
 
-export const NavBar = Object.assign(BaseNavBar, { MenuItem });
+export const NavBar = Object.assign(BaseNavBar, { MenuItem, Dropdown });
