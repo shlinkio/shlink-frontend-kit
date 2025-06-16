@@ -2,7 +2,7 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link,useLocation  } from 'react-router';
 import { useToggle } from '../../hooks';
@@ -16,7 +16,7 @@ type ItemProps = {
 };
 
 const MenuItem: FC<LinkProps & ItemProps> = ({ className, active, ...props }) => (
-  <li role="menuitem" className="tw:w-full tw:flex">
+  <li role="menuitem" className="tw:w-full tw:flex" data-active={active}>
     <Link
       className={clsx(
         'tw:px-2 tw:py-3',
@@ -37,7 +37,7 @@ const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menu
   { containerClassName, buttonClassName, menuClassName, active, ...props },
 ) => {
   return (
-    <li role="menuitem" className="tw:w-full tw:flex">
+    <li role="menuitem" aria-haspopup className="tw:w-full tw:flex" data-active={active}>
       <BaseDropdown
         containerClassName={clsx('tw:max-md:w-full', containerClassName)}
         buttonVariant="text"
@@ -66,9 +66,11 @@ export type NavBarProps = HTMLProps<HTMLElement> & {
 
 export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
   const { flag: menuOpen, toggle: toggleMenu, setToFalse: closeMenu } = useToggle(false, true);
-  const { pathname } = useLocation();
+  const menuId = useId();
+  const toggleButtonId = useId();
 
   // In mobile devices, collapse the navbar when the pathname changes
+  const { pathname } = useLocation();
   useEffect(() => closeMenu(), [pathname, closeMenu]);
 
   return (
@@ -90,6 +92,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
           {brand}
         </h4>
         <Button
+          id={toggleButtonId}
           variant="secondary"
           className={clsx(
             'tw:absolute tw:right-0 tw:top-[50%] tw:translate-y-[-50%]',
@@ -99,11 +102,14 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
           )}
           onClick={toggleMenu}
           aria-label={`${menuOpen ? 'Hide' : 'Show'} menu`}
+          aria-controls={menuId}
         >
           <FontAwesomeIcon icon={menuOpen ? faChevronUp : faChevronDown} />
         </Button>
       </div>
       <ul
+        id={menuId}
+        aria-labelledby={toggleButtonId}
         role="menu"
         className={clsx(
           'tw:m-0 tw:p-0',
