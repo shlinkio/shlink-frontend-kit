@@ -84,7 +84,7 @@ export const Tooltip: FC<TooltipProps> = (
     role="tooltip"
     aria-live="polite"
     className={clsx(
-      'tw:z-1000 tw:max-w-64',
+      'tw:z-500 tw:max-w-64',
       // Add space between anchor and tooltip via padding, so that if the tooltip is inside the anchor, you can hover it
       // and it's never closed
       {

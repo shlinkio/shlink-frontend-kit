@@ -11,12 +11,11 @@ export type DropdownProps = PropsWithChildren<{
   buttonContent: RequiredReactNode;
   buttonSize?: Size;
   buttonClassName?: string;
-  buttonVariant?: 'button' | 'link';
+  buttonVariant?: 'button' | 'link' | 'text';
   buttonDisabled?: boolean;
 
   /** Set as the button's `aria-label` attribute */
   buttonLabel?: string;
-
   /** Classes to be set on the containing wrapper element */
   containerClassName?: string;
   /** Classes to be set on the menu element */
@@ -28,6 +27,8 @@ export type DropdownProps = PropsWithChildren<{
    */
   menuAlignment?: 'left' | 'right';
 
+  /** Distance between toggle button and menu when open, in pixels. Defaults to 3 */
+  menuOffset?: number;
   /** Whether to hide the caret or not. Defaults to false */
   caretless?: boolean;
 }>;
@@ -44,6 +45,7 @@ const BaseDropdown: FC<DropdownProps> = ({
   menuClassName,
   caretless,
   buttonLabel,
+  menuOffset = 3,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -51,7 +53,7 @@ const BaseDropdown: FC<DropdownProps> = ({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: menuAlignment === 'right' ? 'bottom-end' : 'bottom-start',
-    middleware: [flip(), offset(3)],
+    middleware: [flip(), offset(menuOffset)],
     // eslint-disable-next-line react-compiler/react-compiler
     elements: { reference: buttonRef.current },
   });
@@ -126,9 +128,11 @@ const BaseDropdown: FC<DropdownProps> = ({
             'tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline': buttonVariant === 'link',
 
             // Button sizes
-            'tw:px-1.5 tw:py-1 tw:text-sm tw:gap-x-1.5': buttonSize === 'sm',
-            'tw:px-3 tw:py-1.5 tw:gap-x-2': buttonSize === 'md',
-            'tw:px-4 tw:py-2 tw:text-lg tw:gap-x-2': buttonSize === 'lg',
+            'tw:px-1.5 tw:py-1 tw:text-sm': buttonVariant !== 'text' && buttonSize === 'sm',
+            'tw:px-3 tw:py-1.5': buttonVariant !== 'text' && buttonSize === 'md',
+            'tw:px-4 tw:py-2 tw:text-lg': buttonVariant !== 'text' && buttonSize === 'lg',
+            'tw:gap-x-1.5': buttonSize === 'sm',
+            'tw:gap-x-2': buttonSize !== 'sm',
           },
           buttonClassName,
         )}
@@ -147,7 +151,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         <div
           ref={refs.setFloating}
           style={floatingStyles}
-          className="tw:min-w-full tw:z-1000"
+          className="tw:min-w-full tw:z-500"
           {...getFloatingProps()}
         >
           <Menu
