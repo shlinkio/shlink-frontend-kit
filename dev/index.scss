@@ -1,5 +1,0 @@
-@use '../src/base.scss';
-@use 'bootstrap/scss/bootstrap.scss' with (
-  $primary: base.$mainColor
-);
-@use '../src/index.scss';

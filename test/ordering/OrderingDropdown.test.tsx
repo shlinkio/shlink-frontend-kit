@@ -25,8 +25,7 @@ describe('<OrderingDropdown />', () => {
 
   it.each([
     setUp,
-    // FIXME reactstrap sets tabindex={0} to items, when it should be setting -1. It cannot be overwritten
-    // setUpWithDisplayedMenu,
+    setUpWithDisplayedMenu,
   ])('passes a11y checks', (s) => checkAccessibility(s()));
 
   it('properly renders provided list of items', async () => {
@@ -34,11 +33,11 @@ describe('<OrderingDropdown />', () => {
 
     const dropdownItems = screen.getAllByRole('menuitem');
 
-    expect(dropdownItems).toHaveLength(Object.values(items).length);
+    expect(dropdownItems).toHaveLength(Object.values(items).length + 1);
     expect(dropdownItems[0]).toHaveTextContent('Foo');
     expect(dropdownItems[1]).toHaveTextContent('Bar');
     expect(dropdownItems[2]).toHaveTextContent('Hello World');
-    expect(screen.getByRole('button', { name: 'Clear selection' })).toBeInTheDocument();
+    expect(dropdownItems[3]).toHaveTextContent('Clear selection');
   });
 
   it.each([
@@ -48,17 +47,12 @@ describe('<OrderingDropdown />', () => {
   ])('properly marks selected field as active with proper icon', async (field, expectedActiveIndex) => {
     await setUpWithDisplayedMenu({ order: { field, dir: 'DESC' } });
 
-    const dropdownItems = screen.getAllByRole('menuitem');
+    const dropdownItems = screen.getAllByRole('menuitem').filter((item) => item.textContent !== 'Clear selection');
 
-    expect(dropdownItems).toHaveLength(4);
-    expect(screen.queryByRole('button', { name: 'Clear selection' })).not.toBeInTheDocument();
+    expect(dropdownItems).toHaveLength(Object.values(items).length);
 
     dropdownItems.forEach((item, index) => {
-      if (index === expectedActiveIndex) {
-        expect(item).toHaveAttribute('class', expect.stringContaining('active'));
-      } else {
-        expect(item).not.toHaveAttribute('class', expect.stringContaining('active'));
-      }
+      expect(item).toHaveAttribute('data-selected', index === expectedActiveIndex ? 'true' : 'false');
     });
   });
 
@@ -75,8 +69,7 @@ describe('<OrderingDropdown />', () => {
 
       await user.click(screen.getAllByRole('menuitem')[0]);
 
-      expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenCalledWith(expectedNewField, expectedNewDir);
+      expect(onChange).toHaveBeenCalledExactlyOnceWith({ field: expectedNewField, dir: expectedNewDir });
     },
   );
 
@@ -86,24 +79,23 @@ describe('<OrderingDropdown />', () => {
 
     await user.click(screen.getAllByRole('menuitem')[3]);
 
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith();
+    expect(onChange).toHaveBeenCalledExactlyOnceWith({});
   });
 
   it.each([
-    [{ isButton: false }, /Order by$/],
-    [{ isButton: true }, 'Order by...'],
+    [{ buttonVariant: 'link' as const }, /Order by$/],
+    [{ buttonVariant: 'button' as const }, 'Order by...'],
     [
-      { isButton: true, order: { field: 'foo', dir: 'ASC' as const } },
+      { buttonVariant: 'button' as const , order: { field: 'foo', dir: 'ASC' as const } },
       'Order by: Foo - ASC',
     ],
     [
-      { isButton: true, order: { field: 'baz', dir: 'DESC' as const } },
+      { buttonVariant: 'button' as const , order: { field: 'baz', dir: 'DESC' as const } },
       'Order by: Hello World - DESC',
     ],
-    [{ isButton: true, order: { field: 'baz' } }, 'Order by: Hello World - DESC'],
+    [{ buttonVariant: 'button' as const , order: { field: 'baz' } }, 'Order by: Hello World - DESC'],
     [
-      { isButton: true, order: { field: 'baz', dir: 'DESC' as const }, prefixed: false },
+      { buttonVariant: 'button' as const , order: { field: 'baz', dir: 'DESC' as const }, prefixed: false },
       /^Hello World - DESC/,
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {

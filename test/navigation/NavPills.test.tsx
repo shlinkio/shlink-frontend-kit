@@ -1,60 +1,49 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
-import { NavPillItem, NavPills } from '../../src';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router';
+import { NavPills } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 
+type SetUpOptions = {
+  currentPath?: string;
+  fill?: boolean;
+};
+
 describe('<NavPills />', () => {
-  let originalError: typeof console.error;
+  const setUp = ({ currentPath = '/', fill }: SetUpOptions = {}) => {
+    const history = createMemoryHistory();
+    history.push({ pathname: currentPath });
 
-  const setUp = (fill?: boolean) => render(
-    <MemoryRouter>
-      <NavPills fill={fill}>
-        <NavPillItem to="1">1</NavPillItem>
-        <NavPillItem to="2">2</NavPillItem>
-        <NavPillItem to="3">3</NavPillItem>
-      </NavPills>
-    </MemoryRouter>,
-  );
-
-  beforeEach(() => {
-    originalError = console.error;
-    console.error = () => {}; // Suppress errors logged during this test
-  });
-  afterEach(() => {
-    console.error = originalError;
-  });
+    return render(
+      <Router location={history.location} navigator={history}>
+        <NavPills fill={fill}>
+          <NavPills.Pill to="/">Home</NavPills.Pill>
+          <NavPills.Pill to="/first">First</NavPills.Pill>
+          <NavPills.Pill to="/second">Second</NavPills.Pill>
+        </NavPills>
+      </Router>,
+    );
+  };
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it.each([
-    ['Foo'],
-    [<span key="1">Hi!</span>],
-    [[<NavPillItem key="1" to="" />, <span key="2">Hi!</span>]],
-  ])('throws error when any of the children is not a NavPillItem', (children) => {
-    expect.assertions(1);
-    expect(() => render(<NavPills>{children}</NavPills>)).toThrow(
-      'Only NavPillItem children are allowed inside NavPills.',
-    );
+    { currentPath: '/', expectedActiveItem: 'Home' },
+    { currentPath: '/first', expectedActiveItem: 'First' },
+    { currentPath: '/second', expectedActiveItem: 'Second' },
+  ])('marks expected item as active', ({ currentPath, expectedActiveItem }) => {
+    setUp({ currentPath });
+    expect(screen.getByText(expectedActiveItem)).toHaveClass('active');
   });
 
-  it.each([
-    [undefined],
-    [true],
-    [false],
-  ])('renders provided items', (fill) => {
-    const { container } = setUp(fill);
-    const links = screen.getAllByRole('link');
-
-    expect(links).toHaveLength(3);
-    links.forEach((link, index) => {
-      expect(link).toHaveTextContent(`${index + 1}`);
-      expect(link).toHaveAttribute('href', `/${index + 1}`);
-    });
+  it.each([[true], [false]])('makes items grow if fill is set to true', (fill) => {
+    setUp({ fill });
+    const menuItems = screen.getAllByRole('menuitem');
 
     if (fill) {
-      expect(container.querySelector('.nav')).toHaveClass('nav-fill');
+      expect(menuItems.every((el) => el.classList.contains('tw:flex-grow'))).toBe(true);
     } else {
-      expect(container.querySelector('.nav')).not.toHaveClass('nav-fill');
+      expect(menuItems.some((el) => el.classList.contains('tw:flex-grow'))).toBe(false);
     }
   });
 });

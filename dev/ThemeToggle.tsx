@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import { useTheme } from '../src';
-import { Label, ToggleSwitch } from '../src/tailwind';
+import { Label, ToggleSwitch, useTheme } from '../src';
 
 export const ThemeToggle: FC = () => {
   const [theme, setTheme] = useTheme();
