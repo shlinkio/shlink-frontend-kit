@@ -67,7 +67,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
     <nav
       className={clsx(
         'tw:w-full tw:relative',
-        'tw:text-white tw:bg-lm-main tw:dark:bg-dm-main',
+        'tw:bg-lm-main tw:dark:bg-dm-main',
         'tw:flex tw:max-md:flex-col tw:items-center tw:justify-between',
         className,
       )}
@@ -75,7 +75,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
       <div className="tw:w-full tw:relative">
         <h4
           className={clsx(
-            'tw:px-4 tw:py-3',
+            'tw:text-white tw:px-4 tw:py-3',
             'tw:max-md:w-full tw:max-md:flex tw:max-md:flex-col tw:items-center',
           )}
         >
