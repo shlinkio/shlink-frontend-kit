@@ -24,10 +24,10 @@ export const ModalDialogPage: FC = () => {
   const [coverOpen, setCoverOpen] = useState(false);
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-2">
         <h2>Plain modal dialog</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setPlainDialogOpen(true)}>Open</Button>
         </div>
       </div>
@@ -35,18 +35,18 @@ export const ModalDialogPage: FC = () => {
         open={plainDialogOpen}
         onClose={() => setPlainDialogOpen(false)}
         className={clsx(({
-          'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': plainDialogOpen,
+          'flex w-screen h-screen max-w-screen max-h-screen': plainDialogOpen,
         }))}
       >
-        <div className="tw:p-3 tw:bg-white tw:m-auto">
-          <p className="tw:text-black">Hello</p>
-          <Button className="tw:mt-3" variant="secondary" onClick={() => setPlainDialogOpen(false)}>Close me</Button>
+        <div className="p-3 bg-white m-auto">
+          <p className="text-black">Hello</p>
+          <Button className="mt-3" variant="secondary" onClick={() => setPlainDialogOpen(false)}>Close me</Button>
         </div>
       </ModalDialog>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Card modal sizes</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setSmallOpen(true)}>Small</Button>
           <Button onClick={() => setMediumOpen(true)}>Medium</Button>
           <Button onClick={() => setLargeOpen(true)}>Large</Button>
@@ -67,9 +67,9 @@ export const ModalDialogPage: FC = () => {
         Extra large dialog
       </CardModal>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Danger card modal</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button variant="danger" onClick={() => setDangerOpen(true)}>Danger</Button>
         </div>
       </div>
@@ -84,9 +84,9 @@ export const ModalDialogPage: FC = () => {
         Danger dialog
       </CardModal>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Card modal with confirm button</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setConfirmOpen(true)}>Custom confirm</Button>
           <Button onClick={() => setConfirmDisabledOpen(true)}>Confirm disabled</Button>
           <Button variant="danger" onClick={() => setDangerConfirmOpen(true)}>Danger with confirm</Button>
@@ -126,9 +126,9 @@ export const ModalDialogPage: FC = () => {
         Danger dialog with confirm buttons
       </CardModal>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Card modal with form</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setFormOpen(true)}>With form</Button>
         </div>
       </div>
@@ -142,15 +142,15 @@ export const ModalDialogPage: FC = () => {
         onConfirm={() => setFormOpen(false)}
         onClosed={(exitAction) => console.log(`Closed form dialog: ${exitAction}`)}
       >
-        <div className="tw:flex tw:flex-col tw:gap-3">
+        <div className="flex flex-col gap-3">
           <Input placeholder="Foo" name="foo" />
           <Input placeholder="Bar" name="bar" />
         </div>
       </CardModal>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Card modal with a lot of content</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setContentOpen(true)}>Open</Button>
         </div>
       </div>
@@ -162,7 +162,7 @@ export const ModalDialogPage: FC = () => {
         onClose={() => setContentOpen(false)}
         onConfirm={() => setContentOpen(false)}
       >
-        <div className="tw:flex tw:flex-col tw:gap-y-3">
+        <div className="flex flex-col gap-y-3">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus urna et luctus sagittis. Vivamus nibh
             justo, fringilla ut luctus et, facilisis nec magna. In facilisis lacus sit amet sem mattis consequat. Aenean
@@ -216,9 +216,9 @@ export const ModalDialogPage: FC = () => {
         </div>
       </CardModal>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Cover card modal</h2>
-        <div className="tw:flex tw:gap-x-2">
+        <div className="flex gap-x-2">
           <Button onClick={() => setCoverOpen(true)}>Open</Button>
         </div>
       </div>
@@ -229,7 +229,7 @@ export const ModalDialogPage: FC = () => {
         open={coverOpen}
         onClose={() => setCoverOpen(false)}
       >
-        <div className="p-3 tw:flex tw:flex-col tw:gap-y-3">
+        <div className="p-3 flex flex-col gap-y-3">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus urna et luctus sagittis. Vivamus nibh
             justo, fringilla ut luctus et, facilisis nec magna. In facilisis lacus sit amet sem mattis consequat. Aenean

@@ -7,8 +7,8 @@ export type CardProps = Omit<HTMLProps<HTMLDivElement>, 'ref'>;
 const Header = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
   <div
     className={clsx(
-      'tw:px-4 tw:py-3 tw:rounded-t-md',
-      'tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-b tw:border-lm-border tw:dark:border-dm-border',
+      'px-4 py-3 rounded-t-md',
+      'bg-lm-primary dark:bg-dm-primary border-b border-lm-border dark:border-dm-border',
       className,
     )}
     {...rest}
@@ -19,8 +19,8 @@ const Header = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, re
 const Body = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
   <div
     className={clsx(
-      'tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md',
-      'tw:first:rounded-t-md tw:last:rounded-b-md',
+      'p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md',
+      'first:rounded-t-md last:rounded-b-md',
       className,
     )}
     {...rest}
@@ -31,8 +31,8 @@ const Body = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref)
 const Footer = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
   <div
     className={clsx(
-      'tw:px-4 tw:py-3 tw:rounded-b-md',
-      'tw:bg-lm-primary tw:dark:bg-dm-primary tw:border-t tw:border-lm-border tw:dark:border-dm-border',
+      'px-4 py-3 rounded-b-md',
+      'bg-lm-primary dark:bg-dm-primary border-t border-lm-border dark:border-dm-border',
       className,
     )}
     {...rest}
@@ -43,8 +43,8 @@ const Footer = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, re
 const BaseCard = forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
   <div
     className={clsx(
-      'tw:group/card tw:rounded-md tw:shadow-md',
-      'tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary',
+      'group/card rounded-md shadow-md',
+      'border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary',
       className)}
     {...props}
     ref={ref}

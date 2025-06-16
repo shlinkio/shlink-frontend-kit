@@ -41,9 +41,9 @@ describe('<NavPills />', () => {
     const menuItems = screen.getAllByRole('menuitem');
 
     if (fill) {
-      expect(menuItems.every((el) => el.classList.contains('tw:flex-grow'))).toBe(true);
+      expect(menuItems.every((el) => el.classList.contains('flex-grow'))).toBe(true);
     } else {
-      expect(menuItems.some((el) => el.classList.contains('tw:flex-grow'))).toBe(false);
+      expect(menuItems.some((el) => el.classList.contains('flex-grow'))).toBe(false);
     }
   });
 });

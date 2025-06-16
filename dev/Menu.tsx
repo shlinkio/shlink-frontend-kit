@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export const Menu: FC = () => {
   return (
-    <ul className="tw:p-0">
+    <ul className="p-0">
       <li><Link to="/">Home</Link></li>
       <hr />
       <li><Link to="/form/inputs">Inputs</Link></li>

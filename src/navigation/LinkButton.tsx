@@ -14,15 +14,15 @@ export const LinkButton = forwardRef<HTMLButtonElement, LinkButtonProps>((
 ) => (
   <button
     className={clsx(
-      'tw:inline-flex tw:rounded-md tw:focus-ring',
-      'tw:text-lm-brand tw:dark:text-dm-brand',
-      'tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline',
+      'inline-flex rounded-md focus-ring',
+      'text-lm-brand dark:text-dm-brand',
+      'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline',
       {
-        'tw:px-1.5 tw:py-1 tw:text-sm': size === 'sm',
-        'tw:px-3 tw:py-1.5': size === 'md',
-        'tw:px-4 tw:py-2 tw:text-lg': size === 'lg',
-        'tw:cursor-pointer': !disabled,
-        'tw:pointer-events-none tw:opacity-65': disabled,
+        'px-1.5 py-1 text-sm': size === 'sm',
+        'px-3 py-1.5': size === 'md',
+        'px-4 py-2 text-lg': size === 'lg',
+        'cursor-pointer': !disabled,
+        'pointer-events-none opacity-65': disabled,
       },
       className,
     )}

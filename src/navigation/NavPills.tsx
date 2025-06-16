@@ -17,16 +17,16 @@ const Pill: FC<PillProps> = ({ className, to, ...rest }) => {
       role="menuitem"
       to={to}
       className={({ isActive }) => clsx(
-        'tw:px-4 tw:pt-2 tw:pb-[calc(0.5rem-3px)] tw:border-b-3',
-        'tw:highlight:text-lm-brand tw:dark:highlight:text-dm-brand',
-        'tw:font-bold tw:text-center tw:no-underline tw:transition-colors',
-        'tw:rounded-none tw:outline-none tw:focus-visible:inset-ring-2',
-        'tw:focus-visible:inset-ring-lm-brand/50 tw:dark:focus-visible:inset-ring-dm-brand/50',
+        'px-4 pt-2 pb-[calc(0.5rem-3px)] border-b-3',
+        'highlight:text-lm-brand dark:highlight:text-dm-brand',
+        'font-bold text-center no-underline transition-colors',
+        'rounded-none outline-none focus-visible:inset-ring-2',
+        'focus-visible:inset-ring-lm-brand/50 dark:focus-visible:inset-ring-dm-brand/50',
         {
-          'tw:text-lm-brand tw:dark:text-dm-brand': isActive,
-          'tw:border-b-lm-brand tw:dark:border-b-dm-brand active': isActive,
-          'tw:border-b-transparent tw:text-gray-500': !isActive,
-          'tw:flex-grow': context?.fill,
+          'text-lm-brand dark:text-dm-brand': isActive,
+          'border-b-lm-brand dark:border-b-dm-brand active': isActive,
+          'border-b-transparent text-gray-500': !isActive,
+          'flex-grow': context?.fill,
         },
         className,
       )}
@@ -42,7 +42,7 @@ export type NavPillsProps = PropsWithChildren<{
 
 const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => (
   <NavPillsContext.Provider value={{ fill }}>
-    <Card role="menubar" className={clsx('tw:flex tw:overflow-hidden', className)}>
+    <Card role="menubar" className={clsx('flex overflow-hidden', className)}>
       {children}
     </Card>
   </NavPillsContext.Provider>

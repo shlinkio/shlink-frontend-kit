@@ -5,7 +5,7 @@ import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<LinkButton />', () => {
   const setUp = (props: LinkButtonProps = {}) => render(
-    <div className="tw:bg-white">
+    <div className="bg-white">
       <LinkButton {...props} />
     </div>,
   );

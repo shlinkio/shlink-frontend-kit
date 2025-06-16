@@ -9,8 +9,8 @@ export const MenuPage: FC = () => {
   }, []);
 
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+    <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-2">
         <h2>Menu</h2>
         <Menu>
           <Menu.Title>Numbers:</Menu.Title>
@@ -25,7 +25,7 @@ export const MenuPage: FC = () => {
         </Menu>
       </div>
 
-      <div className="tw:flex tw:flex-col tw:gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <h2>Menu with links and misc items</h2>
         <Menu
           focusableElementsSelector={'[role="menuitem"]:not([disabled]):not([aria-disabled]),input:not([disabled])'}
@@ -34,11 +34,11 @@ export const MenuPage: FC = () => {
           <Menu.Item to="" disabled>Two (disabled)</Menu.Item>
           <Menu.Item to="">Three</Menu.Item>
           <Menu.Separator />
-          <Menu.Misc className="tw:flex tw:gap-3">
-            <div className="tw:w-1/2">
+          <Menu.Misc className="flex gap-3">
+            <div className="w-1/2">
               <LabelledInput label="Foo" />
             </div>
-            <div className="tw:w-1/2">
+            <div className="w-1/2">
               <LabelledInput label="Bar" />
             </div>
           </Menu.Misc>

@@ -13,8 +13,8 @@ export type TagItemProps = {
 };
 
 const TagItem: FC<TagItemProps> = ({ name, color }) => (
-  <div className="tw:inline-flex tw:items-center tw:gap-2">
-    <div aria-hidden className="tw:w-4 tw:h-4 tw:rounded-full" style={{ backgroundColor: color }} />
+  <div className="inline-flex items-center gap-2">
+    <div aria-hidden className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
     {name}
   </div>
 );
@@ -30,11 +30,11 @@ const TagSearchResult: FC<TagSearchResultProps> = ({ tag, color, size, onRemove 
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
   <li
     className={clsx(
-      'tw:inline-flex tw:items-center tw:gap-1 tw:font-bold tw:[&]:rounded-md',
+      'inline-flex items-center gap-1 font-bold [&]:rounded-md',
       {
-        'tw:px-1 tw:text-sm': size === 'sm',
-        'tw:py-0.25 tw:px-1.5': size === 'md',
-        'tw:py-0.5 tw:px-1.5': size === 'lg',
+        'px-1 text-sm': size === 'sm',
+        'py-0.25 px-1.5': size === 'md',
+        'py-0.5 px-1.5': size === 'lg',
       },
     )}
     style={{
@@ -145,18 +145,18 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={clsx(
-        'tw:rounded-md tw:flex tw:flex-wrap tw:gap-1',
-        'tw:border tw:border-lm-input-border tw:dark:border-dm-input-border',
-        'tw:cursor-text tw:focus-within:focus-within-ring',
+        'rounded-md flex flex-wrap gap-1',
+        'border border-lm-input-border dark:border-dm-input-border',
+        'cursor-text focus-within:focus-within-ring',
         {
-          'tw:p-0.5': size === 'sm',
-          'tw:p-1.25': size === 'md',
-          'tw:p-2': size === 'lg',
+          'p-0.5': size === 'sm',
+          'p-1.25': size === 'md',
+          'p-2': size === 'lg',
 
-          'tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input': disabled,
-          'tw:bg-lm-primary tw:dark:bg-dm-primary': !disabled,
+          'bg-lm-disabled-input dark:bg-dm-disabled-input': disabled,
+          'bg-lm-primary dark:bg-dm-primary': !disabled,
           // Use different background color when rendered inside a card
-          'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': !disabled,
+          'group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input': !disabled,
         },
         containerClassName,
       )}
@@ -166,7 +166,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
         }
       }}
     >
-      <ul className="tw:m-0 tw:p-0 tw:flex tw:flex-wrap tw:gap-1">
+      <ul className="m-0 p-0 flex flex-wrap gap-1">
         {selectedTags.map((tag, index) => {
           const tagColor = getColorForTag?.(tag) ?? DEFAULT_TAG_COLOR;
           return <TagSearchResult key={`${tag}${index}`} tag={tag} color={tagColor} onRemove={removeTag} size={size} />;
@@ -175,14 +175,14 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
       <SearchCombobox
         variant="unstyled"
         listboxSpan="auto"
-        containerClassName="tw:flex tw:items-center"
-        listboxClassName="tw:whitespace-nowrap"
+        containerClassName="flex items-center"
+        listboxClassName="whitespace-nowrap"
         inputClassName={clsx(
-          'tw:no-clear-button',
+          'no-clear-button',
           {
-            'tw:px-1 tw:text-sm': size === 'sm',
-            'tw:px-2 tw:h-[26px]': size === 'md',
-            'tw:px-3 tw:text-xl': size === 'lg',
+            'px-1 text-sm': size === 'sm',
+            'px-2 h-[26px]': size === 'md',
+            'px-3 text-xl': size === 'lg',
           },
         )}
         searchResults={searchResults}

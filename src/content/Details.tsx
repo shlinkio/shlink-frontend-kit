@@ -21,9 +21,9 @@ export const Details: FC<DetailsProps> = ({ children, summary, summaryClasses, .
 
   return (
     <details ref={detailsRef} {...rest}>
-      <summary className={clsx('tw:focus-ring tw:px-1 tw:-mx-1 tw:rounded-sm', summaryClasses)}>{summary}</summary>
+      <summary className={clsx('focus-ring px-1 -mx-1 rounded-sm', summaryClasses)}>{summary}</summary>
       {isOpen && (
-        <div className="tw:mt-3 tw:flex tw:flex-col tw:gap-y-3">
+        <div className="mt-3 flex flex-col gap-y-3">
           {children}
         </div>
       )}

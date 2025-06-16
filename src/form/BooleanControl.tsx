@@ -17,11 +17,11 @@ export const BooleanControl = forwardRef<HTMLInputElement, BooleanControlProps>(
       ref={ref}
       type="checkbox"
       className={clsx(
-        'tw:appearance-none tw:focus-ring tw:cursor-[inherit]',
-        'tw:border-1 tw:border-lm-input-border tw:dark:border-dm-input-border',
-        'tw:bg-lm-primary tw:dark:bg-dm-primary tw:checked:bg-lm-brand tw:dark:checked:bg-dm-brand tw:bg-no-repeat',
+        'appearance-none focus-ring cursor-[inherit]',
+        'border-1 border-lm-input-border dark:border-dm-input-border',
+        'bg-lm-primary dark:bg-dm-primary checked:bg-lm-brand dark:checked:bg-dm-brand bg-no-repeat',
         // Use different background color when rendered inside a card
-        'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input',
+        'group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input',
         className,
       )}
       onChange={onChecked}

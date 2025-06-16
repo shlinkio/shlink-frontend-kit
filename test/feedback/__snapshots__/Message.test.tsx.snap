@@ -3,13 +3,13 @@
 exports[`<Message /> > renders as expected based on provided props 1`] = `
 <div>
   <div
-    class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary"
+    class="group/card rounded-md shadow-md border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary"
   >
     <div
-      class="tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md tw:first:rounded-t-md tw:last:rounded-b-md"
+      class="p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md first:rounded-t-md last:rounded-b-md"
     >
       <h3
-        class="tw:text-center tw:text-gray-500 tw:dark:text-gray-400"
+        class="text-center text-gray-500 dark:text-gray-400"
       />
     </div>
   </div>
@@ -19,13 +19,13 @@ exports[`<Message /> > renders as expected based on provided props 1`] = `
 exports[`<Message /> > renders as expected based on provided props 2`] = `
 <div>
   <div
-    class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary"
+    class="group/card rounded-md shadow-md border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary"
   >
     <div
-      class="tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md tw:first:rounded-t-md tw:last:rounded-b-md"
+      class="p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md first:rounded-t-md last:rounded-b-md"
     >
       <h3
-        class="tw:text-center tw:text-gray-500 tw:dark:text-gray-400"
+        class="text-center text-gray-500 dark:text-gray-400"
       >
         <svg
           aria-hidden="true"
@@ -43,7 +43,7 @@ exports[`<Message /> > renders as expected based on provided props 2`] = `
           />
         </svg>
         <span
-          class="tw:ml-2"
+          class="ml-2"
         >
           Loading...
         </span>
@@ -56,13 +56,13 @@ exports[`<Message /> > renders as expected based on provided props 2`] = `
 exports[`<Message /> > renders as expected based on provided props 3`] = `
 <div>
   <div
-    class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary"
+    class="group/card rounded-md shadow-md border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary"
   >
     <div
-      class="tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md tw:first:rounded-t-md tw:last:rounded-b-md"
+      class="p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md first:rounded-t-md last:rounded-b-md"
     >
       <h3
-        class="tw:text-center tw:text-gray-500 tw:dark:text-gray-400"
+        class="text-center text-gray-500 dark:text-gray-400"
       >
         <svg
           aria-hidden="true"
@@ -80,7 +80,7 @@ exports[`<Message /> > renders as expected based on provided props 3`] = `
           />
         </svg>
         <span
-          class="tw:ml-2"
+          class="ml-2"
         >
           Alternative content
         </span>
@@ -93,13 +93,13 @@ exports[`<Message /> > renders as expected based on provided props 3`] = `
 exports[`<Message /> > renders as expected based on provided props 4`] = `
 <div>
   <div
-    class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary"
+    class="group/card rounded-md shadow-md border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary"
   >
     <div
-      class="tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md tw:first:rounded-t-md tw:last:rounded-b-md"
+      class="p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md first:rounded-t-md last:rounded-b-md"
     >
       <h3
-        class="tw:text-center tw:text-gray-500 tw:dark:text-gray-400"
+        class="text-center text-gray-500 dark:text-gray-400"
       >
         Default message
       </h3>
@@ -111,13 +111,13 @@ exports[`<Message /> > renders as expected based on provided props 4`] = `
 exports[`<Message /> > renders as expected based on provided props 5`] = `
 <div>
   <div
-    class="tw:group/card tw:rounded-md tw:shadow-md tw:border tw:border-lm-border tw:dark:border-dm-border tw:bg-lm-primary tw:dark:bg-dm-primary tw:[&]:border-danger"
+    class="group/card rounded-md shadow-md border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary [&]:border-danger"
   >
     <div
-      class="tw:p-4 tw:bg-lm-primary tw:dark:bg-dm-primary tw:first:rounded-t-md tw:first:rounded-t-md tw:last:rounded-b-md"
+      class="p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md first:rounded-t-md last:rounded-b-md"
     >
       <h3
-        class="tw:text-center tw:text-danger"
+        class="text-center text-danger"
       >
         Error message
       </h3>

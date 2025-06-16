@@ -87,7 +87,7 @@ const BaseDropdown: FC<DropdownProps> = ({
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       ref={containerRef}
-      className={clsx('tw:relative tw:inline-block', containerClassName)}
+      className={clsx('relative inline-block', containerClassName)}
       onKeyDown={(e) => {
         // Close menu when pressing Escape
         if (e.key === 'Escape') {
@@ -111,28 +111,28 @@ const BaseDropdown: FC<DropdownProps> = ({
         aria-label={buttonLabel}
         disabled={buttonDisabled}
         className={clsx(
-          'tw:flex tw:items-center tw:rounded-md tw:focus-ring',
+          'flex items-center rounded-md focus-ring',
           {
-            'tw:justify-between': !caretless,
-            'tw:cursor-pointer': !buttonDisabled,
-            'tw:pointer-events-none tw:opacity-50': buttonDisabled,
+            'justify-between': !caretless,
+            'cursor-pointer': !buttonDisabled,
+            'pointer-events-none opacity-50': buttonDisabled,
 
             // Button variant
-            'tw:border tw:border-lm-border tw:dark:border-dm-border': buttonVariant === 'button',
-            'tw:bg-lm-primary tw:dark:bg-dm-primary': buttonVariant === 'button',
+            'border border-lm-border dark:border-dm-border': buttonVariant === 'button',
+            'bg-lm-primary dark:bg-dm-primary': buttonVariant === 'button',
             // Use different bg color when inside a card
-            'tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input': buttonVariant === 'button',
+            'group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input': buttonVariant === 'button',
 
             // Link variant
-            'tw:text-lm-brand tw:dark:text-dm-brand': buttonVariant === 'link',
-            'tw:highlight:text-lm-brand-dark tw:dark:highlight:text-dm-brand-dark tw:highlight:underline': buttonVariant === 'link',
+            'text-lm-brand dark:text-dm-brand': buttonVariant === 'link',
+            'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline': buttonVariant === 'link',
 
             // Button sizes
-            'tw:px-1.5 tw:py-1 tw:text-sm': buttonVariant !== 'text' && buttonSize === 'sm',
-            'tw:px-3 tw:py-1.5': buttonVariant !== 'text' && buttonSize === 'md',
-            'tw:px-4 tw:py-2 tw:text-lg': buttonVariant !== 'text' && buttonSize === 'lg',
-            'tw:gap-x-1.5': buttonSize === 'sm',
-            'tw:gap-x-2': buttonSize !== 'sm',
+            'px-1.5 py-1 text-sm': buttonVariant !== 'text' && buttonSize === 'sm',
+            'px-3 py-1.5': buttonVariant !== 'text' && buttonSize === 'md',
+            'px-4 py-2 text-lg': buttonVariant !== 'text' && buttonSize === 'lg',
+            'gap-x-1.5': buttonSize === 'sm',
+            'gap-x-2': buttonSize !== 'sm',
           },
           buttonClassName,
         )}
@@ -151,7 +151,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         <div
           ref={refs.setFloating}
           style={floatingStyles}
-          className="tw:min-w-full tw:z-500"
+          className="min-w-full z-500"
           {...getFloatingProps()}
         >
           <Menu

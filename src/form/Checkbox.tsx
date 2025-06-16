@@ -8,7 +8,7 @@ export type CheckboxProps = BooleanControlProps;
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ className, ...rest }, ref) => (
   <BooleanControl
     ref={ref}
-    className={clsx('tw:rounded-sm tw:w-4 tw:h-4 tw:checked:bg-(image:--tick) tw:bg-center', className)}
+    className={clsx('rounded-sm w-4 h-4 checked:bg-(image:--tick) bg-center', className)}
     {...rest}
   />
 ));

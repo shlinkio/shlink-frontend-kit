@@ -8,24 +8,24 @@ import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
 
 const commonClasses = [
-  'tw:border tw:border-r-0 tw:last:border-r tw:border-lm-border tw:dark:border-dm-border',
-  'tw:rounded-none tw:first:rounded-l tw:last:rounded-r',
+  'border border-r-0 last:border-r border-lm-border dark:border-dm-border',
+  'rounded-none first:rounded-l last:rounded-r',
 ];
 
 const buildPaginatorItemClasses = (active = false) => clsx(
   commonClasses,
-  'tw:px-3 tw:py-2 tw:cursor-pointer tw:no-underline',
-  'tw:focus-ring tw:focus-visible:z-1',
+  'px-3 py-2 cursor-pointer no-underline',
+  'focus-ring focus-visible:z-1',
   !active && [
-    'tw:text-lm-brand tw:dark:text-dm-brand',
-    'tw:bg-lm-primary tw:dark:bg-dm-primary',
-    'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary',
+    'text-lm-brand dark:text-dm-brand',
+    'bg-lm-primary dark:bg-dm-primary',
+    'highlight:bg-lm-secondary dark:highlight:bg-dm-secondary',
   ],
-  active && 'tw:bg-lm-main tw:dark:bg-dm-main tw:text-white',
+  active && 'bg-lm-main dark:bg-dm-main text-white',
 );
 
 const DisabledPaginatorItem: FC<PropsWithChildren> = ({ children }) => (
-  <span aria-hidden className={clsx(commonClasses, 'tw:px-3 tw:py-2 tw:text-gray-400')}>
+  <span aria-hidden className={clsx(commonClasses, 'px-3 py-2 text-gray-400')}>
     {children}
   </span>
 );
@@ -86,7 +86,7 @@ export const Paginator: FC<PaginatorProps> = ({ currentPage, pagesCount, ...rest
   }
 
   return (
-    <div className="tw:select-none tw:flex" data-testid="paginator">
+    <div className="select-none flex" data-testid="paginator">
       {currentPage === 1 ? (
         <DisabledPaginatorItem>
           <FontAwesomeIcon size="xs" icon={faChevronLeft} />

@@ -74,7 +74,7 @@ function SearchComboboxInner<Item>({
 
   return (
     <div
-      className={clsx('tw:relative', containerClassName)}
+      className={clsx('relative', containerClassName)}
       onBlur={(e) => {
         // Clears search when focus is moving away of this container, so that the listbox is closed.
         if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -109,10 +109,10 @@ function SearchComboboxInner<Item>({
           onActiveItemChange={setActiveKey}
           renderItem={renderSearchResult}
           className={clsx(
-            'tw:absolute tw:top-full tw:mt-1 tw:z-10',
+            'absolute top-full mt-1 z-10',
             {
-              'tw:min-w-60': listboxSpan === 'auto',
-              'tw:w-full': listboxSpan === 'full',
+              'min-w-60': listboxSpan === 'auto',
+              'w-full': listboxSpan === 'full',
             },
             listboxClassName,
           )}

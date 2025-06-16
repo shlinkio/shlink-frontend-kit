@@ -22,9 +22,9 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>((
     type="button"
     onClick={onClick}
     className={clsx(
-      'tw:rounded-md tw:focus-ring tw:cursor-pointer',
+      'rounded-md focus-ring cursor-pointer',
       {
-        'tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity': !solid,
+        'opacity-50 highlight:opacity-80 transition-opacity': !solid,
       },
       className,
     )}

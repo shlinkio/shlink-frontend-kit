@@ -23,9 +23,9 @@ import './tailwind.css';
 
 export const App: FC = () => (
   <BrowserRouter>
-    <div className="tw:container tw:m-auto tw:p-5">
+    <div className="container m-auto p-5">
       <Menu />
-      <div className="tw:flex tw:flex-row-reverse tw:my-4">
+      <div className="flex flex-row-reverse my-4">
         <ThemeToggle />
       </div>
       <Routes>

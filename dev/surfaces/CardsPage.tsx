@@ -3,7 +3,7 @@ import { Card, SimpleCard } from '../../src';
 
 export const CardsPage: FC = () => {
   return (
-    <div className="tw:flex tw:flex-col tw:gap-y-4">
+    <div className="flex flex-col gap-y-4">
       <Card>Empty card</Card>
       <Card>
         <Card.Header>Header</Card.Header>

@@ -18,7 +18,7 @@ export type TimeoutToggleOptions = {
 const DEFAULT_DELAY = 2000;
 
 export const useTimeoutToggle = (
-  { initialValue = false, delay = DEFAULT_DELAY }: TimeoutToggleOptions,
+  { initialValue = false, delay = DEFAULT_DELAY }: TimeoutToggleOptions = {},
 
   // Test seams
   setTimeout_ = globalThis.setTimeout,

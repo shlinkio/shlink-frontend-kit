@@ -3,7 +3,7 @@
 exports[`<Select /> > renders as expected based on provided props 1`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:pl-3 tw:py-1.5 tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
     style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
@@ -19,7 +19,7 @@ exports[`<Select /> > renders as expected based on provided props 1`] = `
 exports[`<Select /> > renders as expected based on provided props 2`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:pl-2 tw:py-1 tw:text-sm tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-2 py-1 text-sm bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
     style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
@@ -35,7 +35,7 @@ exports[`<Select /> > renders as expected based on provided props 2`] = `
 exports[`<Select /> > renders as expected based on provided props 3`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:pl-3 tw:py-1.5 tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
     style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
@@ -51,7 +51,7 @@ exports[`<Select /> > renders as expected based on provided props 3`] = `
 exports[`<Select /> > renders as expected based on provided props 4`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:pl-4 tw:py-2 tw:text-xl tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-4 py-2 text-xl bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
     style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
@@ -67,7 +67,7 @@ exports[`<Select /> > renders as expected based on provided props 4`] = `
 exports[`<Select /> > renders as expected based on provided props 5`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring-danger tw:rounded-md tw:border tw:border-danger tw:pl-3 tw:py-1.5 tw:bg-lm-primary tw:dark:bg-dm-primary tw:group-[&]/card:bg-lm-input tw:group-[&]/card:dark:bg-dm-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring-danger rounded-md border border-danger pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
     style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
@@ -83,7 +83,7 @@ exports[`<Select /> > renders as expected based on provided props 5`] = `
 exports[`<Select /> > renders as expected based on provided props 6`] = `
 <div>
   <select
-    class="tw:w-full tw:appearance-none tw:pr-9 tw:bg-(image:--chevron-down) tw:bg-no-repeat tw:focus-ring tw:rounded-md tw:border tw:border-lm-input-border tw:dark:border-dm-input-border tw:pl-3 tw:py-1.5 tw:bg-lm-disabled-input tw:dark:bg-dm-disabled-input"
+    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-disabled-input dark:bg-dm-disabled-input"
     disabled=""
     style="background: right 0.75rem center / 16px 12px;"
   >

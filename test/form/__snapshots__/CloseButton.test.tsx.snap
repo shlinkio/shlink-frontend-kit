@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<CloseButton /> > has expected classes 1`] = `"tw:rounded-md tw:focus-ring tw:cursor-pointer"`;
+exports[`<CloseButton /> > has expected classes 1`] = `"rounded-md focus-ring cursor-pointer"`;
 
-exports[`<CloseButton /> > has expected classes 2`] = `"tw:rounded-md tw:focus-ring tw:cursor-pointer tw:opacity-50 tw:highlight:opacity-80 tw:transition-opacity"`;
+exports[`<CloseButton /> > has expected classes 2`] = `"rounded-md focus-ring cursor-pointer opacity-50 highlight:opacity-80 transition-opacity"`;
 
 exports[`<CloseButton /> > has icon with expected size 1`] = `
 <svg

@@ -137,8 +137,8 @@ export const CardModal: FC<CardModalProps> = ({
       onClose={onClose}
       className={clsx(
         {
-          'tw:flex tw:w-screen tw:h-screen tw:max-w-screen tw:max-h-screen': openProxy,
-          'tw:overflow-hidden': variant === 'cover',
+          'flex w-screen h-screen max-w-screen max-h-screen': openProxy,
+          'overflow-hidden': variant === 'cover',
         },
         className,
       )}
@@ -148,35 +148,35 @@ export const CardModal: FC<CardModalProps> = ({
         data-testid="transition-container"
         ref={ref}
         className={clsx(
-          'tw:w-full tw:m-auto tw:p-4 tw:sm:p-6',
+          'w-full m-auto p-4 sm:p-6',
 
           // CSS transitions are based on the presence of the `data-open` attribute
-          'tw:-translate-y-4 tw:data-open:translate-y-0 tw:opacity-0 tw:data-open:opacity-100',
-          'tw:transition-[opacity_,_translate] tw:duration-300',
+          '-translate-y-4 data-open:translate-y-0 opacity-0 data-open:opacity-100',
+          'transition-[opacity_,_translate] duration-300',
 
           // Handle modal dimensions for different variants and sizes
           variant !== 'cover' && {
-            'tw:sm:w-sm': size === 'sm',
-            'tw:md:w-lg': size === 'md',
-            'tw:md:w-4xl': size === 'lg',
-            'tw:md:w-6xl': size === 'xl',
+            'sm:w-sm': size === 'sm',
+            'md:w-lg': size === 'md',
+            'md:w-4xl': size === 'lg',
+            'md:w-6xl': size === 'xl',
           },
-          { 'tw:h-full': variant === 'cover' },
+          { 'h-full': variant === 'cover' },
         )}
         onSubmit={confirm}
       >
         <Card className={clsx(
-          'tw:w-full',
-          { 'tw:h-full tw:relative tw:overflow-auto': variant === 'cover' },
+          'w-full',
+          { 'h-full relative overflow-auto': variant === 'cover' },
         )}>
           {variant === 'cover' ? (
             <>
               <div
                 className={clsx(
-                  'tw:px-4 tw:py-3 tw:absolute tw:top-0 tw:left-0 tw:right-0 tw:z-3000',
-                  'tw:flex tw:items-center tw:justify-between',
-                  'tw:text-white tw:bg-linear-to-b tw:from-black/70 tw:to-black/10',
-                  'tw:[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]',
+                  'px-4 py-3 absolute top-0 left-0 right-0 z-3000',
+                  'flex items-center justify-between',
+                  'text-white bg-linear-to-b from-black/70 to-black/10',
+                  '[text-shadow:_0_2px_4px_rgb(0_0_0/_0.8)]',
                 )}
               >
                 <h5>{title}</h5>
@@ -187,10 +187,10 @@ export const CardModal: FC<CardModalProps> = ({
           ) : (
             <>
               <Card.Header className={clsx(
-                'tw:sticky tw:top-0',
-                'tw:flex tw:items-center tw:justify-between tw:gap-x-2',
+                'sticky top-0',
+                'flex items-center justify-between gap-x-2',
               )}>
-                <h5 className={clsx({ 'tw:text-danger': variant === 'danger' })}>{title}</h5>
+                <h5 className={clsx({ 'text-danger': variant === 'danger' })}>{title}</h5>
                 <CloseButton onClick={onClose} label="Close dialog" />
               </Card.Header>
               <Card.Body>{children}</Card.Body>
@@ -198,8 +198,8 @@ export const CardModal: FC<CardModalProps> = ({
                 <Card.Footer
                   data-testid="footer"
                   className={clsx(
-                    'tw:flex tw:justify-end tw:items-center tw:gap-x-2',
-                    'tw:[&]:px-3 tw:sticky tw:bottom-0',
+                    'flex justify-end items-center gap-x-2',
+                    '[&]:px-3 sticky bottom-0',
                   )}
                 >
                   <LinkButton onClick={onClose}>{cancelText}</LinkButton>

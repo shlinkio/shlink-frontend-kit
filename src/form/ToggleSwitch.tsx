@@ -9,10 +9,10 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(({ c
   <BooleanControl
     ref={ref}
     className={clsx(
-      'tw:rounded-full tw:w-8 tw:h-4',
-      'tw:bg-(image:--circle-grey-dark) tw:dark:bg-(image:--circle-grey-light) tw:checked:bg-(image:--circle-white)',
-      'tw:focus-visible:not-checked:bg-(image:--circle-light-blue)',
-      'tw:checked:bg-right tw:transition-[background-position]',
+      'rounded-full w-8 h-4',
+      'bg-(image:--circle-grey-dark) dark:bg-(image:--circle-grey-light) checked:bg-(image:--circle-white)',
+      'focus-visible:not-checked:bg-(image:--circle-light-blue)',
+      'checked:bg-right transition-[background-position]',
       className,
     )}
     {...rest}

@@ -84,34 +84,34 @@ export const Tooltip: FC<TooltipProps> = (
     role="tooltip"
     aria-live="polite"
     className={clsx(
-      'tw:z-500 tw:max-w-64',
+      'z-500 max-w-64',
       // Add space between anchor and tooltip via padding, so that if the tooltip is inside the anchor, you can hover it
       // and it's never closed
       {
-        'tw:pt-2.5': arrowSide === 'top',
-        'tw:pb-2.5': arrowSide === 'bottom',
-        'tw:pr-2.5': arrowSide === 'right',
-        'tw:pl-2.5': arrowSide === 'left',
+        'pt-2.5': arrowSide === 'top',
+        'pb-2.5': arrowSide === 'bottom',
+        'pr-2.5': arrowSide === 'right',
+        'pl-2.5': arrowSide === 'left',
       },
     )}
     ref={refSetter}
     style={styles}
     {...rest}
   >
-    <div className="tw:relative tw:px-1.5 tw:py-1 tw:rounded tw:bg-black/90 tw:text-white tw:text-center">
-      <span className="tw:sr-only">Tooltip: </span>
+    <div className="relative px-1.5 py-1 rounded bg-black/90 text-white text-center">
+      <span className="sr-only">Tooltip: </span>
       {children}
       <div
         ref={arrowRef}
         className={clsx(
-          'tw:absolute',
+          'absolute',
           // Render as a triangle
-          'tw:border-l-6 tw:border-r-6 tw:border-b-6 tw:border-l-transparent tw:border-r-transparent tw:border-b-black/90',
+          'border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-black/90',
           // Rotate triangle so that it points to the correct direction
           {
-            'tw:rotate-180': arrowSide === 'bottom',
-            'tw:rotate-90 tw:mr-[-3px]': arrowSide === 'right',
-            'tw:rotate-270 tw:ml-[-3px]': arrowSide === 'left',
+            'rotate-180': arrowSide === 'bottom',
+            'rotate-90 mr-[-3px]': arrowSide === 'right',
+            'rotate-270 ml-[-3px]': arrowSide === 'left',
           },
         )}
         style={{

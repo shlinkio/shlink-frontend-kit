@@ -25,15 +25,15 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
       role="menuitem"
       data-selected={selected}
       className={clsx(
-        'tw:flex tw:items-center tw:gap-2',
-        'tw:w-full tw:px-3 tw:py-1.5 tw:focus-ring',
+        'flex items-center gap-2',
+        'w-full px-3 py-1.5 focus-ring',
         // Overwrite link styles in case a Link is being used
-        'tw:no-underline tw:text-inherit',
+        'no-underline text-inherit',
         {
-          'tw:cursor-pointer': !disabled,
-          'tw:pointer-events-none tw:opacity-50': disabled,
-          'tw:bg-lm-secondary tw:dark:bg-dm-secondary': selected && !disabled,
-          'tw:highlight:bg-lm-secondary tw:dark:highlight:bg-dm-secondary tw:highlight:z-1 tw:relative': !selected && !disabled,
+          'cursor-pointer': !disabled,
+          'pointer-events-none opacity-50': disabled,
+          'bg-lm-secondary dark:bg-dm-secondary': selected && !disabled,
+          'highlight:bg-lm-secondary dark:highlight:bg-dm-secondary highlight:z-1 relative': !selected && !disabled,
         },
         className,
       )}
@@ -47,7 +47,7 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
 
 const Separator: FC = () => (
   // TODO Use an <hr /> tag once tailwind styles are not set with !important
-  <div role="separator" aria-hidden className="tw:border-b tw:border-lm-border tw:dark:border-dm-border tw:my-2" />
+  <div role="separator" aria-hidden className="border-b border-lm-border dark:border-dm-border my-2" />
 );
 
 const Title: FC<PropsWithChildren> = ({ children }) => (
@@ -57,8 +57,8 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
     aria-level={6}
     aria-hidden
     className={clsx(
-      'tw:flex tw:items-center tw:w-full tw:px-3 tw:py-1.5',
-      'tw:text-gray-500 tw:text-sm tw:font-semibold',
+      'flex items-center w-full px-3 py-1.5',
+      'text-gray-500 text-sm font-semibold',
     )}
     onClick={(e) => e.stopPropagation()}
   >
@@ -72,7 +72,7 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
 const Misc: FC<HTMLProps<HTMLDivElement>> = ({ className, onClick, ...rest }) => (
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
   <div
-    className={clsx('tw:px-3 tw:py-1.5', className)}
+    className={clsx('px-3 py-1.5', className)}
     {...rest}
     onClick={(e) => {
       e.stopPropagation();
@@ -107,7 +107,7 @@ const BaseMenu: FC<MenuProps> = ({
   useArrowKeyNavigation(cardRef, { elementsSelector: focusableElementsSelector, focusFirstItem });
 
   return (
-    <Card ref={cardRef} role="menu" className={clsx('tw:py-2 tw:whitespace-nowrap', className)} {...rest}>
+    <Card ref={cardRef} role="menu" className={clsx('py-2 whitespace-nowrap', className)} {...rest}>
       {children}
     </Card>
   );
