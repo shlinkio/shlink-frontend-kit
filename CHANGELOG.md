@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Remove `/tailwind` entry point. All tailwind-based symbols are now exported from the main entry point.
+* Remove dependencies in bootstrap, reactstrap and sass.
+* Remove all symbols and signatures that were deprecated.
+
+### Fixed
+* *Nothing*
+
+
 ## [0.9.13] - 2025-06-16
 ### Added
 * *Nothing*
