@@ -3,8 +3,7 @@
 exports[`<Select /> > renders as expected based on provided props 1`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
-    style="background: right 0.75rem center / 16px 12px;"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
   >
     <option>
       Foo
@@ -19,8 +18,7 @@ exports[`<Select /> > renders as expected based on provided props 1`] = `
 exports[`<Select /> > renders as expected based on provided props 2`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-2 py-1 text-sm bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
-    style="background: right 0.75rem center / 16px 12px;"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring border-lm-input-border dark:border-dm-input-border pl-2 py-1 text-sm bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
   >
     <option>
       Foo
@@ -35,8 +33,7 @@ exports[`<Select /> > renders as expected based on provided props 2`] = `
 exports[`<Select /> > renders as expected based on provided props 3`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
-    style="background: right 0.75rem center / 16px 12px;"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
   >
     <option>
       Foo
@@ -51,8 +48,7 @@ exports[`<Select /> > renders as expected based on provided props 3`] = `
 exports[`<Select /> > renders as expected based on provided props 4`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-4 py-2 text-xl bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
-    style="background: right 0.75rem center / 16px 12px;"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring border-lm-input-border dark:border-dm-input-border pl-4 py-2 text-xl bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
   >
     <option>
       Foo
@@ -67,8 +63,7 @@ exports[`<Select /> > renders as expected based on provided props 4`] = `
 exports[`<Select /> > renders as expected based on provided props 5`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring-danger rounded-md border border-danger pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
-    style="background: right 0.75rem center / 16px 12px;"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring-danger border-danger pl-3 py-1.5 bg-lm-primary dark:bg-dm-primary group-[&]/card:bg-lm-input group-[&]/card:dark:bg-dm-input"
   >
     <option>
       Foo
@@ -83,9 +78,8 @@ exports[`<Select /> > renders as expected based on provided props 5`] = `
 exports[`<Select /> > renders as expected based on provided props 6`] = `
 <div>
   <select
-    class="w-full appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat focus-ring rounded-md border border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-disabled-input dark:bg-dm-disabled-input"
+    class="w-full rounded-md border appearance-none pr-9 bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px] focus-ring border-lm-input-border dark:border-dm-input-border pl-3 py-1.5 bg-lm-disabled-input dark:bg-dm-disabled-input"
     disabled=""
-    style="background: right 0.75rem center / 16px 12px;"
   >
     <option>
       Foo

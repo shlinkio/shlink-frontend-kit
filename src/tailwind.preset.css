@@ -67,7 +67,7 @@
         --circle-grey-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
         --circle-grey-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28255, 255, 255, 0.25%29'/></svg>");
         --circle-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
-        --circle-light-blue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
+        --circle-blue-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
 
         @apply scheme-normal dark:scheme-dark scroll-auto;
     }
@@ -77,22 +77,11 @@
     }
 
     a {
-        /*
-         * FIXME Set these styles as plain CSS instead of @apply to avoid higher specificity.
-         *       This can be set via @apply as soon as we stop using important for tailwind classes, once bootstrap is
-         *       removed
-         */
-        color: var(--color-lm-brand);
-        border-radius: var(--radius-xs);
-
         @apply
+            text-lm-brand dark:text-dm-brand rounded-xs
             focus-visible:outline-3 focus-visible:outline-offset-3
             focus-visible:outline-lm-brand/50 dark:focus-visible:outline-dm-brand/50
             focus-visible:z-1;
-    }
-
-    [data-theme="dark"] a {
-        color: var(--color-dm-brand);
     }
 
     h1 {
@@ -118,10 +107,6 @@
         @apply my-3 border-lm-border dark:border-dm-border;
     }
 
-    p {
-        @apply m-0;
-    }
-
     code {
         @apply text-sm text-pink-600 dark:text-pink-500 font-mono;
     }
@@ -132,6 +117,10 @@
 
     summary {
         @apply cursor-pointer;
+    }
+
+    dialog {
+        @apply outline-none
     }
 }
 
