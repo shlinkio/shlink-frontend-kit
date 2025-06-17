@@ -11,7 +11,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(({ c
     className={clsx(
       'rounded-full w-8 h-4',
       'bg-(image:--circle-grey-dark) dark:bg-(image:--circle-grey-light) checked:bg-(image:--circle-white)',
-      'focus-visible:not-checked:bg-(image:--circle-light-blue)',
+      'focus-visible:not-checked:bg-(image:--circle-blue-light)',
       'checked:bg-right transition-[background-position]',
       className,
     )}

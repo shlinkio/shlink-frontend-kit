@@ -6,10 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 ### Added
-* *Nothing*
+* Add `brandColor()` and `brandColorAlpha()` functions, which resolve the right brand color depending on the active theme.
 
 ### Changed
 * Used tailwind classes no longer expect the `tw` prefix.
+* Generated tailwind styles no longer assume are set with important.
 
 ### Deprecated
 * *Nothing*
@@ -18,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Remove `/tailwind` entry point. All tailwind-based symbols are now exported from the main entry point.
 * Remove dependencies in bootstrap, reactstrap and sass.
 * Remove all symbols and signatures that were deprecated.
+* Remove `MAIN_COLOR` and `MAIN_COLOR_ALPHA` constants. Use `brandColor()` and `brandColorAlpha()` instead.
 
 ### Fixed
 * *Nothing*

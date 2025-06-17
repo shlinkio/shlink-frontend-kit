@@ -44,9 +44,9 @@ export const DropdownPage: FC = () => {
         <h2>Menu at least as big as button</h2>
         <div>
           <Dropdown buttonContent="Select something from the menu">
-            <Dropdown.Item>Foo</Dropdown.Item>
-            <Dropdown.Item>Bar</Dropdown.Item>
-            <Dropdown.Item>Baz</Dropdown.Item>
+            <Dropdown.Item to="">Foo</Dropdown.Item>
+            <Dropdown.Item to="">Bar</Dropdown.Item>
+            <Dropdown.Item to="">Baz</Dropdown.Item>
           </Dropdown>
         </div>
       </div>
