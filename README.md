@@ -2,12 +2,12 @@
 
 React components and utilities for Shlink frontend projects
 
-## Tailwind alternatives
+## Tailwind
 
-This library provides some tailwindcss-based components. To use them make sure to import components from `@shlinkio/shlink-frontend-kit/tailwind` and you add the following instructions to your tailwind stylesheet:
+This library provides tailwindcss-based components. To use them make sure you add the following instructions to your tailwind stylesheet:
 
 ```css
-@import 'tailwindcss' prefix(tw);
+@import 'tailwindcss';
 
 /* Add these two lines */
 @source '../node_modules/@shlinkio/shlink-frontend-kit';
