@@ -45,7 +45,7 @@ function LinkPaginatorItem(
 ) {
   const classes = useMemo(() => buildPaginatorItemClasses(active), [active]);
   return isEllipsis ? <EllipsisPaginatorItem /> : (
-    <Link className={classes} to={href!} {...anchorProps}>
+    <Link className={classes} to={href!} {...anchorProps} data-active={active}>
       {children}
     </Link>
   );
@@ -56,7 +56,7 @@ function ButtonPaginatorItem(
 ) {
   const classes = useMemo(() => buildPaginatorItemClasses(active), [active]);
   return isEllipsis ? <EllipsisPaginatorItem /> : (
-    <button type="button" className={classes} {...buttonProps}>
+    <button type="button" className={classes} {...buttonProps} data-active={active}>
       {children}
     </button>
   );
