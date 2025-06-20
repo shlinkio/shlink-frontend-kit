@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * [#437](https://github.com/shlinkio/shlink-frontend-kit/issues/437) Drop support for React 18.
 
 ### Fixed
-* *Nothing*
+* Ensure `Menu.Item` has `type="button"` when rendered as a `button` tag.
 
 
 ## [1.0.0] - 2025-06-17

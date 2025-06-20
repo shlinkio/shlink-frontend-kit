@@ -7,8 +7,8 @@ import { useArrowKeyNavigation } from '../hooks';
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 
-type ButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'role' | 'disabled' | 'aria-disabled' | 'tabIndex'>;
-type AnchorProps = Omit<LinkProps, 'role' | 'aria-disabled' | 'tabIndex'>;
+type ButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'role' | 'disabled' | 'aria-disabled' | 'tabIndex' | 'type'>;
+type AnchorProps = Omit<LinkProps, 'role' | 'aria-disabled' | 'tabIndex' | 'type'>;
 
 export type MenuItemProps = (ButtonProps | AnchorProps) & {
   selected?: boolean;
@@ -40,6 +40,7 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, ...rest }) => 
       tabIndex={-1}
       disabled={!isLink ? disabled : undefined}
       aria-disabled={isLink ? disabled : undefined}
+      type={isLink ? undefined : 'button'}
       {...rest}
     />
   );
