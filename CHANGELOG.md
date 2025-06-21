@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 * Ensure `Menu.Item` has `type="button"` when rendered as a `button` tag.
+* Fix closing of `Dropdown` menus when clicking away.
 
 
 ## [1.0.0] - 2025-06-17
