@@ -18,6 +18,7 @@ describe('<Dropdown />', () => {
         </Dropdown.Misc>
       </Dropdown>
       <button>Other button</button>
+      <div data-testid="non-focusable-item">Non focusable item</div>
     </div>,
   );
   const setUpOpened = async () => {
@@ -46,7 +47,7 @@ describe('<Dropdown />', () => {
     const { user } = await setUpOpened();
 
     expect(screen.getByRole('menu')).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'Other button' }));
+    await user.click(screen.getByTestId('non-focusable-item'));
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 
@@ -57,6 +58,16 @@ describe('<Dropdown />', () => {
     await user.tab(); // Tab to focus the next focusable element, which is outside the menu
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
     expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Other button' }));
+  });
+
+  it('opens menu when pressing down arrow in toggle button', async () => {
+    const { user } = setUp();
+
+    // Focus button and press ArrowDown
+    await user.tab();
+    await user.keyboard('{ArrowDown}');
+
+    expect(screen.getByRole('menu')).toBeInTheDocument();
   });
 
   it.each([
