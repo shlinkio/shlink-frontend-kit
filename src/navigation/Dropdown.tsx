@@ -3,7 +3,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import type { RequiredReactNode, Size } from '../types';
 import { Menu } from './Menu';
 
@@ -48,6 +48,7 @@ const BaseDropdown: FC<DropdownProps> = ({
   menuOffset = 3,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const closeDropdown = useCallback(() => setIsOpen(false), []);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -66,22 +67,21 @@ const BaseDropdown: FC<DropdownProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const container = containerRef.current;
-    const button = buttonRef.current;
-    if (!container || !button) {
+    if (!container || !isOpen) {
       return () => {};
     }
 
     const controller = new AbortController();
 
-    // Close menu when clicking anywhere except the toggle button
+    // Close menu when clicking outside the dropdown container
     document.body.addEventListener('click', (e) => {
-      if (!e.composedPath().includes(button)) {
-        setIsOpen(false);
+      if (!e.composedPath().includes(container)) {
+        closeDropdown();
       }
     }, { signal: controller.signal });
 
     return () => controller.abort();
-  }, []);
+  }, [closeDropdown, isOpen]);
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -91,13 +91,13 @@ const BaseDropdown: FC<DropdownProps> = ({
       onKeyDown={(e) => {
         // Close menu when pressing Escape
         if (e.key === 'Escape') {
-          setIsOpen(false);
+          closeDropdown();
         }
       }}
       onBlur={(e) => {
         // Close menu when focusing away
         if (e.relatedTarget && !containerRef.current!.contains(e.relatedTarget as HTMLElement)) {
-          setIsOpen(false);
+          closeDropdown();
         }
       }}
     >
@@ -161,6 +161,7 @@ const BaseDropdown: FC<DropdownProps> = ({
               '[role="menuitem"]:not([disabled]):not([aria-disabled]),input:not([disabled]),select:not([disabled])'
             }
             focusFirstItem
+            onItemClick={closeDropdown}
           >
             {children}
           </Menu>
