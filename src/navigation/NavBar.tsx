@@ -98,7 +98,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
             'absolute right-0 top-[50%] translate-y-[-50%]',
             'md:hidden mx-2 [&]:px-2',
             'opacity-60 highlight:opacity-100 transition-opacity',
-            '[&]:text-inherit [&]:border-white [&]:highlight:bg-transparent',
+            '[&]:text-white [&]:border-white [&]:highlight:bg-transparent',
           )}
           onClick={toggleMenu}
           aria-label={`${menuOpen ? 'Hide' : 'Show'} menu`}
