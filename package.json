@@ -31,7 +31,7 @@
     "dev": "vite serve --host=0.0.0.0 --port 3001"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.12",
+    "@floating-ui/react": "^0.27.13",
     "clsx": "^2.1.1"
   },
   "peerDependencies": {
