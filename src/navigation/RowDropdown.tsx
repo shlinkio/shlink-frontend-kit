@@ -15,6 +15,7 @@ const BaseRowDropdown: FC<RowDropdownProps> = ({ buttonLabel = 'Options', button
     buttonContent={(
       <FontAwesomeIcon
         icon={faEllipsisV}
+        widthAuto
         className={clsx({ 'px-1': buttonSize === 'sm' })}
       />
     )}

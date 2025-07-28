@@ -58,7 +58,7 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
         )}
         tabIndex={-1}
       >
-        <FontAwesomeIcon fixedWidth icon={passwordRevealed ? faEyeSlash : faEye} />
+        <FontAwesomeIcon icon={passwordRevealed ? faEyeSlash : faEye} />
       </button>
     </div>
   );

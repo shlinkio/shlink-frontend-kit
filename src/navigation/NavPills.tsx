@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { createContext,useContext  } from 'react';
 import type { LinkProps } from 'react-router';

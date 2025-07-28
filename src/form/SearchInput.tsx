@@ -1,6 +1,6 @@
 import { faCircleNotch, faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { forwardRef , useCallback } from 'react';
 import { useTimeout } from '..';
 import type { InputProps } from './Input';

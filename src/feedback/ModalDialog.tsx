@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
 import { useEffect , useRef } from 'react';
 import { createPortal } from 'react-dom';

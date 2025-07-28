@@ -1,6 +1,6 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren } from 'react';
 import { useCallback , useMemo } from 'react';
 import { Link } from 'react-router';
