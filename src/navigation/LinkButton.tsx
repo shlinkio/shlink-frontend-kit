@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { HTMLProps } from 'react';
 import { forwardRef } from 'react';
 import type { Size } from '../types';

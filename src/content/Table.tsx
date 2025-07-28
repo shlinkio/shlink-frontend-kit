@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 import type { Size } from '../types';

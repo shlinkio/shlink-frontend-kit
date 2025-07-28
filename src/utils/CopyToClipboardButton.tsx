@@ -45,7 +45,7 @@ export const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = (
       onClick={copyToClipboard}
       {...rest}
     >
-      <FontAwesomeIcon icon={copied ? faCheck : faClone} fixedWidth />
+      <FontAwesomeIcon icon={copied ? faCheck : faClone} />
     </button>
   );
 };

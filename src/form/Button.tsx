@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { HTMLProps, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 import type { LinkProps } from 'react-router';

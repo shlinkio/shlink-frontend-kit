@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { Size } from '../types';

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { ForwardedRef, ReactNode } from 'react';
 import { forwardRef , useCallback, useId, useImperativeHandle , useMemo , useRef,useState  } from 'react';
 import { Listbox } from '../content';

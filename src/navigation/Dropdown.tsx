@@ -145,7 +145,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         }}
       >
         {buttonContent}
-        {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" />}
+        {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" widthAuto />}
       </button>
       {isOpen && (
         <div
