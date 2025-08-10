@@ -1,5 +1,6 @@
-// @ts-expect-error I'm not sure why is it complaining about missing type definitions
+// @ts-expect-error These fail with "moduleResolution: node". It should use "moduleResolution: nodenext"
 import tailwindcss from '@tailwindcss/vite';
+// @ts-expect-error These fail with "moduleResolution: node". It should use "moduleResolution: nodenext"
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
