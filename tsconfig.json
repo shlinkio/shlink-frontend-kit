@@ -6,15 +6,15 @@
     "sourceMap": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
     "resolveJsonModule": true,
     "noImplicitAny": true,
-    "target": "ESNext",
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "module": "esnext",
     "types": ["vite/client", "vitest/globals"]
   },
   "include": [
