@@ -7,7 +7,7 @@ exports[`<CloseButton /> > has expected classes 2`] = `"rounded-md focus-ring cu
 exports[`<CloseButton /> > has icon with expected size 1`] = `
 <svg
   aria-hidden="true"
-  class="svg-inline--fa fa-xmark "
+  class="svg-inline--fa fa-xmark"
   data-icon="xmark"
   data-prefix="fas"
   role="img"
@@ -23,7 +23,7 @@ exports[`<CloseButton /> > has icon with expected size 1`] = `
 exports[`<CloseButton /> > has icon with expected size 2`] = `
 <svg
   aria-hidden="true"
-  class="svg-inline--fa fa-xmark fa-lg "
+  class="svg-inline--fa fa-xmark fa-lg"
   data-icon="xmark"
   data-prefix="fas"
   role="img"
@@ -39,7 +39,7 @@ exports[`<CloseButton /> > has icon with expected size 2`] = `
 exports[`<CloseButton /> > has icon with expected size 3`] = `
 <svg
   aria-hidden="true"
-  class="svg-inline--fa fa-xmark fa-xl "
+  class="svg-inline--fa fa-xmark fa-xl"
   data-icon="xmark"
   data-prefix="fas"
   role="img"

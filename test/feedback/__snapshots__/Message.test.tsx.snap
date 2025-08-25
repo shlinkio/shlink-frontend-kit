@@ -29,7 +29,7 @@ exports[`<Message /> > renders as expected based on provided props 2`] = `
       >
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-circle-notch fa-spin "
+          class="svg-inline--fa fa-circle-notch fa-spin"
           data-icon="circle-notch"
           data-prefix="fas"
           role="img"
@@ -64,7 +64,7 @@ exports[`<Message /> > renders as expected based on provided props 3`] = `
       >
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-circle-notch fa-spin "
+          class="svg-inline--fa fa-circle-notch fa-spin"
           data-icon="circle-notch"
           data-prefix="fas"
           role="img"

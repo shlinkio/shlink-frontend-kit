@@ -28,7 +28,7 @@ exports[`<CardModal /> > renders expected size 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -83,7 +83,7 @@ exports[`<CardModal /> > renders expected size 2`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -138,7 +138,7 @@ exports[`<CardModal /> > renders expected size 3`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -193,7 +193,7 @@ exports[`<CardModal /> > renders expected size 4`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -248,7 +248,7 @@ exports[`<CardModal /> > renders expected variant 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -320,7 +320,7 @@ exports[`<CardModal /> > renders expected variant 2`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
@@ -390,7 +390,7 @@ exports[`<CardModal /> > renders expected variant 3`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-xmark fa-xl "
+            class="svg-inline--fa fa-xmark fa-xl"
             data-icon="xmark"
             data-prefix="fas"
             role="img"
