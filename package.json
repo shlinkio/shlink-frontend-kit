@@ -2,7 +2,10 @@
   "name": "@shlinkio/shlink-frontend-kit",
   "description": "React components and utilities for Shlink frontend projects",
   "private": false,
-  "repository": "https://github.com/shlinkio/shlink-frontend-kit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shlinkio/shlink-frontend-kit.git"
+  },
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
