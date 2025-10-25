@@ -125,5 +125,5 @@ function SearchComboboxInner<Item>({
 }
 
 export const SearchCombobox = forwardRef(SearchComboboxInner) as <T>(
-  props: SearchComboboxProps<T> & { ref?: ForwardedRef<HTMLInputElement> }
+  props: SearchComboboxProps<T> & { ref?: ForwardedRef<HTMLInputElement> },
 ) => ReturnType<typeof SearchComboboxInner>;
