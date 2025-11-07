@@ -113,9 +113,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
         }
 
         const lowerTag = t.toLowerCase();
-        return searchMode === 'startsWith'
-          ? lowerTag.startsWith(normalizedSearchTerm)
-          : lowerTag.includes(normalizedSearchTerm);
+        return lowerTag[searchMode](normalizedSearchTerm);
       })
       // Do not show more than 5 matches
       .slice(0, 5);
