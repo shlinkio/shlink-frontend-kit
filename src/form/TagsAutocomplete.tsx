@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
-import { useCallback, useRef , useState  } from 'react';
-import { isLightColor } from '..';
+import { useCallback, useRef } from 'react';
+import { isLightColor, normalizeTag, useTagsSearch } from '..';
 import type { Size } from '../types';
 import { CloseButton } from './CloseButton';
 import type { SearchComboboxProps } from './SearchCombobox';
@@ -48,13 +48,7 @@ const TagSearchResult: FC<TagSearchResultProps> = ({ tag, color, size, onRemove 
   </li>
 );
 
-const ONE_OR_MORE_SPACES_REGEX = /\s+/g;
 const DEFAULT_TAG_COLOR = '#99a1af';
-
-/**
- * Normalizes a tag, making it lowercase, trimmed and replacing space characters with dashes
- */
-const normalizeTag = (tag: string) => tag.trim().toLowerCase().replace(ONE_OR_MORE_SPACES_REGEX, '-');
 
 export type TagsAutocompleteProps = {
   /** Full list of tags from which to build the suggestions */
@@ -97,34 +91,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
   containerClassName,
   ...rest
 }) => {
-  const [searchResults, setSearchResults] = useState<Map<string, string>>();
-  const onSearch = useCallback((searchTerm: string) => {
-    const normalizedSearchTerm = searchTerm.toLowerCase().trim();
-    if (!normalizedSearchTerm) {
-      setSearchResults(undefined);
-      return;
-    }
-
-    const matches: (string)[] = tags
-      .filter((t) => {
-        // Exclude any tag which is already selected
-        if (selectedTags.includes(t)) {
-          return false;
-        }
-
-        const lowerTag = t.toLowerCase();
-        return lowerTag[searchMode](normalizedSearchTerm);
-      })
-      // Do not show more than 5 matches
-      .slice(0, 5);
-
-    if (!immutable) {
-      // Add an extra item to just "create" the input verbatim
-      matches.push(`Add "${normalizedSearchTerm.split(',').map(normalizeTag).join(',')}" tag`);
-    }
-
-    setSearchResults(new Map(matches.map((tag) => [tag, tag])));
-  }, [immutable, searchMode, selectedTags, tags]);
+  const { searchResults, onSearch } = useTagsSearch({ tags, selectedTags, searchMode, allowAdding: !immutable });
 
   const addTag = useCallback((tag: string) => {
     const match = tag.match(/Add\s+"([^"]+)"\s+tag/);
