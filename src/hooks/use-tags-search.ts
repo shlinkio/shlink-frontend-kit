@@ -22,7 +22,8 @@ export type TagsSearchResult = {
    * A Map with the list of tags that match the search result, with the tag used both as key and value.
    * Returned as a Map for convenience to use with SearchCombobox.
    *
-   * When no tags match the search term, or the search term is empty, then `undefined` is returned.
+   * When the search term is empty, `undefined` is returned, so that it is possible to differentiate a search producing
+   * no results from not currently performing a search at all.
    *
    * @see {SearchCombobox}
    */
