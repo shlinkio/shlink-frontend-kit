@@ -65,7 +65,7 @@
     "@total-typescript/shoehorn": "^0.1.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react": "^5.1.0",
+    "@vitejs/plugin-react": "^5.1.1",
     "@vitest/browser": "^4.0.3",
     "@vitest/coverage-v8": "^4.0.8",
     "axe-core": "^4.11.0",
