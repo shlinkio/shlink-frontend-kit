@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
-import type { ForwardedRef, ReactNode } from 'react';
-import { forwardRef , useCallback, useId, useImperativeHandle , useMemo , useRef,useState  } from 'react';
+import type { ReactNode, Ref } from 'react';
+import { useCallback, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Listbox } from '../content';
 import type { SearchInputProps } from './SearchInput';
 import { SearchInput } from './SearchInput';
@@ -33,6 +33,8 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
   containerClassName?: string;
   /** Classes to add to the listbox */
   listboxClassName?: string;
+
+  ref?: Ref<HTMLInputElement>;
 };
 
 /**
@@ -41,7 +43,7 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
  * The main difference is that the input is used only to search in the listbox, and once an item is selected, the input
  * is cleared and the listbox is closed.
  */
-function SearchComboboxInner<Item>({
+export function SearchCombobox<Item>({
   searchResults,
   onSearch,
   onSelectSearchResult,
@@ -51,8 +53,9 @@ function SearchComboboxInner<Item>({
   onFocus,
   containerClassName,
   listboxClassName,
+  ref,
   ...rest
-}: SearchComboboxProps<Item>, ref: ForwardedRef<HTMLInputElement>) {
+}: SearchComboboxProps<Item>) {
   const listboxId = useId();
   const [activeKey, setActiveKey] = useState<string>();
 
@@ -123,7 +126,3 @@ function SearchComboboxInner<Item>({
     </div>
   );
 }
-
-export const SearchCombobox = forwardRef(SearchComboboxInner) as <T>(
-  props: SearchComboboxProps<T> & { ref?: ForwardedRef<HTMLInputElement> },
-) => ReturnType<typeof SearchComboboxInner>;

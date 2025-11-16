@@ -1,7 +1,8 @@
 import { faCircleNotch, faSearch as searchIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
-import { forwardRef , useCallback } from 'react';
+import type { FC } from 'react';
+import { useCallback } from 'react';
 import { useTimeout } from '..';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -21,7 +22,7 @@ export type SearchInputProps = Omit<InputProps, 'className' | 'onChange' | 'valu
   immediate?: boolean;
 };
 
-export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
+export const SearchInput: FC<SearchInputProps> = ({
   onChange,
   containerClassName,
   inputClassName,
@@ -31,7 +32,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   variant = 'default',
   immediate = false,
   ...inputProps
-}, ref) => {
+}) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
   const searchTermChanged = useCallback((newSearchTerm: string) => {
     if (!newSearchTerm || immediate) {
@@ -60,7 +61,6 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
         />
       )}
       <Input
-        ref={ref}
         variant={variant}
         type="search"
         className={clsx(
@@ -77,4 +77,4 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
       />
     </div>
   );
-});
+};

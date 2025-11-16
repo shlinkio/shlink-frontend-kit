@@ -1,13 +1,12 @@
 import { clsx } from 'clsx';
-import { forwardRef } from 'react';
+import type { FC } from 'react';
 import type { BooleanControlProps } from './BooleanControl';
 import { BooleanControl } from './BooleanControl';
 
 export type ToggleSwitchProps = BooleanControlProps;
 
-export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(({ className, ...rest }, ref) => (
+export const ToggleSwitch: FC<ToggleSwitchProps> = ({ className, ...rest }) => (
   <BooleanControl
-    ref={ref}
     className={clsx(
       'rounded-full min-w-8 w-8 h-4',
       'bg-(image:--circle-grey-dark) dark:bg-(image:--circle-grey-light) checked:bg-(image:--circle-white)',
@@ -17,4 +16,4 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(({ c
     )}
     {...rest}
   />
-));
+);

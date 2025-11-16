@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import { forwardRef } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { Size } from '../types';
 import type { CardProps } from './Card';
 import { Card } from './Card';
@@ -18,7 +17,7 @@ export type SimpleCardProps = Omit<CardProps, 'title' | 'size'> & {
   bodyClassName?: string;
 } & (TitleProps | NoTitleProps);
 
-export const SimpleCard = forwardRef<HTMLDivElement, SimpleCardProps>(({ bodyClassName, children, ...rest }, ref) => {
+export const SimpleCard: FC<SimpleCardProps> = ({ bodyClassName, children, ...rest }) => {
   const { title, titleSize = 'md', ...cardProps } = 'title' in rest ? rest : {
     ...rest,
     title: undefined,
@@ -26,7 +25,7 @@ export const SimpleCard = forwardRef<HTMLDivElement, SimpleCardProps>(({ bodyCla
   };
 
   return (
-    <Card {...cardProps} ref={ref}>
+    <Card {...cardProps}>
       {title && (
         <Card.Header>
           {titleSize === 'lg' && <h4>{title}</h4>}
@@ -39,4 +38,4 @@ export const SimpleCard = forwardRef<HTMLDivElement, SimpleCardProps>(({ bodyCla
       </Card.Body>
     </Card>
   );
-});
+};

@@ -1,4 +1,5 @@
-import { forwardRef, useId } from 'react';
+import type { FC } from 'react';
+import { useId } from 'react';
 import type { RequiredReactNode } from '../types';
 import type { FormControlWithFeedbackProps } from './FormControlWithFeedback';
 import { FormControlWithFeedback } from './FormControlWithFeedback';
@@ -9,21 +10,18 @@ import { Select } from './Select';
 export type LabelledSelectProps = Omit<SelectProps, 'className' | 'id'> & FormControlWithFeedbackProps & {
   label: RequiredReactNode;
   selectClassName?: string;
-
   /** Alternative to `required`. Causes the input to be required, without displaying an asterisk */
   hiddenRequired?: boolean;
 };
 
-export const LabelledSelect = forwardRef<HTMLSelectElement, LabelledSelectProps>((
+export const LabelledSelect: FC<LabelledSelectProps> = (
   { selectClassName, label, error, helpText, required, hiddenRequired, 'data-testid': testId, ...rest },
-  ref,
 ) => {
   const id = useId();
   return (
     <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
       <Label htmlFor={id} required={required}>{label}</Label>
       <Select
-        ref={ref}
         id={id}
         className={selectClassName}
         required={required || hiddenRequired}
@@ -32,4 +30,4 @@ export const LabelledSelect = forwardRef<HTMLSelectElement, LabelledSelectProps>
       />
     </FormControlWithFeedback>
   );
-});
+};

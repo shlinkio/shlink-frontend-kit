@@ -1,15 +1,13 @@
 import { clsx } from 'clsx';
-import type { ChangeEvent, HTMLProps } from 'react';
-import { forwardRef , useCallback } from 'react';
+import type { ChangeEvent, FC, HTMLProps, Ref } from 'react';
+import { useCallback } from 'react';
 
 export type BooleanControlProps = Omit<HTMLProps<HTMLInputElement>, 'type' | 'onChange' | 'value' | 'defaultValue'> & {
   onChange?: (checked: boolean, e: ChangeEvent<HTMLInputElement>) => void;
+  ref?: Ref<HTMLInputElement>;
 };
 
-export const BooleanControl = forwardRef<HTMLInputElement, BooleanControlProps>((
-  { className, onChange, ...rest },
-  ref,
-) => {
+export const BooleanControl: FC<BooleanControlProps> = ({ className, onChange, ref, ...rest }) => {
   const onChecked = useCallback((e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.checked, e), [onChange]);
 
   return (
@@ -28,4 +26,4 @@ export const BooleanControl = forwardRef<HTMLInputElement, BooleanControlProps>(
       {...rest}
     />
   );
-});
+};

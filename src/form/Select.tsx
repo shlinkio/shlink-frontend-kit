@@ -1,21 +1,21 @@
 import { clsx } from 'clsx';
-import type { HTMLProps, PropsWithChildren } from 'react';
-import { forwardRef } from 'react';
+import type { FC, HTMLProps, PropsWithChildren, Ref } from 'react';
 import type { BaseInputProps } from './Input';
 
 type SelectElementProps = Omit<HTMLProps<HTMLSelectElement>, 'size' | 'checked' | 'defaultChecked'>;
 
-export type SelectProps = PropsWithChildren<SelectElementProps & BaseInputProps>;
+export type SelectProps = PropsWithChildren<SelectElementProps & BaseInputProps> & {
+  ref?: Ref<HTMLSelectElement>;
+};
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
+export const Select: FC<SelectProps> = ({
   className,
   size = 'md',
   feedback,
   disabled,
   ...rest
-}, ref) => (
+}) => (
   <select
-    ref={ref}
     className={clsx(
       'w-full rounded-md border appearance-none pr-9',
       'bg-(image:--chevron-down) bg-no-repeat bg-position-[right_0.75rem_center] bg-size-[16px_12px]',
@@ -39,4 +39,4 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
     disabled={disabled}
     {...rest}
   />
-));
+);
