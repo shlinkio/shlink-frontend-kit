@@ -48,8 +48,14 @@ const BaseDropdown: FC<DropdownProps> = ({
   menuOffset = 3,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const closeDropdown = useCallback(() => setIsOpen(false), []);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const closeDropdown = useCallback(({ focusButton = true }: { focusButton?: boolean } = {}) => {
+    setIsOpen(false);
+    // Return focus to dropdown after closing it
+    if (focusButton) {
+      buttonRef.current?.focus();
+    }
+  }, []);
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -97,7 +103,7 @@ const BaseDropdown: FC<DropdownProps> = ({
       onBlur={(e) => {
         // Close menu when focusing away
         if (e.relatedTarget && !containerRef.current!.contains(e.relatedTarget as HTMLElement)) {
-          closeDropdown();
+          closeDropdown({ focusButton: false });
         }
       }}
     >

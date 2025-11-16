@@ -41,6 +41,7 @@ describe('<Dropdown />', () => {
     expect(screen.getByRole('menu')).toBeInTheDocument();
     await user.type(screen.getByLabelText('Text input'), '{Escape}');
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }));
   });
 
   it('closes menu when clicking away', async () => {
@@ -49,6 +50,7 @@ describe('<Dropdown />', () => {
     expect(screen.getByRole('menu')).toBeInTheDocument();
     await user.click(screen.getByTestId('non-focusable-item'));
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }));
   });
 
   it('closes menu when focusing away', async () => {
