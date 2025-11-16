@@ -2,10 +2,11 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren } from 'react';
-import { useCallback , useMemo } from 'react';
+import { useCallback , useMemo, useRef } from 'react';
 import { Link } from 'react-router';
 import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
+import { useArrowKeyNavigation } from '../hooks';
 
 const commonClasses = [
   'border border-r-0 last:border-r border-lm-border dark:border-dm-border',
@@ -81,12 +82,15 @@ export const Paginator: FC<PaginatorProps> = ({ currentPage, pagesCount, ...rest
     [isLinksPaginator, rest],
   );
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  useArrowKeyNavigation(containerRef, { elementsSelector: 'button,a', vertical: false });
+
   if (pagesCount < 2) {
     return null;
   }
 
   return (
-    <div className="select-none flex" data-testid="paginator">
+    <div className="select-none flex" data-testid="paginator" ref={containerRef}>
       {currentPage === 1 ? (
         <DisabledPaginatorItem>
           <FontAwesomeIcon size="xs" icon={faChevronLeft} />
