@@ -1,10 +1,9 @@
 import { clsx } from 'clsx';
-import type { HTMLProps } from 'react';
-import { forwardRef } from 'react';
+import type { FC, HTMLProps } from 'react';
 
-export type CardProps = Omit<HTMLProps<HTMLDivElement>, 'ref'>;
+export type CardProps = HTMLProps<HTMLDivElement>;
 
-const Header = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
+const Header: FC<CardProps> = ({ className, ...rest }) => (
   <div
     className={clsx(
       'px-4 py-3 rounded-t-md',
@@ -12,11 +11,10 @@ const Header = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, re
       className,
     )}
     {...rest}
-    ref={ref}
   />
-));
+);
 
-const Body = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
+const Body: FC<CardProps> = ({ className, ...rest }) => (
   <div
     className={clsx(
       'p-4 bg-lm-primary dark:bg-dm-primary first:rounded-t-md',
@@ -24,11 +22,10 @@ const Body = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref)
       className,
     )}
     {...rest}
-    ref={ref}
   />
-));
+);
 
-const Footer = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, ref) => (
+const Footer: FC<CardProps> = ({ className, ...rest }) => (
   <div
     className={clsx(
       'px-4 py-3 rounded-b-md',
@@ -36,19 +33,17 @@ const Footer = forwardRef<HTMLDivElement, CardProps>(({ className, ...rest }, re
       className,
     )}
     {...rest}
-    ref={ref}
   />
-));
+);
 
-const BaseCard = forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
+const BaseCard: FC<CardProps> = ({ className, ...props }) => (
   <div
     className={clsx(
       'group/card rounded-md shadow-md',
       'border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary',
       className)}
     {...props}
-    ref={ref}
   />
-));
+);
 
 export const Card = Object.assign(BaseCard, { Body, Header, Footer });

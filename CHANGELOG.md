@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 * [#507](https://github.com/shlinkio/shlink-frontend-kit/issues/507) Add horizontal arrow-key navigation support to `Paginator`.
+* [#511](https://github.com/shlinkio/shlink-frontend-kit/issues/511) Remove all `forwardRef` usages as they are not needed with React 19.
 
 ### Deprecated
 * *Nothing*

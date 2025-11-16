@@ -1,8 +1,8 @@
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
-import type { FocusEvent } from 'react';
-import { forwardRef, useCallback, useRef  } from 'react';
+import type { FC, FocusEvent } from 'react';
+import { useCallback, useRef } from 'react';
 import { useToggle } from '..';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -11,9 +11,8 @@ export type RevealablePasswordInputProps = Omit<InputProps, 'type'> & {
   containerClassName?: string;
 };
 
-export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePasswordInputProps>((
+export const RevealablePasswordInput: FC<RevealablePasswordInputProps> = (
   { containerClassName, className, size, ...rest },
-  ref,
 ) => {
   const { flag: passwordRevealed, toggle: togglePasswordRevealed, setToFalse: hidePassword } = useToggle();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +29,6 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
       onBlurCapture={onContainerBlur}
     >
       <Input
-        ref={ref}
         type={passwordRevealed ? 'text' : 'password'}
         className={clsx(
           {
@@ -62,4 +60,4 @@ export const RevealablePasswordInput = forwardRef<HTMLInputElement, RevealablePa
       </button>
     </div>
   );
-});
+};

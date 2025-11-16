@@ -1,4 +1,5 @@
-import { forwardRef , useId } from 'react';
+import type { FC } from 'react';
+import { useId } from 'react';
 import type { RequiredReactNode } from '../types';
 import type { FormControlWithFeedbackProps } from './FormControlWithFeedback';
 import { FormControlWithFeedback } from './FormControlWithFeedback';
@@ -15,16 +16,14 @@ export type LabelledRevealablePasswordInputProps =
     hiddenRequired?: boolean;
   };
 
-export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, LabelledRevealablePasswordInputProps>((
+export const LabelledRevealablePasswordInput: FC<LabelledRevealablePasswordInputProps> = (
   { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
-  ref,
 ) => {
   const id = useId();
   return (
     <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
       <Label htmlFor={id} required={required}>{label}</Label>
       <RevealablePasswordInput
-        ref={ref}
         id={id}
         className={inputClassName}
         required={required || hiddenRequired}
@@ -33,4 +32,4 @@ export const LabelledRevealablePasswordInput = forwardRef<HTMLInputElement, Labe
       />
     </FormControlWithFeedback>
   );
-});
+};

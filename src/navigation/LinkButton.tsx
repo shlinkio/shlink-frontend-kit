@@ -1,17 +1,14 @@
 import { clsx } from 'clsx';
-import type { HTMLProps } from 'react';
-import { forwardRef } from 'react';
+import type { FC, HTMLProps, Ref } from 'react';
 import type { Size } from '../types';
 
 export type LinkButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'> & {
   size?: Size;
   type?: HTMLButtonElement['type'];
+  ref?: Ref<HTMLButtonElement>;
 };
 
-export const LinkButton = forwardRef<HTMLButtonElement, LinkButtonProps>((
-  { className, disabled, size = 'md', type = 'button', ...rest },
-  ref,
-) => (
+export const LinkButton: FC<LinkButtonProps> = ({ className, disabled, size = 'md', type = 'button', ...rest }) => (
   <button
     className={clsx(
       'inline-flex rounded-md focus-ring',
@@ -29,6 +26,5 @@ export const LinkButton = forwardRef<HTMLButtonElement, LinkButtonProps>((
     disabled={disabled}
     type={type}
     {...rest}
-    ref={ref}
   />
-));
+);
