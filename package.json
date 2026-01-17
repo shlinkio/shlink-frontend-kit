@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
-    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/browser-playwright": "^4.0.17",
     "clsx": "^2.1.1"
   },
   "peerDependencies": {
@@ -68,7 +68,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/browser": "^4.0.3",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.17",
     "axe-core": "^4.11.1",
     "eslint": "^9.39.2",
     "eslint-plugin-import": "^2.32.0",
