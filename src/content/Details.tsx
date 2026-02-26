@@ -7,6 +7,9 @@ export type DetailsProps = Omit<HTMLProps<HTMLDetailsElement>, 'ref'> & {
   summaryClasses?: string;
 };
 
+/**
+ * Hide extended details under a collapsible area with an always-visible summary.
+ */
 export const Details: FC<DetailsProps> = ({ children, summary, summaryClasses, ...rest }) => {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [isOpen, setIsOpen] = useState(false);
