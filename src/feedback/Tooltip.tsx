@@ -13,16 +13,11 @@ export type UseTooltipOptions = {
  */
 export const useTooltip = ({ placement = 'auto' }: UseTooltipOptions = {}) => {
   const arrowRef = useRef<HTMLDivElement>(null);
-  const middleware = (() => {
-    const list = [];
-    if (placement === 'auto') {
-      list.push(autoPlacement());
-    }
+  const middleware = useMemo(() => {
     // eslint-disable-next-line react-compiler/react-compiler
-    list.push(arrow({ element: arrowRef }));
-
-    return list;
-  })();
+    const arrowMiddleware = arrow({ element: arrowRef });
+    return placement === 'auto' ? [autoPlacement(), arrowMiddleware] : [arrowMiddleware];
+  }, [placement]);
 
   const [open, setOpen] = useState(false);
   const { refs, floatingStyles, context, middlewareData } = useFloating({
