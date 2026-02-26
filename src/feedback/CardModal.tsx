@@ -51,7 +51,7 @@ export type CardModalProps = Omit<ModalDialogProps, 'title' | 'size'> & (
 );
 
 /**
- * A ModalDialog that renders a Card as its content
+ * A `ModalDialog` that renders a `Card` as its content
  */
 export const CardModal: FC<CardModalProps> = ({
   open,

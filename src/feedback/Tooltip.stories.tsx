@@ -2,13 +2,10 @@ import type { Meta } from '@storybook/react-vite';
 import type { HTMLProps, ReactNode } from 'react';
 import { Tooltip, useTooltip } from './Tooltip';
 
-const meta = {
+export default {
   component: Tooltip,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
 } satisfies Meta<typeof Tooltip>;
-
-export default meta;
 
 const AnchorComponent = (props: Omit<HTMLProps<HTMLButtonElement>, 'children'>): ReactNode => (
   // @ts-expect-error Not sure what's complaining about here
