@@ -52,6 +52,7 @@ export default defineConfig({
         'src/**/*.ts',
         'src/**/*.tsx',
         '!src/index.ts',
+        '!src/**/*.stories.{ts,tsx}',
       ],
       reporter: ['text', 'text-summary', 'clover', 'html'],
 
