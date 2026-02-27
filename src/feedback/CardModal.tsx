@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { FC, FormEvent, ReactNode } from 'react';
+import type { FC, ReactNode, SubmitEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
@@ -51,7 +51,7 @@ export type CardModalProps = Omit<ModalDialogProps, 'title' | 'size'> & (
 );
 
 /**
- * A ModalDialog that renders a Card as its content
+ * A `ModalDialog` that renders a `Card` as its content
  */
 export const CardModal: FC<CardModalProps> = ({
   open,
@@ -79,7 +79,7 @@ export const CardModal: FC<CardModalProps> = ({
 
   // Track what was the exit action, so that we can call onConfirmed with the right value, once close transition ended
   const exitAction = useRef<ExitAction>('cancel');
-  const confirm = useCallback((e: FormEvent) => {
+  const confirm = useCallback((e: SubmitEvent) => {
     e.preventDefault();
     e.stopPropagation();
     exitAction.current = 'confirm';

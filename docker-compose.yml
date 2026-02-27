@@ -10,3 +10,4 @@ services:
             - ./:/shlink-frontend-kit
         ports:
             - '3001:3001'
+            - '6008:6008'
