@@ -14,6 +14,9 @@ export type LabelledInputProps = Omit<InputProps, 'className' | 'id' | 'feedback
   hiddenRequired?: boolean;
 };
 
+/**
+ * An input with a label linked to it
+ */
 export const LabelledInput: FC<LabelledInputProps> = (
   { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
 ) => {

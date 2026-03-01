@@ -11,6 +11,9 @@ export type RevealablePasswordInputProps = Omit<InputProps, 'type'> & {
   containerClassName?: string;
 };
 
+/**
+ * A password input where the value can be manually revealed
+ */
 export const RevealablePasswordInput: FC<RevealablePasswordInputProps> = (
   { containerClassName, className, size, ...rest },
 ) => {

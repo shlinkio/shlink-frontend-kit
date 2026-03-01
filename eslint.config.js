@@ -7,13 +7,14 @@ export default [
   ...shlink,
   // storybook,
   {
-    // Allow config files and route files to have a default export, as that's what the third parties consuming them
-    // expect
     files: [
       'src/**/*.stories.{ts,tsx}',
     ],
     rules: {
+      // Allow Storybook stories to have a default export, as that's what Storybook expects
       'no-restricted-exports': 'off',
+      // Allow Storybook stories to define hooks in render function, which is not detected as a component
+      'react-hooks/rules-of-hooks': 'off',
     },
   },
 ];
