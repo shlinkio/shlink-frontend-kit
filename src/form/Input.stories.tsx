@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { SimpleCard } from '../surfaces';
 import { Input } from './Input';
 
 const meta = {
@@ -57,3 +58,9 @@ export const Password: Story = {
     placeholder: 'Password input',
   },
 };
+
+export const InsideCard = () => (
+  <SimpleCard>
+    <Input placeholder="Input inside card" />
+  </SimpleCard>
+);
