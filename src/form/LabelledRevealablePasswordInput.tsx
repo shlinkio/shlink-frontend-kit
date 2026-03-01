@@ -16,6 +16,9 @@ export type LabelledRevealablePasswordInputProps =
     hiddenRequired?: boolean;
   };
 
+/**
+ * Same as the `LabelledInput`, but wrapping a `RevealablePasswordInput` instead
+ */
 export const LabelledRevealablePasswordInput: FC<LabelledRevealablePasswordInputProps> = (
   { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
 ) => {
