@@ -38,10 +38,10 @@ export type SearchComboboxProps<Item> = BaseInputProps & {
 };
 
 /**
- * This component combines a SearchInput with a Listbox, to behave close to an editable combobox with autocomplete, as
- * described in https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/.
- * The main difference is that the input is used only to search in the listbox, and once an item is selected, the input
- * is cleared and the listbox is closed.
+ * This component combines a `SearchInput` with a `Listbox`, to behave close to an editable combobox with autocomplete,
+ * as described in [Combobox Autocomplete List pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/).
+ * The main difference is that the input is used only to search in the listbox. Once an item is selected, the input is
+ * cleared and the listbox is closed.
  */
 export function SearchCombobox<Item>({
   searchResults,
