@@ -19,7 +19,7 @@ import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
 import { ThemeToggle } from './ThemeToggle';
 import { UtilsPage } from './utils/UtilsPage';
-import './tailwind.css';
+import '../.storybook/tailwind.css';
 
 export const App: FC = () => (
   <BrowserRouter>

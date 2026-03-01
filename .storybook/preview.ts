@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
-import '../dev/tailwind.css';
+import './tailwind.css';
 
 // eslint-disable-next-line no-restricted-exports
 export default {
