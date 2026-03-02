@@ -7,7 +7,6 @@ const routes: Record<string, string> = {
   '/navigation/paginator': 'Paginator',
   '/navigation/nav-bar': 'NavBar',
   '/navigation/nav-pills': 'NavPills',
-  '/navigation/menu': 'Menu',
   '/navigation/dropdown': 'Dropdown',
   '/utils': 'Utils',
 } as const;

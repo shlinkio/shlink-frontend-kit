@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Menu } from './Menu';
 import { DropdownPage } from './navigation/DropdownPage';
-import { MenuPage } from './navigation/MenuPage';
 import { NavBarPage } from './navigation/NavBarPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { PaginatorPage } from './navigation/PaginatorPage';
@@ -29,7 +28,6 @@ export const App: FC = () => (
           <Route path="" element={<NavPillsPage />} />
           <Route path="*" element={<NavPillsPage />} />
         </Route>
-        <Route path="/navigation/menu" element={<MenuPage />} />
         <Route path="/navigation/dropdown" element={<DropdownPage />} />
         <Route path="/utils" element={<UtilsPage />} />
         <Route path="*" element={<h2 className="text-center">Not found</h2>} />
