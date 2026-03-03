@@ -5,7 +5,7 @@ services:
         build:
             context: .
         working_dir: /shlink-frontend-kit
-        command: /bin/sh -c "npm i && node --run dev"
+        command: /bin/sh -c "npm i && node --run storybook"
         volumes:
             - ./:/shlink-frontend-kit
         ports:

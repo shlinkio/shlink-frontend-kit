@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
+import { MemoryRouter } from 'react-router';
 import './tailwind.css';
 
 // eslint-disable-next-line no-restricted-exports
@@ -11,4 +12,12 @@ export default {
       },
     },
   },
+  decorators: [
+    // Wrap all stories in a memory router in case they use react-router components or hooks
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 } satisfies Preview;

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MemoryRouter } from 'react-router';
 import { fn } from 'storybook/test';
 import { Button } from './Button';
 
@@ -66,8 +65,10 @@ export const Disabled = () => (
   </div>
 );
 
-export const AsLink = () => (
-  <MemoryRouter>
-    <Button to="#" inline>As link</Button>
-  </MemoryRouter>
-);
+export const AsLink: Story = {
+  args: {
+    to: '#',
+    children: 'As link',
+    inline: true,
+  },
+};
