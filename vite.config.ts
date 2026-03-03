@@ -27,13 +27,6 @@ export default defineConfig({
     },
   },
 
-  server: {
-    watch: {
-      // Do not watch test files or generated files, avoiding the dev server to constantly reload when not needed
-      ignored: ['**/.idea/**', '**/.git/**', '**/dist/**', '**/coverage/**', '**/test/**'],
-    },
-  },
-
   test: {
     // Run tests in an actual browser
     browser: {
