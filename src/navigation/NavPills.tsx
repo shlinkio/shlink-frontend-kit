@@ -40,6 +40,9 @@ export type NavPillsProps = PropsWithChildren<{
   className?: string;
 }>;
 
+/**
+ * Tab-like navigation bar wrapping react-router `NavLink`s
+ */
 const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => (
   <NavPillsContext.Provider value={{ fill }}>
     <Card role="menubar" className={clsx('flex overflow-hidden', className)}>
