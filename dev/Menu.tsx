@@ -5,7 +5,6 @@ import { Dropdown } from '../src';
 const routes: Record<string, string> = {
   '/surfaces/cards': 'Cards',
   '/navigation/paginator': 'Paginator',
-  '/navigation/nav-bar': 'NavBar',
   '/navigation/nav-pills': 'NavPills',
   '/navigation/dropdown': 'Dropdown',
   '/utils': 'Utils',

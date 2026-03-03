@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Menu } from './Menu';
 import { DropdownPage } from './navigation/DropdownPage';
-import { NavBarPage } from './navigation/NavBarPage';
 import { NavPillsPage } from './navigation/NavPillsPage';
 import { PaginatorPage } from './navigation/PaginatorPage';
 import { CardsPage } from './surfaces/CardsPage';
@@ -23,7 +22,6 @@ export const App: FC = () => (
         <Route path="/" element={<h2 className="text-center">Select component</h2>} />
         <Route path="/surfaces/cards" element={<CardsPage />} />
         <Route path="/navigation/paginator" element={<PaginatorPage />} />
-        <Route path="/navigation/nav-bar" element={<NavBarPage />} />
         <Route path="/navigation/nav-pills">
           <Route path="" element={<NavPillsPage />} />
           <Route path="*" element={<NavPillsPage />} />
