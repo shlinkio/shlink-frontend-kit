@@ -4,7 +4,6 @@ import { Dropdown } from '../src';
 
 const routes: Record<string, string> = {
   '/surfaces/cards': 'Cards',
-  '/navigation/dropdown': 'Dropdown',
   '/utils': 'Utils',
 } as const;
 const routeEntries = Object.entries(routes);

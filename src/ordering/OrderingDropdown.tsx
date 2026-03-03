@@ -13,6 +13,9 @@ export type OrderingDropdownProps<T extends string = string> = Omit<DropdownProp
   prefixed?: boolean;
 };
 
+/**
+ * A dropdown specifically designed to determine order field and direction.
+ */
 export function OrderingDropdown<T extends string = string>(
   { items, order, onChange, prefixed = true, buttonVariant = 'button', ...rest }: OrderingDropdownProps<T>,
 ) {
