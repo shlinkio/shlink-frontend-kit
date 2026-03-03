@@ -66,8 +66,10 @@ export const Disabled = () => (
   </div>
 );
 
-export const AsLink = () => (
-  <MemoryRouter>
-    <Button to="#" inline>As link</Button>
-  </MemoryRouter>
-);
+export const AsLink: Story = {
+  args: {
+    to: '#',
+    children: 'As link',
+    inline: true,
+  },
+};

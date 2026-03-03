@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
 import { useCallback, useState } from 'react';
-import { MemoryRouter } from 'react-router';
 import { LabelledInput } from '../form';
 import { Menu } from './Menu';
 
@@ -31,22 +30,20 @@ export const Base = () => {
 };
 
 export const WithLinksAndMiscItems = () => (
-  <MemoryRouter>
-    <Menu
-      focusableElementsSelector={'[role="menuitem"]:not([disabled]):not([aria-disabled]),input:not([disabled])'}
-    >
-      <Menu.Item to="">One</Menu.Item>
-      <Menu.Item to="" disabled>Two (disabled)</Menu.Item>
-      <Menu.Item to="">Three</Menu.Item>
-      <Menu.Separator />
-      <Menu.Misc className="flex gap-3">
-        <div className="w-1/2">
-          <LabelledInput label="Foo" />
-        </div>
-        <div className="w-1/2">
-          <LabelledInput label="Bar" />
-        </div>
-      </Menu.Misc>
-    </Menu>
-  </MemoryRouter>
+  <Menu
+    focusableElementsSelector={'[role="menuitem"]:not([disabled]):not([aria-disabled]),input:not([disabled])'}
+  >
+    <Menu.Item to="">One</Menu.Item>
+    <Menu.Item to="" disabled>Two (disabled)</Menu.Item>
+    <Menu.Item to="">Three</Menu.Item>
+    <Menu.Separator />
+    <Menu.Misc className="flex gap-3">
+      <div className="w-1/2">
+        <LabelledInput label="Foo" />
+      </div>
+      <div className="w-1/2">
+        <LabelledInput label="Bar" />
+      </div>
+    </Menu.Misc>
+  </Menu>
 );
