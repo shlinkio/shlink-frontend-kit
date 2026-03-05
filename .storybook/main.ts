@@ -3,7 +3,7 @@ import type { StorybookConfig } from '@storybook/react-vite';
 // eslint-disable-next-line no-restricted-exports
 export default {
   stories: [
-    '../src/**/*.mdx',
+    './stories/*.mdx',
     '../src/**/*.stories.@(ts|tsx)',
   ],
   addons: [
