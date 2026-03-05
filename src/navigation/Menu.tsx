@@ -54,10 +54,14 @@ const Item: FC<MenuItemProps> = ({ className, selected, disabled, onClick, ...re
   );
 };
 
+Item.displayName = 'Menu.Item';
+
 const Separator: FC = () => (
   // TODO Use an <hr /> tag once tailwind styles are not set with !important
   <div role="separator" aria-hidden className="border-b border-lm-border dark:border-dm-border my-2" />
 );
+
+Separator.displayName = 'Menu.Separator';
 
 const Title: FC<PropsWithChildren> = ({ children }) => (
   <div
@@ -75,12 +79,16 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
   </div>
 );
 
+Title.displayName = 'Menu.Title';
+
 /**
  * Allows to add any arbitrary content inside a Menu
  */
 const Misc: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <div className={clsx('px-3 py-1.5', className)} {...rest} />
 );
+
+Misc.displayName = 'Menu.Misc';
 
 export type MenuProps = Omit<CardProps, 'role'> & {
   /**
@@ -122,5 +130,7 @@ const BaseMenu: FC<MenuProps> = ({
     </Card>
   );
 };
+
+BaseMenu.displayName = 'Menu';
 
 export const Menu = Object.assign(BaseMenu, { Item, Separator, Title, Misc });
