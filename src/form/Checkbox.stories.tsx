@@ -18,8 +18,13 @@ export const Basic: Story = {
   },
 };
 
-export const InCard = () => (
-  <SimpleCard>
-    <Checkbox onChange={() => fn()} />
-  </SimpleCard>
-);
+export const InCard: Story = {
+  args: {
+    onChange: () => fn(),
+  },
+  render: (args) => (
+    <SimpleCard>
+      <Checkbox {...args} />
+    </SimpleCard>
+  ),
+};

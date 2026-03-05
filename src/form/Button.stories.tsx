@@ -1,10 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
+import { boolean, size } from '../../.storybook/utils/storybook';
 import { Button } from './Button';
 
 const meta = {
   component: Button,
   tags: ['autodocs'],
+  argTypes: {
+    variant: { options: ['primary', 'secondary', 'danger'] },
+    type: { options: ['button', 'submit', 'reset'] },
+    size,
+    disabled: boolean,
+    inline: boolean,
+    solid: boolean,
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;

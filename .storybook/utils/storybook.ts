@@ -6,3 +6,7 @@ export const nonEditableReactNode: InputType = {
     type: { summary: 'ReactNode' },
   },
 };
+
+export const size: InputType = { options: ['sm', 'md', 'lg'] };
+
+export const boolean: InputType = { type: 'boolean' };
