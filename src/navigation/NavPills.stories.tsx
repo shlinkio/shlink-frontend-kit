@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
-import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import type { NavPillsProps } from './NavPills';
 import { NavPills } from './NavPills';
 
