@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
@@ -6,24 +6,30 @@ import { Button, Input } from '../form';
 import type { CardModalProps } from './CardModal';
 import { CardModal as LibCardModal } from './CardModal';
 
-export default {
+const meta = {
   component: LibCardModal,
   tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'radio',
+      options: ['default', 'danger', 'cover'],
+    },
+  },
 } satisfies Meta<typeof LibCardModal>;
 
-type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never;
+export default meta;
 
-type ModalPlaceholderProps = DistributiveOmit<CardModalProps, 'open' | 'onClose'>;
+type Story = StoryObj<typeof meta>;
 
 const CardModal = ({
   variant,
   ...rest
-}: ModalPlaceholderProps) => {
+}: CardModalProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
+      <LibCardModal variant={variant} {...rest} open={open} onClose={() => setOpen(false)} />
       <Button onClick={() => setOpen(true)} variant={variant === 'danger' ? 'danger' : undefined}>Open modal</Button>
-      <LibCardModal open={open} onClose={() => setOpen(false)} variant={variant} {...rest} />
     </>
   );
 };
@@ -34,66 +40,130 @@ const LongContent = () => (
   </div>
 );
 
-export const Modal = () => <CardModal title="Modal dialog">Default dialog</CardModal>;
+export const Base: Story = {
+  args: {
+    title: 'Modal dialog',
+    children: 'Default dialog',
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};
 
-export const SmallModal = () => <CardModal size="sm" title="Modal dialog">Small dialog</CardModal>;
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    title: 'Modal dialog',
+    children: 'Small dialog',
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};
 
-export const LargeModal = () => <CardModal size="lg" title="Modal dialog">Large dialog</CardModal>;
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    title: 'Modal dialog',
+    children: 'Large dialog',
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};
 
-export const ExtraLargeModal = () => <CardModal size="xl" title="Modal dialog">Extra large dialog</CardModal>;
+export const ExtraLarge: Story = {
+  args: {
+    size: 'xl',
+    title: 'Modal dialog',
+    children: 'Extra large dialog',
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};
 
-export const DangerModal = () => <CardModal variant="danger" title="Danger dialog">Danger dialog</CardModal>;
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+    title: 'Danger dialog',
+    children: 'Danger dialog',
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};
 
-export const ConfirmModal = () => (
-  <CardModal
-    title="Custom confirm"
-    confirmText="Accept the action"
-    onConfirm={fn}
-    onClosed={() => fn()}
-  >
-    Custom confirm text
-  </CardModal>
-);
+export const Confirm: Story = {
+  args: {
+    title: 'Custom confirm',
+    children: 'Custom confirm text',
+    open: false,
+    onClose: () => fn(),
+    confirmText: 'Accept the action',
+    onConfirm: fn,
+  },
+  render: CardModal,
+};
 
-export const DisabledConfirmModal = () => (
-  <CardModal
-    title="Custom disabled"
-    confirmDisabled
-    onConfirm={fn}
-    onClosed={() => fn()}
-  >
-    Custom action is disabled
-  </CardModal>
-);
+export const DisabledConfirm: Story = {
+  args: {
+    title: 'Confirm disabled',
+    children: 'Confirm action is disabled',
+    open: false,
+    onClose: () => fn(),
+    onConfirm: fn,
+    confirmDisabled: true,
+  },
+  render: CardModal,
+};
 
-export const DangerConfirmModal = () => (
-  <CardModal
-    title="Danger dialog"
-    variant="danger"
-    onConfirm={fn}
-    onClosed={() => fn()}
-  >
-    Danger dialog with confirm buttons
-  </CardModal>
-);
+export const DangerConfirm: Story = {
+  args: {
+    variant: 'danger',
+    title: 'Danger dialog',
+    children: 'Danger dialog with confirm buttons',
+    open: false,
+    onClose: () => fn(),
+    onConfirm: fn,
+  },
+  render: CardModal,
+};
 
-export const ModalWithForm = () => (
-  <CardModal title="Dialog with form" onConfirm={fn} onClosed={() => fn()}>
-    <div className="flex flex-col gap-3">
-      <Input placeholder="Foo" name="foo" />
-      <Input placeholder="Bar" name="bar" />
-    </div>
-  </CardModal>
-);
+export const WithForm: Story = {
+  args: {
+    title: 'Dialog with form',
+    children: (
+      <div className="flex flex-col gap-3">
+        <Input placeholder="Foo" name="foo" />
+        <Input placeholder="Bar" name="bar" />
+      </div>
+    ),
+    open: false,
+    onClose: () => fn(),
+    onConfirm: fn,
+  },
+  render: CardModal,
+};
 
-export const ModalWithALotOfContent = () => (
-  <CardModal title="Fixed header and footer">
-    <LongContent />
-  </CardModal>
-);
+export const WithALotOfContent: Story = {
+  args: {
+    title: 'Fixed header and footer',
+    children: <LongContent />,
+    open: false,
+    onClose: () => fn(),
+    onConfirm: fn,
+  },
+  render: CardModal,
+};
 
-export const CoverModal = () => (
-  <CardModal variant="cover" title="Cover modal">
-    <LongContent />
-  </CardModal>
-);
+export const Cover: Story = {
+  args: {
+    variant: 'cover',
+    title: 'Cover modal',
+    children: <LongContent />,
+    open: false,
+    onClose: () => fn(),
+  },
+  render: CardModal,
+};

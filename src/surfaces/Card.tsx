@@ -14,6 +14,8 @@ const Header: FC<CardProps> = ({ className, ...rest }) => (
   />
 );
 
+Header.displayName = 'Card.Header';
+
 const Body: FC<CardProps> = ({ className, ...rest }) => (
   <div
     className={clsx(
@@ -24,6 +26,8 @@ const Body: FC<CardProps> = ({ className, ...rest }) => (
     {...rest}
   />
 );
+
+Body.displayName = 'Card.Body';
 
 const Footer: FC<CardProps> = ({ className, ...rest }) => (
   <div
@@ -36,6 +40,8 @@ const Footer: FC<CardProps> = ({ className, ...rest }) => (
   />
 );
 
+Footer.displayName = 'Card.Footer';
+
 const BaseCard: FC<CardProps> = ({ className, ...props }) => (
   <div
     className={clsx(
@@ -45,5 +51,7 @@ const BaseCard: FC<CardProps> = ({ className, ...props }) => (
     {...props}
   />
 );
+
+BaseCard.displayName = 'Card';
 
 export const Card = Object.assign(BaseCard, { Body, Header, Footer });

@@ -5,6 +5,9 @@ import { Input } from './Input';
 const meta = {
   component: Input,
   tags: ['autodocs'],
+  argTypes: {
+    feedback: { options: ['error'] },
+  },
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -59,8 +62,13 @@ export const Password: Story = {
   },
 };
 
-export const InsideCard = () => (
-  <SimpleCard>
-    <Input placeholder="Input inside card" />
-  </SimpleCard>
-);
+export const InCard: Story = {
+  args: {
+    placeholder: 'Password input',
+  },
+  render: (args) => (
+    <SimpleCard>
+      <Input {...args} />
+    </SimpleCard>
+  ),
+};

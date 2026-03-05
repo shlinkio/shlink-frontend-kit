@@ -35,6 +35,8 @@ const Pill: FC<PillProps> = ({ className, to, ...rest }) => {
   );
 };
 
+Pill.displayName = 'NavPills.Pill';
+
 export type NavPillsProps = PropsWithChildren<{
   fill?: boolean;
   className?: string;
@@ -50,5 +52,7 @@ const BaseNavPills: FC<NavPillsProps> = ({ children, className, fill }) => (
     </Card>
   </NavPillsContext.Provider>
 );
+
+BaseNavPills.displayName = 'NavPills';
 
 export const NavPills = Object.assign(BaseNavPills, { Pill });

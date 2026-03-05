@@ -177,6 +177,8 @@ const BaseDropdown: FC<DropdownProps> = ({
   );
 };
 
+BaseDropdown.displayName = 'Dropdown';
+
 export const Dropdown = Object.assign(BaseDropdown, {
   Item: Menu.Item,
   Separator: Menu.Separator,

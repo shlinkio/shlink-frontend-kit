@@ -1,10 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
+import { size } from '../../.storybook/utils/storybook';
 import { SearchInput } from './SearchInput';
 
 const meta = {
   component: SearchInput,
   tags: ['autodocs'],
+  argTypes: {
+    size,
+    variant: { options: ['default', 'unstyled'] },
+  },
 } satisfies Meta<typeof SearchInput>;
 
 export default meta;
@@ -14,6 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Regular: Story = {
   args: {
     placeholder: 'Search input',
+    borderless: false,
     onChange: () => fn(),
   },
 };
