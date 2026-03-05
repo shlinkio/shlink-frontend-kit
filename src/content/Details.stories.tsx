@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
+import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { Details } from './Details';
 
 const meta = {
@@ -7,12 +8,7 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    children: {
-      control: false,
-      table: {
-        type: { summary: 'ReactNode' },
-      },
-    },
+    children: nonEditableReactNode,
   },
 } satisfies Meta<typeof Details>;
 

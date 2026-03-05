@@ -90,6 +90,8 @@ const Row: FC<HTMLProps<HTMLTableRowElement>> = ({ children, className, ...rest 
   );
 };
 
+Row.displayName = 'Table.Row';
+
 export type CellProps = HTMLProps<HTMLTableCellElement> & {
   /**
    * The name of the column to be displayed in small resolutions when the table is responsive, where the cells collapse.
@@ -135,6 +137,8 @@ const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest })
   );
 };
 
+Cell.displayName = 'Table.Cell';
+
 export type TableProps = Omit<HTMLProps<HTMLTableElement>, 'size'> & {
   header: ReactNode;
   footer?: ReactNode;
@@ -166,5 +170,7 @@ const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true
     </table>
   </TableContext.Provider>
 );
+
+BaseTable.displayName = 'Table';
 
 export const Table = Object.assign(BaseTable, { Row, Cell });
