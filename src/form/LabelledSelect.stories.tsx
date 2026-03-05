@@ -1,23 +1,45 @@
-import type { Meta } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { LabelledSelect } from './LabelledSelect';
 
-export default {
+const meta = {
   component: LabelledSelect,
   tags: ['autodocs'],
+  argTypes: {
+    children: nonEditableReactNode,
+    error: { type: 'string' },
+  },
 } satisfies Meta<typeof LabelledSelect>;
 
-export const Regular = () => (
-  <LabelledSelect label="Select an option">
-    <option>One</option>
-    <option>Two</option>
-    <option>Three</option>
-  </LabelledSelect>
-);
+export default meta;
 
-export const Error = () => (
-  <LabelledSelect label="Select an option" error="There was an error">
-    <option>One</option>
-    <option>Two</option>
-    <option>Three</option>
-  </LabelledSelect>
-);
+type Story = StoryObj<typeof meta>;
+
+export const Regular: Story = {
+  args: {
+    label: 'Select an option',
+    error: null,
+    required: false,
+    children: (
+      <>
+        <option>One</option>
+        <option>Two</option>
+        <option>Three</option>
+      </>
+    ),
+  },
+};
+
+export const Error: Story = {
+  args: {
+    label: 'Select an option',
+    error: 'There was an error',
+    children: (
+      <>
+        <option>One</option>
+        <option>Two</option>
+        <option>Three</option>
+      </>
+    ),
+  },
+};
