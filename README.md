@@ -36,3 +36,4 @@ This library provides tailwindcss-based components. To use them make sure you ad
 /* Add these two lines */
 @source '../node_modules/@shlinkio/shlink-frontend-kit';
 @import '@shlinkio/shlink-frontend-kit/tailwind.preset.css';
+```
