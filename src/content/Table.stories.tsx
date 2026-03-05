@@ -101,51 +101,57 @@ export const Responsive: Story = {
   },
 };
 
-export const NonResponsiveTableInCard = () => {
-  const [searchTerm, setSearchTerm] = useState<string>();
-  const filteredUsers = useMemo(
-    () => users.filter(
-      ({ name, surname, role }) => !searchTerm || `${name} ${surname} ${role}`.match(new RegExp(searchTerm, 'i')),
-    ),
-    [searchTerm],
-  );
+export const NonResponsiveInCard: Story = {
+  args: {
+    responsive: false,
+    header: [],
+  },
+  render: (args) => {
+    const [searchTerm, setSearchTerm] = useState<string>();
+    const filteredUsers = useMemo(
+      () => users.filter(
+        ({ name, surname, role }) => !searchTerm || `${name} ${surname} ${role}`.match(new RegExp(searchTerm, 'i')),
+      ),
+      [searchTerm],
+    );
 
-  return (
-    <SimpleCard>
-      <Table
-        responsive={false}
-        header={
-          <>
+    return (
+      <SimpleCard>
+        <Table
+          {...args}
+          header={
+            <>
+              <Table.Row>
+                <Table.Cell>Name</Table.Cell>
+                <Table.Cell>Surname</Table.Cell>
+                <Table.Cell>Role</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell colSpan={3} className="[&]:p-0">
+                  <SearchInput onChange={setSearchTerm} borderless size="md" />
+                </Table.Cell>
+              </Table.Row>
+            </>
+          }
+        >
+          {filteredUsers.length === 0 && (
             <Table.Row>
-              <Table.Cell>Name</Table.Cell>
-              <Table.Cell>Surname</Table.Cell>
-              <Table.Cell>Role</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell colSpan={3} className="[&]:p-0">
-                <SearchInput onChange={setSearchTerm} borderless size="md" />
+              <Table.Cell colSpan={3}>
+                No users matching search
               </Table.Cell>
             </Table.Row>
-          </>
-        }
-      >
-        {filteredUsers.length === 0 && (
-          <Table.Row>
-            <Table.Cell colSpan={3}>
-              No users matching search
-            </Table.Cell>
-          </Table.Row>
-        )}
-        {filteredUsers.map((u) => (
-          <Table.Row key={u.id}>
-            <Table.Cell>{u.name}</Table.Cell>
-            <Table.Cell>{u.surname}</Table.Cell>
-            <Table.Cell>{u.role}</Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-    </SimpleCard>
-  );
+          )}
+          {filteredUsers.map((u) => (
+            <Table.Row key={u.id}>
+              <Table.Cell>{u.name}</Table.Cell>
+              <Table.Cell>{u.surname}</Table.Cell>
+              <Table.Cell>{u.role}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table>
+      </SimpleCard>
+    );
+  },
 };
 
 export const WithFooter: Story = {
