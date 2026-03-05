@@ -18,8 +18,13 @@ export const Basic: Story = {
   },
 };
 
-export const InCard = () => (
-  <SimpleCard>
-    <ToggleSwitch onChange={() => fn()} />
-  </SimpleCard>
-);
+export const InCard: Story = {
+  args: {
+    onChange: () => fn(),
+  },
+  render: (args) => (
+    <SimpleCard>
+      <ToggleSwitch {...args} />
+    </SimpleCard>
+  ),
+};
