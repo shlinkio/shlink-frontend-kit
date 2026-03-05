@@ -8,6 +8,11 @@ import { OrderingDropdown } from './OrderingDropdown';
 const meta = {
   component: OrderingDropdown,
   tags: ['autodocs'],
+  argTypes: {
+    buttonVariant: {
+      options: ['button', 'link', 'text'],
+    },
+  },
 } satisfies Meta<typeof OrderingDropdown>;
 
 export default meta;
