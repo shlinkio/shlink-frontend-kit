@@ -180,8 +180,8 @@ const BaseDropdown: FC<DropdownProps> = ({
 BaseDropdown.displayName = 'Dropdown';
 
 export const Dropdown = Object.assign(BaseDropdown, {
-  Item: Object.assign(Menu.Item, { displayName: 'Dropdown.Item' }),
-  Separator: Object.assign(Menu.Separator, { displayName: 'Dropdown.Separator' }),
-  Title: Object.assign(Menu.Title, { displayName: 'Dropdown.Title' }),
-  Misc: Object.assign(Menu.Misc, { displayName: 'Dropdown.Misc' }),
+  Item: Menu.Item,
+  Separator: Menu.Separator,
+  Title: Menu.Title,
+  Misc: Menu.Misc,
 });

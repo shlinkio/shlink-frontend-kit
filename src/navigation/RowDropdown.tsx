@@ -26,6 +26,8 @@ const BaseRowDropdown: FC<RowDropdownProps> = ({ buttonLabel = 'Options', button
   />
 );
 
+BaseRowDropdown.displayName = 'RowDropdown';
+
 export const RowDropdown = Object.assign(BaseRowDropdown, {
   Item: Dropdown.Item,
   Separator: Dropdown.Separator,

@@ -33,6 +33,8 @@ const MenuItem: FC<LinkProps & ItemProps> = ({ className, active, ...props }) =>
   </li>
 );
 
+MenuItem.displayName = 'NavBar.MenuItem';
+
 const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'> & ItemProps> = (
   { containerClassName, buttonClassName, menuClassName, active, ...props },
 ) => {
@@ -59,6 +61,8 @@ const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menu
     </li>
   );
 };
+
+Dropdown.displayName = 'NavBar.Dropdown';
 
 export type NavBarProps = HTMLProps<HTMLElement> & {
   brand: RequiredReactNode;
@@ -124,5 +128,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
     </nav>
   );
 };
+
+BaseNavBar.displayName = 'NavBar';
 
 export const NavBar = Object.assign(BaseNavBar, { MenuItem, Dropdown });
