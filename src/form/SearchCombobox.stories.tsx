@@ -3,12 +3,14 @@ import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 import { fn } from 'storybook/test';
 import { colors } from '../../.storybook/utils/colors';
+import { size } from '../../.storybook/utils/storybook';
 import { useTimeout } from '../hooks';
 import { SearchCombobox } from './SearchCombobox';
 
 const meta = {
   component: SearchCombobox<typeof colors[0]>,
   tags: ['autodocs'],
+  argTypes: { size },
 } satisfies Meta<typeof SearchCombobox<typeof colors[0]>>;
 
 export default meta;
@@ -31,6 +33,7 @@ const matchingColorsToMap = (searchTerm: string) => new Map(
 export const Sync: Story = {
   args: {
     placeholder: 'Search colors synchronously...',
+    loading: false,
     onSearch: () => fn(),
     onSelectSearchResult: () => fn(),
     renderSearchResult: (color) => <ColorItem {...color} />,
@@ -64,6 +67,7 @@ export const Sync: Story = {
 export const Async: Story = {
   args: {
     placeholder: 'Search colors asynchronously...',
+    loading: true,
     onSearch: () => fn(),
     onSelectSearchResult: () => fn(),
     renderSearchResult: (color) => <ColorItem {...color} />,
