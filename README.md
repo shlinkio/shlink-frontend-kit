@@ -12,6 +12,7 @@ npm install @shlinkio/shlink-frontend-kit
 
 ```tsx
 import { Button, useToggle } from '@shlinkio/shlink-frontend-kit';
+import './tailwind.css';
 
 export const App = () => {
   const { flag, toggle } = useToggle();
