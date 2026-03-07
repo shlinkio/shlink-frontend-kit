@@ -35,7 +35,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.18",
+    "@floating-ui/react": "^0.27.19",
     "@vitest/browser-playwright": "^4.0.18",
     "clsx": "^2.1.1"
   },
