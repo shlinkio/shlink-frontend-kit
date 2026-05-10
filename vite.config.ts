@@ -8,7 +8,7 @@ import pack from './package.json';
 
 // eslint-disable-next-line no-restricted-exports
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true }), tailwindcss()],
+  plugins: [react(), dts(), tailwindcss()],
 
   build: {
     lib: {
