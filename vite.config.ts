@@ -2,13 +2,17 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
 import { resolve } from 'path';
-import dts from 'vite-plugin-dts';
+import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vitest/config';
 import pack from './package.json';
 
 // eslint-disable-next-line no-restricted-exports
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true }), tailwindcss()],
+  plugins: [
+    react(),
+    dts({ entryRoot: 'src' }),
+    tailwindcss(),
+  ],
 
   build: {
     lib: {
@@ -17,7 +21,7 @@ export default defineConfig({
       },
       formats: ['es'], // Generate ES module only
     },
-    rollupOptions: {
+    rolldownOptions: {
       // Make sure dependencies and peer dependencies are not bundled with the library
       external: [...Object.keys(pack.dependencies), ...Object.keys(pack.peerDependencies), 'react/jsx-runtime'],
       output: {
