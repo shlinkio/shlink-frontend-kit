@@ -8,7 +8,11 @@ import pack from './package.json';
 
 // eslint-disable-next-line no-restricted-exports
 export default defineConfig({
-  plugins: [react(), dts({ entryRoot: 'src' }), tailwindcss()],
+  plugins: [
+    react(),
+    dts({ entryRoot: 'src' }),
+    tailwindcss(),
+  ],
 
   build: {
     lib: {
