@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.5.0] - 2026-06-20
 ### Added
-* *Nothing*
+* Add support for `react-router` 8
 
 ### Changed
 * [#400](https://github.com/shlinkio/shlink-frontend-kit/issues/400) Migrate documentation to storybook.

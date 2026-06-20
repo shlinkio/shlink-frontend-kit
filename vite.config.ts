@@ -10,7 +10,7 @@ import pack from './package.json';
 export default defineConfig({
   plugins: [
     react(),
-    dts({ entryRoot: 'src' }),
+    dts({ entryRoot: 'src', exclude: ['test', 'vite.config.ts'] }),
     tailwindcss(),
   ],
 
