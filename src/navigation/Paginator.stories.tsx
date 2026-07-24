@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
+
 import { SimpleCard } from '../surfaces';
 import { Paginator } from './Paginator';
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
 import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { Dropdown } from './Dropdown';
@@ -22,7 +23,9 @@ export const Base: Story = {
     children: (
       <>
         <NavBar.MenuItem to="">Foo</NavBar.MenuItem>
-        <NavBar.MenuItem to="" active>Bar</NavBar.MenuItem>
+        <NavBar.MenuItem to="" active>
+          Bar
+        </NavBar.MenuItem>
         <NavBar.MenuItem to="">Baz</NavBar.MenuItem>
         <NavBar.Dropdown buttonContent="Options">
           <Dropdown.Item>First option</Dropdown.Item>

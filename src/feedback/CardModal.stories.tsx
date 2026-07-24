@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
+
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
 import { Button, Input } from '../form';
 import type { CardModalProps } from './CardModal';
@@ -21,15 +22,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const CardModal = ({
-  variant,
-  ...rest
-}: CardModalProps) => {
+const CardModal = ({ variant, ...rest }: CardModalProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <LibCardModal variant={variant} {...rest} open={open} onClose={() => setOpen(false)} />
-      <Button onClick={() => setOpen(true)} variant={variant === 'danger' ? 'danger' : undefined}>Open modal</Button>
+      <Button onClick={() => setOpen(true)} variant={variant === 'danger' ? 'danger' : undefined}>
+        Open modal
+      </Button>
     </>
   );
 };

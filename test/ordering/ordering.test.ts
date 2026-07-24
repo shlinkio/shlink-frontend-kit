@@ -35,12 +35,14 @@ describe('ordering', () => {
     });
 
     it('returns DESC when current order field and selected field are equal and current order dir is ASC', () => {
-      expect(determineOrder({ currentField: 'foo', newField: 'foo', currentOrderDir: 'ASC' })).toEqual(
-        { field: 'foo', dir: 'DESC' },
-      );
-      expect(determineOrder({ currentField: 'bar', newField: 'bar', currentOrderDir: 'ASC' })).toEqual(
-        { field: 'bar', dir: 'DESC' },
-      );
+      expect(determineOrder({ currentField: 'foo', newField: 'foo', currentOrderDir: 'ASC' })).toEqual({
+        field: 'foo',
+        dir: 'DESC',
+      });
+      expect(determineOrder({ currentField: 'bar', newField: 'bar', currentOrderDir: 'ASC' })).toEqual({
+        field: 'bar',
+        dir: 'DESC',
+      });
     });
   });
 
@@ -71,12 +73,12 @@ describe('ordering', () => {
       { name: 'John', surname: 'Doe' },
     ];
 
-    it.each([
-      { field: 'name' as const },
-      { dir: 'ASC' as const },
-    ])('returns list as is when either order field or dir are not set', (order) => {
-      expect(sortList(list, order)).toEqual(list);
-    });
+    it.each([{ field: 'name' as const }, { dir: 'ASC' as const }])(
+      'returns list as is when either order field or dir are not set',
+      (order) => {
+        expect(sortList(list, order)).toEqual(list);
+      },
+    );
 
     it.each([
       {

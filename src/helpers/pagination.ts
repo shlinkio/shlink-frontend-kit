@@ -31,10 +31,8 @@ export const progressivePagination = (currentPage: number, pageCount: number): N
 
 export const pageIsEllipsis = (pageNumber: NumberOrEllipsis): pageNumber is Ellipsis => pageNumber === ELLIPSIS;
 
-export const prettifyPageNumber = (pageNumber: NumberOrEllipsis): string => (
-  pageIsEllipsis(pageNumber) ? pageNumber : formatNumber(pageNumber)
-);
+export const prettifyPageNumber = (pageNumber: NumberOrEllipsis): string =>
+  pageIsEllipsis(pageNumber) ? pageNumber : formatNumber(pageNumber);
 
-export const keyForPage = (pageNumber: NumberOrEllipsis, index: number) => (
-  !pageIsEllipsis(pageNumber) ? `${pageNumber}` : `${pageNumber}_${index}`
-);
+export const keyForPage = (pageNumber: NumberOrEllipsis, index: number) =>
+  !pageIsEllipsis(pageNumber) ? `${pageNumber}` : `${pageNumber}_${index}`;

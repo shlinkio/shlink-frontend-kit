@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+
 import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -10,9 +11,8 @@ describe('<OrderingDropdown />', () => {
     bar: 'Bar',
     baz: 'Hello World',
   };
-  const setUp = (props: Partial<OrderingDropdownProps> = {}) => renderWithEvents(
-    <OrderingDropdown items={items} order={{}} onChange={vi.fn()} {...props} />,
-  );
+  const setUp = (props: Partial<OrderingDropdownProps> = {}) =>
+    renderWithEvents(<OrderingDropdown items={items} order={{}} onChange={vi.fn()} {...props} />);
   const setUpWithDisplayedMenu = async (props: Partial<OrderingDropdownProps> = {}) => {
     const result = setUp(props);
     const { user } = result;
@@ -23,10 +23,7 @@ describe('<OrderingDropdown />', () => {
     return result;
   };
 
-  it.each([
-    setUp,
-    setUpWithDisplayedMenu,
-  ])('passes a11y checks', (s) => checkAccessibility(s()));
+  it.each([setUp, setUpWithDisplayedMenu])('passes a11y checks', (s) => checkAccessibility(s()));
 
   it('properly renders provided list of items', async () => {
     await setUpWithDisplayedMenu();
@@ -85,17 +82,14 @@ describe('<OrderingDropdown />', () => {
   it.each([
     [{ buttonVariant: 'link' as const }, /Order by$/],
     [{ buttonVariant: 'button' as const }, 'Order by...'],
+    [{ buttonVariant: 'button' as const, order: { field: 'foo', dir: 'ASC' as const } }, 'Order by: Foo - ASC'],
     [
-      { buttonVariant: 'button' as const , order: { field: 'foo', dir: 'ASC' as const } },
-      'Order by: Foo - ASC',
-    ],
-    [
-      { buttonVariant: 'button' as const , order: { field: 'baz', dir: 'DESC' as const } },
+      { buttonVariant: 'button' as const, order: { field: 'baz', dir: 'DESC' as const } },
       'Order by: Hello World - DESC',
     ],
-    [{ buttonVariant: 'button' as const , order: { field: 'baz' } }, 'Order by: Hello World - DESC'],
+    [{ buttonVariant: 'button' as const, order: { field: 'baz' } }, 'Order by: Hello World - DESC'],
     [
-      { buttonVariant: 'button' as const , order: { field: 'baz', dir: 'DESC' as const }, prefixed: false },
+      { buttonVariant: 'button' as const, order: { field: 'baz', dir: 'DESC' as const }, prefixed: false },
       /^Hello World - DESC/,
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {

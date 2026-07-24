@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, FocusEvent } from 'react';
 import { useCallback, useRef } from 'react';
+
 import { useToggle } from '..';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -14,23 +15,25 @@ export type RevealablePasswordInputProps = Omit<InputProps, 'type'> & {
 /**
  * A password input where the value can be manually revealed
  */
-export const RevealablePasswordInput: FC<RevealablePasswordInputProps> = (
-  { containerClassName, className, size, ...rest },
-) => {
+export const RevealablePasswordInput: FC<RevealablePasswordInputProps> = ({
+  containerClassName,
+  className,
+  size,
+  ...rest
+}) => {
   const { flag: passwordRevealed, toggle: togglePasswordRevealed, setToFalse: hidePassword } = useToggle();
   const containerRef = useRef<HTMLDivElement>(null);
-  const onContainerBlur = useCallback(({ relatedTarget }: FocusEvent) => {
-    if (!containerRef.current?.contains(relatedTarget)) {
-      hidePassword();
-    }
-  }, [containerRef, hidePassword]);
+  const onContainerBlur = useCallback(
+    ({ relatedTarget }: FocusEvent) => {
+      if (!containerRef.current?.contains(relatedTarget)) {
+        hidePassword();
+      }
+    },
+    [containerRef, hidePassword],
+  );
 
   return (
-    <div
-      className={clsx('group relative', containerClassName)}
-      ref={containerRef}
-      onBlurCapture={onContainerBlur}
-    >
+    <div className={clsx('group relative', containerClassName)} ref={containerRef} onBlurCapture={onContainerBlur}>
       <Input
         type={passwordRevealed ? 'text' : 'password'}
         className={clsx(

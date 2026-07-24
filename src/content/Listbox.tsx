@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import type { ReactNode, RefObject } from 'react';
 import { useCallback, useEffect, useState } from 'react';
+
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 
@@ -29,7 +30,8 @@ export type ListboxProps<Item> = Omit<CardProps, 'id' | 'role' | 'aria-orientati
   noItemsMessage?: string;
 };
 
-export function Listbox<Item>({ id,
+export function Listbox<Item>({
+  id,
   items,
   onSelectItem,
   onActiveItemChange,
@@ -39,16 +41,18 @@ export function Listbox<Item>({ id,
   anchor,
   'aria-label': label = 'Items',
   ...rest
-}: ListboxProps<Item>,
-) {
+}: ListboxProps<Item>) {
   const [activeItem, setActiveItem] = useState(0);
-  const changeActiveItem = useCallback((index: number) => {
-    setActiveItem(index);
-    if (onActiveItemChange) {
-      const [activeKey, activeItem] = [...items.entries()][index];
-      onActiveItemChange(activeKey, activeItem);
-    }
-  }, [items, onActiveItemChange]);
+  const changeActiveItem = useCallback(
+    (index: number) => {
+      setActiveItem(index);
+      if (onActiveItemChange) {
+        const [activeKey, activeItem] = [...items.entries()][index];
+        onActiveItemChange(activeKey, activeItem);
+      }
+    },
+    [items, onActiveItemChange],
+  );
 
   useEffect(() => {
     const anchorEl = anchor?.current;
@@ -96,10 +100,9 @@ export function Listbox<Item>({ id,
           type="button"
           role="option"
           aria-selected={index === activeItem}
-          className={clsx(
-            'px-2 py-1 text-left truncate',
-            { 'bg-lm-secondary dark:bg-dm-secondary': index === activeItem },
-          )}
+          className={clsx('px-2 py-1 text-left truncate', {
+            'bg-lm-secondary dark:bg-dm-secondary': index === activeItem,
+          })}
           tabIndex={-1}
           onClick={() => onSelectItem(item)}
           // We are setting tabIndex -1 so that this element cannot be focused

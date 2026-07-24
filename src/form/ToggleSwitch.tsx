@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
+
 import type { BooleanControlProps } from './BooleanControl';
 import { BooleanControl } from './BooleanControl';
 

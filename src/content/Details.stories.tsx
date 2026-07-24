@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
 import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { Details } from './Details';

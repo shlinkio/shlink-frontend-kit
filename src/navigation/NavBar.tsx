@@ -4,7 +4,8 @@ import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
 import { useEffect, useId } from 'react';
 import type { LinkProps } from 'react-router';
-import { Link,useLocation  } from 'react-router';
+import { Link, useLocation } from 'react-router';
+
 import { useToggle } from '..';
 import { Button } from '../form';
 import type { RequiredReactNode } from '../types';
@@ -35,9 +36,13 @@ const MenuItem: FC<LinkProps & ItemProps> = ({ className, active, ...props }) =>
 
 MenuItem.displayName = 'NavBar.MenuItem';
 
-const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'> & ItemProps> = (
-  { containerClassName, buttonClassName, menuClassName, active, ...props },
-) => {
+const Dropdown: FC<Omit<DropdownProps, 'menuAlignment' | 'buttonVariant' | 'menuOffset'> & ItemProps> = ({
+  containerClassName,
+  buttonClassName,
+  menuClassName,
+  active,
+  ...props
+}) => {
   return (
     <li role="menuitem" aria-haspopup className="w-full flex" data-active={active}>
       <BaseDropdown
@@ -87,12 +92,7 @@ export const BaseNavBar: FC<NavBarProps> = ({ className, brand, children }) => {
       )}
     >
       <div className="w-full relative">
-        <h4
-          className={clsx(
-            'text-white px-4 py-3',
-            'max-md:w-full max-md:flex max-md:flex-col items-center',
-          )}
-        >
+        <h4 className={clsx('text-white px-4 py-3', 'max-md:w-full max-md:flex max-md:flex-col items-center')}>
           {brand}
         </h4>
         <Button

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useCallback, useState } from 'react';
+
 import { boolean, size } from '../../.storybook/utils/storybook';
 import { LabelledInput } from '../form';
 import { Dropdown } from './Dropdown';
@@ -35,7 +36,7 @@ export const Base: Story = {
   render: (args) => {
     const [selected, setSelected] = useState<string>();
     const toggleSelected = useCallback(
-      (value: string) => setSelected((prev) => prev === value ? undefined : value),
+      (value: string) => setSelected((prev) => (prev === value ? undefined : value)),
       [],
     );
 

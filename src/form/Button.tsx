@@ -2,21 +2,24 @@ import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, Ref } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
+
 import type { Size } from '../types';
 
 type RegularButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'>;
 type LinkButtonProps = LinkProps;
 
-export type ButtonProps = PropsWithChildren<{
-  disabled?: boolean;
-  className?: string;
-  variant?: 'primary' | 'secondary' | 'danger';
-  type?: HTMLButtonElement['type'];
-  size?: Size;
-  inline?: boolean;
-  solid?: boolean;
-  ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
-} & (RegularButtonProps | LinkButtonProps)>;
+export type ButtonProps = PropsWithChildren<
+  {
+    disabled?: boolean;
+    className?: string;
+    variant?: 'primary' | 'secondary' | 'danger';
+    type?: HTMLButtonElement['type'];
+    size?: Size;
+    inline?: boolean;
+    solid?: boolean;
+    ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
+  } & (RegularButtonProps | LinkButtonProps)
+>;
 
 export const Button: FC<ButtonProps> = ({
   className,
@@ -29,7 +32,7 @@ export const Button: FC<ButtonProps> = ({
   ref,
   ...rest
 }) => {
-  const isLink = 'to' in rest &&  typeof rest.to === 'string';
+  const isLink = 'to' in rest && typeof rest.to === 'string';
   const Tag = isLink ? Link : 'button';
   const type = isLink ? undefined : providedType;
 
@@ -40,7 +43,7 @@ export const Button: FC<ButtonProps> = ({
       className={clsx(
         {
           'inline-flex': inline,
-          'flex': !inline,
+          flex: !inline,
         },
         'gap-2 items-center justify-center',
         'border rounded-md no-underline',

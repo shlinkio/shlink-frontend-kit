@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+
 import type { CloseButtonProps } from '../../src';
 import { CloseButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -23,19 +24,12 @@ describe('<CloseButton />', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it.each([
-    { solid: true },
-    { solid: false },
-  ])('has expected classes', ({ solid }) => {
+  it.each([{ solid: true }, { solid: false }])('has expected classes', ({ solid }) => {
     setUp({ solid });
     expect(screen.getByRole('button').className).toMatchSnapshot();
   });
 
-  it.each([
-    'sm' as const,
-    'md' as const,
-    'lg' as const,
-  ])('has icon with expected size', (size) => {
+  it.each(['sm' as const, 'md' as const, 'lg' as const])('has icon with expected size', (size) => {
     setUp({ size });
     expect(screen.getByRole('img', { hidden: true })).toMatchSnapshot();
   });

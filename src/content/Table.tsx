@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
+
 import type { Size } from '../types';
 
 export type SectionType = 'head' | 'body' | 'footer';
@@ -18,14 +19,7 @@ const TableHead: FC<TableElementProps> = ({ children, className }) => {
 
   return (
     <TableSectionContext.Provider value={{ section: 'head' }}>
-      <thead
-        className={clsx(
-          { 'hidden lg:table-header-group': responsive },
-          className,
-        )}
-      >
-        {children}
-      </thead>
+      <thead className={clsx({ 'hidden lg:table-header-group': responsive }, className)}>{children}</thead>
     </TableSectionContext.Provider>
   );
 };
@@ -35,14 +29,7 @@ const TableBody: FC<TableElementProps> = ({ children, className }) => {
 
   return (
     <TableSectionContext.Provider value={{ section: 'body' }}>
-      <tbody
-        className={clsx(
-          { 'lg:table-row-group flex flex-col gap-y-3': responsive },
-          className,
-        )}
-      >
-        {children}
-      </tbody>
+      <tbody className={clsx({ 'lg:table-row-group flex flex-col gap-y-3': responsive }, className)}>{children}</tbody>
     </TableSectionContext.Provider>
   );
 };
@@ -52,12 +39,7 @@ const TableFooter: FC<TableElementProps> = ({ children, className }) => {
 
   return (
     <TableSectionContext.Provider value={{ section: 'footer' }}>
-      <tfoot
-        className={clsx(
-          { 'lg:table-row-group flex flex-col gap-y-3 mt-4': responsive },
-          className,
-        )}
-      >
+      <tfoot className={clsx({ 'lg:table-row-group flex flex-col gap-y-3 mt-4': responsive }, className)}>
         {children}
       </tfoot>
     </TableSectionContext.Provider>
@@ -126,7 +108,8 @@ const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest })
           'text-left': Tag === 'th',
 
           // For responsive tables, display the content in data-column attribute for md sizes and lower
-          'before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1': responsive && Tag === 'td',
+          'before:lg:hidden before:content-[attr(data-column)] before:font-bold before:mr-1':
+            responsive && Tag === 'td',
         },
         className,
       )}
@@ -156,17 +139,9 @@ export type TableProps = Omit<HTMLProps<HTMLTableElement>, 'size'> & {
 const BaseTable: FC<TableProps> = ({ header, footer, children, responsive = true, size = 'md', ...rest }) => (
   <TableContext.Provider value={{ responsive, size }}>
     <table className="w-full" {...rest}>
-      <TableHead>
-        {header}
-      </TableHead>
-      <TableBody>
-        {children}
-      </TableBody>
-      {footer && (
-        <TableFooter>
-          {footer}
-        </TableFooter>
-      )}
+      <TableHead>{header}</TableHead>
+      <TableBody>{children}</TableBody>
+      {footer && <TableFooter>{footer}</TableFooter>}
     </table>
   </TableContext.Provider>
 );

@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import { useRef } from 'react';
+
 import type { ArrowKeyNavigationOptions } from '../../src';
 import { useArrowKeyNavigation } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -45,19 +46,18 @@ describe('useArrowKeyNavigation', () => {
     });
   });
 
-  it.each([
-    { selected: 0 as const },
-    { selected: 1 as const },
-    { selected: 2 as const },
-  ])('sets tabIndex=-1 to all elements except first with [data-selected=true]', ({ selected }) => {
-    setUp({ selected });
+  it.each([{ selected: 0 as const }, { selected: 1 as const }, { selected: 2 as const }])(
+    'sets tabIndex=-1 to all elements except first with [data-selected=true]',
+    ({ selected }) => {
+      setUp({ selected });
 
-    const buttons = screen.getAllByRole('button');
+      const buttons = screen.getAllByRole('button');
 
-    buttons.forEach((button, index) => {
-      expect(button.tabIndex).toEqual(index === selected ? 0 : -1);
-    });
-  });
+      buttons.forEach((button, index) => {
+        expect(button.tabIndex).toEqual(index === selected ? 0 : -1);
+      });
+    },
+  );
 
   it.each([
     { selected: undefined, expectedFocusedButton: 'One' },

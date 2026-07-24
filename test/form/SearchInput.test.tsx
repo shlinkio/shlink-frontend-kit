@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import type { SearchInputProps } from '../../src';
 import { SearchInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -9,9 +10,10 @@ describe('<SearchInput />', () => {
 
   // Using fireEvents instead of user-event, because the async nature of the later hides the fact that onChange is
   // invoked asynchronously
-  const onSearchInputChange = (value: string) => fireEvent.change(screen.getByRole('searchbox'), {
-    target: { value },
-  });
+  const onSearchInputChange = (value: string) =>
+    fireEvent.change(screen.getByRole('searchbox'), {
+      target: { value },
+    });
 
   beforeEach(() => {
     // Make all timeouts be still async, but resolve immediately
@@ -23,10 +25,9 @@ describe('<SearchInput />', () => {
     vi.unstubAllGlobals();
   });
 
-  it.each([
-    { borderless: true },
-    { defaultValue: 'Hello' },
-  ])('passes a11y checks', (props) => checkAccessibility(setUp(props)));
+  it.each([{ borderless: true }, { defaultValue: 'Hello' }])('passes a11y checks', (props) =>
+    checkAccessibility(setUp(props)),
+  );
 
   it('invokes onChange immediately when the value is empty', () => {
     setUp({ defaultValue: 'Hello' });

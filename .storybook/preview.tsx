@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/react-vite';
 import { useLayoutEffect } from 'react';
 import { MemoryRouter } from 'react-router';
+
 import { changeThemeInMarkup, getSystemPreferredTheme } from '../src';
+
 import './tailwind.css';
 
 // eslint-disable-next-line no-restricted-exports
@@ -31,7 +33,6 @@ export default {
   },
   decorators: [
     (Story, { globals }) => {
-
       useLayoutEffect(() => {
         // Add tailwind theme-based background classes to story wrapping elements
         document.querySelectorAll('.docs-story').forEach((element) => {

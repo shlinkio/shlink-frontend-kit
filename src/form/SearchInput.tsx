@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useCallback } from 'react';
+
 import { useTimeout } from '..';
 import type { InputProps } from './Input';
 import { Input } from './Input';
@@ -34,15 +35,18 @@ export const SearchInput: FC<SearchInputProps> = ({
   ...inputProps
 }) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
-  const searchTermChanged = useCallback((newSearchTerm: string) => {
-    if (!newSearchTerm || immediate) {
-      // When setting an empty value, do it immediately
-      clearCurrentTimeout();
-      onChange(newSearchTerm);
-    } else {
-      setTimeout(() => onChange(newSearchTerm));
-    }
-  }, [clearCurrentTimeout, immediate, onChange, setTimeout]);
+  const searchTermChanged = useCallback(
+    (newSearchTerm: string) => {
+      if (!newSearchTerm || immediate) {
+        // When setting an empty value, do it immediately
+        clearCurrentTimeout();
+        onChange(newSearchTerm);
+      } else {
+        setTimeout(() => onChange(newSearchTerm));
+      }
+    },
+    [clearCurrentTimeout, immediate, onChange, setTimeout],
+  );
 
   return (
     <div className={clsx('group relative focus-within:z-10', containerClassName)}>

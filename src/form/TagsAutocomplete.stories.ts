@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { colors } from '../../.storybook/utils/colors';
 import { size } from '../../.storybook/utils/storybook';
 import { TagsAutocomplete } from './TagsAutocomplete';

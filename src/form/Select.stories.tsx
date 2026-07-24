@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { nonEditableReactNode, size } from '../../.storybook/utils/storybook';
 import type { SelectProps } from './Select';
 import { Select } from './Select';

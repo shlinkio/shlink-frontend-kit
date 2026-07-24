@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import { useRef } from 'react';
+
 import type { ListboxProps } from '../../src';
 import { Listbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -21,22 +22,20 @@ describe('<Listbox />', () => {
   const onSelectItem = vi.fn();
   const defaultItems = ['foo', 'bar', 'baz'];
 
-  const setUp = ({ items, ...rest }: Partial<Props> = {}) => renderWithEvents(
-    <FakeComponent
-      items={items ?? new Map(defaultItems.map((item) => [item, item]))}
-      onSelectItem={onSelectItem}
-      renderItem={(i) => i}
-      id="id"
-      {...rest}
-    />,
-  );
+  const setUp = ({ items, ...rest }: Partial<Props> = {}) =>
+    renderWithEvents(
+      <FakeComponent
+        items={items ?? new Map(defaultItems.map((item) => [item, item]))}
+        onSelectItem={onSelectItem}
+        renderItem={(i) => i}
+        id="id"
+        {...rest}
+      />,
+    );
 
   const getSelectedOption = () => screen.getByRole('option', { selected: true });
 
-  it.each([
-    undefined,
-    new Map(),
-  ])('passes a11y checks', (items) => checkAccessibility(setUp({ items })));
+  it.each([undefined, new Map()])('passes a11y checks', (items) => checkAccessibility(setUp({ items })));
 
   it.each([
     { items: new Map(), noItemsMessage: undefined, expectedText: 'No items' },

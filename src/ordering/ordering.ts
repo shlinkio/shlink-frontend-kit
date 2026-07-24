@@ -6,9 +6,9 @@ export type Order<Fields> = {
 };
 
 export type OrderDirChange<Fields extends string = string> = {
-  currentField?: Fields,
-  newField?: Fields,
-  currentOrderDir?: OrderDir,
+  currentField?: Fields;
+  newField?: Fields;
+  currentOrderDir?: OrderDir;
 };
 
 /**
@@ -38,22 +38,22 @@ export function determineOrder<Fields extends string = string>(orderDirChange: O
   };
 }
 
-export const sortList = <List>(list: List[], { field, dir }: Order<keyof List>) => (
-  !field || !dir ? list : list.sort((a, b) => {
-    const greaterThan = dir === 'ASC' ? 1 : -1;
-    const smallerThan = dir === 'ASC' ? -1 : 1;
+export const sortList = <List>(list: List[], { field, dir }: Order<keyof List>) =>
+  !field || !dir
+    ? list
+    : list.sort((a, b) => {
+        const greaterThan = dir === 'ASC' ? 1 : -1;
+        const smallerThan = dir === 'ASC' ? -1 : 1;
 
-    return a[field] > b[field] ? greaterThan : smallerThan;
-  })
-);
+        return a[field] > b[field] ? greaterThan : smallerThan;
+      });
 
 /**
  * Convert provided order object to string, with the pattern `${order.field}-${order.di}`.
  * @return - A `string` if the `dir` prop is set, `undefined` otherwise.
  */
-export const orderToString = <T>(order: Order<T>): string | undefined => (
-  order.dir ? `${order.field}-${order.dir}` : undefined
-);
+export const orderToString = <T>(order: Order<T>): string | undefined =>
+  order.dir ? `${order.field}-${order.dir}` : undefined;
 
 export const stringToOrder = <T>(order: string): Order<T> => {
   const [field, dir] = order.split('-') as [T | undefined, OrderDir | undefined];

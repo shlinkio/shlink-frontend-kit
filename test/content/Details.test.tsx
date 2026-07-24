@@ -1,16 +1,18 @@
 import { screen } from '@testing-library/react';
 import type { UserEvent } from '@testing-library/user-event';
+
 import type { DetailsProps } from '../../src';
 import { Details } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<Details />', () => {
-  const setUp = (props: Omit<DetailsProps, 'summary' | 'children'> = {}) => renderWithEvents(
-    <Details summary="Click me" {...props}>
-      <div>These are the children</div>
-    </Details>,
-  );
+  const setUp = (props: Omit<DetailsProps, 'summary' | 'children'> = {}) =>
+    renderWithEvents(
+      <Details summary="Click me" {...props}>
+        <div>These are the children</div>
+      </Details>,
+    );
   const openDetails = (user: UserEvent) => user.click(screen.getByText('Click me'));
 
   it.each([

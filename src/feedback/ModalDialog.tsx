@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
-import { useEffect , useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ModalDialogProps = HTMLProps<HTMLDialogElement> & {
@@ -10,13 +10,7 @@ export type ModalDialogProps = HTMLProps<HTMLDialogElement> & {
   onClose: () => void;
 };
 
-export const ModalDialog: FC<ModalDialogProps> = ({
-  open,
-  children,
-  className,
-  onClose,
-  ...rest
-}) => {
+export const ModalDialog: FC<ModalDialogProps> = ({ open, children, className, onClose, ...rest }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {

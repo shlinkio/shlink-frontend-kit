@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import type { UserEvent } from '@testing-library/user-event';
+
 import { useToggle } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -10,9 +11,15 @@ describe('useToggle', () => {
     return (
       <div>
         <div data-testid="flag-value">{flag ? 'true' : 'false'}</div>
-        <button data-testid="toggle" onClick={toggle}>Toggle</button>
-        <button data-testid="set-to-true" onClick={setToTrue}>Set to true</button>
-        <button data-testid="set-to-false" onClick={setToFalse}>Set to false</button>
+        <button data-testid="toggle" onClick={toggle}>
+          Toggle
+        </button>
+        <button data-testid="set-to-true" onClick={setToTrue}>
+          Set to true
+        </button>
+        <button data-testid="set-to-false" onClick={setToFalse}>
+          Set to false
+        </button>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import type { SimpleCardProps } from '../../src';
 import { SimpleCard } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import type { FC, ReactNode, SubmitEvent } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { Button, CloseButton } from '../form';
 import { LinkButton } from '../navigation';
 import { Card } from '../surfaces';
@@ -25,7 +26,7 @@ export type ExitAction = 'confirm' | 'cancel';
 
 type RegularCardModalProps = CommonCardModalProps & {
   /** Danger dialogs use danger variants in title and confirm button */
-  variant?: 'default' | 'danger'
+  variant?: 'default' | 'danger';
   /** Determines the horizontal size of the dialog */
   size?: Size | 'xl';
 
@@ -46,9 +47,7 @@ type RegularCardModalProps = CommonCardModalProps & {
   onClosed?: (exitAction: ExitAction) => void;
 };
 
-export type CardModalProps = Omit<ModalDialogProps, 'title' | 'size'> & (
-  CoverCardModalProps | RegularCardModalProps
-);
+export type CardModalProps = Omit<ModalDialogProps, 'title' | 'size'> & (CoverCardModalProps | RegularCardModalProps);
 
 /**
  * A `ModalDialog` that renders a `Card` as its content
@@ -79,12 +78,15 @@ export const CardModal: FC<CardModalProps> = ({
 
   // Track what was the exit action, so that we can call onConfirmed with the right value, once close transition ended
   const exitAction = useRef<ExitAction>('cancel');
-  const confirm = useCallback((e: SubmitEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    exitAction.current = 'confirm';
-    onConfirm?.();
-  }, [onConfirm]);
+  const confirm = useCallback(
+    (e: SubmitEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      exitAction.current = 'confirm';
+      onConfirm?.();
+    },
+    [onConfirm],
+  );
 
   useEffect(() => {
     // When the modal is open, we immediately set the proxy to open as well, letting the "in" transition to trigger
@@ -166,10 +168,7 @@ export const CardModal: FC<CardModalProps> = ({
         )}
         onSubmit={confirm}
       >
-        <Card className={clsx(
-          'w-full',
-          { 'h-full relative overflow-auto': variant === 'cover' },
-        )}>
+        <Card className={clsx('w-full', { 'h-full relative overflow-auto': variant === 'cover' })}>
           {variant === 'cover' ? (
             <>
               <div
@@ -187,10 +186,7 @@ export const CardModal: FC<CardModalProps> = ({
             </>
           ) : (
             <>
-              <Card.Header className={clsx(
-                'sticky top-0',
-                'flex items-center justify-between gap-x-2',
-              )}>
+              <Card.Header className={clsx('sticky top-0', 'flex items-center justify-between gap-x-2')}>
                 <h5 className={clsx({ 'text-danger': variant === 'danger' })}>{title}</h5>
                 <CloseButton onClick={onClose} label="Close dialog" />
               </Card.Header>
@@ -198,10 +194,7 @@ export const CardModal: FC<CardModalProps> = ({
               {onConfirm && (
                 <Card.Footer
                   data-testid="footer"
-                  className={clsx(
-                    'flex justify-end items-center gap-x-2',
-                    '[&]:px-3 sticky bottom-0',
-                  )}
+                  className={clsx('flex justify-end items-center gap-x-2', '[&]:px-3 sticky bottom-0')}
                 >
                   <LinkButton onClick={onClose}>{cancelText}</LinkButton>
                   <Button

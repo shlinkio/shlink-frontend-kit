@@ -2,6 +2,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, Ref } from 'react';
+
 import type { Size } from '../types';
 
 export type CloseButtonProps = {

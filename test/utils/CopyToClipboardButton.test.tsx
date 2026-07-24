@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import { fromPartial } from '@total-typescript/shoehorn';
+
 import { CopyToClipboardButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -9,17 +10,12 @@ describe('<CopyToClipboardButton />', () => {
   const navigator = fromPartial<typeof globalThis.navigator>({
     clipboard: { writeText },
   });
-  const setUp = (text = 'foo', initialCopied = false) => renderWithEvents(
-    <CopyToClipboardButton text={text} navigator_={navigator} initialCopied={initialCopied} />,
-  );
+  const setUp = (text = 'foo', initialCopied = false) =>
+    renderWithEvents(<CopyToClipboardButton text={text} navigator_={navigator} initialCopied={initialCopied} />);
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
-  it.each([
-    ['text'],
-    ['bar'],
-    ['baz'],
-  ])('copies content to clipboard when clicked', async (text) => {
+  it.each([['text'], ['bar'], ['baz']])('copies content to clipboard when clicked', async (text) => {
     const { user } = setUp(text);
 
     expect(writeText).not.toHaveBeenCalled();

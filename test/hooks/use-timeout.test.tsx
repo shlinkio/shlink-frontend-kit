@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import type { FC } from 'react';
+
 import { useTimeout } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -17,11 +18,15 @@ describe('use-timeout', () => {
 
     return (
       <div>
-        <button data-testid="set-timeout" onClick={() => setTimeout(callback)}>Set timeout</button>
+        <button data-testid="set-timeout" onClick={() => setTimeout(callback)}>
+          Set timeout
+        </button>
         <button data-testid="set-delayed-timeout" onClick={() => setTimeout(callback, EXPLICIT_DELAY)}>
           Set timeout with explicit delay
         </button>
-        <button data-testid="clear-timeout" onClick={clearCurrentTimeout}>Clear timeout</button>
+        <button data-testid="clear-timeout" onClick={clearCurrentTimeout}>
+          Clear timeout
+        </button>
       </div>
     );
   };

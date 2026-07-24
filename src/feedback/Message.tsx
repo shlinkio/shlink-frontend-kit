@@ -2,6 +2,7 @@ import { faCircleNotch as preloader } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
+
 import { SimpleCard } from '../surfaces';
 
 export type MessageProps = PropsWithChildren<{
@@ -19,10 +20,12 @@ export const Message: FC<MessageProps> = ({ className, children, variant = 'defa
   const isLoading = variant === 'loading' || loading;
   return (
     <SimpleCard className={clsx({ '[&]:border-danger': variant === 'error' }, className)}>
-      <h3 className={clsx('text-center', {
-        'text-gray-500 dark:text-gray-400': variant !== 'error',
-        'text-danger': variant === 'error',
-      })}>
+      <h3
+        className={clsx('text-center', {
+          'text-gray-500 dark:text-gray-400': variant !== 'error',
+          'text-danger': variant === 'error',
+        })}
+      >
         {isLoading && (
           <>
             <FontAwesomeIcon icon={preloader} spin />

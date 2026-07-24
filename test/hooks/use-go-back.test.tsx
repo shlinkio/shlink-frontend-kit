@@ -1,13 +1,18 @@
 import { screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
+
 import { useGoBack } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('useGoBack', () => {
   function FakeComponent() {
     const goBack = useGoBack();
-    return <button data-testid="go-back" onClick={goBack}>Go back</button>;
+    return (
+      <button data-testid="go-back" onClick={goBack}>
+        Go back
+      </button>
+    );
   }
 
   const setUp = () => {

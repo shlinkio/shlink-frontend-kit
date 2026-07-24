@@ -47,7 +47,8 @@ const BaseCard: FC<CardProps> = ({ className, ...props }) => (
     className={clsx(
       'group/card rounded-md shadow-md',
       'border border-lm-border dark:border-dm-border bg-lm-primary dark:bg-dm-primary',
-      className)}
+      className,
+    )}
     {...props}
   />
 );

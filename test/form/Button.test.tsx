@@ -1,17 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+
 import type { ButtonProps } from '../../src';
 import { Button } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<Button />', () => {
-  const setUp = (props: ButtonProps = {}) => render(
-    <MemoryRouter>
-      <div className="bg-white">
-        <Button {...props} />
-      </div>
-    </MemoryRouter>,
-  );
+  const setUp = (props: ButtonProps = {}) =>
+    render(
+      <MemoryRouter>
+        <div className="bg-white">
+          <Button {...props} />
+        </div>
+      </MemoryRouter>,
+    );
 
   it('passes a11y checks', () => checkAccessibility(setUp({ children: 'Press me' })));
 

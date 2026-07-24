@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import type { FC, InputHTMLAttributes, Ref } from 'react';
+
 import type { Size } from '../types';
 
 export type BaseInputProps = {
@@ -13,10 +14,10 @@ export type BaseInputProps = {
   variant?: 'default' | 'unstyled';
 };
 
-export type InputProps =
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'checked' | 'defaultChecked'> & BaseInputProps & {
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'checked' | 'defaultChecked'> &
+  BaseInputProps & {
     borderless?: boolean;
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>;
   };
 
 export const Input: FC<InputProps> = ({

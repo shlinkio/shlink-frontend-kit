@@ -1,14 +1,16 @@
 import { render, screen } from '@testing-library/react';
+
 import { ModalDialog } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<ModalDialog />', () => {
   const onClose = vi.fn();
-  const setUp = (open = true) => render(
-    <ModalDialog open={open} onClose={onClose}>
-      <div data-testid="content">This is the content of the dialog</div>
-    </ModalDialog>,
-  );
+  const setUp = (open = true) =>
+    render(
+      <ModalDialog open={open} onClose={onClose}>
+        <div data-testid="content">This is the content of the dialog</div>
+      </ModalDialog>,
+    );
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 

@@ -1,6 +1,7 @@
 import { faSortAmountDown as sortDescIcon, faSortAmountUp as sortAscIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback } from 'react';
+
 import type { Order } from '..';
 import { determineOrder } from '..';
 import type { DropdownProps } from '../navigation';
@@ -16,24 +17,37 @@ export type OrderingDropdownProps<T extends string = string> = Omit<DropdownProp
 /**
  * A dropdown specifically designed to determine order field and direction.
  */
-export function OrderingDropdown<T extends string = string>(
-  { items, order, onChange, prefixed = true, buttonVariant = 'button', ...rest }: OrderingDropdownProps<T>,
-) {
-  const handleItemClick = useCallback((fieldKey: T) => {
-    const newOrder = determineOrder({ currentOrderDir: order.dir, currentField: order.field, newField: fieldKey });
-    onChange(newOrder);
-  }, [onChange, order.dir, order.field]);
+export function OrderingDropdown<T extends string = string>({
+  items,
+  order,
+  onChange,
+  prefixed = true,
+  buttonVariant = 'button',
+  ...rest
+}: OrderingDropdownProps<T>) {
+  const handleItemClick = useCallback(
+    (fieldKey: T) => {
+      const newOrder = determineOrder({ currentOrderDir: order.dir, currentField: order.field, newField: fieldKey });
+      onChange(newOrder);
+    },
+    [onChange, order.dir, order.field],
+  );
   const isButton = buttonVariant === 'button';
 
   return (
     <Dropdown
-      buttonContent={(
+      buttonContent={
         <>
           {!isButton && 'Order by'}
           {isButton && !order.field && <i>Order by...</i>}
-          {isButton && order.field && <>{prefixed && 'Order by: '}{items[order.field]} - {order.dir ?? 'DESC'}</>}
+          {isButton && order.field && (
+            <>
+              {prefixed && 'Order by: '}
+              {items[order.field]} - {order.dir ?? 'DESC'}
+            </>
+          )}
         </>
-      )}
+      }
       buttonVariant={buttonVariant}
       {...rest}
     >

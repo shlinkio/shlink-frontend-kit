@@ -36,12 +36,14 @@ export const useTooltip = ({ placement = 'auto' }: UseTooltipOptions = {}) => {
 
   const arrowSide = useMemo(() => {
     const side = context.placement.split('-')[0];
-    return {
-      top: 'bottom',
-      right: 'left',
-      bottom: 'top',
-      left: 'right',
-    }[side] ?? '';
+    return (
+      {
+        top: 'bottom',
+        right: 'left',
+        bottom: 'top',
+        left: 'right',
+      }[side] ?? ''
+    );
   }, [context.placement]);
 
   return {
@@ -73,50 +75,58 @@ export type TooltipProps = PropsWithChildren<ReturnType<typeof useTooltip>['tool
  * )
  * ```
  */
-export const Tooltip: FC<TooltipProps> = (
-  { children, isMounted, styles, refSetter, arrowRef, arrowPos, arrowSide, ...rest },
-) => isMounted && (
-  <div
-    role="tooltip"
-    aria-live="polite"
-    className={clsx(
-      'z-500 max-w-64',
-      // Add space between anchor and tooltip via padding, so that if the tooltip is inside the anchor, you can hover it
-      // and it's never closed
-      {
-        'pt-2.5': arrowSide === 'top',
-        'pb-2.5': arrowSide === 'bottom',
-        'pr-2.5': arrowSide === 'right',
-        'pl-2.5': arrowSide === 'left',
-      },
-    )}
-    ref={refSetter}
-    style={styles}
-    {...rest}
-  >
-    <div className="relative px-1.5 py-1 rounded bg-black/90 text-white text-center">
-      <span className="sr-only">Tooltip: </span>
-      {children}
-      <div
-        ref={arrowRef}
-        className={clsx(
-          'absolute',
-          // Render as a triangle
-          'border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-black/90',
-          // Rotate triangle so that it points to the correct direction
-          {
-            'rotate-180': arrowSide === 'bottom',
-            'rotate-90 mr-[-3px]': arrowSide === 'right',
-            'rotate-270 ml-[-3px]': arrowSide === 'left',
-          },
-        )}
-        style={{
-          left: arrowPos?.x,
-          top: arrowPos?.y,
-          [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
-        }}
-        data-testid="arrow"
-      />
+export const Tooltip: FC<TooltipProps> = ({
+  children,
+  isMounted,
+  styles,
+  refSetter,
+  arrowRef,
+  arrowPos,
+  arrowSide,
+  ...rest
+}) =>
+  isMounted && (
+    <div
+      role="tooltip"
+      aria-live="polite"
+      className={clsx(
+        'z-500 max-w-64',
+        // Add space between anchor and tooltip via padding, so that if the tooltip is inside the anchor, you can hover it
+        // and it's never closed
+        {
+          'pt-2.5': arrowSide === 'top',
+          'pb-2.5': arrowSide === 'bottom',
+          'pr-2.5': arrowSide === 'right',
+          'pl-2.5': arrowSide === 'left',
+        },
+      )}
+      ref={refSetter}
+      style={styles}
+      {...rest}
+    >
+      <div className="relative px-1.5 py-1 rounded bg-black/90 text-white text-center">
+        <span className="sr-only">Tooltip: </span>
+        {children}
+        <div
+          ref={arrowRef}
+          className={clsx(
+            'absolute',
+            // Render as a triangle
+            'border-l-6 border-r-6 border-b-6 border-l-transparent border-r-transparent border-b-black/90',
+            // Rotate triangle so that it points to the correct direction
+            {
+              'rotate-180': arrowSide === 'bottom',
+              'rotate-90 mr-[-3px]': arrowSide === 'right',
+              'rotate-270 ml-[-3px]': arrowSide === 'left',
+            },
+          )}
+          style={{
+            left: arrowPos?.x,
+            top: arrowPos?.y,
+            [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
+          }}
+          data-testid="arrow"
+        />
+      </div>
     </div>
-  </div>
-);
+  );

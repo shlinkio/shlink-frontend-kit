@@ -3,6 +3,7 @@ import type { FC, HTMLProps, PropsWithChildren } from 'react';
 import { createContext, useContext, useRef } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
+
 import { useArrowKeyNavigation } from '../hooks';
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
@@ -69,10 +70,7 @@ const Title: FC<PropsWithChildren> = ({ children }) => (
     role="heading"
     aria-level={6}
     aria-hidden
-    className={clsx(
-      'flex items-center w-full px-3 py-1.5',
-      'text-gray-500 text-sm font-semibold',
-    )}
+    className={clsx('flex items-center w-full px-3 py-1.5', 'text-gray-500 text-sm font-semibold')}
     onClick={(e) => e.stopPropagation()}
   >
     {children}
@@ -124,9 +122,7 @@ const BaseMenu: FC<MenuProps> = ({
 
   return (
     <Card ref={cardRef} role="menu" className={clsx('py-2 whitespace-nowrap', className)} {...rest}>
-      <MenuContext.Provider value={{ onItemClick }}>
-        {children}
-      </MenuContext.Provider>
+      <MenuContext.Provider value={{ onItemClick }}>{children}</MenuContext.Provider>
     </Card>
   );
 };

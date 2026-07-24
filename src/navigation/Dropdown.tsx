@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
+
 import type { RequiredReactNode, Size } from '../types';
 import { Menu } from './Menu';
 
@@ -65,9 +66,7 @@ const BaseDropdown: FC<DropdownProps> = ({
     elements: { reference: buttonRef.current },
   });
   const click = useClick(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click]);
   const menuId = useId();
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,11 +79,15 @@ const BaseDropdown: FC<DropdownProps> = ({
     const controller = new AbortController();
 
     // Close menu when clicking outside the dropdown container
-    document.body.addEventListener('click', (e) => {
-      if (!e.composedPath().includes(container)) {
-        closeDropdown();
-      }
-    }, { signal: controller.signal });
+    document.body.addEventListener(
+      'click',
+      (e) => {
+        if (!e.composedPath().includes(container)) {
+          closeDropdown();
+        }
+      },
+      { signal: controller.signal },
+    );
 
     return () => controller.abort();
   }, [closeDropdown, isOpen]);
@@ -131,7 +134,8 @@ const BaseDropdown: FC<DropdownProps> = ({
 
             // Link variant
             'text-lm-brand dark:text-dm-brand': buttonVariant === 'link',
-            'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline': buttonVariant === 'link',
+            'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline':
+              buttonVariant === 'link',
 
             // Button sizes
             'px-1.5 py-1 text-sm': buttonVariant !== 'text' && buttonSize === 'sm',
@@ -154,12 +158,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" widthAuto />}
       </button>
       {isOpen && (
-        <div
-          ref={refs.setFloating}
-          style={floatingStyles}
-          className="min-w-full z-500"
-          {...getFloatingProps()}
-        >
+        <div ref={refs.setFloating} style={floatingStyles} className="min-w-full z-500" {...getFloatingProps()}>
           <Menu
             className={menuClassName}
             id={menuId}

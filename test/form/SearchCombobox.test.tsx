@@ -1,4 +1,5 @@
 import { screen, waitFor } from '@testing-library/react';
+
 import type { SearchComboboxProps } from '../../src';
 import { SearchCombobox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -7,18 +8,19 @@ import { renderWithEvents } from '../__helpers__/setUpTest';
 describe('<SearchCombobox />', () => {
   const onSearch = vi.fn();
   const onSelectSearchResult = vi.fn();
-  const setUp = (props: Partial<SearchComboboxProps<string>> = {}) => renderWithEvents(
-    <>
-      <input type="text" aria-label="Other input" data-testid="alternative-input" />
-      <SearchCombobox
-        onSearch={onSearch}
-        onSelectSearchResult={onSelectSearchResult}
-        renderSearchResult={(i) => i}
-        aria-label="Combobox"
-        {...props}
-      />
-    </>,
-  );
+  const setUp = (props: Partial<SearchComboboxProps<string>> = {}) =>
+    renderWithEvents(
+      <>
+        <input type="text" aria-label="Other input" data-testid="alternative-input" />
+        <SearchCombobox
+          onSearch={onSearch}
+          onSelectSearchResult={onSelectSearchResult}
+          renderSearchResult={(i) => i}
+          aria-label="Combobox"
+          {...props}
+        />
+      </>,
+    );
 
   beforeEach(() => {
     // Make all timeouts be still async, but resolve immediately
@@ -30,11 +32,9 @@ describe('<SearchCombobox />', () => {
     vi.unstubAllGlobals();
   });
 
-  it.each([
-    undefined,
-    new Map(),
-    new Map([['foo', 'bar']]),
-  ])('passes a11y checks', (searchResults) => checkAccessibility(setUp({ searchResults })));
+  it.each([undefined, new Map(), new Map([['foo', 'bar']])])('passes a11y checks', (searchResults) =>
+    checkAccessibility(setUp({ searchResults })),
+  );
 
   it('does not show a listbox while there is no search results', () => {
     setUp();
@@ -46,7 +46,12 @@ describe('<SearchCombobox />', () => {
   });
 
   it('sets expected active descendant', async () => {
-    const { user } = setUp({ searchResults: new Map([['foo', 'foo'], ['bar', 'bar']]) });
+    const { user } = setUp({
+      searchResults: new Map([
+        ['foo', 'foo'],
+        ['bar', 'bar'],
+      ]),
+    });
     const combobox = screen.getByLabelText('Combobox');
 
     // Focus combobox first
