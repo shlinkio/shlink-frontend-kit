@@ -1,3 +1,4 @@
+// oxlint-disable react/react-compiler
 import type { Placement } from '@floating-ui/react';
 import { arrow, autoPlacement, useFloating, useHover, useInteractions, useTransitionStyles } from '@floating-ui/react';
 import { clsx } from 'clsx';

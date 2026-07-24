@@ -91,6 +91,7 @@ export const CardModal: FC<CardModalProps> = ({
     // instantly.
     if (open) {
       exitAction.current = 'cancel';
+      // oxlint-disable-next-line react/react-compiler
       setOpenProxy(true);
       return;
     }
