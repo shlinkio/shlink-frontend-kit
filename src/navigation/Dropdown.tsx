@@ -62,7 +62,7 @@ const BaseDropdown: FC<DropdownProps> = ({
     onOpenChange: setIsOpen,
     placement: menuAlignment === 'right' ? 'bottom-end' : 'bottom-start',
     middleware: [flip(), offset(menuOffset)],
-    // eslint-disable-next-line react-compiler/react-compiler
+    // oxlint-disable-next-line react-compiler/react-compiler
     elements: { reference: buttonRef.current },
   });
   const click = useClick(context);
@@ -93,7 +93,7 @@ const BaseDropdown: FC<DropdownProps> = ({
   }, [closeDropdown, isOpen]);
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       ref={containerRef}
       className={clsx('relative inline-block', containerClassName)}

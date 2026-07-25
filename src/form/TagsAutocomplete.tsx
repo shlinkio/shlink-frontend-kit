@@ -28,7 +28,7 @@ type TagSearchResultProps = {
 };
 
 const TagSearchResult: FC<TagSearchResultProps> = ({ tag, color, size, onRemove }) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+  // oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
   <li
     className={clsx('inline-flex items-center gap-1 font-bold [&]:rounded-md', {
       'px-1 text-sm': size === 'sm',
@@ -108,7 +108,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    // oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={clsx(
         'rounded-md flex flex-wrap gap-1',

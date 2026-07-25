@@ -8,7 +8,7 @@ export default defineConfig({
       files: ['src/**/*.stories.{ts,tsx}'],
       rules: {
         // Allow Storybook stories to have a default export, as that's what Storybook expects
-        'no-restricted-exports': 'off',
+        'eslint/no-restricted-exports': 'off',
         'react/rules-of-hooks': 'off',
       },
     },

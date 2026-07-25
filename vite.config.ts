@@ -6,7 +6,7 @@ import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vitest/config';
 import pack from './package.json';
 
-// eslint-disable-next-line no-restricted-exports
+// oxlint-disable-next-line eslint/no-restricted-exports
 export default defineConfig({
   plugins: [
     react(),

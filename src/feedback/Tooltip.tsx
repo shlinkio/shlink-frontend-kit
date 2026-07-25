@@ -15,7 +15,7 @@ export type UseTooltipOptions = {
 export const useTooltip = ({ placement = 'auto' }: UseTooltipOptions = {}) => {
   const arrowRef = useRef<HTMLDivElement>(null);
   const middleware = useMemo(() => {
-    // eslint-disable-next-line react-compiler/react-compiler
+    // oxlint-disable-next-line react/react-compiler
     const arrowMiddleware = arrow({ element: arrowRef });
     return placement === 'auto' ? [autoPlacement(), arrowMiddleware] : [arrowMiddleware];
   }, [placement]);

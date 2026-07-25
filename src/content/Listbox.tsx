@@ -106,7 +106,7 @@ export function Listbox<Item>({
           tabIndex={-1}
           onClick={() => onSelectItem(item)}
           // We are setting tabIndex -1 so that this element cannot be focused
-          // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+          // oxlint-disable-next-line jsx-a11y/mouse-events-have-key-events
           onMouseOver={() => changeActiveItem(index)}
         >
           {renderItem(item)}
