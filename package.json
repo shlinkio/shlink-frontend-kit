@@ -80,7 +80,7 @@
     "oxfmt": "^0.60.0",
     "oxlint": "^1.75.0",
     "oxlint-tsgolint": "^7.0.2001",
-    "playwright": "^1.61.1",
+    "playwright": "^1.62.0",
     "storybook": "^10.3.6",
     "typescript": "^6.0.3",
     "unplugin-dts": "^1.0.3",
