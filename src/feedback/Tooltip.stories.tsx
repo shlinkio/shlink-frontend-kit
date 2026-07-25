@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
 import type { HTMLProps, ReactNode } from 'react';
-
 import { Tooltip, useTooltip } from './Tooltip';
 
 export default {

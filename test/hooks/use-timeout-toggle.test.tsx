@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-
 import { useTimeoutToggle } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 

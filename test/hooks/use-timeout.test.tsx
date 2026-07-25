@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import type { FC } from 'react';
-
 import { useTimeout } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 

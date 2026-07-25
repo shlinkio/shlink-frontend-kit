@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-
 import type { TagsAutocompleteProps } from '../../src';
 import { TagsAutocomplete } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { useCallback, useRef } from 'react';
-
 import { isLightColor, normalizeTag, useTagsSearch } from '..';
 import type { Size } from '../types';
 import { CloseButton } from './CloseButton';

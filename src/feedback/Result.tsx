@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-
 import type { Size } from '../types';
 
 export type ResultProps = PropsWithChildren<{

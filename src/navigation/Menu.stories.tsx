@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useCallback, useState } from 'react';
-
 import { LabelledInput } from '../form';
 import { Menu } from './Menu';
 

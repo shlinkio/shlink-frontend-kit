@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import type { ResultProps } from '../../src';
 import { Result } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

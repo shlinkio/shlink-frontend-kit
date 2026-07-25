@@ -4,7 +4,6 @@ import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren } from 'react';
 import { useCallback, useMemo, useRef } from 'react';
 import { Link } from 'react-router';
-
 import type { NumberOrEllipsis } from '../helpers';
 import { ELLIPSIS, keyForPage, pageIsEllipsis, prettifyPageNumber, progressivePagination } from '../helpers';
 import { useArrowKeyNavigation } from '../hooks';

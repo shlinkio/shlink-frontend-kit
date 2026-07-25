@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-
 import type { ButtonProps } from '../../src';
 import { Button } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

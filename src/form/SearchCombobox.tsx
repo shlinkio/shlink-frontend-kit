@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import type { ReactNode, Ref } from 'react';
 import { useCallback, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
-
 import { Listbox } from '../content';
 import type { SearchInputProps } from './SearchInput';
 import { SearchInput } from './SearchInput';

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, FocusEvent } from 'react';
 import { useCallback, useRef } from 'react';
-
 import { useToggle } from '..';
 import type { InputProps } from './Input';
 import { Input } from './Input';

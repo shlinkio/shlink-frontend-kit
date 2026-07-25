@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
-
 import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { SearchInput } from '../form';
 import { SimpleCard } from '../surfaces';

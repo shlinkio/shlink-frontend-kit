@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useCallback, useState } from 'react';
-
 import { boolean, size } from '../../.storybook/utils/storybook';
 import { LabelledInput } from '../form';
 import { Dropdown } from './Dropdown';

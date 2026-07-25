@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-
 import type { ToggleSwitchProps } from '../../src';
 import { ToggleSwitch } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

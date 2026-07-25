@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import type { FC, InputHTMLAttributes, Ref } from 'react';
-
 import type { Size } from '../types';
 
 export type BaseInputProps = {

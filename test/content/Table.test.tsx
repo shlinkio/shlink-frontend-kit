@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import type { TableProps } from '../../src';
 import { Table } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

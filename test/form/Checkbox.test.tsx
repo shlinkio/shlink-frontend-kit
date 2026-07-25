@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-
 import type { CheckboxProps } from '../../src';
 import { Checkbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
-
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
 import { Button, Input } from '../form';
 import type { CardModalProps } from './CardModal';

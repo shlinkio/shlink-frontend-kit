@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-
 import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

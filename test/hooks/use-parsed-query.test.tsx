@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
-
 import { useParsedQuery } from '../../src';
 
 describe('useParsedQuery', () => {

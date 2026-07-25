@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { LoremIpsum } from '../../.storybook/utils/LoremIpsum';
 import { Card } from './Card';
 

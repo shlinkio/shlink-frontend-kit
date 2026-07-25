@@ -2,7 +2,6 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC } from 'react';
-
 import type { DropdownProps } from './Dropdown';
 import { Dropdown } from './Dropdown';
 

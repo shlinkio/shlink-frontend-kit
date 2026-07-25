@@ -1,7 +1,6 @@
 import { faSortAmountDown as sortDescIcon, faSortAmountUp as sortAscIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback } from 'react';
-
 import type { Order } from '..';
 import { determineOrder } from '..';
 import type { DropdownProps } from '../navigation';

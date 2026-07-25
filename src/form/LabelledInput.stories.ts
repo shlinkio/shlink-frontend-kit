@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { LabelledInput } from './LabelledInput';
 
 const meta = {

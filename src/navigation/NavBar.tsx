@@ -5,7 +5,6 @@ import type { FC, HTMLProps } from 'react';
 import { useEffect, useId } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link, useLocation } from 'react-router';
-
 import { useToggle } from '..';
 import { Button } from '../form';
 import type { RequiredReactNode } from '../types';

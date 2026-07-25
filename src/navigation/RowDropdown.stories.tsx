@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { size } from '../../.storybook/utils/storybook';
 import type { RowDropdownProps } from './RowDropdown';
 import { RowDropdown } from './RowDropdown';

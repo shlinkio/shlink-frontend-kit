@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-
 import { Dropdown, NavBar } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';

@@ -1,5 +1,4 @@
 import { screen, waitFor } from '@testing-library/react';
-
 import type { SearchComboboxProps } from '../../src';
 import { SearchCombobox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

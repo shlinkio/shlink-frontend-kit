@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-
 import type { LabelProps } from '../../src';
 import { Label } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

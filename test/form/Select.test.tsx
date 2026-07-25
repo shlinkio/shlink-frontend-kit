@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import type { SelectProps } from '../../src';
 import { Select } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

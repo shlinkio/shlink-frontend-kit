@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import { useRef } from 'react';
-
 import type { ListboxProps } from '../../src';
 import { Listbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

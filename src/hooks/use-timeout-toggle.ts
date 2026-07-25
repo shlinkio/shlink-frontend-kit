@@ -1,5 +1,4 @@
 import { useCallback, useRef, useState } from 'react';
-
 import { useTimeout } from './use-timeout';
 
 export type TimeoutToggleOptions = {

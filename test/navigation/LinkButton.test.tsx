@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-
 import type { LinkButtonProps } from '../../src';
 import { LinkButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

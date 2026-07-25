@@ -2,7 +2,6 @@ import { faCircleNotch as preloader } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-
 import { SimpleCard } from '../surfaces';
 
 export type MessageProps = PropsWithChildren<{

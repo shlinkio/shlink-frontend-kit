@@ -3,7 +3,6 @@ import type { FC, PropsWithChildren } from 'react';
 import { createContext, useContext } from 'react';
 import type { LinkProps } from 'react-router';
 import { NavLink } from 'react-router';
-
 import { Card } from '../surfaces';
 
 const NavPillsContext = createContext<{ fill?: boolean } | null>(null);

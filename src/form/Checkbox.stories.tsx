@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-
 import { SimpleCard } from '../surfaces';
 import { Checkbox } from './Checkbox';
 

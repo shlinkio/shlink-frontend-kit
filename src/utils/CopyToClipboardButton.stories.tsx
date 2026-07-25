@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-
 import { Input } from '../form';
 import { CopyToClipboardButton } from './CopyToClipboardButton';
 

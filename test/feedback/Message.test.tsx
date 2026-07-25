@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import type { MessageProps } from '../../src';
 import { Message } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

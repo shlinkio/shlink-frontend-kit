@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import { useRef } from 'react';
-
 import type { ArrowKeyNavigationOptions } from '../../src';
 import { useArrowKeyNavigation } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';

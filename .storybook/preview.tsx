@@ -1,9 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import { useLayoutEffect } from 'react';
 import { MemoryRouter } from 'react-router';
-
 import { changeThemeInMarkup, getSystemPreferredTheme } from '../src';
-
 import './tailwind.css';
 
 // oxlint-disable-next-line eslint/no-restricted-exports

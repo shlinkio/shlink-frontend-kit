@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, HTMLProps } from 'react';
 import { useCallback } from 'react';
-
 import { useTimeoutToggle } from '..';
 import type { Size } from '../types';
 

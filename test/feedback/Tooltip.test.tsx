@@ -1,5 +1,4 @@
 import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
-
 import type { UseTooltipOptions } from '../../src';
 import { Tooltip, useTooltip } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

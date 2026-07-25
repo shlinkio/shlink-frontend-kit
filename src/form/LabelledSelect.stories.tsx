@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { nonEditableReactNode } from '../../.storybook/utils/storybook';
 import { LabelledSelect } from './LabelledSelect';
 

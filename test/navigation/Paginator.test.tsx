@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-
 import type { PaginatorProps } from '../../src';
 import { ELLIPSIS, Paginator } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

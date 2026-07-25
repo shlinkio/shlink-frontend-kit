@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
 import { useState } from 'react';
-
 import type { CardModalProps } from '../../src';
 import { CardModal } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-
 import { ModalDialog } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 

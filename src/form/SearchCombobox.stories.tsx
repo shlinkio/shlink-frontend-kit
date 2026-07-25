@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 import { fn } from 'storybook/test';
-
 import { colors } from '../../.storybook/utils/colors';
 import { size } from '../../.storybook/utils/storybook';
 import { useTimeout } from '../hooks';

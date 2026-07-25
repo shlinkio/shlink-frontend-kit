@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-
 import { normalizeTag } from '../helpers';
 
 export type TagsSearchOptions = {

@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-
 import type { RequiredReactNode, Size } from '../types';
 import { Menu } from './Menu';
 

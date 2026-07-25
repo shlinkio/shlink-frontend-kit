@@ -2,7 +2,6 @@ import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, Ref } from 'react';
 import type { LinkProps } from 'react-router';
 import { Link } from 'react-router';
-
 import type { Size } from '../types';
 
 type RegularButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'>;

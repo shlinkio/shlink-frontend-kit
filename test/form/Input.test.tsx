@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import type { InputProps } from '../../src';
 import { Input } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

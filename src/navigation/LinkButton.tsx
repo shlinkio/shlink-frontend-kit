@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, Ref } from 'react';
-
 import type { Size } from '../types';
 
 export type LinkButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'size' | 'type'> & {

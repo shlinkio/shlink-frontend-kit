@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-
 import type { SearchInputProps } from '../../src';
 import { SearchInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

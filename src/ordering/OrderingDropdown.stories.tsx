@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
-
 import type { Order } from './ordering';
 import type { OrderingDropdownProps } from './OrderingDropdown';
 import { OrderingDropdown } from './OrderingDropdown';

@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import type { ReactNode, RefObject } from 'react';
 import { useCallback, useEffect, useState } from 'react';
-
 import type { CardProps } from '../surfaces';
 import { Card } from '../surfaces';
 

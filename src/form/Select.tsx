@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import type { FC, HTMLProps, PropsWithChildren, Ref } from 'react';
-
 import type { BaseInputProps } from './Input';
 
 type SelectElementProps = Omit<HTMLProps<HTMLSelectElement>, 'size' | 'checked' | 'defaultChecked'>;

@@ -1,5 +1,4 @@
 import type { FC, ReactNode } from 'react';
-
 import type { Size } from '../types';
 import type { CardProps } from './Card';
 import { Card } from './Card';

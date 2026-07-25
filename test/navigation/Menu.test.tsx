@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-
 import { Menu } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 

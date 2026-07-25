@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import { SimpleCard } from '../surfaces';
 import { Input } from './Input';
 
