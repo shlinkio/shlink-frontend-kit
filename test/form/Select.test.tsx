@@ -4,12 +4,13 @@ import { Select } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 
 describe('<Select />', () => {
-  const setUp = (props: Omit<SelectProps, 'children'> = {}) => render(
-    <Select {...props}>
-      <option>Foo</option>
-      <option>Bar</option>
-    </Select>,
-  );
+  const setUp = (props: Omit<SelectProps, 'children'> = {}) =>
+    render(
+      <Select {...props}>
+        <option>Foo</option>
+        <option>Bar</option>
+      </Select>,
+    );
 
   it('passes a11y checks', () => checkAccessibility(setUp({ 'aria-label': 'Select option' })));
 

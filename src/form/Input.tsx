@@ -13,10 +13,10 @@ export type BaseInputProps = {
   variant?: 'default' | 'unstyled';
 };
 
-export type InputProps =
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'checked' | 'defaultChecked'> & BaseInputProps & {
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'checked' | 'defaultChecked'> &
+  BaseInputProps & {
     borderless?: boolean;
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>;
   };
 
 export const Input: FC<InputProps> = ({

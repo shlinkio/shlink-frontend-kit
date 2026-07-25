@@ -6,16 +6,16 @@ import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<Paginator />', () => {
-  const setUp = (props: PaginatorProps) => renderWithEvents(
-    <MemoryRouter>
-      <Paginator {...props} />
-    </MemoryRouter>,
-  );
+  const setUp = (props: PaginatorProps) =>
+    renderWithEvents(
+      <MemoryRouter>
+        <Paginator {...props} />
+      </MemoryRouter>,
+    );
 
-  it.each([
-    { onPageChange: vi.fn() },
-    { urlForPage: vi.fn().mockReturnValue('') },
-  ])('passes a11y checks', (props) => checkAccessibility(setUp({ pagesCount: 10, currentPage: 5, ...props })));
+  it.each([{ onPageChange: vi.fn() }, { urlForPage: vi.fn().mockReturnValue('') }])('passes a11y checks', (props) =>
+    checkAccessibility(setUp({ pagesCount: 10, currentPage: 5, ...props })),
+  );
 
   it.each([
     { pagesCount: 0, shouldRender: false },
@@ -109,7 +109,7 @@ describe('<Paginator />', () => {
     { getButton: () => screen.queryAllByText(ELLIPSIS)[0], shouldInvoke: false },
     { getButton: () => screen.getByText('4'), shouldInvoke: true },
   ])('invokes onPageChange when a non-ellipsis page is clicked', async ({ getButton, shouldInvoke }) => {
-    const onPageChange= vi.fn();
+    const onPageChange = vi.fn();
     const { user } = setUp({ onPageChange, currentPage: 5, pagesCount: 10 });
 
     await user.click(getButton());

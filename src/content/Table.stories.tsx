@@ -109,9 +109,10 @@ export const NonResponsiveInCard: Story = {
   render: (args) => {
     const [searchTerm, setSearchTerm] = useState<string>();
     const filteredUsers = useMemo(
-      () => users.filter(
-        ({ name, surname, role }) => !searchTerm || `${name} ${surname} ${role}`.match(new RegExp(searchTerm, 'i')),
-      ),
+      () =>
+        users.filter(
+          ({ name, surname, role }) => !searchTerm || `${name} ${surname} ${role}`.match(new RegExp(searchTerm, 'i')),
+        ),
       [searchTerm],
     );
 
@@ -136,9 +137,7 @@ export const NonResponsiveInCard: Story = {
         >
           {filteredUsers.length === 0 && (
             <Table.Row>
-              <Table.Cell colSpan={3}>
-                No users matching search
-              </Table.Cell>
+              <Table.Cell colSpan={3}>No users matching search</Table.Cell>
             </Table.Row>
           )}
           {filteredUsers.map((u) => (
@@ -165,7 +164,9 @@ export const WithFooter: Story = {
     ),
     footer: (
       <Table.Row>
-        <Table.Cell colSpan={3} className="text-center" type="td">- Students -</Table.Cell>
+        <Table.Cell colSpan={3} className="text-center" type="td">
+          - Students -
+        </Table.Cell>
       </Table.Row>
     ),
     children: users.slice(0, 2).map((u) => (

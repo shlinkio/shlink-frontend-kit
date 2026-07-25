@@ -5,217 +5,218 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme static inline {
-    /* Light mode */
-    --color-lm-brand: #2078CF;
-    --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--color-lm-brand) 80%);
-    --color-lm-primary: #ffffff;
-    --color-lm-primary-alfa: rgb(var(--color-lm-primary) / .5);
-    --color-lm-secondary: #eeeff8;
-    --color-lm-text: #232323;
-    --color-lm-border: rgb(0 0 0 / .125);
-    --color-lm-table-border: #dee2e6;
-    --color-lm-active: #eeeeee;
-    --color-lm-main: var(--color-lm-brand);
-    --color-lm-input: var(--color-lm-primary);
-    --color-lm-disabled-input: var(--color-lm-secondary);
-    --color-lm-input-text: #495057;
-    --color-lm-input-border: rgb(0 0 0 / .19);
-    --color-lm-table-highlight: rgb(0 0 0 / .075);
+  /* Light mode */
+  --color-lm-brand: #2078cf;
+  --color-lm-brand-dark: color-mix(in srgb, black 20%, var(--color-lm-brand) 80%);
+  --color-lm-primary: #ffffff;
+  --color-lm-primary-alfa: rgb(var(--color-lm-primary) / 0.5);
+  --color-lm-secondary: #eeeff8;
+  --color-lm-text: #232323;
+  --color-lm-border: rgb(0 0 0 / 0.125);
+  --color-lm-table-border: #dee2e6;
+  --color-lm-active: #eeeeee;
+  --color-lm-main: var(--color-lm-brand);
+  --color-lm-input: var(--color-lm-primary);
+  --color-lm-disabled-input: var(--color-lm-secondary);
+  --color-lm-input-text: #495057;
+  --color-lm-input-border: rgb(0 0 0 / 0.19);
+  --color-lm-table-highlight: rgb(0 0 0 / 0.075);
 
-    /* Dark mode */
-    --color-dm-brand: #4696e5;
-    --color-dm-brand-dark: color-mix(in srgb, black 25%, var(--color-dm-brand) 75%);
-    --color-dm-primary: #161b22;
-    --color-dm-primary-alfa: rgb(var(--color-dm-primary) / .8);
-    --color-dm-secondary: #0f131a;
-    --color-dm-text: rgb(201 209 217);
-    --color-dm-border: rgb(255 255 255 / .15);
-    --color-dm-table-border: #393d43;
-    --color-dm-active: var(--color-dm-secondary);
-    --color-dm-main: #0b2d4e;
-    --color-dm-input: rgb(17.9928571429 22.0821428571 27.8071428571);
-    --color-dm-disabled-input: rgb(26.0071428571 31.9178571429 40.1928571429);
-    --color-dm-input-text: var(--color-dm-text);
-    --color-dm-input-border: var(--color-dm-border);
-    --color-dm-table-highlight: var(--color-dm-border);
+  /* Dark mode */
+  --color-dm-brand: #4696e5;
+  --color-dm-brand-dark: color-mix(in srgb, black 25%, var(--color-dm-brand) 75%);
+  --color-dm-primary: #161b22;
+  --color-dm-primary-alfa: rgb(var(--color-dm-primary) / 0.8);
+  --color-dm-secondary: #0f131a;
+  --color-dm-text: rgb(201 209 217);
+  --color-dm-border: rgb(255 255 255 / 0.15);
+  --color-dm-table-border: #393d43;
+  --color-dm-active: var(--color-dm-secondary);
+  --color-dm-main: #0b2d4e;
+  --color-dm-input: rgb(17.9928571429 22.0821428571 27.8071428571);
+  --color-dm-disabled-input: rgb(26.0071428571 31.9178571429 40.1928571429);
+  --color-dm-input-text: var(--color-dm-text);
+  --color-dm-input-border: var(--color-dm-border);
+  --color-dm-table-highlight: var(--color-dm-border);
 
-    /* General color palette */
-    --color-danger: #dc3545;
-    --color-danger-dark: color-mix(in srgb, black 20%, var(--color-danger) 80%);
-    --color-warning: #ffc107;
-    --color-warning-dark: color-mix(in srgb, black 20%, var(--color-warning) 80%);
-    --color-placeholder: #6c757d;
+  /* General color palette */
+  --color-danger: #dc3545;
+  --color-danger-dark: color-mix(in srgb, black 20%, var(--color-danger) 80%);
+  --color-warning: #ffc107;
+  --color-warning-dark: color-mix(in srgb, black 20%, var(--color-warning) 80%);
+  --color-placeholder: #6c757d;
 
-    /* Override breakpoints with the values from bootstrap, to keep sizing until fully migrated */
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --breakpoint-2xl: 1320px; /* 1400px according to bootstrap docs, but then the container is bigger than before */
+  /* Override breakpoints with the values from bootstrap, to keep sizing until fully migrated */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1320px; /* 1400px according to bootstrap docs, but then the container is bigger than before */
 }
 
 @layer base {
-    :root {
-        /* Chevron image for selects */
-        --chevron-down: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
-        /* Tick image for checkboxes */
-        --tick: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
+  :root {
+    /* Chevron image for selects */
+    --chevron-down: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+    /* Tick image for checkboxes */
+    --tick: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
 
-        /* Circle images for toggle switches */
-        --circle-grey-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
-        --circle-grey-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28255, 255, 255, 0.25%29'/></svg>");
-        --circle-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
-        --circle-blue-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
+    /* Circle images for toggle switches */
+    --circle-grey-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%280, 0, 0, 0.25%29'/></svg>");
+    --circle-grey-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28255, 255, 255, 0.25%29'/></svg>");
+    --circle-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
+    --circle-blue-light: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%2386b7fe'/></svg>");
 
-        @apply scheme-normal dark:scheme-dark scroll-auto;
-    }
+    @apply scheme-normal dark:scheme-dark scroll-auto;
+  }
 
-    html, body {
-        @apply h-full bg-lm-secondary dark:bg-dm-secondary text-lm-text dark:text-dm-text;
-    }
+  html,
+  body {
+    @apply h-full bg-lm-secondary dark:bg-dm-secondary text-lm-text dark:text-dm-text;
+  }
 
-    a {
-        @apply
-            text-lm-brand dark:text-dm-brand rounded-xs
+  a {
+    @apply text-lm-brand dark:text-dm-brand rounded-xs
             focus-visible:outline-3 focus-visible:outline-offset-3
             focus-visible:outline-lm-brand/50 dark:focus-visible:outline-dm-brand/50
             focus-visible:z-1;
-    }
+  }
 
-    h1 {
-        @apply text-[2.5rem]/[1.2] m-0 font-medium;
-    }
-    h2 {
-        @apply text-[2rem]/[1.2] m-0 font-medium;
-    }
-    h3 {
-        @apply text-[1.75rem]/[1.2] m-0 font-medium;
-    }
-    h4 {
-        @apply text-2xl/[1.2] m-0 font-medium;
-    }
-    h5 {
-        @apply text-xl/[1.2] m-0 font-medium;
-    }
-    h6 {
-        @apply text-base/[1.2] m-0 font-medium;
-    }
+  h1 {
+    @apply text-[2.5rem]/[1.2] m-0 font-medium;
+  }
+  h2 {
+    @apply text-[2rem]/[1.2] m-0 font-medium;
+  }
+  h3 {
+    @apply text-[1.75rem]/[1.2] m-0 font-medium;
+  }
+  h4 {
+    @apply text-2xl/[1.2] m-0 font-medium;
+  }
+  h5 {
+    @apply text-xl/[1.2] m-0 font-medium;
+  }
+  h6 {
+    @apply text-base/[1.2] m-0 font-medium;
+  }
 
-    hr {
-        @apply my-3 border-lm-border dark:border-dm-border;
-    }
+  hr {
+    @apply my-3 border-lm-border dark:border-dm-border;
+  }
 
-    code {
-        @apply text-sm text-pink-600 dark:text-pink-500 font-mono;
-    }
+  code {
+    @apply text-sm text-pink-600 dark:text-pink-500 font-mono;
+  }
 
-    input[type="search"]::-webkit-search-cancel-button {
-        @apply cursor-pointer;
-    }
+  input[type='search']::-webkit-search-cancel-button {
+    @apply cursor-pointer;
+  }
 
-    summary {
-        @apply cursor-pointer;
-    }
+  summary {
+    @apply cursor-pointer;
+  }
 
-    dialog {
-        @apply outline-none
-    }
+  dialog {
+    @apply outline-none;
+  }
 }
 
 @utility focus-ring-base {
-    @apply outline-none focus-visible:ring-3 focus-visible:z-1 transition-[box-shadow];
+  @apply outline-none focus-visible:ring-3 focus-visible:z-1 transition-[box-shadow];
 }
 
 @utility focus-ring {
-    @apply focus-ring-base focus-visible:ring-lm-brand/50 dark:focus-visible:ring-dm-brand/50;
+  @apply focus-ring-base focus-visible:ring-lm-brand/50 dark:focus-visible:ring-dm-brand/50;
 }
 
 @utility focus-ring-danger {
-    @apply focus-ring-base focus-visible:ring-danger/50;
+  @apply focus-ring-base focus-visible:ring-danger/50;
 }
 
 @utility focus-ring-secondary {
-    @apply focus-ring-base focus-visible:ring-zinc-500/50;
+  @apply focus-ring-base focus-visible:ring-zinc-500/50;
 }
 
 @utility focus-within-ring {
-    @apply outline-none focus-within:ring-3 focus-within:z-1 transition-[box-shadow];
-    @apply focus-within:ring-lm-brand/50 dark:focus-within:ring-dm-brand/50;
+  @apply outline-none focus-within:ring-3 focus-within:z-1 transition-[box-shadow];
+  @apply focus-within:ring-lm-brand/50 dark:focus-within:ring-dm-brand/50;
 }
 
 @utility scroll-thin {
-    /* Standard. New browsers */
-    scrollbar-width: thin;
+  /* Standard. New browsers */
+  scrollbar-width: thin;
 
-    /* Fallbacks */
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-        border-radius: .5rem;
-    }
+  /* Fallbacks */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+  }
 }
 
 @utility no-clear-button {
-    &::-webkit-search-cancel-button {
-        display: none;
-    }
-    &::-ms-clear {
-        display: none;
-    }
-    &::-o-clear {
-        display: none;
-    }
-    &::-moz-clear {
-        display: none;
-    }
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+  &::-ms-clear {
+    display: none;
+  }
+  &::-o-clear {
+    display: none;
+  }
+  &::-moz-clear {
+    display: none;
+  }
 }
 
 @custom-variant highlight {
-    &:hover,
-    &:focus-visible {
-        @slot;
-    }
+  &:hover,
+  &:focus-visible {
+    @slot;
+  }
 }
 
 /* For sticky-positioned cells with a background */
 @utility sticky-cell-base {
-    @apply z-1 relative sticky;
-    @apply before:absolute before:bg-lm-table-border dark:before:bg-dm-table-border before:-z-2;
-    @apply after:absolute after:bg-lm-primary dark:after:bg-dm-primary after:-z-1;
+  @apply z-1 relative sticky;
+  @apply before:absolute before:bg-lm-table-border dark:before:bg-dm-table-border before:-z-2;
+  @apply after:absolute after:bg-lm-primary dark:after:bg-dm-primary after:-z-1;
 
-    &:before, &:after {
-        content: '';
-    }
-    &:first-child:after {
-        left: 0;
-    }
+  &:before,
+  &:after {
+    content: '';
+  }
+  &:first-child:after {
+    left: 0;
+  }
 }
 
 @utility sticky-cell {
-    @apply sticky-cell-base;
+  @apply sticky-cell-base;
 
-    &:before {
-        inset: -1px 0 -1px 0;
-    }
-    &:first-child:before {
-        left: 0;
-    }
-    &:after {
-        inset: 0 0 0 0;
-    }
+  &:before {
+    inset: -1px 0 -1px 0;
+  }
+  &:first-child:before {
+    left: 0;
+  }
+  &:after {
+    inset: 0 0 0 0;
+  }
 }
 
 @utility sticky-cell-separated {
-    @apply sticky-cell-base;
+  @apply sticky-cell-base;
 
-    &:before {
-        inset: -1px -1px -1px 0;
-    }
-    &:first-child:before {
-        left: -1px;
-    }
-    &:after {
-        inset: 0 0 0 1px;
-    }
+  &:before {
+    inset: -1px -1px -1px 0;
+  }
+  &:first-child:before {
+    left: -1px;
+  }
+  &:after {
+    inset: 0 0 0 1px;
+  }
 }

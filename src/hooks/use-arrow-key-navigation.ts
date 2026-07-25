@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import { useEffect,useMemo  } from 'react';
+import { useEffect, useMemo } from 'react';
 
 export type ArrowKeyNavigationOptions = {
   /** Query selector for focusable elements that need to be included in the loop */
@@ -58,7 +58,10 @@ export function useArrowKeyNavigation(
     // Do not allow focusable elements inside the menu to be focused via Tab key, except the first one or the first
     // selected one
     const elements = getFocusableElements();
-    const selectedElement = Math.max(elements.findIndex((el) => el.dataset.selected === 'true'), 0);
+    const selectedElement = Math.max(
+      elements.findIndex((el) => el.dataset.selected === 'true'),
+      0,
+    );
     elements.forEach((el, index) => {
       el.tabIndex = index === selectedElement ? 0 : -1;
       if (focusFirstItem && index === selectedElement) {
@@ -66,27 +69,31 @@ export function useArrowKeyNavigation(
       }
     });
 
-    container.addEventListener('keydown', (e) => {
-      if (!allArrows.includes(e.key)) {
-        return;
-      }
-      e.preventDefault();
+    container.addEventListener(
+      'keydown',
+      (e) => {
+        if (!allArrows.includes(e.key)) {
+          return;
+        }
+        e.preventDefault();
 
-      const elements = getFocusableElements();
-      const currentlyFocused = elements.findIndex((el) => el.tabIndex === 0);
+        const elements = getFocusableElements();
+        const currentlyFocused = elements.findIndex((el) => el.tabIndex === 0);
 
-      // Find the new element to be focused, based on the pressed key and the previously focused element
-      const newElementToFocus = nextArrows.includes(e.key)
-        ? (elements[currentlyFocused + 1] ?? elements[0])
-        : (elements[currentlyFocused - 1] ?? elements[elements.length - 1]);
+        // Find the new element to be focused, based on the pressed key and the previously focused element
+        const newElementToFocus = nextArrows.includes(e.key)
+          ? (elements[currentlyFocused + 1] ?? elements[0])
+          : (elements[currentlyFocused - 1] ?? elements[elements.length - 1]);
 
-      // Disable focus in all elements, then focus the new one
-      elements.forEach((el) => {
-        el.tabIndex = -1;
-      });
-      newElementToFocus.tabIndex = 0;
-      newElementToFocus.focus();
-    }, { signal: controller.signal });
+        // Disable focus in all elements, then focus the new one
+        elements.forEach((el) => {
+          el.tabIndex = -1;
+        });
+        newElementToFocus.tabIndex = 0;
+        newElementToFocus.focus();
+      },
+      { signal: controller.signal },
+    );
 
     return () => controller.abort();
   }, [allArrows, containerRef, elementsSelector, focusFirstItem, nextArrows]);

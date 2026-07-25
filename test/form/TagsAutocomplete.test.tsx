@@ -7,24 +7,11 @@ import { renderWithEvents } from '../__helpers__/setUpTest';
 type SetUpOptions = Pick<TagsAutocompleteProps, 'selectedTags' | 'immutable' | 'searchMode'>;
 
 describe('<TagsAutcomplete />', () => {
-  const tags = [
-    'one_foo',
-    'two_foo',
-    'three_foo',
-    'one_again_foo',
-    'another_one_foo',
-    'four_foo',
-  ];
+  const tags = ['one_foo', 'two_foo', 'three_foo', 'one_again_foo', 'another_one_foo', 'four_foo'];
   const onTagsChange = vi.fn();
 
-  const setUp = (props: SetUpOptions = {}) => renderWithEvents(
-    <TagsAutocomplete
-      tags={tags}
-      onTagsChange={onTagsChange}
-      {...props}
-      aria-label="Select tags"
-    />,
-  );
+  const setUp = (props: SetUpOptions = {}) =>
+    renderWithEvents(<TagsAutocomplete tags={tags} onTagsChange={onTagsChange} {...props} aria-label="Select tags" />);
   const setUpOpen = async ({ search = 'one', ...props }: SetUpOptions & { search?: string } = {}) => {
     const { user, ...rest } = setUp(props);
     await user.type(screen.getByLabelText('Select tags'), search);
@@ -33,10 +20,7 @@ describe('<TagsAutcomplete />', () => {
     return { user, ...rest };
   };
 
-  it.each([
-    setUp,
-    setUpOpen,
-  ])('passes a11y checks', (s) => checkAccessibility(s()));
+  it.each([setUp, setUpOpen])('passes a11y checks', (s) => checkAccessibility(s()));
 
   it.each([
     {
@@ -123,21 +107,21 @@ describe('<TagsAutcomplete />', () => {
   it('adds matching tag from search results', async () => {
     const { user } = await setUpOpen();
 
-    await user.click((screen.getByRole('option', { name: 'one_foo' })));
+    await user.click(screen.getByRole('option', { name: 'one_foo' }));
     expect(onTagsChange).toHaveBeenLastCalledWith(['one_foo']);
   });
 
   it('adds non matching tag from search results', async () => {
     const { user } = await setUpOpen({ search: 'does_not_match' });
 
-    await user.click((screen.getByRole('option', { name: 'Add "does_not_match" tag' })));
+    await user.click(screen.getByRole('option', { name: 'Add "does_not_match" tag' }));
     expect(onTagsChange).toHaveBeenLastCalledWith(['does_not_match']);
   });
 
   it('normalizes tags to be added', async () => {
     const { user } = await setUpOpen({ search: ' foo,BAR , ba   z ' });
 
-    await user.click((screen.getByRole('option', { name: /Add\s+"([^"]+)"\s+tag/ })));
+    await user.click(screen.getByRole('option', { name: /Add\s+"([^"]+)"\s+tag/ }));
     expect(onTagsChange).toHaveBeenLastCalledWith(['foo', 'bar', 'ba-z']);
   });
 });

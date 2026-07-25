@@ -7,8 +7,8 @@ import { Label } from './Label';
 import type { RevealablePasswordInputProps } from './RevealablePasswordInput';
 import { RevealablePasswordInput } from './RevealablePasswordInput';
 
-export type LabelledRevealablePasswordInputProps =
-  Omit<RevealablePasswordInputProps, 'className' | 'id' | 'feedback'> & FormControlWithFeedbackProps & {
+export type LabelledRevealablePasswordInputProps = Omit<RevealablePasswordInputProps, 'className' | 'id' | 'feedback'> &
+  FormControlWithFeedbackProps & {
     label: RequiredReactNode;
     inputClassName?: string;
 
@@ -19,13 +19,22 @@ export type LabelledRevealablePasswordInputProps =
 /**
  * Same as the `LabelledInput`, but wrapping a `RevealablePasswordInput` instead
  */
-export const LabelledRevealablePasswordInput: FC<LabelledRevealablePasswordInputProps> = (
-  { label, inputClassName, required, hiddenRequired, error, helpText, 'data-testid': testId, ...rest },
-) => {
+export const LabelledRevealablePasswordInput: FC<LabelledRevealablePasswordInputProps> = ({
+  label,
+  inputClassName,
+  required,
+  hiddenRequired,
+  error,
+  helpText,
+  'data-testid': testId,
+  ...rest
+}) => {
   const id = useId();
   return (
     <FormControlWithFeedback error={error} helpText={helpText} data-testid={testId}>
-      <Label htmlFor={id} required={required}>{label}</Label>
+      <Label htmlFor={id} required={required}>
+        {label}
+      </Label>
       <RevealablePasswordInput
         id={id}
         className={inputClassName}

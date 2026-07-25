@@ -18,11 +18,17 @@ export type SimpleCardProps = Omit<CardProps, 'title' | 'size'> & {
 } & (TitleProps | NoTitleProps);
 
 export const SimpleCard: FC<SimpleCardProps> = ({ bodyClassName, children, ...rest }) => {
-  const { title, titleSize = 'md', ...cardProps } = 'title' in rest ? rest : {
-    ...rest,
-    title: undefined,
-    titleSize: undefined,
-  };
+  const {
+    title,
+    titleSize = 'md',
+    ...cardProps
+  } = 'title' in rest
+    ? rest
+    : {
+        ...rest,
+        title: undefined,
+        titleSize: undefined,
+      };
 
   return (
     <Card {...cardProps}>
@@ -33,9 +39,7 @@ export const SimpleCard: FC<SimpleCardProps> = ({ bodyClassName, children, ...re
           {titleSize === 'sm' && <h6>{title}</h6>}
         </Card.Header>
       )}
-      <Card.Body className={bodyClassName}>
-        {children}
-      </Card.Body>
+      <Card.Body className={bodyClassName}>{children}</Card.Body>
     </Card>
   );
 };

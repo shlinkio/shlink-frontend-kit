@@ -21,15 +21,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const CardModal = ({
-  variant,
-  ...rest
-}: CardModalProps) => {
+const CardModal = ({ variant, ...rest }: CardModalProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <LibCardModal variant={variant} {...rest} open={open} onClose={() => setOpen(false)} />
-      <Button onClick={() => setOpen(true)} variant={variant === 'danger' ? 'danger' : undefined}>Open modal</Button>
+      <Button onClick={() => setOpen(true)} variant={variant === 'danger' ? 'danger' : undefined}>
+        Open modal
+      </Button>
     </>
   );
 };

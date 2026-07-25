@@ -7,7 +7,11 @@ import { renderWithEvents } from '../__helpers__/setUpTest';
 describe('useGoBack', () => {
   function FakeComponent() {
     const goBack = useGoBack();
-    return <button data-testid="go-back" onClick={goBack}>Go back</button>;
+    return (
+      <button data-testid="go-back" onClick={goBack}>
+        Go back
+      </button>
+    );
   }
 
   const setUp = () => {

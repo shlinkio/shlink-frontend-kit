@@ -54,8 +54,12 @@ export const Sizes = () => (
 export const Solid = () => (
   <div className="flex gap-2 items-center">
     <Button solid>Main</Button>
-    <Button solid variant="secondary">Secondary</Button>
-    <Button solid variant="danger">Danger</Button>
+    <Button solid variant="secondary">
+      Secondary
+    </Button>
+    <Button solid variant="danger">
+      Danger
+    </Button>
   </div>
 );
 
@@ -63,13 +67,23 @@ export const Disabled = () => (
   <div className="flex flex-col gap-2">
     <div className="flex gap-2 items-center">
       <Button disabled>Main</Button>
-      <Button disabled variant="secondary">Secondary</Button>
-      <Button disabled variant="danger">Danger</Button>
+      <Button disabled variant="secondary">
+        Secondary
+      </Button>
+      <Button disabled variant="danger">
+        Danger
+      </Button>
     </div>
     <div className="flex gap-2 items-center">
-      <Button disabled solid>Main solid</Button>
-      <Button disabled solid variant="secondary">Secondary solid</Button>
-      <Button disabled solid variant="danger">Danger solid</Button>
+      <Button disabled solid>
+        Main solid
+      </Button>
+      <Button disabled solid variant="secondary">
+        Secondary solid
+      </Button>
+      <Button disabled solid variant="danger">
+        Danger solid
+      </Button>
     </div>
   </div>
 );

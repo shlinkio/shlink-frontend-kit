@@ -7,7 +7,14 @@ import { SearchInput } from './SearchInput';
 
 type BaseInputProps = Omit<
   SearchInputProps,
-  'role' | 'aria-autocomplete' | 'aria-expanded' | 'aria-controls' | 'aria-activedescendant' | 'onChange' | 'autoComplete' | 'autoCorrect'
+  | 'role'
+  | 'aria-autocomplete'
+  | 'aria-expanded'
+  | 'aria-controls'
+  | 'aria-activedescendant'
+  | 'onChange'
+  | 'autoComplete'
+  | 'autoCorrect'
 >;
 
 export type SearchComboboxProps<Item> = BaseInputProps & {
@@ -65,15 +72,18 @@ export function SearchCombobox<Item>({
   // The active key is undefined while the listbox is closed. While open, we use the explicitly set activeKey, or the
   // first key of the search results.
   const currentlyActiveKey = useMemo(
-    () => !searchResults ? undefined : (activeKey ?? [...searchResults.keys()][0]),
+    () => (!searchResults ? undefined : (activeKey ?? [...searchResults.keys()][0])),
     [activeKey, searchResults],
   );
 
-  const applySearchResult = useCallback((item: Item) => {
-    onSelectSearchResult(item);
-    onSearch('');
-    searchInputRef.current!.value = '';
-  }, [onSearch, onSelectSearchResult, searchInputRef]);
+  const applySearchResult = useCallback(
+    (item: Item) => {
+      onSelectSearchResult(item);
+      onSearch('');
+      searchInputRef.current!.value = '';
+    },
+    [onSearch, onSelectSearchResult, searchInputRef],
+  );
 
   return (
     <div

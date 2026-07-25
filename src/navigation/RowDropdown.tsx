@@ -12,13 +12,7 @@ export type RowDropdownProps = Omit<DropdownProps, 'caretless' | 'buttonContent'
  */
 const BaseRowDropdown: FC<RowDropdownProps> = ({ buttonLabel = 'Options', buttonSize = 'md', ...rest }) => (
   <Dropdown
-    buttonContent={(
-      <FontAwesomeIcon
-        icon={faEllipsisV}
-        widthAuto
-        className={clsx({ 'px-1': buttonSize === 'sm' })}
-      />
-    )}
+    buttonContent={<FontAwesomeIcon icon={faEllipsisV} widthAuto className={clsx({ 'px-1': buttonSize === 'sm' })} />}
     caretless
     buttonLabel={buttonLabel}
     buttonSize={buttonSize}

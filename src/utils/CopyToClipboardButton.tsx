@@ -19,9 +19,14 @@ export type CopyToClipboardButtonProps = Omit<HTMLProps<HTMLButtonElement>, 'typ
   navigator_?: typeof globalThis.navigator;
 };
 
-export const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = (
-  { text, className, size = 'lg', initialCopied = false, navigator_ = globalThis.navigator, ...rest },
-) => {
+export const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = ({
+  text,
+  className,
+  size = 'lg',
+  initialCopied = false,
+  navigator_ = globalThis.navigator,
+  ...rest
+}) => {
   const [copied, toggleCopied] = useTimeoutToggle({ initialValue: initialCopied });
   const copyToClipboard = useCallback(
     () => navigator_.clipboard.writeText(text).then(toggleCopied),

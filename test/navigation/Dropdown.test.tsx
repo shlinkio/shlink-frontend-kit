@@ -1,26 +1,25 @@
 import { screen } from '@testing-library/react';
 import type { DropdownProps } from '../../src';
-import { Dropdown,LabelledInput  } from '../../src';
+import { Dropdown, LabelledInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('<Dropdown />', () => {
-  const setUp = (
-    props: Pick<DropdownProps, 'buttonSize' | 'buttonVariant' | 'caretless' | 'buttonDisabled'> = {},
-  ) => renderWithEvents(
-    <div>
-      <Dropdown buttonContent="Press me" {...props}>
-        <Dropdown.Item>One</Dropdown.Item>
-        <Dropdown.Item>Two</Dropdown.Item>
-        <Dropdown.Item>Three</Dropdown.Item>
-        <Dropdown.Misc>
-          <LabelledInput aria-hidden type="text" label="Text input" />
-        </Dropdown.Misc>
-      </Dropdown>
-      <button>Other button</button>
-      <div data-testid="non-focusable-item">Non focusable item</div>
-    </div>,
-  );
+  const setUp = (props: Pick<DropdownProps, 'buttonSize' | 'buttonVariant' | 'caretless' | 'buttonDisabled'> = {}) =>
+    renderWithEvents(
+      <div>
+        <Dropdown buttonContent="Press me" {...props}>
+          <Dropdown.Item>One</Dropdown.Item>
+          <Dropdown.Item>Two</Dropdown.Item>
+          <Dropdown.Item>Three</Dropdown.Item>
+          <Dropdown.Misc>
+            <LabelledInput aria-hidden type="text" label="Text input" />
+          </Dropdown.Misc>
+        </Dropdown>
+        <button>Other button</button>
+        <div data-testid="non-focusable-item">Non focusable item</div>
+      </div>,
+    );
   const setUpOpened = async () => {
     const { user, ...rest } = setUp();
 
@@ -30,10 +29,7 @@ describe('<Dropdown />', () => {
     return { user, ...rest };
   };
 
-  it.each([
-    setUp,
-    setUpOpened,
-  ])('passes a11y checks', (setUpFunction) => checkAccessibility(setUpFunction()));
+  it.each([setUp, setUpOpened])('passes a11y checks', (setUpFunction) => checkAccessibility(setUpFunction()));
 
   it('closes menu when pressing `Escape`', async () => {
     const { user } = await setUpOpened();
@@ -87,17 +83,16 @@ describe('<Dropdown />', () => {
     expect(screen.getByRole('button', { name: 'Press me' }).className).toMatchSnapshot();
   });
 
-  it.each([
-    { props: {} },
-    { props: { caretless: true } },
-    { props: { caretless: false } },
-  ])('renders caret only if caretless is false', ({ props }) => {
-    setUp(props);
+  it.each([{ props: {} }, { props: { caretless: true } }, { props: { caretless: false } }])(
+    'renders caret only if caretless is false',
+    ({ props }) => {
+      setUp(props);
 
-    if (!props.caretless) {
-      expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument();
-    } else {
-      expect(screen.queryByRole('img', { hidden: true })).not.toBeInTheDocument();
-    }
-  });
+      if (!props.caretless) {
+        expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument();
+      } else {
+        expect(screen.queryByRole('img', { hidden: true })).not.toBeInTheDocument();
+      }
+    },
+  );
 });

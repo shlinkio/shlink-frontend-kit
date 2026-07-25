@@ -12,19 +12,23 @@ export type FormControlWithFeedbackProps = PropsWithChildren<{
 /**
  * This component should not be exported from the module. It's designed to reuse as a helper wrapper
  */
-export const FormControlWithFeedback: FC<FormControlWithFeedbackProps> = (
-  { children, helpText, error, 'data-testid': testId },
-) => (
+export const FormControlWithFeedback: FC<FormControlWithFeedbackProps> = ({
+  children,
+  helpText,
+  error,
+  'data-testid': testId,
+}) => (
   <div className="flex flex-col gap-1" data-testid={testId}>
     {children}
     {helpText && (
-      <small
-        data-testid={testId ? `${testId}-help-text` : 'help-text'}
-        className="text-gray-500 dark:text-gray-400"
-      >
+      <small data-testid={testId ? `${testId}-help-text` : 'help-text'} className="text-gray-500 dark:text-gray-400">
         {helpText}
       </small>
     )}
-    {error && <span data-testid={testId ? `${testId}-error` : 'error'} className="text-danger">{error}</span>}
+    {error && (
+      <span data-testid={testId ? `${testId}-error` : 'error'} className="text-danger">
+        {error}
+      </span>
+    )}
   </div>
 );

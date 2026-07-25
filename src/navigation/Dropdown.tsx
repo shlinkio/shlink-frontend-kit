@@ -61,13 +61,11 @@ const BaseDropdown: FC<DropdownProps> = ({
     onOpenChange: setIsOpen,
     placement: menuAlignment === 'right' ? 'bottom-end' : 'bottom-start',
     middleware: [flip(), offset(menuOffset)],
-    // eslint-disable-next-line react-compiler/react-compiler
+    // oxlint-disable-next-line react-compiler/react-compiler
     elements: { reference: buttonRef.current },
   });
   const click = useClick(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click]);
   const menuId = useId();
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,17 +78,21 @@ const BaseDropdown: FC<DropdownProps> = ({
     const controller = new AbortController();
 
     // Close menu when clicking outside the dropdown container
-    document.body.addEventListener('click', (e) => {
-      if (!e.composedPath().includes(container)) {
-        closeDropdown();
-      }
-    }, { signal: controller.signal });
+    document.body.addEventListener(
+      'click',
+      (e) => {
+        if (!e.composedPath().includes(container)) {
+          closeDropdown();
+        }
+      },
+      { signal: controller.signal },
+    );
 
     return () => controller.abort();
   }, [closeDropdown, isOpen]);
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       ref={containerRef}
       className={clsx('relative inline-block', containerClassName)}
@@ -131,7 +133,8 @@ const BaseDropdown: FC<DropdownProps> = ({
 
             // Link variant
             'text-lm-brand dark:text-dm-brand': buttonVariant === 'link',
-            'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline': buttonVariant === 'link',
+            'highlight:text-lm-brand-dark dark:highlight:text-dm-brand-dark highlight:underline':
+              buttonVariant === 'link',
 
             // Button sizes
             'px-1.5 py-1 text-sm': buttonVariant !== 'text' && buttonSize === 'sm',
@@ -154,12 +157,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" widthAuto />}
       </button>
       {isOpen && (
-        <div
-          ref={refs.setFloating}
-          style={floatingStyles}
-          className="min-w-full z-500"
-          {...getFloatingProps()}
-        >
+        <div ref={refs.setFloating} style={floatingStyles} className="min-w-full z-500" {...getFloatingProps()}>
           <Menu
             className={menuClassName}
             id={menuId}

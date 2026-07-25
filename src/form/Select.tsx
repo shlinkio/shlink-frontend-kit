@@ -8,13 +8,7 @@ export type SelectProps = PropsWithChildren<SelectElementProps & BaseInputProps>
   ref?: Ref<HTMLSelectElement>;
 };
 
-export const Select: FC<SelectProps> = ({
-  className,
-  size = 'md',
-  feedback,
-  disabled,
-  ...rest
-}) => (
+export const Select: FC<SelectProps> = ({ className, size = 'md', feedback, disabled, ...rest }) => (
   <select
     className={clsx(
       'w-full rounded-md border appearance-none pr-9',

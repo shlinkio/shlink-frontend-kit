@@ -17,11 +17,15 @@ describe('use-timeout', () => {
 
     return (
       <div>
-        <button data-testid="set-timeout" onClick={() => setTimeout(callback)}>Set timeout</button>
+        <button data-testid="set-timeout" onClick={() => setTimeout(callback)}>
+          Set timeout
+        </button>
         <button data-testid="set-delayed-timeout" onClick={() => setTimeout(callback, EXPLICIT_DELAY)}>
           Set timeout with explicit delay
         </button>
-        <button data-testid="clear-timeout" onClick={clearCurrentTimeout}>Clear timeout</button>
+        <button data-testid="clear-timeout" onClick={clearCurrentTimeout}>
+          Clear timeout
+        </button>
       </div>
     );
   };

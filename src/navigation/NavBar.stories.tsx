@@ -22,7 +22,9 @@ export const Base: Story = {
     children: (
       <>
         <NavBar.MenuItem to="">Foo</NavBar.MenuItem>
-        <NavBar.MenuItem to="" active>Bar</NavBar.MenuItem>
+        <NavBar.MenuItem to="" active>
+          Bar
+        </NavBar.MenuItem>
         <NavBar.MenuItem to="">Baz</NavBar.MenuItem>
         <NavBar.Dropdown buttonContent="Options">
           <Dropdown.Item>First option</Dropdown.Item>

@@ -19,10 +19,12 @@ export const Message: FC<MessageProps> = ({ className, children, variant = 'defa
   const isLoading = variant === 'loading' || loading;
   return (
     <SimpleCard className={clsx({ '[&]:border-danger': variant === 'error' }, className)}>
-      <h3 className={clsx('text-center', {
-        'text-gray-500 dark:text-gray-400': variant !== 'error',
-        'text-danger': variant === 'error',
-      })}>
+      <h3
+        className={clsx('text-center', {
+          'text-gray-500 dark:text-gray-400': variant !== 'error',
+          'text-danger': variant === 'error',
+        })}
+      >
         {isLoading && (
           <>
             <FontAwesomeIcon icon={preloader} spin />

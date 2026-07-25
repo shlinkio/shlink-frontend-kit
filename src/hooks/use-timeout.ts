@@ -29,19 +29,19 @@ export function useTimeout(
     }
   }, [clearTimeout_]);
 
-  const setTimeout = useCallback((callback: Callback, delay?: number) => {
-    clearCurrentTimeout();
-    timeoutRef.current = setTimeout_(() => {
-      callback();
-      timeoutRef.current = null;
-    }, delay ?? defaultDelay);
-  }, [clearCurrentTimeout, defaultDelay, setTimeout_]);
+  const setTimeout = useCallback(
+    (callback: Callback, delay?: number) => {
+      clearCurrentTimeout();
+      timeoutRef.current = setTimeout_(() => {
+        callback();
+        timeoutRef.current = null;
+      }, delay ?? defaultDelay);
+    },
+    [clearCurrentTimeout, defaultDelay, setTimeout_],
+  );
 
   // When unmounted, clear the last timeout, if any
   useEffect(() => clearCurrentTimeout, [clearCurrentTimeout]);
 
-  return useMemo(
-    () => ({ setTimeout, clearCurrentTimeout }),
-    [clearCurrentTimeout, setTimeout],
-  );
+  return useMemo(() => ({ setTimeout, clearCurrentTimeout }), [clearCurrentTimeout, setTimeout]);
 }

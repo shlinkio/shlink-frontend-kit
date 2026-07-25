@@ -34,15 +34,18 @@ export const SearchInput: FC<SearchInputProps> = ({
   ...inputProps
 }) => {
   const { setTimeout, clearCurrentTimeout } = useTimeout(500);
-  const searchTermChanged = useCallback((newSearchTerm: string) => {
-    if (!newSearchTerm || immediate) {
-      // When setting an empty value, do it immediately
-      clearCurrentTimeout();
-      onChange(newSearchTerm);
-    } else {
-      setTimeout(() => onChange(newSearchTerm));
-    }
-  }, [clearCurrentTimeout, immediate, onChange, setTimeout]);
+  const searchTermChanged = useCallback(
+    (newSearchTerm: string) => {
+      if (!newSearchTerm || immediate) {
+        // When setting an empty value, do it immediately
+        clearCurrentTimeout();
+        onChange(newSearchTerm);
+      } else {
+        setTimeout(() => onChange(newSearchTerm));
+      }
+    },
+    [clearCurrentTimeout, immediate, onChange, setTimeout],
+  );
 
   return (
     <div className={clsx('group relative focus-within:z-10', containerClassName)}>

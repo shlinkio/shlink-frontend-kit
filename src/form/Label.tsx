@@ -8,6 +8,10 @@ export type LabelProps = HTMLProps<HTMLLabelElement> & {
 export const Label: FC<LabelProps> = ({ required, children, className, ...rest }) => (
   <label className={clsx('cursor-pointer', className)} {...rest}>
     {children}
-    {required && <span className="text-danger ml-1" data-testid="required-indicator">*</span>}
+    {required && (
+      <span className="text-danger ml-1" data-testid="required-indicator">
+        *
+      </span>
+    )}
   </label>
 );

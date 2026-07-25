@@ -9,17 +9,17 @@ describe('<ToggleSwitch />', () => {
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
-  it.each([
-    { defaultChecked: true },
-    { defaultChecked: false },
-  ])('invokes onChange when it is toggled', async ({ defaultChecked }) => {
-    const onChange = vi.fn();
-    const { user } = setUp({ defaultChecked, onChange });
+  it.each([{ defaultChecked: true }, { defaultChecked: false }])(
+    'invokes onChange when it is toggled',
+    async ({ defaultChecked }) => {
+      const onChange = vi.fn();
+      const { user } = setUp({ defaultChecked, onChange });
 
-    await user.click(screen.getByLabelText('Toggle'));
-    expect(onChange).toHaveBeenLastCalledWith(!defaultChecked, expect.anything());
+      await user.click(screen.getByLabelText('Toggle'));
+      expect(onChange).toHaveBeenLastCalledWith(!defaultChecked, expect.anything());
 
-    await user.click(screen.getByLabelText('Toggle'));
-    expect(onChange).toHaveBeenLastCalledWith(defaultChecked, expect.anything());
-  });
+      await user.click(screen.getByLabelText('Toggle'));
+      expect(onChange).toHaveBeenLastCalledWith(defaultChecked, expect.anything());
+    },
+  );
 });

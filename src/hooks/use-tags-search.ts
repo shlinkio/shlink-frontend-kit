@@ -37,37 +37,44 @@ export type TagsSearchResult = {
  * Allows to search on a list of tags and only return the ones that match.
  * Search can be done by `startsWith` or `includes`.
  */
-export function useTagsSearch(
-  { tags, selectedTags, searchMode, searchLimit = 5, allowAdding = false }: TagsSearchOptions,
-): TagsSearchResult {
+export function useTagsSearch({
+  tags,
+  selectedTags,
+  searchMode,
+  searchLimit = 5,
+  allowAdding = false,
+}: TagsSearchOptions): TagsSearchResult {
   const [searchResults, setSearchResults] = useState<Map<string, string>>();
-  const onSearch = useCallback((searchTerm: string) => {
-    const normalizedSearchTerm = searchTerm.toLowerCase().trim();
-    if (!normalizedSearchTerm) {
-      setSearchResults(undefined);
-      return;
-    }
+  const onSearch = useCallback(
+    (searchTerm: string) => {
+      const normalizedSearchTerm = searchTerm.toLowerCase().trim();
+      if (!normalizedSearchTerm) {
+        setSearchResults(undefined);
+        return;
+      }
 
-    const matches: string[] = tags
-      .filter((t) => {
-        // Exclude any tag which is already selected
-        if (selectedTags.includes(t)) {
-          return false;
-        }
+      const matches: string[] = tags
+        .filter((t) => {
+          // Exclude any tag which is already selected
+          if (selectedTags.includes(t)) {
+            return false;
+          }
 
-        const lowerTag = t.toLowerCase();
-        return lowerTag[searchMode](normalizedSearchTerm);
-      })
-      // Do not show more than 5 matches
-      .slice(0, searchLimit);
+          const lowerTag = t.toLowerCase();
+          return lowerTag[searchMode](normalizedSearchTerm);
+        })
+        // Do not show more than 5 matches
+        .slice(0, searchLimit);
 
-    if (allowAdding) {
-      // Add an extra item to just "create" the input verbatim
-      matches.push(`Add "${normalizedSearchTerm.split(',').map(normalizeTag).join(',')}" tag`);
-    }
+      if (allowAdding) {
+        // Add an extra item to just "create" the input verbatim
+        matches.push(`Add "${normalizedSearchTerm.split(',').map(normalizeTag).join(',')}" tag`);
+      }
 
-    setSearchResults(new Map(matches.map((tag) => [tag, tag])));
-  }, [allowAdding, searchLimit, searchMode, selectedTags, tags]);
+      setSearchResults(new Map(matches.map((tag) => [tag, tag])));
+    },
+    [allowAdding, searchLimit, searchMode, selectedTags, tags],
+  );
 
   return { searchResults, onSearch };
 }

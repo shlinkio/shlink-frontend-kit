@@ -27,16 +27,13 @@ type TagSearchResultProps = {
 };
 
 const TagSearchResult: FC<TagSearchResultProps> = ({ tag, color, size, onRemove }) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+  // oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
   <li
-    className={clsx(
-      'inline-flex items-center gap-1 font-bold [&]:rounded-md',
-      {
-        'px-1 text-sm': size === 'sm',
-        'py-0.25 px-1.5': size === 'md',
-        'py-0.5 px-1.5': size === 'lg',
-      },
-    )}
+    className={clsx('inline-flex items-center gap-1 font-bold [&]:rounded-md', {
+      'px-1 text-sm': size === 'sm',
+      'py-0.25 px-1.5': size === 'md',
+      'py-0.5 px-1.5': size === 'lg',
+    })}
     style={{
       backgroundColor: color,
       color: isLightColor(color) ? '#000' : '#fff',
@@ -93,12 +90,15 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
 }) => {
   const { searchResults, onSearch } = useTagsSearch({ tags, selectedTags, searchMode, allowAdding: !immutable });
 
-  const addTag = useCallback((tag: string) => {
-    const match = tag.match(/Add\s+"([^"]+)"\s+tag/);
-    const tagsToAdd = (match?.[1] ?? tag).split(',').map(normalizeTag);
+  const addTag = useCallback(
+    (tag: string) => {
+      const match = tag.match(/Add\s+"([^"]+)"\s+tag/);
+      const tagsToAdd = (match?.[1] ?? tag).split(',').map(normalizeTag);
 
-    onTagsChange?.([...new Set([...selectedTags, ...tagsToAdd])]);
-  }, [onTagsChange, selectedTags]);
+      onTagsChange?.([...new Set([...selectedTags, ...tagsToAdd])]);
+    },
+    [onTagsChange, selectedTags],
+  );
   const removeTag = useCallback(
     (deletedTag: string) => onTagsChange?.(selectedTags.filter((tag) => tag !== deletedTag)),
     [onTagsChange, selectedTags],
@@ -107,7 +107,7 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    // oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={clsx(
         'rounded-md flex flex-wrap gap-1',
@@ -142,25 +142,24 @@ export const TagsAutocomplete: FC<TagsAutocompleteProps> = ({
         listboxSpan="auto"
         containerClassName="flex items-center"
         listboxClassName="whitespace-nowrap"
-        inputClassName={clsx(
-          'no-clear-button',
-          {
-            'px-1 text-sm': size === 'sm',
-            'px-2 h-[26px]': size === 'md',
-            'px-3 text-xl': size === 'lg',
-          },
-        )}
+        inputClassName={clsx('no-clear-button', {
+          'px-1 text-sm': size === 'sm',
+          'px-2 h-[26px]': size === 'md',
+          'px-3 text-xl': size === 'lg',
+        })}
         searchResults={searchResults}
         onSearch={onSearch}
         onSelectSearchResult={addTag}
         renderSearchResult={(tag) =>
-          tag.match(/Add\s+"([^"]+)"\s+tag/)
-            ? tag
-            : <TagItem name={tag} color={getColorForTag?.(tag) ?? DEFAULT_TAG_COLOR} />
+          tag.match(/Add\s+"([^"]+)"\s+tag/) ? (
+            tag
+          ) : (
+            <TagItem name={tag} color={getColorForTag?.(tag) ?? DEFAULT_TAG_COLOR} />
+          )
         }
         onKeyDown={(e) => {
           if (e.key === 'Backspace' && !searchResults) {
-            removeTag(selectedTags[selectedTags.length -1 ]);
+            removeTag(selectedTags[selectedTags.length - 1]);
           }
         }}
         size={size}

@@ -9,7 +9,9 @@ function TestComponent(options: UseTooltipOptions) {
 
   return (
     <div>
-      <div data-testid="anchor" {...anchor}>Anchor</div>
+      <div data-testid="anchor" {...anchor}>
+        Anchor
+      </div>
       <Tooltip {...tooltip}>Hello!</Tooltip>
     </div>
   );
@@ -37,18 +39,16 @@ describe('<Tooltip />', () => {
     await waitForElementToBeRemoved(screen.getByRole('tooltip'));
   });
 
-  it.each([
-    'top' as const,
-    'bottom' as const,
-    'left' as const,
-    'right' as const,
-  ])('renders arrow in the proper location based on placement option', async (placement) => {
-    const { user } = setUp({ placement });
+  it.each(['top' as const, 'bottom' as const, 'left' as const, 'right' as const])(
+    'renders arrow in the proper location based on placement option',
+    async (placement) => {
+      const { user } = setUp({ placement });
 
-    await user.hover(screen.getByTestId('anchor'));
-    const tooltip = await screen.findByRole('tooltip');
-    const arrow = screen.getByTestId('arrow');
+      await user.hover(screen.getByTestId('anchor'));
+      const tooltip = await screen.findByRole('tooltip');
+      const arrow = screen.getByTestId('arrow');
 
-    expect(`${tooltip.className}_${arrow.className}`).toMatchSnapshot();
-  });
+      expect(`${tooltip.className}_${arrow.className}`).toMatchSnapshot();
+    },
+  );
 });

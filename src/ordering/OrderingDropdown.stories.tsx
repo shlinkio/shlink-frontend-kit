@@ -68,4 +68,3 @@ export const NonPrefixed: Story = {
   },
   render: ControlledOrderingDropdown,
 };
-

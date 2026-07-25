@@ -8,27 +8,24 @@ import { useTimeout } from '../hooks';
 import { SearchCombobox } from './SearchCombobox';
 
 const meta = {
-  component: SearchCombobox<typeof colors[0]>,
+  component: SearchCombobox<(typeof colors)[0]>,
   tags: ['autodocs'],
   argTypes: { size },
-} satisfies Meta<typeof SearchCombobox<typeof colors[0]>>;
+} satisfies Meta<typeof SearchCombobox<(typeof colors)[0]>>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const ColorItem: FC<typeof colors[number]> = ({ name, value }) => (
+const ColorItem: FC<(typeof colors)[number]> = ({ name, value }) => (
   <div className="inline-flex items-center gap-2">
     <div aria-hidden className="w-4 h-4 rounded-full" style={{ backgroundColor: value }} />
     {name}
   </div>
 );
 
-const matchingColorsToMap = (searchTerm: string) => new Map(
-  colors
-    .filter(({ name }) => name.match(new RegExp(searchTerm, 'i')))
-    .map((color) => [color.name, color]),
-);
+const matchingColorsToMap = (searchTerm: string) =>
+  new Map(colors.filter(({ name }) => name.match(new RegExp(searchTerm, 'i'))).map((color) => [color.name, color]));
 
 export const Sync: Story = {
   args: {
@@ -39,8 +36,8 @@ export const Sync: Story = {
     renderSearchResult: (color) => <ColorItem {...color} />,
   },
   render: (args) => {
-    const [syncSearchResults, setSyncSearchResults] = useState<Map<string, typeof colors[number]>>();
-    const [syncSelectedItem, setSyncSelectedItem] = useState<typeof colors[number]>();
+    const [syncSearchResults, setSyncSearchResults] = useState<Map<string, (typeof colors)[number]>>();
+    const [syncSelectedItem, setSyncSelectedItem] = useState<(typeof colors)[number]>();
     const onSyncSearch = useCallback(
       (searchTerm: string) => setSyncSearchResults(!searchTerm ? undefined : matchingColorsToMap(searchTerm)),
       [],
@@ -74,21 +71,24 @@ export const Async: Story = {
   },
   render: (args) => {
     const { setTimeout } = useTimeout(1000);
-    const [asyncSearchResults, setAsyncSearchResults] = useState<Map<string, typeof colors[number]>>();
-    const [asyncSelectedItem, setAsyncSelectedItem] = useState<typeof colors[number]>();
+    const [asyncSearchResults, setAsyncSearchResults] = useState<Map<string, (typeof colors)[number]>>();
+    const [asyncSelectedItem, setAsyncSelectedItem] = useState<(typeof colors)[number]>();
     const [asyncLoading, setAsyncLoading] = useState(false);
-    const onAsyncSearch = useCallback((searchTerm: string) => {
-      if (!searchTerm) {
-        setAsyncSearchResults(undefined);
-        return;
-      }
+    const onAsyncSearch = useCallback(
+      (searchTerm: string) => {
+        if (!searchTerm) {
+          setAsyncSearchResults(undefined);
+          return;
+        }
 
-      setAsyncLoading(true);
-      setTimeout(() => {
-        setAsyncSearchResults(matchingColorsToMap(searchTerm));
-        setAsyncLoading(false);
-      });
-    }, [setTimeout]);
+        setAsyncLoading(true);
+        setTimeout(() => {
+          setAsyncSearchResults(matchingColorsToMap(searchTerm));
+          setAsyncLoading(false);
+        });
+      },
+      [setTimeout],
+    );
 
     return (
       <>

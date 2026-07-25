@@ -35,7 +35,7 @@ export const Base: Story = {
   render: (args) => {
     const [selected, setSelected] = useState<string>();
     const toggleSelected = useCallback(
-      (value: string) => setSelected((prev) => prev === value ? undefined : value),
+      (value: string) => setSelected((prev) => (prev === value ? undefined : value)),
       [],
     );
 
