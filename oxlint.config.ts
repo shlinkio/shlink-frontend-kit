@@ -1,5 +1,5 @@
 // @ts-expect-error The library does not expose types
-import shlink from '@shlinkio/eslint-config-js-coding-standard/oxc/oxlint';
+import { oxlint as shlink } from '@shlinkio/eslint-config-js-coding-standard';
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({
