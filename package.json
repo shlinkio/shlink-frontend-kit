@@ -72,6 +72,7 @@
     "@types/node": "^26.1.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@typescript/typescript6": "^6.0.2",
     "@vitejs/plugin-react": "^6.0.4",
     "@vitest/browser": "^4.0.3",
     "@vitest/coverage-v8": "^4.1.2",
@@ -82,7 +83,7 @@
     "oxlint-tsgolint": "^7.0.2001",
     "playwright": "^1.62.0",
     "storybook": "^10.3.6",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "unplugin-dts": "^1.0.3",
     "vite": "^8.1.5",
     "vitest": "^4.0.3"
