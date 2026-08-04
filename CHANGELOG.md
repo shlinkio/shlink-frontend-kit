@@ -15,10 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * *Nothing*
 
 ### Removed
-* *Nothing*
+* Drop support for React Router 7
 
 ### Fixed
-* *Nothing*
+* Ensure dropdown menus are shifted to be kept inside the viewport when needed.
 
 
 ## [1.5.0] - 2026-06-20
