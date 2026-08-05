@@ -157,7 +157,7 @@ const BaseDropdown: FC<DropdownProps> = ({
         {!caretless && <FontAwesomeIcon icon={faCaretDown} size="xs" widthAuto />}
       </button>
       {isOpen && (
-        <div ref={refs.setFloating} style={floatingStyles} className="min-w-full z-500" {...getFloatingProps()}>
+        <div ref={refs.setFloating} style={floatingStyles} className="min-w-full z-1500" {...getFloatingProps()}>
           <Menu
             className={menuClassName}
             id={menuId}
