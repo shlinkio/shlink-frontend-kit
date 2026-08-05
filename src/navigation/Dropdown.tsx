@@ -1,4 +1,4 @@
-import { flip, offset, useClick, useFloating, useInteractions } from '@floating-ui/react';
+import { flip, offset, shift, useClick, useFloating, useInteractions } from '@floating-ui/react';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clsx } from 'clsx';
@@ -60,7 +60,7 @@ const BaseDropdown: FC<DropdownProps> = ({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: menuAlignment === 'right' ? 'bottom-end' : 'bottom-start',
-    middleware: [flip(), offset(menuOffset)],
+    middleware: [flip(), shift({ mainAxis: false, crossAxis: true }), offset(menuOffset)],
     // oxlint-disable-next-line react-compiler/react-compiler
     elements: { reference: buttonRef.current },
   });

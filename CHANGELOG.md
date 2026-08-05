@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.6.0] - 2026-08-04
 ### Added
 * *Nothing*
 
@@ -15,10 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * *Nothing*
 
 ### Removed
-* *Nothing*
+* Drop support for React Router 7
 
 ### Fixed
-* *Nothing*
+* Ensure dropdown menus are shifted to be kept inside the viewport when needed.
 
 
 ## [1.5.0] - 2026-06-20
