@@ -34,7 +34,9 @@ export default defineConfig({
   test: {
     // Run tests in an actual browser
     browser: {
-      provider: playwright(),
+      provider: playwright({
+        launchOptions: process.env.CI ? { channel: 'chrome' } : undefined,
+      }),
       enabled: true,
       headless: true,
       screenshotFailures: false,
