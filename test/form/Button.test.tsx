@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+import { page as screen } from 'vitest/browser';
 import type { ButtonProps } from '../../src';
 import { Button } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -41,8 +42,8 @@ describe('<Button />', () => {
     { type: 'button' as const, expectedType: 'button' },
     { type: 'submit' as const, expectedType: 'submit' },
     { type: 'reset' as const, expectedType: 'reset' },
-  ])('defaults type to `button`', ({ type, expectedType }) => {
+  ])('defaults type to `button`', async ({ type, expectedType }) => {
     setUp({ type, children: 'The button' });
-    expect(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
+    await expect.element(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
   });
 });

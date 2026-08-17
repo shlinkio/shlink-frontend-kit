@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+import { page as screen } from 'vitest/browser';
 import { Menu } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 
@@ -28,15 +29,15 @@ describe('<Menu />', () => {
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
-  it('disables button items via [disabled] attribute', () => {
+  it('disables button items via [disabled] attribute', async () => {
     setUp();
-    expect(screen.getByTestId('disabled-button')).toHaveAttribute('disabled');
-    expect(screen.getByTestId('disabled-button')).not.toHaveAttribute('aria-disabled');
+    await expect.element(screen.getByTestId('disabled-button')).toHaveAttribute('disabled');
+    await expect.element(screen.getByTestId('disabled-button')).not.toHaveAttribute('aria-disabled');
   });
 
-  it('disables link items via [aria-disabled] attribute', () => {
+  it('disables link items via [aria-disabled] attribute', async () => {
     setUp();
-    expect(screen.getByTestId('disabled-link')).toHaveAttribute('aria-disabled');
-    expect(screen.getByTestId('disabled-link')).not.toHaveAttribute('disabled');
+    await expect.element(screen.getByTestId('disabled-link')).toHaveAttribute('aria-disabled');
+    await expect.element(screen.getByTestId('disabled-link')).not.toHaveAttribute('disabled');
   });
 });

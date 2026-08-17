@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { SearchInputProps } from '../../src';
 import { SearchInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -10,7 +11,7 @@ describe('<SearchInput />', () => {
   // Using fireEvents instead of user-event, because the async nature of the later hides the fact that onChange is
   // invoked asynchronously
   const onSearchInputChange = (value: string) =>
-    fireEvent.change(screen.getByRole('searchbox'), {
+    fireEvent.change(screen.getByRole('searchbox').element(), {
       target: { value },
     });
 
@@ -66,8 +67,8 @@ describe('<SearchInput />', () => {
   it.each([
     { loading: false, icon: 'magnifying-glass' },
     { loading: true, icon: 'circle-notch' },
-  ])('shows a different icon depending on its loading state', ({ loading, icon }) => {
+  ])('shows a different icon depending on its loading state', async ({ loading, icon }) => {
     setUp({ loading });
-    expect(screen.getByRole('img', { hidden: true })).toHaveAttribute('data-icon', icon);
+    await expect.element(screen.getByRole('img', { includeHidden: true })).toHaveAttribute('data-icon', icon);
   });
 });

@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
+import { page as screen } from 'vitest/browser';
 import { useParsedQuery } from '../../src';
 
 describe('useParsedQuery', () => {
@@ -25,10 +26,10 @@ describe('useParsedQuery', () => {
     );
   };
 
-  it('parses query as expected', () => {
+  it('parses query as expected', async () => {
     setUp('foo=hello&bar=123');
 
-    expect(screen.getByTestId('foo')).toHaveTextContent('hello');
-    expect(screen.getByTestId('bar')).toHaveTextContent('123');
+    await expect.element(screen.getByTestId('foo')).toHaveTextContent('hello');
+    await expect.element(screen.getByTestId('bar')).toHaveTextContent('123');
   });
 });

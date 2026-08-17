@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { LabelProps } from '../../src';
 import { Label } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -10,18 +11,21 @@ describe('<Label />', () => {
     checkAccessibility(setUp({ children: 'Foo', required })),
   );
 
-  it.each([{ content: 'Foo' }, { content: 'Bar' }])('renders provided content', ({ content }) => {
+  it.each([{ content: 'Foo' }, { content: 'Bar' }])('renders provided content', async ({ content }) => {
     setUp({ children: content });
-    expect(screen.getByText(content)).toBeInTheDocument();
+    await expect.element(screen.getByText(content)).toBeInTheDocument();
   });
 
-  it.each([{ required: false }, { required: true }])('renders required indicator when is required', ({ required }) => {
-    setUp({ children: 'Foo', required });
+  it.each([{ required: false }, { required: true }])(
+    'renders required indicator when is required',
+    async ({ required }) => {
+      setUp({ children: 'Foo', required });
 
-    if (required) {
-      expect(screen.getByTestId('required-indicator')).toBeInTheDocument();
-    } else {
-      expect(screen.queryByTestId('required-indicator')).not.toBeInTheDocument();
-    }
-  });
+      if (required) {
+        await expect.element(screen.getByTestId('required-indicator')).toBeInTheDocument();
+      } else {
+        await expect.element(screen.getByTestId('required-indicator')).not.toBeInTheDocument();
+      }
+    },
+  );
 });

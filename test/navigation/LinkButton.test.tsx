@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { LinkButtonProps } from '../../src';
 import { LinkButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -17,7 +18,7 @@ describe('<LinkButton />', () => {
     'renders as expected based on provided props',
     (props) => {
       setUp(props);
-      expect(screen.getByRole('button')).toMatchSnapshot();
+      expect(screen.getByRole('button').element()).toMatchSnapshot();
     },
   );
 
@@ -26,8 +27,8 @@ describe('<LinkButton />', () => {
     { type: 'button' as const, expectedType: 'button' },
     { type: 'submit' as const, expectedType: 'submit' },
     { type: 'reset' as const, expectedType: 'reset' },
-  ])('defaults type to `button`', ({ type, expectedType }) => {
+  ])('defaults type to `button`', async ({ type, expectedType }) => {
     setUp({ type, children: 'The button' });
-    expect(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
+    await expect.element(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
   });
 });
