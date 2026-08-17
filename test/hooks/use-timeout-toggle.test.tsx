@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import { useTimeoutToggle } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -23,12 +22,12 @@ describe('useTimeoutToggle', () => {
     [true, 'true'],
     [false, 'false'],
   ])('sets initial value', async (initialValue, expectedContent) => {
-    setUp(initialValue);
+    const screen = await setUp(initialValue);
     await expect.element(screen.getByTestId('flag-container')).toHaveTextContent(expectedContent);
   });
 
   it('clears timeout on second toggle', async () => {
-    const { user } = setUp(false);
+    const { user, ...screen } = await setUp(false);
 
     expect(setTimeout).not.toHaveBeenCalled();
     expect(clearTimeout).not.toHaveBeenCalled();

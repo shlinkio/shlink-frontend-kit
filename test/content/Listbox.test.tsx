@@ -1,8 +1,8 @@
 import { useRef } from 'react';
-import { page as screen } from 'vitest/browser';
 import type { ListboxProps } from '../../src';
 import { Listbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import type { RenderWithEventsResult } from '../__helpers__/setUpTest';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 type Props = Omit<ListboxProps<string>, 'anchor'> & { anchored?: boolean };
@@ -32,7 +32,7 @@ describe('<Listbox />', () => {
       />,
     );
 
-  const getSelectedOption = () => screen.getByRole('option', { selected: true });
+  const getSelectedOption = (screen: RenderWithEventsResult) => screen.getByRole('option', { selected: true });
 
   it.each([undefined, new Map()])('passes a11y checks', (items) => checkAccessibility(setUp({ items })));
 
@@ -41,7 +41,7 @@ describe('<Listbox />', () => {
     { items: new Map(), noItemsMessage: 'The list is empty', expectedText: 'The list is empty' },
     { items: new Map([['foo', 'foo']]), noItemsMessage: 'The list is empty', expectedText: undefined },
   ])('displays no-items message when the list of items is empty', async ({ items, noItemsMessage, expectedText }) => {
-    setUp({ items, noItemsMessage });
+    const screen = await setUp({ items, noItemsMessage });
 
     if (expectedText) {
       await expect.element(screen.getByTestId('no-items')).toHaveTextContent(expectedText);
@@ -51,7 +51,7 @@ describe('<Listbox />', () => {
   });
 
   it.each(defaultItems)('calls onSelectItem when an item is clicked', async (name) => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     expect(onSelectItem).not.toHaveBeenCalled();
     await user.click(screen.getByRole('option', { name }));
@@ -60,7 +60,7 @@ describe('<Listbox />', () => {
 
   it.each(defaultItems)('marks item as selected on hover', async (name) => {
     const onActiveItemChange = vi.fn();
-    const { user } = setUp({ onActiveItemChange });
+    const { user, ...screen } = await setUp({ onActiveItemChange });
     const option = screen.getByRole('option', { name });
 
     await expect.element(option).toHaveAttribute('aria-selected', name === 'foo' ? 'true' : 'false');
@@ -72,40 +72,41 @@ describe('<Listbox />', () => {
   // TODO Enable again when using vitest-browser-react
   it.skip('can change active option via vertical arrow keys', async () => {
     const onActiveItemChange = vi.fn();
-    const { user } = setUp({ onActiveItemChange });
+    const result = await setUp({ onActiveItemChange });
+    const { user, ...screen } = result;
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
     anchorElement.element().focus();
 
     // First option is initially selected
-    await expect.element(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
     await user.keyboard('{ArrowDown}');
-    await expect.element(getSelectedOption()).toHaveTextContent('bar');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('bar');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowDown}');
-    await expect.element(getSelectedOption()).toHaveTextContent('baz');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('baz');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('baz', 'baz');
 
     // It can go lower than the last option
     await user.keyboard('{ArrowDown}');
-    await expect.element(getSelectedOption()).toHaveTextContent('baz');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('baz');
 
     await user.keyboard('{ArrowUp}');
-    await expect.element(getSelectedOption()).toHaveTextContent('bar');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('bar');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowUp}');
-    await expect.element(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('foo', 'foo');
 
     // It can go higher than the first option
     await user.keyboard('{ArrowUp}');
-    expect(getSelectedOption()).toHaveTextContent('foo');
+    expect(getSelectedOption(result)).toHaveTextContent('foo');
   });
 
   // TODO Enable again when using vitest-browser-react
   it.skip('can select option via Enter', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
@@ -126,7 +127,8 @@ describe('<Listbox />', () => {
 
   // TODO Enable again when using vitest-browser-react
   it.skip('does not add arrow and Enter listeners when listbox is not anchored', async () => {
-    const { user } = setUp({ anchored: false });
+    const result = await setUp({ anchored: false });
+    const { user, ...screen } = result;
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
@@ -138,8 +140,8 @@ describe('<Listbox />', () => {
     expect(onSelectItem).not.toHaveBeenCalled();
 
     // Pressing an arrow does not move selection
-    await expect.element(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
     await user.keyboard('{ArrowDown}');
-    await expect.element(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
   });
 });

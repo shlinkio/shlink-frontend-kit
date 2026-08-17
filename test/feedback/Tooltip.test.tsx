@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import type { UseTooltipOptions } from '../../src';
 import { Tooltip, useTooltip } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -21,7 +20,7 @@ describe('<Tooltip />', () => {
   const setUp = (props: UseTooltipOptions = {}) => renderWithEvents(<TestComponent {...props} />);
 
   it('passes a11y checks', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
     await user.hover(screen.getByTestId('anchor'));
     await screen.getByRole('tooltip').findElement();
 
@@ -29,7 +28,7 @@ describe('<Tooltip />', () => {
   });
 
   it('renders tooltip on hover with transition', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     await expect.element(screen.getByRole('tooltip')).not.toBeInTheDocument();
     await user.hover(screen.getByTestId('anchor'));
@@ -42,7 +41,7 @@ describe('<Tooltip />', () => {
   it.each(['top' as const, 'bottom' as const, 'left' as const, 'right' as const])(
     'renders arrow in the proper location based on placement option',
     async (placement) => {
-      const { user } = setUp({ placement });
+      const { user, ...screen } = await setUp({ placement });
 
       await user.hover(screen.getByTestId('anchor'));
       const tooltip = await screen.getByRole('tooltip').findElement();

@@ -1,6 +1,5 @@
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
-import { page as screen } from 'vitest/browser';
 import { useGoBack } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -14,13 +13,13 @@ describe('useGoBack', () => {
     );
   }
 
-  const setUp = () => {
+  const setUp = async () => {
     const history = createMemoryHistory();
     history.push('/foo');
     history.push('/bar');
     history.push('/baz');
 
-    const result = renderWithEvents(
+    const result = await renderWithEvents(
       <Router location={history.location} navigator={history}>
         <FakeComponent />
       </Router>,
@@ -30,7 +29,7 @@ describe('useGoBack', () => {
   };
 
   it('navigates one level back every time it is called', async () => {
-    const { user, history } = setUp();
+    const { user, history, ...screen } = await setUp();
 
     expect(history.location.pathname).toEqual('/baz');
     await user.click(screen.getByTestId('go-back'));

@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -13,19 +12,18 @@ describe('<OrderingDropdown />', () => {
   const setUp = (props: Partial<OrderingDropdownProps> = {}) =>
     renderWithEvents(<OrderingDropdown items={items} order={{}} onChange={vi.fn()} {...props} />);
   const setUpWithDisplayedMenu = async (props: Partial<OrderingDropdownProps> = {}) => {
-    const result = setUp(props);
-    const { user } = result;
+    const { user, ...screen } = await setUp(props);
 
     await user.click(screen.getByRole('button'));
     await screen.getByRole('menu').findElement();
 
-    return result;
+    return { user, ...screen };
   };
 
   it.each([setUp, setUpWithDisplayedMenu])('passes a11y checks', (s) => checkAccessibility(s()));
 
   it('properly renders provided list of items', async () => {
-    await setUpWithDisplayedMenu();
+    const screen = await setUpWithDisplayedMenu();
 
     const dropdownItems = screen.getByRole('menuitem').elements();
 
@@ -41,7 +39,7 @@ describe('<OrderingDropdown />', () => {
     ['bar', 1],
     ['baz', 2],
   ])('properly marks selected field as active with proper icon', async (field, expectedActiveIndex) => {
-    await setUpWithDisplayedMenu({ order: { field, dir: 'DESC' } });
+    const screen = await setUpWithDisplayedMenu({ order: { field, dir: 'DESC' } });
 
     const dropdownItems = screen
       .getByRole('menuitem')
@@ -66,7 +64,7 @@ describe('<OrderingDropdown />', () => {
     'triggers change with proper params depending on clicked item and initial state',
     async (initialOrder, expectedNewField, expectedNewDir) => {
       const onChange = vi.fn();
-      const { user } = await setUpWithDisplayedMenu({ onChange, order: initialOrder });
+      const { user, ...screen } = await setUpWithDisplayedMenu({ onChange, order: initialOrder });
 
       await user.click(screen.getByRole('menuitem').first().element());
 
@@ -76,7 +74,7 @@ describe('<OrderingDropdown />', () => {
 
   it('clears selection when last item is clicked', async () => {
     const onChange = vi.fn();
-    const { user } = await setUpWithDisplayedMenu({ onChange, order: { field: 'baz', dir: 'ASC' } });
+    const { user, ...screen } = await setUpWithDisplayedMenu({ onChange, order: { field: 'baz', dir: 'ASC' } });
 
     await user.click(screen.getByRole('menuitem').elements()[3]);
 
@@ -97,7 +95,7 @@ describe('<OrderingDropdown />', () => {
       /^Hello World - DESC/,
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {
-    setUp(props);
+    const screen = await setUp(props);
     await expect.element(screen.getByRole('button')).toHaveTextContent(expectedText);
   });
 });

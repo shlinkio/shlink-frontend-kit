@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { page as screen } from 'vitest/browser';
 import { useTimeout } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -33,7 +32,7 @@ describe('use-timeout', () => {
     { testId: 'set-timeout', expectedDelay: DEFAULT_DELAY },
     { testId: 'set-delayed-timeout', expectedDelay: EXPLICIT_DELAY },
   ])('sets timeout with expected delay', async ({ testId, expectedDelay }) => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
     await user.click(screen.getByTestId(testId));
 
     expect(setTimeoutMock).toHaveBeenCalledWith(expect.any(Function), expectedDelay);
@@ -41,11 +40,11 @@ describe('use-timeout', () => {
   });
 
   it('clears previous timeout when the component is unmounted', async () => {
-    const { user, unmount } = setUp();
+    const { user, unmount, ...screen } = await setUp();
 
     setTimeoutMock.mockImplementation(() => 1);
     await user.click(screen.getByTestId('set-timeout'));
-    unmount();
+    await unmount();
     expect(clearTimeoutMock).toHaveBeenCalled();
   });
 });

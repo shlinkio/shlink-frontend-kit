@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import type { SearchComboboxProps } from '../../src';
 import { SearchCombobox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -36,7 +35,7 @@ describe('<SearchCombobox />', () => {
   );
 
   it('does not show a listbox while there is no search results', async () => {
-    setUp();
+    const screen = await setUp();
     const combobox = screen.getByLabelText('Combobox');
 
     await expect.element(screen.getByLabelText('Matching items')).not.toBeInTheDocument();
@@ -45,7 +44,7 @@ describe('<SearchCombobox />', () => {
   });
 
   it('sets expected active descendant', async () => {
-    const { user } = setUp({
+    const { user, ...screen } = await setUp({
       searchResults: new Map([
         ['foo', 'foo'],
         ['bar', 'bar'],
@@ -62,7 +61,7 @@ describe('<SearchCombobox />', () => {
   });
 
   it('invokes onSearch when the search input changes', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     expect(onSearch).not.toHaveBeenCalled();
     await user.type(screen.getByLabelText('Combobox'), 'search this');
@@ -70,7 +69,7 @@ describe('<SearchCombobox />', () => {
   });
 
   it('invokes onSearch when focus moves back and forth the Combobox', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     expect(onSearch).not.toHaveBeenCalled();
     await user.type(screen.getByLabelText('Combobox'), 'search this');
@@ -85,7 +84,7 @@ describe('<SearchCombobox />', () => {
   });
 
   it('clears input after an option is selected', async () => {
-    const { user } = setUp({ searchResults: new Map([['foo', 'foo']]) });
+    const { user, ...screen } = await setUp({ searchResults: new Map([['foo', 'foo']]) });
 
     expect(onSearch).not.toHaveBeenCalled();
     expect(onSelectSearchResult).not.toHaveBeenCalled();

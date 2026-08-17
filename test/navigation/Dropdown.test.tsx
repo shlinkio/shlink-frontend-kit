@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import type { DropdownProps } from '../../src';
 import { Dropdown, LabelledInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -21,18 +20,18 @@ describe('<Dropdown />', () => {
       </div>,
     );
   const setUpOpened = async () => {
-    const { user, ...rest } = setUp();
+    const { user, ...screen } = await setUp();
 
     await user.click(screen.getByRole('button', { name: 'Press me' }));
     await screen.getByRole('menu').findElement();
 
-    return { user, ...rest };
+    return { user, ...screen };
   };
 
   it.each([setUp, setUpOpened])('passes a11y checks', (setUpFunction) => checkAccessibility(setUpFunction()));
 
   it('closes menu when pressing `Escape`', async () => {
-    const { user } = await setUpOpened();
+    const { user, ...screen } = await setUpOpened();
 
     await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.type(screen.getByLabelText('Text input'), '{Escape}');
@@ -41,7 +40,7 @@ describe('<Dropdown />', () => {
   });
 
   it('closes menu when clicking away', async () => {
-    const { user } = await setUpOpened();
+    const { user, ...screen } = await setUpOpened();
 
     await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.click(screen.getByTestId('non-focusable-item'));
@@ -50,7 +49,7 @@ describe('<Dropdown />', () => {
   });
 
   it('closes menu when focusing away', async () => {
-    const { user } = await setUpOpened();
+    const { user, ...screen } = await setUpOpened();
 
     await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.tab(); // Tab to focus the next focusable element, which is outside the menu
@@ -59,7 +58,7 @@ describe('<Dropdown />', () => {
   });
 
   it('opens menu when pressing down arrow in toggle button', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     // Focus button and press ArrowDown
     await user.tab();
@@ -78,15 +77,15 @@ describe('<Dropdown />', () => {
     { caretless: false },
     { caretless: true },
     { buttonDisabled: true },
-  ])('renders toggle button with the right classes based on provided props', (props) => {
-    setUp(props);
+  ])('renders toggle button with the right classes based on provided props', async (props) => {
+    const screen = await setUp(props);
     expect(screen.getByRole('button', { name: 'Press me' }).element().className).toMatchSnapshot();
   });
 
   it.each([{ props: {} }, { props: { caretless: true } }, { props: { caretless: false } }])(
     'renders caret only if caretless is false',
     async ({ props }) => {
-      setUp(props);
+      const screen = await setUp(props);
 
       if (!props.caretless) {
         await expect.element(screen.getByRole('img', { includeHidden: true })).toBeInTheDocument();

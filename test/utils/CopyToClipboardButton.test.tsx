@@ -1,5 +1,4 @@
 import { fromPartial } from '@total-typescript/shoehorn';
-import { page as screen } from 'vitest/browser';
 import { CopyToClipboardButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -15,7 +14,7 @@ describe('<CopyToClipboardButton />', () => {
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it.each([['text'], ['bar'], ['baz']])('copies content to clipboard when clicked', async (text) => {
-    const { user } = setUp(text);
+    const { user, ...screen } = await setUp(text);
 
     expect(writeText).not.toHaveBeenCalled();
     await user.click(screen.getByLabelText(`Copy ${text} to clipboard`));
@@ -26,7 +25,7 @@ describe('<CopyToClipboardButton />', () => {
     { initialCopied: false, expectedIcon: 'clone' },
     { initialCopied: true, expectedIcon: 'check' },
   ])('shows check icon after copying', async ({ initialCopied, expectedIcon }) => {
-    setUp('foo', initialCopied);
+    const screen = await setUp('foo', initialCopied);
     await expect.element(screen.getByRole('img', { includeHidden: true })).toHaveAttribute('data-icon', expectedIcon);
   });
 });

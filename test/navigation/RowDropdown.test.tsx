@@ -1,4 +1,3 @@
-import { page as screen } from 'vitest/browser';
 import type { Size } from '../../src';
 import { RowDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -17,20 +16,20 @@ describe('<RowDropdown />', () => {
       </div>,
     );
   const setUpOpened = async () => {
-    const { user, ...rest } = setUp();
+    const { user, ...screen } = await setUp();
 
     await user.click(screen.getByRole('button', { name: 'Press me' }));
     await screen.getByRole('menu').findElement();
 
-    return { user, ...rest };
+    return { user, ...screen };
   };
 
   it.each([setUp, setUpOpened])('passes a11y checks', (setUpFunction) => checkAccessibility(setUpFunction()));
 
   it.each(['sm' as const, 'md' as const, 'lg' as const])(
     'renders ellipsis with the right classes based on size',
-    (buttonSize) => {
-      setUp(buttonSize);
+    async (buttonSize) => {
+      const screen = await setUp(buttonSize);
       expect(screen.getByRole('img', { includeHidden: true }).element().classList.toString()).toMatchSnapshot();
     },
   );

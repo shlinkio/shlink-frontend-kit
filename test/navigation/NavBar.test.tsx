@@ -1,5 +1,4 @@
 import { MemoryRouter } from 'react-router';
-import { page as screen } from 'vitest/browser';
 import { Dropdown, NavBar } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -26,7 +25,7 @@ describe('<NavBar />', () => {
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it('can toggle menu', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
     await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
     await user.click(screen.getByLabelText('Show menu'));
