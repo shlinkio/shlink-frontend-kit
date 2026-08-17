@@ -1,8 +1,7 @@
-import { render } from '@testing-library/react';
-import { page as screen } from 'vitest/browser';
 import type { LabelProps } from '../../src';
 import { Label } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 describe('<Label />', () => {
   const setUp = (props: Pick<LabelProps, 'children' | 'required'>) => render(<Label {...props} />);
@@ -12,14 +11,14 @@ describe('<Label />', () => {
   );
 
   it.each([{ content: 'Foo' }, { content: 'Bar' }])('renders provided content', async ({ content }) => {
-    setUp({ children: content });
+    const screen = await setUp({ children: content });
     await expect.element(screen.getByText(content)).toBeInTheDocument();
   });
 
   it.each([{ required: false }, { required: true }])(
     'renders required indicator when is required',
     async ({ required }) => {
-      setUp({ children: 'Foo', required });
+      const screen = await setUp({ children: 'Foo', required });
 
       if (required) {
         await expect.element(screen.getByTestId('required-indicator')).toBeInTheDocument();

@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import type { InputProps } from '../../src';
 import { Input } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 describe('<Input />', () => {
   const setUp = (props: InputProps = {}) => render(<Input {...props} />);
@@ -20,8 +20,8 @@ describe('<Input />', () => {
     { readOnly: true },
     { readOnly: true, disabled: true },
     { variant: 'unstyled' as const },
-  ])('renders as expected based on provided props', (props) => {
-    const { container } = setUp(props);
+  ])('renders as expected based on provided props', async (props) => {
+    const { container } = await setUp(props);
     expect(container).toMatchSnapshot();
   });
 });

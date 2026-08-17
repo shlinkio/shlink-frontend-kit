@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { CheckboxProps } from '../../src';
 import { Checkbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

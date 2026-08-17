@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { ToggleSwitchProps } from '../../src';
 import { ToggleSwitch } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
