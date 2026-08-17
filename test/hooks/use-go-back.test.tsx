@@ -1,6 +1,6 @@
-import { screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
+import { page as screen } from 'vitest/browser';
 import { useGoBack } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 

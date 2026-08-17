@@ -35,7 +35,7 @@ export default defineConfig({
   test: {
     globals: true,
     clearMocks: true,
-    setupFiles: ['./test/setup.ts', './.storybook/tailwind.css'],
+    setupFiles: ['./.storybook/tailwind.css'],
 
     // Run tests in an actual browser
     browser: {

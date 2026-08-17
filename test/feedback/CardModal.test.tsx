@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react';
 import { useState } from 'react';
+import { page as screen } from 'vitest/browser';
 import type { CardModalProps } from '../../src';
 import { CardModal } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -28,22 +28,22 @@ describe('<CardModal />', () => {
 
   it.each([{ onConfirm: vi.fn() }, { onConfirm: undefined }])(
     'shows footer only when onConfirm is provided',
-    ({ onConfirm }) => {
+    async ({ onConfirm }) => {
       setUp({ onConfirm });
 
       if (onConfirm) {
-        expect(screen.getByTestId('footer')).toBeInTheDocument();
+        await expect.element(screen.getByTestId('footer')).toBeInTheDocument();
       } else {
-        expect(screen.queryByTestId('footer')).not.toBeInTheDocument();
+        await expect.element(screen.getByTestId('footer')).not.toBeInTheDocument();
       }
     },
   );
 
   it.each([{ confirmText: undefined }, { confirmText: 'Do something' }, { confirmText: 'Yes' }])(
     'allows confirm text to be customized',
-    ({ confirmText }) => {
+    async ({ confirmText }) => {
       setUp({ confirmText, onConfirm: vi.fn() });
-      expect(screen.getByText(confirmText ?? 'Confirm')).toBeInTheDocument();
+      await expect.element(screen.getByText(confirmText ?? 'Confirm')).toBeInTheDocument();
     },
   );
 
@@ -89,6 +89,6 @@ describe('<CardModal />', () => {
     await user.click(screen.getByLabelText('Close dialog'));
 
     // Immediately after, the modal is still open
-    expect(screen.getByTestId('transition-container')).toBeInTheDocument();
+    await expect.element(screen.getByTestId('transition-container')).toBeInTheDocument();
   });
 });

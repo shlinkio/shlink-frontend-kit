@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { OrderingDropdownProps } from '../../src';
 import { OrderingDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -17,7 +17,7 @@ describe('<OrderingDropdown />', () => {
     const { user } = result;
 
     await user.click(screen.getByRole('button'));
-    await screen.findByRole('menu');
+    await screen.getByRole('menu').findElement();
 
     return result;
   };
@@ -27,13 +27,13 @@ describe('<OrderingDropdown />', () => {
   it('properly renders provided list of items', async () => {
     await setUpWithDisplayedMenu();
 
-    const dropdownItems = screen.getAllByRole('menuitem');
+    const dropdownItems = screen.getByRole('menuitem').elements();
 
     expect(dropdownItems).toHaveLength(Object.values(items).length + 1);
-    expect(dropdownItems[0]).toHaveTextContent('Foo');
-    expect(dropdownItems[1]).toHaveTextContent('Bar');
-    expect(dropdownItems[2]).toHaveTextContent('Hello World');
-    expect(dropdownItems[3]).toHaveTextContent('Clear selection');
+    await expect.element(dropdownItems[0]).toHaveTextContent('Foo');
+    await expect.element(dropdownItems[1]).toHaveTextContent('Bar');
+    await expect.element(dropdownItems[2]).toHaveTextContent('Hello World');
+    await expect.element(dropdownItems[3]).toHaveTextContent('Clear selection');
   });
 
   it.each([
@@ -43,13 +43,18 @@ describe('<OrderingDropdown />', () => {
   ])('properly marks selected field as active with proper icon', async (field, expectedActiveIndex) => {
     await setUpWithDisplayedMenu({ order: { field, dir: 'DESC' } });
 
-    const dropdownItems = screen.getAllByRole('menuitem').filter((item) => item.textContent !== 'Clear selection');
+    const dropdownItems = screen
+      .getByRole('menuitem')
+      .elements()
+      .filter((item) => item.textContent !== 'Clear selection');
 
     expect(dropdownItems).toHaveLength(Object.values(items).length);
 
-    dropdownItems.forEach((item, index) => {
-      expect(item).toHaveAttribute('data-selected', index === expectedActiveIndex ? 'true' : 'false');
-    });
+    await Promise.all(
+      dropdownItems.map((item, index) =>
+        expect.element(item).toHaveAttribute('data-selected', index === expectedActiveIndex ? 'true' : 'false'),
+      ),
+    );
   });
 
   it.each([
@@ -63,7 +68,7 @@ describe('<OrderingDropdown />', () => {
       const onChange = vi.fn();
       const { user } = await setUpWithDisplayedMenu({ onChange, order: initialOrder });
 
-      await user.click(screen.getAllByRole('menuitem')[0]);
+      await user.click(screen.getByRole('menuitem').first().element());
 
       expect(onChange).toHaveBeenCalledExactlyOnceWith({ field: expectedNewField, dir: expectedNewDir });
     },
@@ -73,7 +78,7 @@ describe('<OrderingDropdown />', () => {
     const onChange = vi.fn();
     const { user } = await setUpWithDisplayedMenu({ onChange, order: { field: 'baz', dir: 'ASC' } });
 
-    await user.click(screen.getAllByRole('menuitem')[3]);
+    await user.click(screen.getByRole('menuitem').elements()[3]);
 
     expect(onChange).toHaveBeenCalledExactlyOnceWith({});
   });
@@ -93,6 +98,6 @@ describe('<OrderingDropdown />', () => {
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {
     setUp(props);
-    expect(screen.getByRole('button')).toHaveTextContent(expectedText);
+    await expect.element(screen.getByRole('button')).toHaveTextContent(expectedText);
   });
 });

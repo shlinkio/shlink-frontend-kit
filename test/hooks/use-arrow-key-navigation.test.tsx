@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react';
 import { useRef } from 'react';
+import { page as screen } from 'vitest/browser';
 import type { ArrowKeyNavigationOptions } from '../../src';
 import { useArrowKeyNavigation } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -29,7 +29,7 @@ describe('useArrowKeyNavigation', () => {
   const setUp = (options?: SetUpOptions) => renderWithEvents(<FakeComponent {...options} />);
 
   const expectFocusedButton = (name: string) => {
-    const button = screen.getByRole('button', { name });
+    const button = screen.getByRole('button', { name }).element();
 
     expect(document.activeElement).toEqual(button);
     expect(button.tabIndex).toEqual(0);
@@ -38,7 +38,7 @@ describe('useArrowKeyNavigation', () => {
   it('sets tabIndex=-1 to all elements except first one', () => {
     setUp();
 
-    const buttons = screen.getAllByRole('button');
+    const buttons = screen.getByRole('button').elements();
 
     buttons.forEach((button, index) => {
       expect(button.tabIndex).toEqual(index === 0 ? 0 : -1);
@@ -50,7 +50,7 @@ describe('useArrowKeyNavigation', () => {
     ({ selected }) => {
       setUp({ selected });
 
-      const buttons = screen.getAllByRole('button');
+      const buttons = screen.getByRole('button').elements();
 
       buttons.forEach((button, index) => {
         expect(button.tabIndex).toEqual(index === selected ? 0 : -1);

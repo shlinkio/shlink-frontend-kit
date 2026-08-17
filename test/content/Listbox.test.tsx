@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react';
 import { useRef } from 'react';
+import { page as screen } from 'vitest/browser';
 import type { ListboxProps } from '../../src';
 import { Listbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -40,13 +40,13 @@ describe('<Listbox />', () => {
     { items: new Map(), noItemsMessage: undefined, expectedText: 'No items' },
     { items: new Map(), noItemsMessage: 'The list is empty', expectedText: 'The list is empty' },
     { items: new Map([['foo', 'foo']]), noItemsMessage: 'The list is empty', expectedText: undefined },
-  ])('displays no-items message when the list of items is empty', ({ items, noItemsMessage, expectedText }) => {
+  ])('displays no-items message when the list of items is empty', async ({ items, noItemsMessage, expectedText }) => {
     setUp({ items, noItemsMessage });
 
     if (expectedText) {
-      expect(screen.getByTestId('no-items')).toHaveTextContent(expectedText);
+      await expect.element(screen.getByTestId('no-items')).toHaveTextContent(expectedText);
     } else {
-      expect(screen.queryByTestId('no-items')).not.toBeInTheDocument();
+      await expect.element(screen.getByTestId('no-items')).not.toBeInTheDocument();
     }
   });
 
@@ -63,9 +63,9 @@ describe('<Listbox />', () => {
     const { user } = setUp({ onActiveItemChange });
     const option = screen.getByRole('option', { name });
 
-    expect(option).toHaveAttribute('aria-selected', name === 'foo' ? 'true' : 'false');
+    await expect.element(option).toHaveAttribute('aria-selected', name === 'foo' ? 'true' : 'false');
     await user.hover(option);
-    expect(option).toHaveAttribute('aria-selected', 'true');
+    await expect.element(option).toHaveAttribute('aria-selected', 'true');
     expect(onActiveItemChange).toHaveBeenCalledWith(name, name);
   });
 
@@ -76,26 +76,26 @@ describe('<Listbox />', () => {
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.focus();
+    anchorElement.element().focus();
 
     // First option is initially selected
-    expect(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption()).toHaveTextContent('foo');
     await user.keyboard('{ArrowDown}');
-    expect(getSelectedOption()).toHaveTextContent('bar');
+    await expect.element(getSelectedOption()).toHaveTextContent('bar');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowDown}');
-    expect(getSelectedOption()).toHaveTextContent('baz');
+    await expect.element(getSelectedOption()).toHaveTextContent('baz');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('baz', 'baz');
 
     // It can go lower than the last option
     await user.keyboard('{ArrowDown}');
-    expect(getSelectedOption()).toHaveTextContent('baz');
+    await expect.element(getSelectedOption()).toHaveTextContent('baz');
 
     await user.keyboard('{ArrowUp}');
-    expect(getSelectedOption()).toHaveTextContent('bar');
+    await expect.element(getSelectedOption()).toHaveTextContent('bar');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('bar', 'bar');
     await user.keyboard('{ArrowUp}');
-    expect(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption()).toHaveTextContent('foo');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('foo', 'foo');
 
     // It can go higher than the first option
@@ -109,7 +109,7 @@ describe('<Listbox />', () => {
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.focus();
+    anchorElement.element().focus();
 
     expect(onSelectItem).not.toHaveBeenCalled();
     await user.keyboard('{Enter}');
@@ -130,7 +130,7 @@ describe('<Listbox />', () => {
     const anchorElement = screen.getByLabelText('Anchor');
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.focus();
+    anchorElement.element().focus();
 
     // Pressing Enter does not apply selected option
     expect(onSelectItem).not.toHaveBeenCalled();
@@ -138,8 +138,8 @@ describe('<Listbox />', () => {
     expect(onSelectItem).not.toHaveBeenCalled();
 
     // Pressing an arrow does not move selection
-    expect(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption()).toHaveTextContent('foo');
     await user.keyboard('{ArrowDown}');
-    expect(getSelectedOption()).toHaveTextContent('foo');
+    await expect.element(getSelectedOption()).toHaveTextContent('foo');
   });
 });

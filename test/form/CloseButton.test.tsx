@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { CloseButtonProps } from '../../src';
 import { CloseButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -9,9 +9,9 @@ describe('<CloseButton />', () => {
 
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
-  it.each([[undefined], ['Click me'], ['Something else']])('sets provided label', (label) => {
+  it.each([[undefined], ['Click me'], ['Something else']])('sets provided label', async (label) => {
     setUp({ label });
-    expect(screen.getByLabelText(label ?? 'Close')).toBeInTheDocument();
+    await expect.element(screen.getByLabelText(label ?? 'Close')).toBeInTheDocument();
   });
 
   it('invokes onClick when clicked', async () => {
@@ -25,11 +25,11 @@ describe('<CloseButton />', () => {
 
   it.each([{ solid: true }, { solid: false }])('has expected classes', ({ solid }) => {
     setUp({ solid });
-    expect(screen.getByRole('button').className).toMatchSnapshot();
+    expect(screen.getByRole('button').element().className).toMatchSnapshot();
   });
 
   it.each(['sm' as const, 'md' as const, 'lg' as const])('has icon with expected size', (size) => {
     setUp({ size });
-    expect(screen.getByRole('img', { hidden: true })).toMatchSnapshot();
+    expect(screen.getByRole('img', { includeHidden: true }).element()).toMatchSnapshot();
   });
 });

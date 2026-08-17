@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react';
 import { fromPartial } from '@total-typescript/shoehorn';
+import { page as screen } from 'vitest/browser';
 import { CopyToClipboardButton } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -25,8 +25,8 @@ describe('<CopyToClipboardButton />', () => {
   it.each([
     { initialCopied: false, expectedIcon: 'clone' },
     { initialCopied: true, expectedIcon: 'check' },
-  ])('shows check icon after copying', ({ initialCopied, expectedIcon }) => {
+  ])('shows check icon after copying', async ({ initialCopied, expectedIcon }) => {
     setUp('foo', initialCopied);
-    expect(screen.getByRole('img', { hidden: true })).toHaveAttribute('data-icon', expectedIcon);
+    await expect.element(screen.getByRole('img', { includeHidden: true })).toHaveAttribute('data-icon', expectedIcon);
   });
 });

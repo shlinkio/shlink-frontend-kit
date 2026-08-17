@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { Size } from '../../src';
 import { RowDropdown } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -20,7 +20,7 @@ describe('<RowDropdown />', () => {
     const { user, ...rest } = setUp();
 
     await user.click(screen.getByRole('button', { name: 'Press me' }));
-    await screen.findByRole('menu');
+    await screen.getByRole('menu').findElement();
 
     return { user, ...rest };
   };
@@ -31,7 +31,7 @@ describe('<RowDropdown />', () => {
     'renders ellipsis with the right classes based on size',
     (buttonSize) => {
       setUp(buttonSize);
-      expect(screen.getByRole('img', { hidden: true }).classList.toString()).toMatchSnapshot();
+      expect(screen.getByRole('img', { includeHidden: true }).element().classList.toString()).toMatchSnapshot();
     },
   );
 });

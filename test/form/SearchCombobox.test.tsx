@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { SearchComboboxProps } from '../../src';
 import { SearchCombobox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -35,13 +35,13 @@ describe('<SearchCombobox />', () => {
     checkAccessibility(setUp({ searchResults })),
   );
 
-  it('does not show a listbox while there is no search results', () => {
+  it('does not show a listbox while there is no search results', async () => {
     setUp();
     const combobox = screen.getByLabelText('Combobox');
 
-    expect(screen.queryByLabelText('Matching items')).not.toBeInTheDocument();
-    expect(combobox).toHaveAttribute('aria-expanded', 'false');
-    expect(combobox).not.toHaveAttribute('aria-activedescendant');
+    await expect.element(screen.getByLabelText('Matching items')).not.toBeInTheDocument();
+    await expect.element(combobox).toHaveAttribute('aria-expanded', 'false');
+    await expect.element(combobox).not.toHaveAttribute('aria-activedescendant');
   });
 
   it('sets expected active descendant', async () => {
@@ -55,10 +55,10 @@ describe('<SearchCombobox />', () => {
 
     // Focus combobox first
     await user.click(combobox);
-    await waitFor(() => expect(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_foo$/)));
+    await expect.element(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_foo$/));
 
     await user.keyboard('{ArrowDown}');
-    await waitFor(() => expect(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_bar$/)));
+    await expect.element(combobox).toHaveAttribute('aria-activedescendant', expect.stringMatching(/_bar$/));
   });
 
   it('invokes onSearch when the search input changes', async () => {
@@ -93,6 +93,6 @@ describe('<SearchCombobox />', () => {
 
     expect(onSearch).toHaveBeenCalledWith('');
     expect(onSelectSearchResult).toHaveBeenCalledWith('foo');
-    expect(screen.getByLabelText('Combobox')).toHaveValue('');
+    await expect.element(screen.getByLabelText('Combobox')).toHaveValue('');
   });
 });

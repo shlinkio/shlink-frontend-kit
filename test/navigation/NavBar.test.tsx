@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+import { page as screen } from 'vitest/browser';
 import { Dropdown, NavBar } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
 import { renderWithEvents } from '../__helpers__/setUpTest';
@@ -28,10 +28,10 @@ describe('<NavBar />', () => {
   it('can toggle menu', async () => {
     const { user } = setUp();
 
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
     await user.click(screen.getByLabelText('Show menu'));
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.click(screen.getByLabelText('Hide menu'));
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
   });
 });

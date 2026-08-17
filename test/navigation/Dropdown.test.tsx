@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { DropdownProps } from '../../src';
 import { Dropdown, LabelledInput } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -24,7 +24,7 @@ describe('<Dropdown />', () => {
     const { user, ...rest } = setUp();
 
     await user.click(screen.getByRole('button', { name: 'Press me' }));
-    await screen.findByRole('menu');
+    await screen.getByRole('menu').findElement();
 
     return { user, ...rest };
   };
@@ -34,28 +34,28 @@ describe('<Dropdown />', () => {
   it('closes menu when pressing `Escape`', async () => {
     const { user } = await setUpOpened();
 
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.type(screen.getByLabelText('Text input'), '{Escape}');
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
-    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }));
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }).element());
   });
 
   it('closes menu when clicking away', async () => {
     const { user } = await setUpOpened();
 
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.click(screen.getByTestId('non-focusable-item'));
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
-    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }));
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Press me' }).element());
   });
 
   it('closes menu when focusing away', async () => {
     const { user } = await setUpOpened();
 
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.tab(); // Tab to focus the next focusable element, which is outside the menu
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
-    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Other button' }));
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
+    expect(document.activeElement).toEqual(screen.getByRole('button', { name: 'Other button' }).element());
   });
 
   it('opens menu when pressing down arrow in toggle button', async () => {
@@ -65,7 +65,7 @@ describe('<Dropdown />', () => {
     await user.tab();
     await user.keyboard('{ArrowDown}');
 
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
   });
 
   it.each([
@@ -80,18 +80,18 @@ describe('<Dropdown />', () => {
     { buttonDisabled: true },
   ])('renders toggle button with the right classes based on provided props', (props) => {
     setUp(props);
-    expect(screen.getByRole('button', { name: 'Press me' }).className).toMatchSnapshot();
+    expect(screen.getByRole('button', { name: 'Press me' }).element().className).toMatchSnapshot();
   });
 
   it.each([{ props: {} }, { props: { caretless: true } }, { props: { caretless: false } }])(
     'renders caret only if caretless is false',
-    ({ props }) => {
+    async ({ props }) => {
       setUp(props);
 
       if (!props.caretless) {
-        expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument();
+        await expect.element(screen.getByRole('img', { includeHidden: true })).toBeInTheDocument();
       } else {
-        expect(screen.queryByRole('img', { hidden: true })).not.toBeInTheDocument();
+        await expect.element(screen.getByRole('img', { includeHidden: true })).not.toBeInTheDocument();
       }
     },
   );

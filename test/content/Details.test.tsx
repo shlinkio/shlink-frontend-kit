@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { page as screen } from 'vitest/browser';
 import type { UserEvent } from 'vitest/browser';
 import type { DetailsProps } from '../../src';
 import { Details } from '../../src';
@@ -26,8 +26,8 @@ describe('<Details />', () => {
   it('renders children only while it is open', async () => {
     const { user } = setUp();
 
-    expect(screen.queryByText('These are the children')).not.toBeInTheDocument();
+    await expect.element(screen.getByText('These are the children')).not.toBeInTheDocument();
     await openDetails(user);
-    expect(screen.getByText('These are the children')).toBeInTheDocument();
+    await expect.element(screen.getByText('These are the children')).toBeInTheDocument();
   });
 });
