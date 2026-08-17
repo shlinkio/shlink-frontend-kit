@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import type { UserEvent } from '@testing-library/user-event';
+import type { UserEvent } from 'vitest/browser';
 import type { DetailsProps } from '../../src';
 import { Details } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';

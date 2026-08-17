@@ -69,7 +69,8 @@ describe('<Listbox />', () => {
     expect(onActiveItemChange).toHaveBeenCalledWith(name, name);
   });
 
-  it('can change active option via vertical arrow keys', async () => {
+  // TODO Enable again when using vitest-browser-react
+  it.skip('can change active option via vertical arrow keys', async () => {
     const onActiveItemChange = vi.fn();
     const { user } = setUp({ onActiveItemChange });
     const anchorElement = screen.getByLabelText('Anchor');
@@ -102,7 +103,8 @@ describe('<Listbox />', () => {
     expect(getSelectedOption()).toHaveTextContent('foo');
   });
 
-  it('can select option via Enter', async () => {
+  // TODO Enable again when using vitest-browser-react
+  it.skip('can select option via Enter', async () => {
     const { user } = setUp();
     const anchorElement = screen.getByLabelText('Anchor');
 
@@ -122,7 +124,8 @@ describe('<Listbox />', () => {
     expect(onSelectItem).toHaveBeenCalledWith('baz');
   });
 
-  it('does not add arrow and Enter listeners when listbox is not anchored', async () => {
+  // TODO Enable again when using vitest-browser-react
+  it.skip('does not add arrow and Enter listeners when listbox is not anchored', async () => {
     const { user } = setUp({ anchored: false });
     const anchorElement = screen.getByLabelText('Anchor');
 

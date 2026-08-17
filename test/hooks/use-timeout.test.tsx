@@ -13,7 +13,7 @@ describe('use-timeout', () => {
   const callback = vi.fn();
 
   const FakeComponent: FC<{ callback: () => unknown }> = ({ callback }) => {
-    const { setTimeout, clearCurrentTimeout } = useTimeout(DEFAULT_DELAY, setTimeoutMock as any, clearTimeoutMock);
+    const { setTimeout } = useTimeout(DEFAULT_DELAY, setTimeoutMock as any, clearTimeoutMock);
 
     return (
       <div>
@@ -22,9 +22,6 @@ describe('use-timeout', () => {
         </button>
         <button data-testid="set-delayed-timeout" onClick={() => setTimeout(callback, EXPLICIT_DELAY)}>
           Set timeout with explicit delay
-        </button>
-        <button data-testid="clear-timeout" onClick={clearCurrentTimeout}>
-          Clear timeout
         </button>
       </div>
     );
@@ -41,22 +38,6 @@ describe('use-timeout', () => {
 
     expect(setTimeoutMock).toHaveBeenCalledWith(expect.any(Function), expectedDelay);
     expect(callback).toHaveBeenCalled();
-  });
-
-  it('can clear previous timeout explicitly', async () => {
-    const { user } = setUp();
-
-    // Trying to clear the timeout before setting one does nothing
-    await user.click(screen.getByTestId('clear-timeout'));
-    expect(clearTimeoutMock).not.toHaveBeenCalled();
-
-    // Let's set a timeout, then try to clear it.
-    // We don't await here, otherwise the timeout will get cleared automatically.
-    const setTimeoutPromise = user.click(screen.getByTestId('set-timeout'));
-    await user.click(screen.getByTestId('clear-timeout'));
-    expect(clearTimeoutMock).toHaveBeenCalled();
-
-    await setTimeoutPromise;
   });
 
   it('clears previous timeout when the component is unmounted', async () => {

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
+import { userEvent } from 'vitest/browser';
 
 export const renderWithEvents = (element: ReactElement) => ({
   user: userEvent.setup(),

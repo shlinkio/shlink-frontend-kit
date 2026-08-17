@@ -4,9 +4,10 @@ import { playwright } from '@vitest/browser-playwright';
 import { resolve } from 'path';
 import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vitest/config';
-import pack from './package.json';
+import pack from './package.json' with { type: 'json' };
 
-// oxlint-disable-next-line eslint/no-restricted-exports
+const { dirname } = import.meta;
+
 export default defineConfig({
   plugins: [
     react(),
@@ -17,7 +18,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        index: resolve(__dirname, 'src/index.ts'),
+        index: resolve(dirname, 'src/index.ts'),
       },
       formats: ['es'], // Generate ES module only
     },
@@ -32,6 +33,10 @@ export default defineConfig({
   },
 
   test: {
+    globals: true,
+    clearMocks: true,
+    setupFiles: ['./test/setup.ts', './.storybook/tailwind.css'],
+
     // Run tests in an actual browser
     browser: {
       provider: playwright({
@@ -43,8 +48,6 @@ export default defineConfig({
       screenshotFailures: false,
       instances: [{ browser: 'chromium' }],
     },
-    globals: true,
-    setupFiles: ['./test/setup.ts', './.storybook/tailwind.css'],
     coverage: {
       provider: 'v8',
       reportsDirectory: './coverage',
