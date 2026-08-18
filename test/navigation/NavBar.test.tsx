@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { Dropdown, NavBar } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -26,12 +25,12 @@ describe('<NavBar />', () => {
   it('passes a11y checks', () => checkAccessibility(setUp()));
 
   it('can toggle menu', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
     await user.click(screen.getByLabelText('Show menu'));
-    expect(screen.getByRole('menu')).toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).toBeInTheDocument();
     await user.click(screen.getByLabelText('Hide menu'));
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    await expect.element(screen.getByRole('menu')).not.toBeInTheDocument();
   });
 });

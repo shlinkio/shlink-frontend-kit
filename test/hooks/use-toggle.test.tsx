@@ -1,6 +1,5 @@
-import { screen } from '@testing-library/react';
-import type { UserEvent } from '@testing-library/user-event';
 import { useToggle } from '../../src';
+import type { RenderWithEventsResult } from '../__helpers__/setUpTest';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
 describe('useToggle', () => {
@@ -24,51 +23,51 @@ describe('useToggle', () => {
   }
 
   const setUp = (initialValue = false) => renderWithEvents(<FakeComponent initialValue={initialValue} />);
-  const assertValue = (expectedValue: boolean) => {
-    expect(screen.getByTestId('flag-value')).toHaveTextContent(expectedValue ? 'true' : 'false');
-  };
-  const clickButton = async (user: UserEvent, buttonId: 'toggle' | 'set-to-true' | 'set-to-false') => {
-    await user.click(screen.getByTestId(buttonId));
-  };
+  const assertValue = async (screen: RenderWithEventsResult, expectedValue: boolean) =>
+    expect.element(screen.getByTestId('flag-value')).toHaveTextContent(expectedValue ? 'true' : 'false');
+  const clickButton = (
+    { user, ...screen }: RenderWithEventsResult,
+    buttonId: 'toggle' | 'set-to-true' | 'set-to-false',
+  ) => user.click(screen.getByTestId(buttonId));
 
-  it.each([true, false])('sets initial value', (initialValue) => {
-    setUp(initialValue);
-    assertValue(initialValue);
+  it.each([true, false])('sets initial value', async (initialValue) => {
+    const screen = await setUp(initialValue);
+    await assertValue(screen, initialValue);
   });
 
   it('can toggle the value', async () => {
-    const { user } = setUp();
+    const result = await setUp();
 
-    assertValue(false);
-    await clickButton(user, 'toggle');
-    assertValue(true);
-    await clickButton(user, 'toggle');
-    assertValue(false);
-    await clickButton(user, 'toggle');
-    assertValue(true);
+    await assertValue(result, false);
+    await clickButton(result, 'toggle');
+    await assertValue(result, true);
+    await clickButton(result, 'toggle');
+    await assertValue(result, false);
+    await clickButton(result, 'toggle');
+    await assertValue(result, true);
   });
 
   it('can set value to true', async () => {
-    const { user } = setUp();
+    const result = await setUp();
 
-    assertValue(false);
-    await clickButton(user, 'set-to-true');
-    assertValue(true);
-    await clickButton(user, 'set-to-true');
-    assertValue(true);
-    await clickButton(user, 'set-to-true');
-    assertValue(true);
+    await assertValue(result, false);
+    await clickButton(result, 'set-to-true');
+    await assertValue(result, true);
+    await clickButton(result, 'set-to-true');
+    await assertValue(result, true);
+    await clickButton(result, 'set-to-true');
+    await assertValue(result, true);
   });
 
   it('can set value to false', async () => {
-    const { user } = setUp(true);
+    const result = await setUp(true);
 
-    assertValue(true);
-    await clickButton(user, 'set-to-false');
-    assertValue(false);
-    await clickButton(user, 'set-to-false');
-    assertValue(false);
-    await clickButton(user, 'set-to-false');
-    assertValue(false);
+    await assertValue(result, true);
+    await clickButton(result, 'set-to-false');
+    await assertValue(result, false);
+    await clickButton(result, 'set-to-false');
+    await assertValue(result, false);
+    await clickButton(result, 'set-to-false');
+    await assertValue(result, false);
   });
 });

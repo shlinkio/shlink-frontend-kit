@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import type { CheckboxProps } from '../../src';
 import { Checkbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -13,7 +12,7 @@ describe('<Checkbox />', () => {
     'invokes onChange when the checkbox is checked or unchecked',
     async ({ defaultChecked }) => {
       const onChange = vi.fn();
-      const { user } = setUp({ defaultChecked, onChange });
+      const { user, ...screen } = await setUp({ defaultChecked, onChange });
 
       await user.click(screen.getByLabelText('Checkbox'));
       expect(onChange).toHaveBeenLastCalledWith(!defaultChecked, expect.anything());

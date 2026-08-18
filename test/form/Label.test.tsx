@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
 import type { LabelProps } from '../../src';
 import { Label } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 describe('<Label />', () => {
   const setUp = (props: Pick<LabelProps, 'children' | 'required'>) => render(<Label {...props} />);
@@ -10,18 +10,21 @@ describe('<Label />', () => {
     checkAccessibility(setUp({ children: 'Foo', required })),
   );
 
-  it.each([{ content: 'Foo' }, { content: 'Bar' }])('renders provided content', ({ content }) => {
-    setUp({ children: content });
-    expect(screen.getByText(content)).toBeInTheDocument();
+  it.each([{ content: 'Foo' }, { content: 'Bar' }])('renders provided content', async ({ content }) => {
+    const screen = await setUp({ children: content });
+    await expect.element(screen.getByText(content)).toBeInTheDocument();
   });
 
-  it.each([{ required: false }, { required: true }])('renders required indicator when is required', ({ required }) => {
-    setUp({ children: 'Foo', required });
+  it.each([{ required: false }, { required: true }])(
+    'renders required indicator when is required',
+    async ({ required }) => {
+      const screen = await setUp({ children: 'Foo', required });
 
-    if (required) {
-      expect(screen.getByTestId('required-indicator')).toBeInTheDocument();
-    } else {
-      expect(screen.queryByTestId('required-indicator')).not.toBeInTheDocument();
-    }
-  });
+      if (required) {
+        await expect.element(screen.getByTestId('required-indicator')).toBeInTheDocument();
+      } else {
+        await expect.element(screen.getByTestId('required-indicator')).not.toBeInTheDocument();
+      }
+    },
+  );
 });

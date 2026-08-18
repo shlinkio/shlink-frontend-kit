@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import type { ToggleSwitchProps } from '../../src';
 import { ToggleSwitch } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -13,7 +12,7 @@ describe('<ToggleSwitch />', () => {
     'invokes onChange when it is toggled',
     async ({ defaultChecked }) => {
       const onChange = vi.fn();
-      const { user } = setUp({ defaultChecked, onChange });
+      const { user, ...screen } = await setUp({ defaultChecked, onChange });
 
       await user.click(screen.getByLabelText('Toggle'));
       expect(onChange).toHaveBeenLastCalledWith(!defaultChecked, expect.anything());

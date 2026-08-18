@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import type { SimpleCardProps } from '../../src';
 import { SimpleCard } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 describe('<SimpleCard />', () => {
   const setUp = (props: SimpleCardProps = {}) => render(<SimpleCard {...props} />);
@@ -14,8 +14,8 @@ describe('<SimpleCard />', () => {
     { title: 'Hello', titleSize: 'sm' as const },
     { title: 'Hello', titleSize: 'md' as const },
     { title: 'Hello', titleSize: 'lg' as const },
-  ])('renders as expected based on provided props', (props) => {
-    const { container } = setUp(props);
+  ])('renders as expected based on provided props', async (props) => {
+    const { container } = await setUp(props);
     expect(container).toMatchSnapshot();
   });
 });

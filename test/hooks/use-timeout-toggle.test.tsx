@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import { useTimeoutToggle } from '../../src';
 import { renderWithEvents } from '../__helpers__/setUpTest';
 
@@ -22,14 +21,13 @@ describe('useTimeoutToggle', () => {
   it.each([
     [true, 'true'],
     [false, 'false'],
-  ])('sets initial value', (initialValue, expectedContent) => {
-    setUp(initialValue);
-
-    expect(screen.getByTestId('flag-container')).toHaveTextContent(expectedContent);
+  ])('sets initial value', async (initialValue, expectedContent) => {
+    const screen = await setUp(initialValue);
+    await expect.element(screen.getByTestId('flag-container')).toHaveTextContent(expectedContent);
   });
 
   it('clears timeout on second toggle', async () => {
-    const { user } = setUp(false);
+    const { user, ...screen } = await setUp(false);
 
     expect(setTimeout).not.toHaveBeenCalled();
     expect(clearTimeout).not.toHaveBeenCalled();

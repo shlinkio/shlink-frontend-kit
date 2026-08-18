@@ -1,4 +1,3 @@
-import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import type { UseTooltipOptions } from '../../src';
 import { Tooltip, useTooltip } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -21,32 +20,32 @@ describe('<Tooltip />', () => {
   const setUp = (props: UseTooltipOptions = {}) => renderWithEvents(<TestComponent {...props} />);
 
   it('passes a11y checks', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
     await user.hover(screen.getByTestId('anchor'));
-    await screen.findByRole('tooltip');
+    await screen.getByRole('tooltip').findElement();
 
     return checkAccessibility(setUp());
   });
 
   it('renders tooltip on hover with transition', async () => {
-    const { user } = setUp();
+    const { user, ...screen } = await setUp();
 
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+    await expect.element(screen.getByRole('tooltip')).not.toBeInTheDocument();
     await user.hover(screen.getByTestId('anchor'));
-    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument());
+    await expect.element(await screen.getByRole('tooltip').findElement()).toBeInTheDocument();
 
     await user.unhover(screen.getByTestId('anchor'));
-    await waitForElementToBeRemoved(screen.getByRole('tooltip'));
+    await expect.element(screen.getByRole('tooltip')).not.toBeInTheDocument();
   });
 
   it.each(['top' as const, 'bottom' as const, 'left' as const, 'right' as const])(
     'renders arrow in the proper location based on placement option',
     async (placement) => {
-      const { user } = setUp({ placement });
+      const { user, ...screen } = await setUp({ placement });
 
       await user.hover(screen.getByTestId('anchor'));
-      const tooltip = await screen.findByRole('tooltip');
-      const arrow = screen.getByTestId('arrow');
+      const tooltip = await screen.getByRole('tooltip').findElement();
+      const arrow = screen.getByTestId('arrow').element();
 
       expect(`${tooltip.className}_${arrow.className}`).toMatchSnapshot();
     },

@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import type { ButtonProps } from '../../src';
 import { Button } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 describe('<Button />', () => {
   const setUp = (props: ButtonProps = {}) =>
@@ -31,8 +31,8 @@ describe('<Button />', () => {
     { variant: 'secondary' as const, solid: true },
     { variant: 'danger' as const, solid: true },
     { to: '/foo/bar' },
-  ])('renders as expected based on provided props', (props) => {
-    const { container } = setUp(props);
+  ])('renders as expected based on provided props', async (props) => {
+    const { container } = await setUp(props);
     expect(container).toMatchSnapshot();
   });
 
@@ -41,8 +41,8 @@ describe('<Button />', () => {
     { type: 'button' as const, expectedType: 'button' },
     { type: 'submit' as const, expectedType: 'submit' },
     { type: 'reset' as const, expectedType: 'reset' },
-  ])('defaults type to `button`', ({ type, expectedType }) => {
-    setUp({ type, children: 'The button' });
-    expect(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
+  ])('defaults type to `button`', async ({ type, expectedType }) => {
+    const screen = await setUp({ type, children: 'The button' });
+    await expect.element(screen.getByRole('button', { name: 'The button' })).toHaveAttribute('type', expectedType);
   });
 });

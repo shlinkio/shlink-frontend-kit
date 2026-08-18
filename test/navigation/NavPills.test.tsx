@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import { NavPills } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
+import { render } from '../__helpers__/setUpTest';
 
 type SetUpOptions = {
   currentPath?: string;
@@ -31,19 +31,14 @@ describe('<NavPills />', () => {
     { currentPath: '/', expectedActiveItem: 'Home' },
     { currentPath: '/first', expectedActiveItem: 'First' },
     { currentPath: '/second', expectedActiveItem: 'Second' },
-  ])('marks expected item as active', ({ currentPath, expectedActiveItem }) => {
-    setUp({ currentPath });
-    expect(screen.getByText(expectedActiveItem)).toHaveClass('active');
+  ])('marks expected item as active', async ({ currentPath, expectedActiveItem }) => {
+    const screen = await setUp({ currentPath });
+    await expect.element(screen.getByText(expectedActiveItem)).toHaveClass('active');
   });
 
-  it.each([[true], [false]])('makes items grow if fill is set to true', (fill) => {
-    setUp({ fill });
-    const menuItems = screen.getAllByRole('menuitem');
-
-    if (fill) {
-      expect(menuItems.every((el) => el.classList.contains('flex-grow'))).toBe(true);
-    } else {
-      expect(menuItems.some((el) => el.classList.contains('flex-grow'))).toBe(false);
-    }
+  it.each([[true], [false]])('makes items grow if fill is set to true', async (fill) => {
+    const screen = await setUp({ fill });
+    const menuItems = screen.getByRole('menuitem').elements();
+    expect(menuItems.every((el) => el.classList.contains('flex-grow'))).toBe(fill);
   });
 });

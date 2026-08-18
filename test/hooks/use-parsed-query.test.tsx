@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import { useParsedQuery } from '../../src';
+import { render } from '../__helpers__/setUpTest';
 
 describe('useParsedQuery', () => {
   const FakeComponent = () => {
@@ -18,17 +18,17 @@ describe('useParsedQuery', () => {
     const history = createMemoryHistory();
     history.push({ search });
 
-    render(
+    return render(
       <Router location={history.location} navigator={history}>
         <FakeComponent />
       </Router>,
     );
   };
 
-  it('parses query as expected', () => {
-    setUp('foo=hello&bar=123');
+  it('parses query as expected', async () => {
+    const screen = await setUp('foo=hello&bar=123');
 
-    expect(screen.getByTestId('foo')).toHaveTextContent('hello');
-    expect(screen.getByTestId('bar')).toHaveTextContent('123');
+    await expect.element(screen.getByTestId('foo')).toHaveTextContent('hello');
+    await expect.element(screen.getByTestId('bar')).toHaveTextContent('123');
   });
 });
