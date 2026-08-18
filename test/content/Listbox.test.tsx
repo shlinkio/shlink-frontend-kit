@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { userEvent } from 'vitest/browser';
 import type { ListboxProps } from '../../src';
 import { Listbox } from '../../src';
 import { checkAccessibility } from '../__helpers__/accessibility';
@@ -7,17 +8,17 @@ import { renderWithEvents } from '../__helpers__/setUpTest';
 
 type Props = Omit<ListboxProps<string>, 'anchor'> & { anchored?: boolean };
 
-describe('<Listbox />', () => {
-  function FakeComponent({ anchored = true, ...rest }: Props) {
-    const anchorRef = useRef<HTMLInputElement>(null);
-    return (
-      <>
-        <input type="text" aria-label="Anchor" ref={anchorRef} />
-        <Listbox {...rest} anchor={anchored ? anchorRef : undefined} />
-      </>
-    );
-  }
+function FakeComponent({ anchored = true, ...rest }: Props) {
+  const anchorRef = useRef<HTMLInputElement>(null);
+  return (
+    <>
+      {anchored && <input type="text" aria-label="Anchor" ref={anchorRef} />}
+      <Listbox {...rest} anchor={anchored ? anchorRef : undefined} />
+    </>
+  );
+}
 
+describe('<Listbox />', () => {
   const onSelectItem = vi.fn();
   const defaultItems = ['foo', 'bar', 'baz'];
 
@@ -33,6 +34,13 @@ describe('<Listbox />', () => {
     );
 
   const getSelectedOption = (screen: RenderWithEventsResult) => screen.getByRole('option', { selected: true });
+
+  beforeEach(async () => {
+    // Hover state persists between tests, and the Listbox options are selected on hover. Unhovering before every test
+    // prevents random failing tests.
+    // See https://vitest.dev/api/browser/interactivity.html#userevent-setup for details
+    await userEvent.unhover(document.body);
+  });
 
   it.each([undefined, new Map()])('passes a11y checks', (items) => checkAccessibility(setUp({ items })));
 
@@ -69,15 +77,13 @@ describe('<Listbox />', () => {
     expect(onActiveItemChange).toHaveBeenCalledWith(name, name);
   });
 
-  // TODO Enable again when using vitest-browser-react
-  it.skip('can change active option via vertical arrow keys', async () => {
+  it('can change active option via vertical arrow keys', async () => {
     const onActiveItemChange = vi.fn();
     const result = await setUp({ onActiveItemChange });
-    const { user, ...screen } = result;
-    const anchorElement = screen.getByLabelText('Anchor');
+    const { user } = result;
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.element().focus();
+    await user.tab();
 
     // First option is initially selected
     await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
@@ -88,7 +94,7 @@ describe('<Listbox />', () => {
     await expect.element(getSelectedOption(result)).toHaveTextContent('baz');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('baz', 'baz');
 
-    // It can go lower than the last option
+    // It can't go lower than the last option
     await user.keyboard('{ArrowDown}');
     await expect.element(getSelectedOption(result)).toHaveTextContent('baz');
 
@@ -99,18 +105,16 @@ describe('<Listbox />', () => {
     await expect.element(getSelectedOption(result)).toHaveTextContent('foo');
     expect(onActiveItemChange).toHaveBeenLastCalledWith('foo', 'foo');
 
-    // It can go higher than the first option
+    // It can't go higher than the first option
     await user.keyboard('{ArrowUp}');
     expect(getSelectedOption(result)).toHaveTextContent('foo');
   });
 
-  // TODO Enable again when using vitest-browser-react
-  it.skip('can select option via Enter', async () => {
-    const { user, ...screen } = await setUp();
-    const anchorElement = screen.getByLabelText('Anchor');
+  it('can select option via Enter', async () => {
+    const { user } = await setUp();
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.element().focus();
+    await user.tab();
 
     expect(onSelectItem).not.toHaveBeenCalled();
     await user.keyboard('{Enter}');
@@ -125,14 +129,12 @@ describe('<Listbox />', () => {
     expect(onSelectItem).toHaveBeenCalledWith('baz');
   });
 
-  // TODO Enable again when using vitest-browser-react
-  it.skip('does not add arrow and Enter listeners when listbox is not anchored', async () => {
+  it('does not add arrow and Enter listeners when listbox is not anchored', async () => {
     const result = await setUp({ anchored: false });
-    const { user, ...screen } = result;
-    const anchorElement = screen.getByLabelText('Anchor');
+    const { user } = result;
 
     // The events are listened to on the anchor element, so let's focus it first
-    anchorElement.element().focus();
+    await user.tab();
 
     // Pressing Enter does not apply selected option
     expect(onSelectItem).not.toHaveBeenCalled();

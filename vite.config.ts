@@ -45,6 +45,7 @@ export default defineConfig({
       screenshotFailures: false,
       instances: [{ browser: 'chromium' }],
     },
+
     coverage: {
       provider: 'v8',
       reportsDirectory: './coverage',
