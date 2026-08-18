@@ -1,12 +1,9 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { playwright } from '@vitest/browser-playwright';
-import { resolve } from 'path';
 import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vitest/config';
 import pack from './package.json' with { type: 'json' };
-
-const { dirname } = import.meta;
 
 export default defineConfig({
   plugins: [
@@ -18,7 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        index: resolve(dirname, 'src/index.ts'),
+        index: './src/index.ts',
       },
       formats: ['es'], // Generate ES module only
     },
