@@ -92,7 +92,7 @@ export const CardModal: FC<CardModalProps> = ({
     // instantly.
     if (open) {
       exitAction.current = 'cancel';
-      // oxlint-disable-next-line react/react-compiler
+      // oxlint-disable-next-line react/set-state-in-effect
       setOpenProxy(true);
       return;
     }

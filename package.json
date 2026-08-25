@@ -61,7 +61,7 @@
     }
   },
   "devDependencies": {
-    "@shlinkio/eslint-config-js-coding-standard": "~4.1.0",
+    "@shlinkio/eslint-config-js-coding-standard": "~4.2.0",
     "@storybook/addon-docs": "^10.5.9",
     "@storybook/react-vite": "^10.5.9",
     "@tailwindcss/vite": "^4.3.3",
