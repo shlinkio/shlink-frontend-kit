@@ -15,7 +15,7 @@ export type UseTooltipOptions = {
 export const useTooltip = ({ placement = 'auto' }: UseTooltipOptions = {}) => {
   const arrowRef = useRef<HTMLDivElement>(null);
   const middleware = useMemo(() => {
-    // oxlint-disable-next-line react/react-compiler
+    // oxlint-disable-next-line react/refs
     const arrowMiddleware = arrow({ element: arrowRef });
     return placement === 'auto' ? [autoPlacement(), arrowMiddleware] : [arrowMiddleware];
   }, [placement]);
@@ -123,6 +123,7 @@ export const Tooltip: FC<TooltipProps> = ({
           style={{
             left: arrowPos?.x,
             top: arrowPos?.y,
+            // oxlint-disable-next-line react/refs
             [arrowSide]: `${-(arrowRef.current?.offsetWidth ?? 0) / 2}px`,
           }}
           data-testid="arrow"
