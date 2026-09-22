@@ -96,6 +96,6 @@ describe('<OrderingDropdown />', () => {
     ],
   ])('with %s props displays %s in toggle', async (props, expectedText) => {
     const screen = await setUp(props);
-    await expect.element(screen.getByRole('button')).toHaveTextContent(expectedText);
+    await expect.element(screen.getByRole('button')).toMatchTextContent(expectedText);
   });
 });
