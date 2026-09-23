@@ -13,16 +13,19 @@ exports[`<Table /> > renders as expected based on provided props 1`] = `
       >
         <th
           class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
+          scope="col"
         >
           Foo
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
+          scope="col"
         >
           Bar
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-2 border-b-1 text-left"
+          scope="col"
         >
           Baz
         </th>
@@ -106,16 +109,19 @@ exports[`<Table /> > renders as expected based on provided props 2`] = `
       >
         <th
           class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Foo
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Bar
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-2 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Baz
         </th>
@@ -228,16 +234,19 @@ exports[`<Table /> > renders as expected based on provided props 3`] = `
       >
         <th
           class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Foo
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Bar
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-1 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Baz
         </th>
@@ -327,16 +336,19 @@ exports[`<Table /> > renders as expected based on provided props 4`] = `
       >
         <th
           class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Foo
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Bar
         </th>
         <th
           class="border-lm-border dark:border-dm-border p-3 block lg:table-cell not-last:border-b-1 lg:border-b-1 text-left"
+          scope="col"
         >
           Baz
         </th>

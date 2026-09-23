@@ -87,14 +87,16 @@ export type CellProps = HTMLProps<HTMLTableCellElement> & {
   type?: 'td' | 'th';
 };
 
-const Cell: FC<CellProps> = ({ children, className, columnName, type, ...rest }) => {
+const Cell: FC<CellProps> = ({ children, className, columnName, type, scope, ...rest }) => {
   const sectionContext = useContext(TableSectionContext);
   const Tag = type ?? (sectionContext?.section !== 'body' ? 'th' : 'td');
+  const defaultScope = Tag === 'th' ? 'col' : undefined;
   const { responsive, size } = useContext(TableContext);
 
   return (
     <Tag
       data-column={responsive ? columnName : undefined}
+      scope={scope ?? defaultScope}
       className={clsx(
         'border-lm-border dark:border-dm-border',
         {
